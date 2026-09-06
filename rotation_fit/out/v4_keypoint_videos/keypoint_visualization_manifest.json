@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-09-04T16:59:01.003087+00:00",
+  "model": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+  "model_hash": "sha256:2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2",
+  "device": "cuda:0",
+  "confidence": 0.3,
+  "contains_pnp": false,
+  "video_count": 4,
+  "videos": [
+    {
+      "input": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_191906_raw.mp4",
+      "output": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\v4_keypoint_videos\\forklift_v4_recording_20260903_191906_v4_keypoints_only.mp4",
+      "frames": 171,
+      "fps": 20.028,
+      "detections": 0,
+      "detection_rate": 0.0
+    },
+    {
+      "input": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192417_raw.mp4",
+      "output": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\v4_keypoint_videos\\forklift_v4_recording_20260903_192417_v4_keypoints_only.mp4",
+      "frames": 182,
+      "fps": 13.815,
+      "detections": 128,
+      "detection_rate": 0.7032967032967034
+    },
+    {
+      "input": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150816_raw.mp4",
+      "output": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\v4_keypoint_videos\\forklift_v4_recording_20260904_150816_v4_keypoints_only.mp4",
+      "frames": 159,
+      "fps": 9.957,
+      "detections": 159,
+      "detection_rate": 1.0
+    },
+    {
+      "input": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190700_raw.mp4",
+      "output": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\v4_keypoint_videos\\forklift_v4_recording_20260904_190700_v4_keypoints_only.mp4",
+      "frames": 395,
+      "fps": 13.652,
+      "detections": 395,
+      "detection_rate": 1.0
+    }
+  ]
+}

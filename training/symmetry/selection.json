@@ -1,0 +1,264 @@
+{
+  "c4": {
+    "candidates": [
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_c4_manualgt_20260905\\weights\\best.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 2.0059295624310813,
+          "manual_median_px": 1.791846078178058,
+          "manual_p95_px": 3.820853536491096,
+          "generated_mean_px": 1.8057690173499237,
+          "manual_pck5_including_misses": 0.993421052631579,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            16,
+            0,
+            0,
+            22
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_c4_manualgt_20260905\\weights\\epoch0.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 2.0059295624310813,
+          "manual_median_px": 1.791846078178058,
+          "manual_p95_px": 3.820853536491096,
+          "generated_mean_px": 1.8057690173499237,
+          "manual_pck5_including_misses": 0.993421052631579,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            16,
+            0,
+            0,
+            22
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_c4_manualgt_20260905\\weights\\epoch10.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 6,
+          "manual_mean_px": 1.9987348712020658,
+          "manual_median_px": 1.8551914650839227,
+          "manual_p95_px": 4.609963374747365,
+          "generated_mean_px": 1.795893320686848,
+          "manual_pck5_including_misses": 0.9736842105263158,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            16,
+            0,
+            0,
+            22
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_c4_manualgt_20260905\\weights\\last.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 2,
+          "manual_mean_px": 2.6816269338134893,
+          "manual_median_px": 1.9587617638189951,
+          "manual_p95_px": 6.194817797860199,
+          "generated_mean_px": 2.4173411275890797,
+          "manual_pck5_including_misses": 0.7828947368421053,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            16,
+            0,
+            0,
+            22
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_c4_manualgt_20260905\\weights\\epoch10.pt",
+      "validation": {
+        "images": 38,
+        "matched": 38,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 6,
+        "manual_mean_px": 1.9987348712020658,
+        "manual_median_px": 1.8551914650839227,
+        "manual_p95_px": 4.609963374747365,
+        "generated_mean_px": 1.795893320686848,
+        "manual_pck5_including_misses": 0.9736842105263158,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          16,
+          0,
+          0,
+          22
+        ]
+      }
+    },
+    "export": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_c4_ft_selected.pt"
+  },
+  "fixed": {
+    "candidates": [
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_fixed_manualgt_20260905\\weights\\best.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 1.8919257969961598,
+          "manual_median_px": 1.6070693375194471,
+          "manual_p95_px": 5.160192123985259,
+          "generated_mean_px": 2.1868769023703756,
+          "manual_pck5_including_misses": 0.9407894736842105,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            38,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_fixed_manualgt_20260905\\weights\\epoch0.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 3.7192931595317336,
+          "manual_median_px": 3.9813019195528554,
+          "manual_p95_px": 7.134016056638217,
+          "generated_mean_px": 2.886444325783312,
+          "manual_pck5_including_misses": 0.75,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            16,
+            0,
+            0,
+            22
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_fixed_manualgt_20260905\\weights\\epoch10.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 2.068838137292228,
+          "manual_median_px": 1.762749568034141,
+          "manual_p95_px": 5.71443056898382,
+          "generated_mean_px": 2.1955101705912226,
+          "manual_pck5_including_misses": 0.9473684210526315,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            38,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_fixed_manualgt_20260905\\weights\\epoch20.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 1.7607456648398603,
+          "manual_median_px": 1.2592034270547816,
+          "manual_p95_px": 5.517291512739185,
+          "generated_mean_px": 2.1508474203061203,
+          "manual_pck5_including_misses": 0.9473684210526315,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            38,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_fixed_manualgt_20260905\\weights\\epoch30.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 1.7279466720759604,
+          "manual_median_px": 1.3625057571196564,
+          "manual_p95_px": 5.322633989769782,
+          "generated_mean_px": 2.3550993109945586,
+          "manual_pck5_including_misses": 0.9407894736842105,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            38,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_fixed_manualgt_20260905\\weights\\last.pt",
+        "validation": {
+          "images": 38,
+          "matched": 38,
+          "recall_iou50": 1.0,
+          "unmatched_detections": 0,
+          "manual_mean_px": 1.6536075293142354,
+          "manual_median_px": 1.279861391300722,
+          "manual_p95_px": 4.734475435070024,
+          "generated_mean_px": 2.0951155295552977,
+          "manual_pck5_including_misses": 0.9473684210526315,
+          "manual_pck10_including_misses": 1.0,
+          "permutation_histogram": [
+            38,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\runs\\v4_fixed_manualgt_20260905\\weights\\last.pt",
+      "validation": {
+        "images": 38,
+        "matched": 38,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.6536075293142354,
+        "manual_median_px": 1.279861391300722,
+        "manual_p95_px": 4.734475435070024,
+        "generated_mean_px": 2.0951155295552977,
+        "manual_pck5_including_misses": 0.9473684210526315,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          38,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "export": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_fixed_ft_selected.pt"
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\shaky3_v4_vs_c5_20260906\\20260903_192254_v4_vs_c5_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 744,
+      "expected": 744
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\shaky3_v4_vs_c5_20260906\\20260903_192417_v4_vs_c5_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 182,
+      "expected": 182
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\shaky3_v4_vs_c5_20260906\\20260904_190700_v4_vs_c5_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 395,
+      "expected": 395
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 744,
+      "expected": 744
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192417_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 182,
+      "expected": 182
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190700_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 395,
+      "expected": 395
+    },
+    "decoder_messages": ""
+  }
+]

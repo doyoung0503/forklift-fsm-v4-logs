@@ -1,0 +1,1021 @@
+{
+  "state": "complete",
+  "inputs": [
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_173507_raw.mp4",
+      "frames": 3729,
+      "fps": 11.726,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174126_raw.mp4",
+      "frames": 757,
+      "fps": 11.38,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174342_raw.mp4",
+      "frames": 2501,
+      "fps": 11.553,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174925_raw.mp4",
+      "frames": 1923,
+      "fps": 11.123,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_175419_raw.mp4",
+      "frames": 577,
+      "fps": 11.123,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_190408_raw.mp4",
+      "frames": 1786,
+      "fps": 16.701,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_190743_raw.mp4",
+      "frames": 803,
+      "fps": 16.268,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_191906_raw.mp4",
+      "frames": 171,
+      "fps": 20.028,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192118_raw.mp4",
+      "frames": 324,
+      "fps": 17.417,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+      "frames": 744,
+      "fps": 17.508,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192417_raw.mp4",
+      "frames": 182,
+      "fps": 13.815,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102339_raw.mp4",
+      "frames": 476,
+      "fps": 7.724,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102504_raw.mp4",
+      "frames": 493,
+      "fps": 11.084,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102630_raw.mp4",
+      "frames": 192,
+      "fps": 4.084,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103429_raw.mp4",
+      "frames": 1573,
+      "fps": 6.406,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103739_raw.mp4",
+      "frames": 787,
+      "fps": 14.63,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_104212_raw.mp4",
+      "frames": 441,
+      "fps": 13.75,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105241_raw.mp4",
+      "frames": 671,
+      "fps": 10.015,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105508_raw.mp4",
+      "frames": 614,
+      "fps": 15.143,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105615_raw.mp4",
+      "frames": 1589,
+      "fps": 8.782,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_142318_raw.mp4",
+      "frames": 5895,
+      "fps": 13.594,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_142958_raw.mp4",
+      "frames": 394,
+      "fps": 14.906,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144221_raw.mp4",
+      "frames": 922,
+      "fps": 14.244,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144614_raw.mp4",
+      "frames": 458,
+      "fps": 12.87,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144733_raw.mp4",
+      "frames": 1977,
+      "fps": 13.89,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_145924_raw.mp4",
+      "frames": 2654,
+      "fps": 13.587,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150335_raw.mp4",
+      "frames": 437,
+      "fps": 12.91,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150625_raw.mp4",
+      "frames": 27,
+      "fps": 4.394,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150816_raw.mp4",
+      "frames": 159,
+      "fps": 9.957,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150944_raw.mp4",
+      "frames": 563,
+      "fps": 11.188,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190446_raw.mp4",
+      "frames": 1056,
+      "fps": 13.038,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190700_raw.mp4",
+      "frames": 395,
+      "fps": 13.652,
+      "width": 640,
+      "height": 480
+    }
+  ],
+  "completed": [
+    {
+      "group": "20260901_173507",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_173507_raw.mp4",
+      "output": "20260901_173507_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 3729,
+      "fps": 11.726,
+      "detected_frames": {
+        "v4": 3479,
+        "c4": 3488
+      },
+      "verification": {
+        "metadata": {
+          "frames": 3729,
+          "fps": 11.726,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          1864,
+          3728
+        ]
+      }
+    },
+    {
+      "group": "20260901_174126",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174126_raw.mp4",
+      "output": "20260901_174126_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 757,
+      "fps": 11.38,
+      "detected_frames": {
+        "v4": 709,
+        "c4": 709
+      },
+      "verification": {
+        "metadata": {
+          "frames": 757,
+          "fps": 11.38,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          378,
+          756
+        ]
+      }
+    },
+    {
+      "group": "20260901_174342",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174342_raw.mp4",
+      "output": "20260901_174342_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 2501,
+      "fps": 11.553,
+      "detected_frames": {
+        "v4": 2501,
+        "c4": 2501
+      },
+      "verification": {
+        "metadata": {
+          "frames": 2501,
+          "fps": 11.553,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          1250,
+          2500
+        ]
+      }
+    },
+    {
+      "group": "20260901_174925",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174925_raw.mp4",
+      "output": "20260901_174925_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 1923,
+      "fps": 11.123,
+      "detected_frames": {
+        "v4": 1869,
+        "c4": 1864
+      },
+      "verification": {
+        "metadata": {
+          "frames": 1923,
+          "fps": 11.123,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          961,
+          1922
+        ]
+      }
+    },
+    {
+      "group": "20260901_175419",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_175419_raw.mp4",
+      "output": "20260901_175419_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 577,
+      "fps": 11.123,
+      "detected_frames": {
+        "v4": 516,
+        "c4": 511
+      },
+      "verification": {
+        "metadata": {
+          "frames": 577,
+          "fps": 11.123,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          288,
+          576
+        ]
+      }
+    },
+    {
+      "group": "20260903_190408",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_190408_raw.mp4",
+      "output": "20260903_190408_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 1786,
+      "fps": 16.701,
+      "detected_frames": {
+        "v4": 1786,
+        "c4": 1786
+      },
+      "verification": {
+        "metadata": {
+          "frames": 1786,
+          "fps": 16.701,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          893,
+          1785
+        ]
+      }
+    },
+    {
+      "group": "20260903_190743",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_190743_raw.mp4",
+      "output": "20260903_190743_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 803,
+      "fps": 16.268,
+      "detected_frames": {
+        "v4": 803,
+        "c4": 803
+      },
+      "verification": {
+        "metadata": {
+          "frames": 803,
+          "fps": 16.268,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          401,
+          802
+        ]
+      }
+    },
+    {
+      "group": "20260903_191906",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_191906_raw.mp4",
+      "output": "20260903_191906_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 171,
+      "fps": 20.028,
+      "detected_frames": {
+        "v4": 0,
+        "c4": 0
+      },
+      "verification": {
+        "metadata": {
+          "frames": 171,
+          "fps": 20.028,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          85,
+          170
+        ]
+      }
+    },
+    {
+      "group": "20260903_192118",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192118_raw.mp4",
+      "output": "20260903_192118_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 324,
+      "fps": 17.417,
+      "detected_frames": {
+        "v4": 324,
+        "c4": 324
+      },
+      "verification": {
+        "metadata": {
+          "frames": 324,
+          "fps": 17.417,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          162,
+          323
+        ]
+      }
+    },
+    {
+      "group": "20260903_192254",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+      "output": "20260903_192254_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 744,
+      "fps": 17.508,
+      "detected_frames": {
+        "v4": 599,
+        "c4": 696
+      },
+      "verification": {
+        "metadata": {
+          "frames": 744,
+          "fps": 17.508,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          372,
+          743
+        ]
+      }
+    },
+    {
+      "group": "20260903_192417",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192417_raw.mp4",
+      "output": "20260903_192417_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 182,
+      "fps": 13.815,
+      "detected_frames": {
+        "v4": 129,
+        "c4": 182
+      },
+      "verification": {
+        "metadata": {
+          "frames": 182,
+          "fps": 13.815,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          91,
+          181
+        ]
+      }
+    },
+    {
+      "group": "20260904_102339",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102339_raw.mp4",
+      "output": "20260904_102339_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 476,
+      "fps": 7.724,
+      "detected_frames": {
+        "v4": 404,
+        "c4": 367
+      },
+      "verification": {
+        "metadata": {
+          "frames": 476,
+          "fps": 7.724,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          238,
+          475
+        ]
+      }
+    },
+    {
+      "group": "20260904_102504",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102504_raw.mp4",
+      "output": "20260904_102504_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 493,
+      "fps": 11.084,
+      "detected_frames": {
+        "v4": 440,
+        "c4": 486
+      },
+      "verification": {
+        "metadata": {
+          "frames": 493,
+          "fps": 11.084,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          246,
+          492
+        ]
+      }
+    },
+    {
+      "group": "20260904_102630",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102630_raw.mp4",
+      "output": "20260904_102630_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 192,
+      "fps": 4.084,
+      "detected_frames": {
+        "v4": 192,
+        "c4": 192
+      },
+      "verification": {
+        "metadata": {
+          "frames": 192,
+          "fps": 4.084,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          96,
+          191
+        ]
+      }
+    },
+    {
+      "group": "20260904_103429",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103429_raw.mp4",
+      "output": "20260904_103429_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 1573,
+      "fps": 6.406,
+      "detected_frames": {
+        "v4": 896,
+        "c4": 921
+      },
+      "verification": {
+        "metadata": {
+          "frames": 1573,
+          "fps": 6.406,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          786,
+          1572
+        ]
+      }
+    },
+    {
+      "group": "20260904_103739",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103739_raw.mp4",
+      "output": "20260904_103739_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 787,
+      "fps": 14.63,
+      "detected_frames": {
+        "v4": 786,
+        "c4": 786
+      },
+      "verification": {
+        "metadata": {
+          "frames": 787,
+          "fps": 14.63,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          393,
+          786
+        ]
+      }
+    },
+    {
+      "group": "20260904_104212",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_104212_raw.mp4",
+      "output": "20260904_104212_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 441,
+      "fps": 13.75,
+      "detected_frames": {
+        "v4": 438,
+        "c4": 440
+      },
+      "verification": {
+        "metadata": {
+          "frames": 441,
+          "fps": 13.75,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          220,
+          440
+        ]
+      }
+    },
+    {
+      "group": "20260904_105241",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105241_raw.mp4",
+      "output": "20260904_105241_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 671,
+      "fps": 10.015,
+      "detected_frames": {
+        "v4": 671,
+        "c4": 671
+      },
+      "verification": {
+        "metadata": {
+          "frames": 671,
+          "fps": 10.015,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          335,
+          670
+        ]
+      }
+    },
+    {
+      "group": "20260904_105508",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105508_raw.mp4",
+      "output": "20260904_105508_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 614,
+      "fps": 15.143,
+      "detected_frames": {
+        "v4": 614,
+        "c4": 614
+      },
+      "verification": {
+        "metadata": {
+          "frames": 614,
+          "fps": 15.143,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          307,
+          613
+        ]
+      }
+    },
+    {
+      "group": "20260904_105615",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105615_raw.mp4",
+      "output": "20260904_105615_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 1589,
+      "fps": 8.782,
+      "detected_frames": {
+        "v4": 1589,
+        "c4": 1589
+      },
+      "verification": {
+        "metadata": {
+          "frames": 1589,
+          "fps": 8.782,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          794,
+          1588
+        ]
+      }
+    },
+    {
+      "group": "20260904_142318",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_142318_raw.mp4",
+      "output": "20260904_142318_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 5895,
+      "fps": 13.594,
+      "detected_frames": {
+        "v4": 5895,
+        "c4": 5893
+      },
+      "verification": {
+        "metadata": {
+          "frames": 5895,
+          "fps": 13.594,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          2947,
+          5894
+        ]
+      }
+    },
+    {
+      "group": "20260904_142958",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_142958_raw.mp4",
+      "output": "20260904_142958_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 394,
+      "fps": 14.906,
+      "detected_frames": {
+        "v4": 394,
+        "c4": 394
+      },
+      "verification": {
+        "metadata": {
+          "frames": 394,
+          "fps": 14.906,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          197,
+          393
+        ]
+      }
+    },
+    {
+      "group": "20260904_144221",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144221_raw.mp4",
+      "output": "20260904_144221_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 922,
+      "fps": 14.244,
+      "detected_frames": {
+        "v4": 372,
+        "c4": 372
+      },
+      "verification": {
+        "metadata": {
+          "frames": 922,
+          "fps": 14.244,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          461,
+          921
+        ]
+      }
+    },
+    {
+      "group": "20260904_144614",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144614_raw.mp4",
+      "output": "20260904_144614_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 458,
+      "fps": 12.87,
+      "detected_frames": {
+        "v4": 457,
+        "c4": 457
+      },
+      "verification": {
+        "metadata": {
+          "frames": 458,
+          "fps": 12.87,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          229,
+          457
+        ]
+      }
+    },
+    {
+      "group": "20260904_144733",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144733_raw.mp4",
+      "output": "20260904_144733_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 1977,
+      "fps": 13.89,
+      "detected_frames": {
+        "v4": 1977,
+        "c4": 1977
+      },
+      "verification": {
+        "metadata": {
+          "frames": 1977,
+          "fps": 13.89,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          988,
+          1976
+        ]
+      }
+    },
+    {
+      "group": "20260904_145924",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_145924_raw.mp4",
+      "output": "20260904_145924_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 2654,
+      "fps": 13.587,
+      "detected_frames": {
+        "v4": 2444,
+        "c4": 2422
+      },
+      "verification": {
+        "metadata": {
+          "frames": 2654,
+          "fps": 13.587,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          1327,
+          2653
+        ]
+      }
+    },
+    {
+      "group": "20260904_150335",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150335_raw.mp4",
+      "output": "20260904_150335_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 437,
+      "fps": 12.91,
+      "detected_frames": {
+        "v4": 437,
+        "c4": 437
+      },
+      "verification": {
+        "metadata": {
+          "frames": 437,
+          "fps": 12.91,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          218,
+          436
+        ]
+      }
+    },
+    {
+      "group": "20260904_150625",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150625_raw.mp4",
+      "output": "20260904_150625_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 27,
+      "fps": 4.394,
+      "detected_frames": {
+        "v4": 27,
+        "c4": 27
+      },
+      "verification": {
+        "metadata": {
+          "frames": 27,
+          "fps": 4.394,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          13,
+          26
+        ]
+      }
+    },
+    {
+      "group": "20260904_150816",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150816_raw.mp4",
+      "output": "20260904_150816_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 159,
+      "fps": 9.957,
+      "detected_frames": {
+        "v4": 159,
+        "c4": 159
+      },
+      "verification": {
+        "metadata": {
+          "frames": 159,
+          "fps": 9.957,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          79,
+          158
+        ]
+      }
+    },
+    {
+      "group": "20260904_150944",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150944_raw.mp4",
+      "output": "20260904_150944_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 563,
+      "fps": 11.188,
+      "detected_frames": {
+        "v4": 563,
+        "c4": 562
+      },
+      "verification": {
+        "metadata": {
+          "frames": 563,
+          "fps": 11.188,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          281,
+          562
+        ]
+      }
+    },
+    {
+      "group": "20260904_190446",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190446_raw.mp4",
+      "output": "20260904_190446_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 1056,
+      "fps": 13.038,
+      "detected_frames": {
+        "v4": 1056,
+        "c4": 1051
+      },
+      "verification": {
+        "metadata": {
+          "frames": 1056,
+          "fps": 13.038,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          528,
+          1055
+        ]
+      }
+    },
+    {
+      "group": "20260904_190700",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190700_raw.mp4",
+      "output": "20260904_190700_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 395,
+      "fps": 13.652,
+      "detected_frames": {
+        "v4": 395,
+        "c4": 395
+      },
+      "verification": {
+        "metadata": {
+          "frames": 395,
+          "fps": 13.652,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          197,
+          394
+        ]
+      }
+    }
+  ],
+  "total_frames": 35270,
+  "processed_frames": 35270,
+  "settings": {
+    "conf": 0.3,
+    "imgsz": 640,
+    "device": "cpu",
+    "batch": 8,
+    "raw_keypoints": true,
+    "pnp": false,
+    "smoothing": false
+  },
+  "models": {
+    "v4": {
+      "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+      "sha256": "2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2"
+    },
+    "c4": {
+      "path": "C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_c4_ft_selected.pt",
+      "sha256": "35033fa0137084da6fa1814e1d16daf5a96fcd053e46dd045f672e9289f0d96c"
+    }
+  },
+  "elapsed_seconds": 3069.780805400005
+}

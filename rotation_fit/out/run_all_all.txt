@@ -1,0 +1,42 @@
+==============================================================================
+[log_bearing]
+fit segments: 11 / 15
+model A: rms=1.096 deg  n=321  T_on=1.3423  T_off=0.3393  tau=0.0500  w_max=13.3655
+model B: rms=1.086 deg  n=321  T_on=1.1184  T_off=0.3675  alpha=23.7570  beta=297.7569  w_max=13.5121
+-> selected model B
+per-segment T_on fit: rms=0.412 deg  mean=1.150 median=1.131 sd=0.107 min=0.928 max=1.291
+
+
+==============================================================================
+[recomp4_bearing]
+fit segments: 10 / 11
+model A: rms=1.095 deg  n=475  T_on=1.3182  T_off=0.3480  tau=0.0500  w_max=12.8403
+model B: rms=1.088 deg  n=475  T_on=1.0923  T_off=0.3740  alpha=22.6879  beta=270.3187  w_max=12.9944
+-> selected model B
+per-segment T_on fit: rms=0.401 deg  mean=1.128 median=1.102 sd=0.105 min=0.921 max=1.286
+
+
+==============================================================================
+[recompmulti_bearing]
+fit segments: 10 / 11
+model A: rms=1.252 deg  n=475  T_on=1.3429  T_off=0.3127  tau=0.0586  w_max=14.4847
+model B: rms=1.239 deg  n=475  T_on=1.0822  T_off=0.3518  alpha=21.9371  beta=299.9985  w_max=14.6628
+-> selected model B
+per-segment T_on fit: rms=0.423 deg  mean=1.148 median=1.119 sd=0.105 min=0.962 max=1.336
+
+
+==============================================================================
+[recompmulti_yaw]
+fit segments: 9 / 11
+model A: rms=1.128 deg  n=429  T_on=1.4392  T_off=0.3142  tau=0.0500  w_max=11.3062
+model B: rms=1.125 deg  n=429  T_on=1.2817  T_off=0.3475  alpha=26.7534  beta=299.4929  w_max=11.3352
+-> selected model B
+per-segment T_on fit: rms=0.484 deg  mean=1.234 median=1.247 sd=0.118 min=1.035 max=1.403
+
+
+==============================================================================
+             source  n_used  n_total  bearing_noise_deg     T_on    T_off    alpha     beta    w_max  traj_rms_deg  total_rms_deg  loo_rms_deg  delay_median  delay_sd  coast_median  settle_p90
+        log_bearing      11       15              0.025    1.118    0.368   23.757  297.757   13.512         1.086          1.348        1.618         1.014     0.112         4.877       0.881
+    recomp4_bearing      10       11              0.018    1.092    0.374   22.688  270.319   12.994         1.088          1.379        1.698         1.030     0.072         4.671       0.945
+recompmulti_bearing      10       11              0.025    1.082    0.352   21.937  299.998   14.663         1.239          1.641        2.004         1.013     0.162         4.769       2.240
+    recompmulti_yaw       9       11              0.188    1.282    0.347   26.753  299.493   11.335         1.125          1.434        1.844         1.372     0.176         3.821       0.764

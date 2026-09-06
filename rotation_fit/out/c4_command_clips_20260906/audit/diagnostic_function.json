@@ -1,0 +1,26 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "safe_for_control": false,
+  "purpose": "Numerical candidate for review only; failed full-dataset validation",
+  "model_hash": "sha256:35033fa0137084da6fa1814e1d16daf5a96fcd053e46dd045f672e9289f0d96c",
+  "parameters": {
+    "dead_time_sec": 1.1940680772461292,
+    "accel_deg_s2": 21.689721786889727,
+    "accel_duration_sec": 0.15000000000000135,
+    "max_rate_deg_s": 3.2534582680334885,
+    "inertia_slope_sec": 0.3177386265075327,
+    "inertia_intercept_deg": 0.0
+  },
+  "formula": [
+    "q=max(0,T-dead_time_sec)",
+    "r=min(q,accel_duration_sec)",
+    "drive_angle=0.5*accel_deg_s2*r*r+max_rate_deg_s*max(0,q-accel_duration_sec)",
+    "stop_rate=min(max_rate_deg_s,accel_deg_s2*q)",
+    "total_angle=drive_angle+inertia_slope_sec*stop_rate (zero intercept fit)"
+  ],
+  "blockers": [
+    "1 recording(s) were missing or failed to load",
+    "leave-one-recording-out RMSE exceeds 3.000 deg"
+  ],
+  "acceleration_lower_bound_warning": "Fitted acceleration duration equals optimizer lower bound 0.15s; acceleration/cruise separation is not strongly supported even though the current identifiability flag is true."
+}

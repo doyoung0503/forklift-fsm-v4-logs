@@ -1,0 +1,202 @@
+{
+  "model_hash": "sha256:35033fa0137084da6fa1814e1d16daf5a96fcd053e46dd045f672e9289f0d96c",
+  "total_rows": 4163,
+  "valid_points": 4087,
+  "invalid_frames": 76,
+  "recordings": [
+    {
+      "recording": "forklift_v4_recording_20260901_173507",
+      "count": 418,
+      "valid_count": 418,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 20456.609,
+      "image": "20260901_173507_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174126",
+      "count": 104,
+      "valid_count": 104,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 20836.14,
+      "image": "20260901_174126_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174342",
+      "count": 218,
+      "valid_count": 218,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 20971.546,
+      "image": "20260901_174342_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174925",
+      "count": 58,
+      "valid_count": 58,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 21314.609,
+      "image": "20260901_174925_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_190743",
+      "count": 476,
+      "valid_count": 476,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 27197.953,
+      "image": "20260903_190743_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_191906",
+      "count": 59,
+      "valid_count": 0,
+      "time_source": "camera_input_host_mono_ms",
+      "origin_host_s": 27881.484,
+      "image": "20260903_191906_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_192118",
+      "count": 63,
+      "valid_count": 63,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 28013.656,
+      "image": "20260903_192118_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_192254",
+      "count": 381,
+      "valid_count": 365,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 28109.031,
+      "image": "20260903_192254_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102339",
+      "count": 17,
+      "valid_count": 17,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 560.218,
+      "image": "20260904_102339_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102504",
+      "count": 93,
+      "valid_count": 92,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 644.781,
+      "image": "20260904_102504_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102630",
+      "count": 65,
+      "valid_count": 65,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 730.468,
+      "image": "20260904_102630_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103429",
+      "count": 46,
+      "valid_count": 46,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 1209.859,
+      "image": "20260904_103429_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103739",
+      "count": 575,
+      "valid_count": 575,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 1399.562,
+      "image": "20260904_103739_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_104212",
+      "count": 312,
+      "valid_count": 312,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 1672.906,
+      "image": "20260904_104212_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_105241",
+      "count": 32,
+      "valid_count": 32,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 2301.921,
+      "image": "20260904_105241_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_105508",
+      "count": 55,
+      "valid_count": 55,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 2449.25,
+      "image": "20260904_105508_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_105615",
+      "count": 390,
+      "valid_count": 390,
+      "time_source": "camera_input_host_mono_ms",
+      "origin_host_s": 2515.796,
+      "image": "20260904_105615_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_142318",
+      "count": 84,
+      "valid_count": 84,
+      "time_source": "camera_input_host_mono_ms",
+      "origin_host_s": 1626.812,
+      "image": "20260904_142318_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144221",
+      "count": 105,
+      "valid_count": 105,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 2769.64,
+      "image": "20260904_144221_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144733",
+      "count": 122,
+      "valid_count": 122,
+      "time_source": "camera_input_host_mono_ms",
+      "origin_host_s": 3081.593,
+      "image": "20260904_144733_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_145924",
+      "count": 139,
+      "valid_count": 139,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 3792.062,
+      "image": "20260904_145924_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_150944",
+      "count": 138,
+      "valid_count": 138,
+      "time_source": "camera_input_host_mono_ms",
+      "origin_host_s": 4413.0,
+      "image": "20260904_150944_scatter.png"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_190446",
+      "count": 213,
+      "valid_count": 213,
+      "time_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "origin_host_s": 18515.296,
+      "image": "20260904_190446_scatter.png"
+    }
+  ],
+  "overviews": [
+    "overview_01.png",
+    "overview_02.png",
+    "overview_03.png",
+    "overview_04.png"
+  ],
+  "angle_transform": "none",
+  "smoothing": false,
+  "outliers_removed": false,
+  "source_scope": "prepared command clips, not full original videos"
+}

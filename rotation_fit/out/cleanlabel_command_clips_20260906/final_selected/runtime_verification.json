@@ -1,0 +1,129 @@
+{
+  "checked_saved_frames": 23,
+  "live_offline_matched": true,
+  "checks": [
+    {
+      "video": "forklift_v4_recording_20260901_173507_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260901_174126_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260901_174342_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260901_174925_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260903_190743_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260903_191906_raw.avi",
+      "valid": false,
+      "maximum_keypoint_difference": null
+    },
+    {
+      "video": "forklift_v4_recording_20260903_192118_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260903_192254_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_102339_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_102504_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_102630_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_103429_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_103739_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_104212_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_105241_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_105508_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_105615_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_142318_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_144221_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_144733_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_145924_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_150944_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    },
+    {
+      "video": "forklift_v4_recording_20260904_190446_raw.avi",
+      "valid": true,
+      "maximum_keypoint_difference": 0.0
+    }
+  ],
+  "model": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\pallet_yolo26n_pose_cleanlabel.pt",
+  "model_sha256": "sha256:4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e",
+  "response_kind": "DelayedLinearEndpointResponse",
+  "artifact_sha256": "sha256:7ea144f3c449d52664accf510670ac074b41d6a7057f5986bcd982ff555bdad3",
+  "ten_degree_hold_s": 2.1026409668153088,
+  "camera_opened": false,
+  "can_opened": false,
+  "hardware_commands_sent": false
+}

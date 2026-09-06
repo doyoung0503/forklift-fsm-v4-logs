@@ -1,0 +1,108 @@
+{
+  "methods": [
+    {
+      "method": "Cleanlabel linear <5s",
+      "points": 48,
+      "in_sample": {
+        "n": 48,
+        "rmse_deg": 1.6937717078515202,
+        "mae_deg": 1.27795771681015,
+        "bias_deg": -0.06835316666666684,
+        "r2": 0.8885082690000994,
+        "p90_absolute_error_deg": 2.5227420549972015
+      },
+      "loo": {
+        "n": 48,
+        "rmse_deg": 1.8908934274297178,
+        "mae_deg": 1.3980050595697522,
+        "bias_deg": -0.03247796875294364,
+        "r2": 0.8610472922385228,
+        "p90_absolute_error_deg": 2.8224080695496507
+      },
+      "recording_balanced_loo_rmse": 1.981755444151851
+    },
+    {
+      "method": "Cleanlabel selected isotonic",
+      "points": 31,
+      "in_sample": {
+        "n": 31,
+        "rmse_deg": 1.5393191444338228,
+        "mae_deg": 0.9555562640459021,
+        "bias_deg": -0.1217794934775698,
+        "r2": 0.8874730777965039,
+        "p90_absolute_error_deg": 2.5626278157894733
+      },
+      "loo": {
+        "n": 31,
+        "rmse_deg": 2.34429121750672,
+        "mae_deg": 1.633938579100185,
+        "bias_deg": -0.0010506506606189187,
+        "r2": 0.7390109899713333,
+        "p90_absolute_error_deg": 3.9537044999999864
+      },
+      "recording_balanced_loo_rmse": 2.098067262650814
+    },
+    {
+      "method": "Previous C4 linear <5s",
+      "points": 44,
+      "in_sample": {
+        "n": 44,
+        "rmse_deg": 1.9971635813849666,
+        "mae_deg": 1.4362395094059488,
+        "bias_deg": -0.0811668068181815,
+        "r2": 0.8398823819758808,
+        "p90_absolute_error_deg": 2.9466976125515307
+      },
+      "loo": {
+        "n": 44,
+        "rmse_deg": 2.279295641856935,
+        "mae_deg": 1.6559224247366702,
+        "bias_deg": 0.03286984785690993,
+        "r2": 0.7914485734399652,
+        "p90_absolute_error_deg": 3.441591133821419
+      },
+      "recording_balanced_loo_rmse": 2.4349879787999646
+    },
+    {
+      "method": "Previous C4 selected isotonic",
+      "points": 32,
+      "in_sample": {
+        "n": 32,
+        "rmse_deg": 2.0460564404158537,
+        "mae_deg": 1.4611507897518372,
+        "bias_deg": -0.3949519765232369,
+        "r2": 0.7717419486809416,
+        "p90_absolute_error_deg": 2.8025318382352915
+      },
+      "loo": {
+        "n": 32,
+        "rmse_deg": 2.686241483281527,
+        "mae_deg": 2.094565212579691,
+        "bias_deg": -0.37685600661483776,
+        "r2": 0.6065577551402084,
+        "p90_absolute_error_deg": 4.48792010063291
+      },
+      "recording_balanced_loo_rmse": 2.8575542862887815
+    }
+  ],
+  "provenance": {
+    "repository": "https://huggingface.co/CanelE452/pallet-pose-yolo26n-cleanlabel",
+    "revision": "c40e610f46331fc385a7ec6b0ff41876142c075c",
+    "model_sha256": "4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e",
+    "padding_px": 100,
+    "padding_mode": "BORDER_REFLECT_101",
+    "subtract_padding_before_pnp": true,
+    "imgsz": 640,
+    "confidence": 0.4,
+    "instance_selection": "max_box_conf",
+    "pnp": "Existing live multi-face PnP solver retained; measured intrinsics and dimensions from each recording",
+    "angle_column": "yaw_deg",
+    "angle_domain": "heading",
+    "selection_source": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\c4_command_clips_20260906\\user_selected_refit\\endpoints\\endpoint_extraction_report.json",
+    "linear_excludes_duration_at_or_above_s": 5,
+    "selected_method": "Previous 15-video selection, endpoint checks, recording-balanced isotonic interpolation; retains durations >=5s as in original selected fit",
+    "deployment_performed": false
+  },
+  "warning": "Different accepted command cohorts and preprocessing: historical comparison is descriptive, not a controlled model-only benchmark",
+  "safe_for_control": false
+}

@@ -1,0 +1,16 @@
+{
+  "repository": "CanelE452/pallet-pose-yolo26n-c4",
+  "revision": "2401953a1a58cccf378cf0b1f2efa53dc226a4ec",
+  "source_sha256": "38c8bc1a2fc128f320af83e6edb709d083dd168e6883649aad176f6ddc1a7a76",
+  "original_class": "pallet_yolo_loss.model.ChallengeC4PoseModel",
+  "export_class": "ultralytics.nn.tasks.PoseModel",
+  "inference_only": true,
+  "basis": "Pinned author README: C4 affects training loss only; inference is stock YOLO.",
+  "limitation": "Original custom Python source is absent; no independent comparison against its implementation.",
+  "strict_stock_state_load": true,
+  "stock_graph_types_match": true,
+  "stock_forward_max_abs_diff": 0.0,
+  "ultralytics": "8.4.138",
+  "all_state_tensors_bit_exact": true,
+  "output_sha256": "f6505ab39498373cf813fb4c297ceebe84ca6a49fb4bfeac34309aba5e8d8756"
+}

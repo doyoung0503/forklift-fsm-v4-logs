@@ -1,0 +1,100 @@
+{
+  "20260904_190700": {
+    "frames": 300,
+    "fps": 13.652,
+    "output": "training\\symmetry\\evaluation\\continuous_videos\\20260904_190700_v4_vs_c4_raw_keypoints.mp4",
+    "models": {
+      "v4": {
+        "detected": 300,
+        "numbering_switches": 2,
+        "matched_adjacent_pairs": 299,
+        "c4_aligned_mean_step_px": 6.388013385111671,
+        "c4_aligned_p95_step_px": 23.403096008300754,
+        "c4_aligned_max_step_px": 31.99419403076172
+      },
+      "c4": {
+        "detected": 300,
+        "numbering_switches": 0,
+        "matched_adjacent_pairs": 299,
+        "c4_aligned_mean_step_px": 0.49014725266990056,
+        "c4_aligned_p95_step_px": 0.9760178089141842,
+        "c4_aligned_max_step_px": 1.3716216087341309
+      }
+    }
+  },
+  "20260903_191906": {
+    "frames": 171,
+    "fps": 20.028,
+    "output": "training\\symmetry\\evaluation\\continuous_videos\\20260903_191906_v4_vs_c4_raw_keypoints.mp4",
+    "models": {
+      "v4": {
+        "detected": 0,
+        "numbering_switches": 0,
+        "matched_adjacent_pairs": 0,
+        "c4_aligned_mean_step_px": null,
+        "c4_aligned_p95_step_px": null,
+        "c4_aligned_max_step_px": null
+      },
+      "c4": {
+        "detected": 0,
+        "numbering_switches": 0,
+        "matched_adjacent_pairs": 0,
+        "c4_aligned_mean_step_px": null,
+        "c4_aligned_p95_step_px": null,
+        "c4_aligned_max_step_px": null
+      }
+    }
+  },
+  "20260903_192254": {
+    "frames": 300,
+    "fps": 17.508,
+    "output": "training\\symmetry\\evaluation\\continuous_videos\\20260903_192254_v4_vs_c4_raw_keypoints.mp4",
+    "models": {
+      "v4": {
+        "detected": 284,
+        "numbering_switches": 103,
+        "matched_adjacent_pairs": 268,
+        "c4_aligned_mean_step_px": 6.300508623358919,
+        "c4_aligned_p95_step_px": 25.591758918762206,
+        "c4_aligned_max_step_px": 34.51225662231445
+      },
+      "c4": {
+        "detected": 300,
+        "numbering_switches": 0,
+        "matched_adjacent_pairs": 299,
+        "c4_aligned_mean_step_px": 0.7392912359042311,
+        "c4_aligned_p95_step_px": 1.2218818306922907,
+        "c4_aligned_max_step_px": 1.9982142448425293
+      }
+    }
+  },
+  "20260904_150944": {
+    "frames": 300,
+    "fps": 11.188,
+    "output": "training\\symmetry\\evaluation\\continuous_videos\\20260904_150944_v4_vs_c4_raw_keypoints.mp4",
+    "models": {
+      "v4": {
+        "detected": 300,
+        "numbering_switches": 9,
+        "matched_adjacent_pairs": 299,
+        "c4_aligned_mean_step_px": 1.4316981012736725,
+        "c4_aligned_p95_step_px": 7.196496534347524,
+        "c4_aligned_max_step_px": 48.462074279785156
+      },
+      "c4": {
+        "detected": 299,
+        "numbering_switches": 24,
+        "matched_adjacent_pairs": 297,
+        "c4_aligned_mean_step_px": 2.2589813984604397,
+        "c4_aligned_p95_step_px": 13.478750610351561,
+        "c4_aligned_max_step_px": 45.93058776855469
+      }
+    }
+  },
+  "notes": [
+    "Raw prediction positions/numbers, no PnP fitting or temporal smoothing.",
+    "Up to 300 contiguous frames per recording, original playback FPS.",
+    "Inter-frame motion includes real camera/object movement; these are not accuracy metrics.",
+    "C4 alignment permits whole-cuboid rotation only and is used for step statistics, not drawn points."
+  ]
+}

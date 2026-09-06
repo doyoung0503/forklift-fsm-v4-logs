@@ -1,0 +1,71 @@
+{
+  "state": "complete",
+  "inputs": [
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+      "frames": 744,
+      "fps": 17.508,
+      "width": 640,
+      "height": 480
+    }
+  ],
+  "completed": [
+    {
+      "group": "20260903_192254",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+      "output": "20260903_192254_v4_vs_cleanlabel_raw_keypoints.mp4",
+      "frames": 744,
+      "fps": 17.508,
+      "detected_frames": {
+        "v4": 654,
+        "cleanlabel": 691
+      },
+      "verification": {
+        "metadata": {
+          "frames": 744,
+          "fps": 17.508,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          372,
+          743
+        ]
+      }
+    }
+  ],
+  "candidate_name": "cleanlabel",
+  "baseline_name": "v4",
+  "third_name": null,
+  "model_order": [
+    "v4",
+    "cleanlabel"
+  ],
+  "total_frames": 744,
+  "processed_frames": 744,
+  "settings": {
+    "conf": 0.4,
+    "imgsz": 640,
+    "device": "cpu",
+    "batch": 8,
+    "padding": 100,
+    "padding_mode": "BORDER_REFLECT_101",
+    "selection": "max_conf",
+    "raw_keypoints": true,
+    "pnp": false,
+    "smoothing": false,
+    "effective_torch_threads": 8
+  },
+  "models": {
+    "v4": {
+      "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+      "sha256": "2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2"
+    },
+    "cleanlabel": {
+      "path": "C:\\Users\\DELL\\Downloads\\로그수집\\third_party\\pallet_pose_yolo26n_cleanlabel\\pallet_yolo26n_pose_cleanlabel.pt",
+      "sha256": "4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e"
+    }
+  },
+  "elapsed_seconds": 52.89552170000388
+}

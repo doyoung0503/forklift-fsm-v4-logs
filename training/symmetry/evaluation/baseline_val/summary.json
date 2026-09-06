@@ -1,0 +1,80 @@
+{
+  "v4": {
+    "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+    "sha256": "2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2",
+    "overall": {
+      "images": 38,
+      "matched": 38,
+      "recall_iou50": 1.0,
+      "unmatched_detections": 0,
+      "manual_mean_px": 1.6179989448509464,
+      "manual_median_px": 1.3562248266035626,
+      "manual_p95_px": 3.0569129646387396,
+      "generated_mean_px": 1.9031600020143544,
+      "manual_pck5_including_misses": 0.9868421052631579,
+      "manual_pck10_including_misses": 0.9868421052631579,
+      "permutation_histogram": [
+        16,
+        0,
+        0,
+        22
+      ]
+    },
+    "by_recording": {
+      "forklift_v4_recording_20260903_190743": {
+        "images": 16,
+        "matched": 16,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.8965344251133711,
+        "manual_median_px": 1.429050726458018,
+        "manual_p95_px": 3.5420318231875028,
+        "generated_mean_px": 2.1636416529725038,
+        "manual_pck5_including_misses": 0.96875,
+        "manual_pck10_including_misses": 0.96875,
+        "permutation_histogram": [
+          16,
+          0,
+          0,
+          0
+        ]
+      },
+      "forklift_v4_recording_20260904_142318": {
+        "images": 13,
+        "matched": 13,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.5536443092003096,
+        "manual_median_px": 1.4645185877565,
+        "manual_p95_px": 2.71114765883359,
+        "generated_mean_px": 2.0683030938198437,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          0,
+          0,
+          0,
+          13
+        ]
+      },
+      "forklift_v4_recording_20260904_142958": {
+        "images": 9,
+        "matched": 9,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.2157814536575553,
+        "manual_median_px": 1.0514137002945827,
+        "manual_p95_px": 2.2383183215891043,
+        "generated_mean_px": 1.2015414899252719,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          0,
+          0,
+          0,
+          9
+        ]
+      }
+    }
+  }
+}

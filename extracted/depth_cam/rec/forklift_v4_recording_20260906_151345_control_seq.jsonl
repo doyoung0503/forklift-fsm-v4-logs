@@ -1,0 +1,4 @@
+{"phase": "cmd", "cmd": "STOP", "t_iso": "2026-09-06T15:13:45.339", "t_mono": 177449.703, "step": 0}
+{"phase": "cmd", "cmd": "ROT_RIGHT", "t_iso": "2026-09-06T15:13:47.879", "t_mono": 177452.25, "step": 0}
+{"phase": "cmd", "cmd": "STOP", "t_iso": "2026-09-06T15:13:47.948", "t_mono": 177452.312, "step": 0}
+{"phase": "cmd", "cmd": "ROT_RIGHT", "t_iso": "2026-09-06T15:13:52.043", "t_mono": 177456.406, "step": 0}

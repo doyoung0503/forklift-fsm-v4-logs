@@ -1,0 +1,26 @@
+{
+  "parameters": {
+    "slope_deg_s": 11.183270369712988,
+    "effective_delay_s": 1.203659075093497,
+    "weighted_sse": 98.85285225623137
+  },
+  "selected_recordings": [
+    "forklift_v4_recording_20260901_173507",
+    "forklift_v4_recording_20260901_174342",
+    "forklift_v4_recording_20260903_192118",
+    "forklift_v4_recording_20260904_102504",
+    "forklift_v4_recording_20260904_102630",
+    "forklift_v4_recording_20260904_103429",
+    "forklift_v4_recording_20260904_103739",
+    "forklift_v4_recording_20260904_104212",
+    "forklift_v4_recording_20260904_105508",
+    "forklift_v4_recording_20260904_142318",
+    "forklift_v4_recording_20260904_144221",
+    "forklift_v4_recording_20260904_144733",
+    "forklift_v4_recording_20260904_145924",
+    "forklift_v4_recording_20260904_150944",
+    "forklift_v4_recording_20260904_190446"
+  ],
+  "function": "theta(T)=k*max(T-d,0)",
+  "deployment_performed": false
+}

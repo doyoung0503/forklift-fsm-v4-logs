@@ -1,0 +1,217 @@
+{
+  "source": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\command_clips",
+  "count": 23,
+  "contact_sheets": [
+    "contact_sheet_01.jpg",
+    "contact_sheet_02.jpg"
+  ],
+  "frames": [
+    {
+      "number": 1,
+      "recording": "forklift_v4_recording_20260901_173507",
+      "image": "01_20260901_173507.png",
+      "clip_frame_index": 198,
+      "source_frame_i": 1851,
+      "captured_at": "2026-09-01T17:38:15.152",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 2,
+      "recording": "forklift_v4_recording_20260901_174126",
+      "image": "02_20260901_174126.png",
+      "clip_frame_index": 22,
+      "source_frame_i": 519,
+      "captured_at": "2026-09-01T17:42:19.006",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 3,
+      "recording": "forklift_v4_recording_20260901_174342",
+      "image": "03_20260901_174342.png",
+      "clip_frame_index": 106,
+      "source_frame_i": 1786,
+      "captured_at": "2026-09-01T17:46:40.498",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 4,
+      "recording": "forklift_v4_recording_20260901_174925",
+      "image": "04_20260901_174925.png",
+      "clip_frame_index": 23,
+      "source_frame_i": 1490,
+      "captured_at": "2026-09-01T17:51:52.339",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 5,
+      "recording": "forklift_v4_recording_20260903_190743",
+      "image": "05_20260903_190743.png",
+      "clip_frame_index": 70,
+      "source_frame_i": 106,
+      "captured_at": "2026-09-03T19:07:52.208",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 6,
+      "recording": "forklift_v4_recording_20260903_191906",
+      "image": "06_20260903_191906.png",
+      "clip_frame_index": 0,
+      "source_frame_i": 36,
+      "captured_at": "2026-09-03T19:19:10.531",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 7,
+      "recording": "forklift_v4_recording_20260903_192118",
+      "image": "07_20260903_192118.png",
+      "clip_frame_index": 11,
+      "source_frame_i": 47,
+      "captured_at": "2026-09-03T19:21:23.578",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 8,
+      "recording": "forklift_v4_recording_20260903_192254",
+      "image": "08_20260903_192254.png",
+      "clip_frame_index": 269,
+      "source_frame_i": 331,
+      "captured_at": "2026-09-03T19:23:20.194",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 9,
+      "recording": "forklift_v4_recording_20260904_102339",
+      "image": "09_20260904_102339.png",
+      "clip_frame_index": 8,
+      "source_frame_i": 44,
+      "captured_at": "2026-09-04T10:23:50.051",
+      "selection": "middle retained frame; no frame lies inside a command hold"
+    },
+    {
+      "number": 10,
+      "recording": "forklift_v4_recording_20260904_102504",
+      "image": "10_20260904_102504.png",
+      "clip_frame_index": 55,
+      "source_frame_i": 235,
+      "captured_at": "2026-09-04T10:25:30.503",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 11,
+      "recording": "forklift_v4_recording_20260904_102630",
+      "image": "11_20260904_102630.png",
+      "clip_frame_index": 53,
+      "source_frame_i": 131,
+      "captured_at": "2026-09-04T10:27:13.164",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 12,
+      "recording": "forklift_v4_recording_20260904_103429",
+      "image": "12_20260904_103429.png",
+      "clip_frame_index": 20,
+      "source_frame_i": 127,
+      "captured_at": "2026-09-04T10:34:54.471",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 13,
+      "recording": "forklift_v4_recording_20260904_103739",
+      "image": "13_20260904_103739.png",
+      "clip_frame_index": 313,
+      "source_frame_i": 533,
+      "captured_at": "2026-09-04T10:38:26.602",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 14,
+      "recording": "forklift_v4_recording_20260904_104212",
+      "image": "14_20260904_104212.png",
+      "clip_frame_index": 57,
+      "source_frame_i": 222,
+      "captured_at": "2026-09-04T10:42:34.195",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 15,
+      "recording": "forklift_v4_recording_20260904_105241",
+      "image": "15_20260904_105241.png",
+      "clip_frame_index": 8,
+      "source_frame_i": 44,
+      "captured_at": "2026-09-04T10:52:48.743",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 16,
+      "recording": "forklift_v4_recording_20260904_105508",
+      "image": "16_20260904_105508.png",
+      "clip_frame_index": 6,
+      "source_frame_i": 42,
+      "captured_at": "2026-09-04T10:55:14.274",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 17,
+      "recording": "forklift_v4_recording_20260904_105615",
+      "image": "17_20260904_105615.png",
+      "clip_frame_index": 212,
+      "source_frame_i": 466,
+      "captured_at": "2026-09-04T10:57:01.159",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 18,
+      "recording": "forklift_v4_recording_20260904_142318",
+      "image": "18_20260904_142318.png",
+      "clip_frame_index": 33,
+      "source_frame_i": 227,
+      "captured_at": "2026-09-04T14:23:40.220",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 19,
+      "recording": "forklift_v4_recording_20260904_144221",
+      "image": "19_20260904_144221.png",
+      "clip_frame_index": 9,
+      "source_frame_i": 45,
+      "captured_at": "2026-09-04T14:42:27.194",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 20,
+      "recording": "forklift_v4_recording_20260904_144733",
+      "image": "20_20260904_144733.png",
+      "clip_frame_index": 84,
+      "source_frame_i": 633,
+      "captured_at": "2026-09-04T14:48:30.872",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 21,
+      "recording": "forklift_v4_recording_20260904_145924",
+      "image": "21_20260904_145924.png",
+      "clip_frame_index": 27,
+      "source_frame_i": 172,
+      "captured_at": "2026-09-04T14:59:41.083",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 22,
+      "recording": "forklift_v4_recording_20260904_150944",
+      "image": "22_20260904_150944.png",
+      "clip_frame_index": 64,
+      "source_frame_i": 226,
+      "captured_at": "2026-09-04T15:10:14.182",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    },
+    {
+      "number": 23,
+      "recording": "forklift_v4_recording_20260904_190446",
+      "image": "23_20260904_190446.png",
+      "clip_frame_index": 58,
+      "source_frame_i": 304,
+      "captured_at": "2026-09-04T19:05:15.910",
+      "selection": "middle of longest CAN rotation command with retained drive frames"
+    }
+  ]
+}

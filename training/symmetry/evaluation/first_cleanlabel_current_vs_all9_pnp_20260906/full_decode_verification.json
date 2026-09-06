@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\first_cleanlabel_current_vs_all9_pnp_20260906\\20260903_192254_cleanlabel_current_vs_all9_pnp.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 744,
+      "expected": 744
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 744,
+      "expected": 744
+    },
+    "decoder_messages": ""
+  }
+]

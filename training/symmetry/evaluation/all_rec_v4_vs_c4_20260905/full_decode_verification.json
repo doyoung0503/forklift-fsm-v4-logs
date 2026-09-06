@@ -1,0 +1,642 @@
+[
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260901_173507_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 3729,
+      "expected": 3729
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260901_174126_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 757,
+      "expected": 757
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260901_174342_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 2501,
+      "expected": 2501
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260901_174925_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1923,
+      "expected": 1923
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260901_175419_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 577,
+      "expected": 577
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260903_190408_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1786,
+      "expected": 1786
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260903_190743_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 803,
+      "expected": 803
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260903_191906_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 171,
+      "expected": 171
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260903_192118_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 324,
+      "expected": 324
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260903_192254_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 744,
+      "expected": 744
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260903_192417_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 182,
+      "expected": 182
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_102339_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 476,
+      "expected": 476
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_102504_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 493,
+      "expected": 493
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_102630_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 192,
+      "expected": 192
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_103429_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1573,
+      "expected": 1573
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_103739_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 787,
+      "expected": 787
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_104212_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 441,
+      "expected": 441
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_105241_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 671,
+      "expected": 671
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_105508_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 614,
+      "expected": 614
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_105615_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1589,
+      "expected": 1589
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_142318_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 5895,
+      "expected": 5895
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_142958_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 394,
+      "expected": 394
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_144221_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 922,
+      "expected": 922
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_144614_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 458,
+      "expected": 458
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_144733_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1977,
+      "expected": 1977
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_145924_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 2654,
+      "expected": 2654
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_150335_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 437,
+      "expected": 437
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_150625_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 27,
+      "expected": 27
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_150816_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 159,
+      "expected": 159
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_150944_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 563,
+      "expected": 563
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_190446_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1056,
+      "expected": 1056
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "comparison",
+    "path": "training\\symmetry\\evaluation\\all_rec_v4_vs_c4_20260905\\20260904_190700_v4_vs_c4_raw_keypoints.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 395,
+      "expected": 395
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_173507_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 3729,
+      "expected": 3729
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174126_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 757,
+      "expected": 757
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174342_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 2501,
+      "expected": 2501
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174925_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1923,
+      "expected": 1923
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_175419_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 577,
+      "expected": 577
+    },
+    "decoder_messages": "[mpeg4 @ 000001e17feb4480] ac-tex damaged at 14 6\n[mpeg4 @ 000001e17feb4480] Error at MB: 260"
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_190408_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1786,
+      "expected": 1786
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_190743_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 803,
+      "expected": 803
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_191906_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 171,
+      "expected": 171
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192118_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 324,
+      "expected": 324
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 744,
+      "expected": 744
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192417_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 182,
+      "expected": 182
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102339_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 476,
+      "expected": 476
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102504_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 493,
+      "expected": 493
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102630_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 192,
+      "expected": 192
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103429_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1573,
+      "expected": 1573
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103739_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 787,
+      "expected": 787
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_104212_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 441,
+      "expected": 441
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105241_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 671,
+      "expected": 671
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105508_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 614,
+      "expected": 614
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105615_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1589,
+      "expected": 1589
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_142318_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 5895,
+      "expected": 5895
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_142958_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 394,
+      "expected": 394
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144221_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 922,
+      "expected": 922
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144614_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 458,
+      "expected": 458
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144733_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1977,
+      "expected": 1977
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_145924_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 2654,
+      "expected": 2654
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150335_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 437,
+      "expected": 437
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150625_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 27,
+      "expected": 27
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150816_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 159,
+      "expected": 159
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150944_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 563,
+      "expected": 563
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190446_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 1056,
+      "expected": 1056
+    },
+    "decoder_messages": ""
+  },
+  {
+    "kind": "source",
+    "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190700_raw.mp4",
+    "exit_code": 0,
+    "counts": {
+      "frames": 395,
+      "expected": 395
+    },
+    "decoder_messages": ""
+  }
+]

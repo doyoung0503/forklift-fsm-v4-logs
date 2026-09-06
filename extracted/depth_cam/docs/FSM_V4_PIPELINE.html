@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FSM v4 파이프라인 가이드</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --paper: #ffffff;
+      --ink: #202936;
+      --muted: #697586;
+      --line: #e1e5ea;
+      --navy: #24364b;
+      --blue: #315f8d;
+      --blue-soft: #edf3f8;
+      --orange: #a55b27;
+      --orange-soft: #fbf1e9;
+      --green: #28735c;
+      --green-soft: #edf6f2;
+      --purple: #67558b;
+      --purple-soft: #f3f0f8;
+      --red: #a94049;
+      --red-soft: #faedef;
+      --slate: #4b596a;
+      --shadow: 0 1px 2px rgba(24, 33, 47, .05);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+      line-height: 1.58;
+    }
+
+    code, .mono { font-family: Consolas, "SFMono-Regular", monospace; }
+    a { color: var(--blue); }
+    .page { width: min(1160px, calc(100% - 36px)); margin: 0 auto; }
+
+    header {
+      color: var(--ink);
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 38px 0 32px;
+    }
+    .eyebrow { margin: 0 0 7px; color: var(--blue); font-size: .75rem; font-weight: 800; letter-spacing: .13em; }
+    h1 { margin: 0; color: var(--navy); font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.16; letter-spacing: -.035em; }
+    .lead { max-width: 790px; margin: 13px 0 20px; color: var(--muted); font-size: .98rem; }
+    .badges { display: flex; flex-wrap: wrap; gap: 9px; }
+    .badge {
+      color: var(--slate);
+      border: 1px solid var(--line);
+      background: #f8f9fb;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: .8rem;
+    }
+    .badge.warn { color: var(--red); background: var(--red-soft); border-color: #ecc9cd; font-weight: 800; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+    }
+    nav .page { display: flex; gap: 6px; overflow-x: auto; padding-block: 9px; }
+    nav a {
+      flex: none;
+      color: var(--slate);
+      text-decoration: none;
+      font-size: .86rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+    nav a:hover { color: var(--blue); background: var(--blue-soft); }
+
+    main { padding: 22px 0 56px; }
+    section { scroll-margin-top: 68px; margin: 0 0 18px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 3vw, 26px);
+    }
+    h2 { margin: 0 0 6px; color: var(--navy); font-size: 1.42rem; }
+    h3 { margin: 0 0 8px; color: var(--navy); font-size: 1rem; }
+    .sub { margin: 0 0 20px; color: var(--muted); }
+    .tiny { color: var(--muted); font-size: .79rem; }
+
+    .one-line {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(126px, 1fr));
+      gap: 14px;
+      overflow-x: auto;
+      padding: 8px 2px 12px;
+    }
+    .one-step {
+      min-width: 120px;
+      position: relative;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--blue);
+      border-radius: 9px;
+      background: white;
+      padding: 13px 11px;
+    }
+    .one-step::after {
+      content: "→";
+      position: absolute;
+      right: -12px;
+      top: 25px;
+      color: #91a1b3;
+      font-weight: 900;
+    }
+    .one-step:last-child::after { display: none; }
+    .one-step b { display: block; font-size: .91rem; }
+    .one-step span { display: block; color: var(--muted); font-size: .78rem; margin-top: 4px; }
+    .one-step.move { border-top-color: var(--green); }
+    .one-step.plan { border-top-color: var(--purple); }
+    .one-step.end { border-top-color: var(--orange); }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 4px; }
+    .legend span { font-size: .79rem; color: var(--muted); }
+    .dot { display: inline-block; width: 9px; height: 9px; margin-right: 5px; border-radius: 50%; }
+
+    .state-layout { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .state-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-content: start; }
+    .state-button {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue);
+      border-radius: 10px;
+      color: var(--ink);
+      background: white;
+      min-height: 68px;
+      padding: 9px 11px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .state-button:hover, .state-button.active { background: var(--blue-soft); border-color: #afc7dd; }
+    .state-button[data-kind="motion"] { border-left-color: var(--green); }
+    .state-button[data-kind="plan"] { border-left-color: var(--purple); }
+    .state-button[data-kind="terminal"] { border-left-color: var(--orange); }
+    .state-button b { display: block; font-size: .91rem; }
+    .state-button small { color: var(--muted); }
+    .state-detail {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #f8fafc;
+      padding: 20px;
+    }
+    .state-detail .state-code { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .03em; }
+    .state-detail h3 { font-size: 1.35rem; margin-top: 2px; }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .detail-box { border-radius: 10px; background: white; border: 1px solid var(--line); padding: 12px; }
+    .detail-box b { display: block; color: var(--navy); font-size: .78rem; margin-bottom: 5px; }
+
+    .data-flow {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(125px, 1fr));
+      gap: 20px;
+      overflow-x: auto;
+      padding: 8px 2px 12px;
+    }
+    .data-node {
+      min-width: 125px;
+      position: relative;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 15px 10px;
+      background: white;
+    }
+    .data-node::after { content: "›"; position: absolute; right: -15px; top: 27px; color: #91a1b3; font-size: 1.7rem; }
+    .data-node:last-child::after { display: none; }
+    .data-node .icon {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 7px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border-radius: 50%;
+      font: 800 .72rem/1 Consolas, monospace;
+    }
+    .data-node b { display: block; font-size: .86rem; }
+    .data-node small { color: var(--muted); font-size: .72rem; }
+
+    .loop {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+    .loop-node { border-radius: 9px; padding: 13px; text-align: center; font-size: .83rem; border: 1px solid var(--line); }
+    .loop-node b { display: block; margin-bottom: 4px; }
+    .loop-node.stop { background: var(--red-soft); border-color: #efbdc4; }
+    .loop-node.observe { background: var(--blue-soft); border-color: #b6d3ee; }
+    .loop-node.plan { background: var(--purple-soft); border-color: #d4c5ed; }
+    .loop-node.move { background: var(--green-soft); border-color: #b7dfd1; }
+    .loop-arrow { display: none; }
+    .loop-note { margin: 14px 0 0; padding: 10px 13px; border-radius: 8px; background: var(--purple-soft); color: #5a4a77; font-size: .84rem; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .guard-list { display: grid; gap: 10px; }
+    .guard {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 12px;
+      background: white;
+    }
+    .guard .num { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--red-soft); color: var(--red); font-weight: 900; }
+    .guard b { display: block; font-size: .88rem; }
+    .guard p { margin: 2px 0 0; color: var(--muted); font-size: .8rem; }
+
+    table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 9px; border-bottom: 1px solid var(--line); }
+    th { color: var(--navy); background: #f4f7fa; }
+    tr:last-child td { border-bottom: 0; }
+    .tag { display: inline-block; border-radius: 999px; padding: 2px 7px; font-size: .69rem; font-weight: 800; }
+    .tag.stop { color: var(--red); background: var(--red-soft); }
+    .tag.rot { color: var(--orange); background: var(--orange-soft); }
+    .tag.move { color: var(--green); background: var(--green-soft); }
+    .tag.plan { color: var(--purple); background: var(--purple-soft); }
+
+    .config-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .metric { border: 1px solid var(--line); border-radius: 9px; background: #fafbfc; padding: 12px; }
+    .metric span { display: block; color: var(--muted); font-size: .72rem; }
+    .metric b { color: var(--navy); font-size: 1.08rem; }
+    .metric.warn b { color: var(--red); }
+
+    .code-map { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .file { border-left: 4px solid var(--blue); background: #f7f9fc; padding: 11px 13px; border-radius: 8px; }
+    .file code { color: var(--navy); font-size: .79rem; font-weight: 700; }
+    .file span { display: block; color: var(--muted); font-size: .76rem; margin-top: 3px; }
+
+    .callout { border-left: 4px solid var(--orange); border-radius: 7px; background: var(--orange-soft); padding: 11px 14px; margin-top: 16px; font-size: .84rem; }
+    footer { color: var(--muted); text-align: center; padding: 4px 0 34px; font-size: .77rem; }
+
+    @media (max-width: 900px) {
+      .one-line { grid-template-columns: repeat(6, 155px); }
+      .data-flow { grid-template-columns: repeat(7, 145px); }
+      .two-col { grid-template-columns: 1fr; }
+      .state-list { grid-template-columns: repeat(2, 1fr); }
+      .config-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      header { padding-top: 30px; }
+      .page { width: min(100% - 20px, 1180px); }
+      .state-list, .detail-grid, .config-grid, .code-map { grid-template-columns: 1fr; }
+      .loop { grid-template-columns: 1fr 1fr; }
+      .card { padding: 16px; }
+    }
+    @media print {
+      nav { display: none; }
+      body { background: white; }
+      .page { width: 100%; }
+      .card { box-shadow: none; break-inside: avoid; }
+      .state-layout { grid-template-columns: 1fr; }
+      .state-list { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="page">
+      <p class="eyebrow">DEPTH CAMERA CONTROL · CURRENT CODE</p>
+      <h1>FSM v4 파이프라인</h1>
+      <p class="lead">
+        멈추고 관측하고, 짧게 움직인 뒤 다시 계획한다. <span class="mono">main_rec_v4.py</span>가
+        실행하는 영상 인식부터 CAN 명령까지의 흐름을 현재 코드 기준으로 정리했다.
+      </p>
+      <div class="badges">
+        <span class="badge warn">CAN_ENABLED = True · 실차 명령 가능</span>
+        <span class="badge">AUTO_INSERT = False</span>
+        <span class="badge">EXTRINSICS = MEASURED</span>
+        <span class="badge">HFOV fallback = 55°</span>
+        <span class="badge">FSM = v4</span>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="문서 목차">
+    <div class="page">
+      <a href="#summary">한눈에 보기</a>
+      <a href="#calibration">모델 자동 적합</a>
+      <a href="#states">상태 탐색기</a>
+      <a href="#data">데이터 흐름</a>
+      <a href="#cycle">제어 주기</a>
+      <a href="#safety">안전·복구</a>
+      <a href="#table">전체 상태표</a>
+      <a href="#config">현재 설정</a>
+      <a href="#code">코드 위치</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section id="summary" class="card">
+      <h2>한눈에 보는 정상 경로</h2>
+      <p class="sub">가운데 정렬과 4 m stand-off를 먼저 만든 뒤, 가시성을 유지하는 waypoint를 반복해 staging pose로 들어간다.</p>
+      <div class="one-line" aria-label="정상 실행 흐름">
+        <div class="one-step"><b>1. 찾기</b><span>PRECHECK → SEARCH → ACQUIRE</span></div>
+        <div class="one-step"><b>2. 정면 맞추기</b><span>FACE 회전 → STOP → 안정화</span></div>
+        <div class="one-step move"><b>3. 4 m 확보</b><span>FWD/BACK → STOP → 재검증</span></div>
+        <div class="one-step plan"><b>4. Staging 접근</b><span>회전/직진 waypoint 반복</span></div>
+        <div class="one-step"><b>5. 최종 잠금</b><span>위치 + 거리 + yaw 동시 검증</span></div>
+        <div class="one-step end"><b>6. 삽입 대기</b><span>현재는 READY에서 STOP 유지</span></div>
+      </div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--blue)"></i>관측/검증</span>
+        <span><i class="dot" style="background:var(--green)"></i>차량 동작</span>
+        <span><i class="dot" style="background:var(--purple)"></i>계획</span>
+        <span><i class="dot" style="background:var(--orange)"></i>종료/대기</span>
+      </div>
+      <div class="callout"><b>현재 실제 종료점:</b> <span class="mono">AUTO_INSERT_ENABLED=False</span>이므로 정상 정렬 후 <span class="mono">READY_TO_INSERT</span>에서 STOP을 계속 보낸다. <span class="mono">INSERT_*</span>와 <span class="mono">DONE</span>은 자동 삽입을 켰을 때만 진행한다.</div>
+    </section>
+
+    <section id="calibration" class="card">
+      <h2>새 Pose 모델 자동 적합·적용</h2>
+      <p class="sub"><span class="mono">python main_rec_v4.py --calibrate</span>를 사용할 때 모델 hash에 맞는 회전 응답을 아래 과정으로 다시 준비한다. 기본 명령인 <span class="mono">python main_rec_v4.py</span>는 이 과정을 기다리지 않고, 검증된 artifact가 있으면 그것을 사용하며 없으면 코드에 내장된 fitted fallback으로 즉시 시작한다.</p>
+      <div class="data-flow" aria-label="자동 회전 모델 적합 흐름">
+        <div class="data-node"><span class="icon">01</span><b>모델 고정</b><small>livegt_v4.pt + SHA-256</small></div>
+        <div class="data-node"><span class="icon">02</span><b>재추론</b><small>raw 영상 → 9점 PnP yaw</small></div>
+        <div class="data-node"><span class="icon">03</span><b>로그 추출</b><small>frame_i + heading + 품질</small></div>
+        <div class="data-node"><span class="icon">04</span><b>로그 검증</b><small>프레임 정렬·hash·유효 pose</small></div>
+        <div class="data-node"><span class="icon">05</span><b>함수 적합</b><small>정지시간·가속·등속·관성</small></div>
+        <div class="data-node"><span class="icon">06</span><b>이중 검증</b><small>LOO·부호·CAN 시각·범위</small></div>
+        <div class="data-node"><span class="icon">07</span><b>원자 적용</b><small>artifact 게시 후 FSM 시작</small></div>
+      </div>
+      <div class="two-col" style="margin-top:16px">
+        <div class="detail-box">
+          <h3>실패 시 동작</h3>
+          <p class="tiny"><span class="mono">--calibrate</span> 실행 중 어느 단계든 실패하면 기존 artifact를 그대로 보존하고 FSM v4를 시작하지 않는다. 기본 빠른 시작은 artifact가 없거나 맞지 않으면 내장 fitted fallback을 사용한다. 실행 중 응답 hot-swap은 하지 않는다.</p>
+        </div>
+        <div class="detail-box">
+          <h3>각도와 회전축</h3>
+          <p class="tiny">적합 입력은 <span class="mono">yaw_deg</span> 열의 <span class="mono">heading</span>으로 고정한다. FACE/RECENTER의 bearing 제어에서만 실측 카메라 오프셋 0.68 m와 현재 거리를 이용해 heading 응답을 변환한다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="states" class="card">
+      <h2>상태 탐색기</h2>
+      <p class="sub">단계를 선택하면 “무엇을 보고, 무엇을 명령하며, 어디로 이동하는지”를 확인할 수 있다.</p>
+      <div class="state-layout">
+        <div class="state-list" id="state-list" aria-label="FSM 단계 선택"></div>
+        <div class="state-detail" id="state-detail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="data" class="card">
+      <h2>프레임 한 장이 명령이 되기까지</h2>
+      <p class="sub">영상 루프와 FSM은 분리되어 있지만, 매 프레임의 pose와 오래된 정도(age)가 FSM 판단에 전달된다.</p>
+      <div class="data-flow">
+        <div class="data-node"><span class="icon">01</span><b>RealSense</b><small>color + depth + intrinsics</small></div>
+        <div class="data-node"><span class="icon">02</span><b>YOLO Pose</b><small>bbox + 9 keypoints + confidence</small></div>
+        <div class="data-node"><span class="icon">03</span><b>Visible PnP</b><small>보이는 점으로 6D pose 계산</small></div>
+        <div class="data-node"><span class="icon">04</span><b>Pose Filter</b><small>yaw, 위치, timestamp 안정화</small></div>
+        <div class="data-node"><span class="icon">05</span><b>FSM v4</b><small>상태 조건·예산·안전 gate</small></div>
+        <div class="data-node"><span class="icon">06</span><b>Planner / Model</b><small>가시 waypoint + 선제 STOP</small></div>
+        <div class="data-node"><span class="icon">07</span><b>CAN</b><small>ROT / FWD / BACK / STOP</small></div>
+      </div>
+      <div class="two-col" style="margin-top:16px">
+        <div class="detail-box">
+          <h3>화면과 기록으로 갈라지는 경로</h3>
+          <p class="tiny">카메라 영상, HUD, FSM 다이어그램을 합성해 MP4로 저장한다. 원본 영상과 JSONL trace, metadata, pallet-state CSV도 함께 남겨 명령과 인식 결과를 재검증할 수 있다.</p>
+        </div>
+        <div class="detail-box">
+          <h3>FSM이 실제로 받는 관측</h3>
+          <p class="tiny">탐지 성공 여부, camera-Z 거리, yaw, offset, target bearing과 PnP/intrinsics metadata를 받는다. v4 내부에서 다시 <span class="mono">VisualPoseFilter</span>를 거쳐 상태 판단에 쓴다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cycle" class="card">
+      <h2>모든 보정의 공통 주기</h2>
+      <p class="sub">회전과 직진은 목적은 다르지만 같은 폐루프 패턴을 따른다.</p>
+      <div class="loop">
+        <div class="loop-node stop"><b>① STOP</b>이전 동작 종료</div>
+        <div class="loop-node observe"><b>② 안정 관측</b>연속 pose 수집</div>
+        <div class="loop-node plan"><b>③ 계획</b>짧은 안전 동작 선택</div>
+        <div class="loop-node move"><b>④ 명령</b>ROT / FWD / BACK</div>
+        <div class="loop-node plan"><b>⑤ 선제 STOP</b>정지 후 위치 예측</div>
+        <div class="loop-node observe"><b>⑥ Settle & 검증</b>관성 종료 후 재측정</div>
+      </div>
+      <p class="loop-note">⑥의 결과가 목표가 아니면 ②~⑥을 반복한다. 방향을 즉시 반전하거나, 움직이는 중 얻은 한 프레임만으로 다음 큰 동작을 계획하지 않는다.</p>
+      <div class="two-col" style="margin-top:18px">
+        <div class="detail-box">
+          <h3>회전 제어</h3>
+          <p class="tiny">최대 waypoint 회전은 20°. 새 로그 기반 response가 정지시간·등가속·등속과 “STOP 직전 속도 → 약 2초 뒤 회전량” 관성 회귀로 hold 시간과 coast를 예측한다. 실시간 PnP가 더 빠른 회전을 보이면 일찍 STOP한다.</p>
+        </div>
+        <div class="detail-box">
+          <h3>직진 제어</h3>
+          <p class="tiny">한 macro-step은 최대 0.8 m, 모델 신뢰 하한은 0.2 m다. 현재 이동량과 제한된 예측 전진량을 더해 목표 통과 전에 STOP하고, 안정화 뒤 실제 이동량을 다시 계산한다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety" class="card">
+      <h2>안전·복구 경로</h2>
+      <p class="sub">정상 경로보다 먼저 평가되는 제한들이다. 치명 조건은 항상 STOP 후 FAILED로 모인다.</p>
+      <div class="two-col">
+        <div class="guard-list">
+          <div class="guard"><span class="num">1</span><div><b>화면 가시성</b><p>팔레트 전면 코너가 55° fallback FOV와 8% 화면 여유 안에 남는 회전·직진 조합만 허용한다.</p></div></div>
+          <div class="guard"><span class="num">2</span><div><b>시각 손실 유예</b><p>연속 PnP 손실 1초 미만은 bounded command만 유지한다. 새 동작은 시작하지 않는다.</p></div></div>
+          <div class="guard"><span class="num">3</span><div><b>복구 또는 실패</b><p>1초 손실이 확정되면 STOP → RECOVER_VISUAL. 추가 1초 안에 복구되면 ACQUIRE, 아니면 FAILED.</p></div></div>
+        </div>
+        <div class="guard-list">
+          <div class="guard"><span class="num">4</span><div><b>동작 예산</b><p>회전 시간·방향 변경·standoff 보정·waypoint 횟수·누적 전진거리·전체 pipeline 시간에 상한이 있다.</p></div></div>
+          <div class="guard"><span class="num">5</span><div><b>진전과 overtravel</b><p>두 waypoint 주기 동안 유효 진전이 없거나 staging 평면을 위험하게 넘으면 FAILED.</p></div></div>
+          <div class="guard"><span class="num">6</span><div><b>삽입 interlock</b><p>자동 삽입 중 yaw 또는 lateral이 허용 범위를 벗어나면 즉시 STOP 후 FAILED.</p></div></div>
+        </div>
+      </div>
+      <div class="callout"><b>공통 실패 처리:</b> 실패한 상태와 이유를 기록하고 <span class="mono">STOP</span>을 송신한 뒤 <span class="mono">FAILED</span>에 머문다. <span class="mono">DONE</span>도 계속 STOP을 유지한다.</div>
+    </section>
+
+    <section id="table" class="card">
+      <h2>전체 상태 전이표</h2>
+      <p class="sub">코드에 존재하는 실제 state 이름 기준이다.</p>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>구간</th><th>상태</th><th>주요 동작</th><th>정상 다음 상태</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag stop">STOP</span></td><td class="mono">PRECHECK</td><td>설정 검증, STOP</td><td class="mono">SEARCH_SWEEP</td></tr>
+            <tr><td><span class="tag rot">회전</span></td><td class="mono">SEARCH_SWEEP</td><td>오른쪽 회전, 첫 pose에서 즉시 STOP</td><td class="mono">ACQUIRE_VERIFY</td></tr>
+            <tr><td><span class="tag stop">관측</span></td><td class="mono">ACQUIRE_VERIFY</td><td>연속 안정 pose 확인</td><td class="mono">FACE_ROTATE 또는 STANDOFF_VERIFY</td></tr>
+            <tr><td><span class="tag rot">회전</span></td><td class="mono">FACE_ROTATE → FACE_SETTLE</td><td>전면 중심을 광축에 맞추고 안정화</td><td class="mono">FACE_ROTATE 반복 또는 STANDOFF_VERIFY</td></tr>
+            <tr><td><span class="tag move">이동</span></td><td class="mono">STANDOFF_VERIFY → MOVE → SETTLE</td><td>camera-Z를 3.0 ± 0.1 m로 보정</td><td class="mono">STANDOFF_VERIFY 또는 STAGING_PLAN</td></tr>
+            <tr><td><span class="tag plan">계획</span></td><td class="mono">STAGING_PLAN</td><td>가시성·staging 여유를 만족하는 다음 action 계산</td><td class="mono">RECENTER_ROTATE / WAYPOINT_TURN / WAYPOINT_DRIVE / FINAL_POSE_LOCK</td></tr>
+            <tr><td><span class="tag rot">회전</span></td><td class="mono">RECENTER_ROTATE → SETTLE</td><td>전면이 화면 중심에 남도록 재중앙화</td><td class="mono">STAGING_PLAN</td></tr>
+            <tr><td><span class="tag rot">회전</span></td><td class="mono">WAYPOINT_TURN → SETTLE</td><td>선택된 짧은 회전 실행</td><td class="mono">STAGING_PLAN에서 재계획</td></tr>
+            <tr><td><span class="tag move">이동</span></td><td class="mono">WAYPOINT_DRIVE → SETTLE</td><td>가시성이 보장된 전진 segment 실행</td><td class="mono">STAGING_PLAN 또는 FINAL_POSE_LOCK</td></tr>
+            <tr><td><span class="tag plan">검증</span></td><td class="mono">FINAL_POSE_LOCK</td><td>lateral·distance·yaw 동시 검사</td><td class="mono">STAGING_PLAN / FINAL_ROTATE / READY_TO_INSERT</td></tr>
+            <tr><td><span class="tag rot">회전</span></td><td class="mono">FINAL_ROTATE → FINAL_SETTLE</td><td>최종 yaw만 미세 보정</td><td class="mono">FINAL_POSE_LOCK</td></tr>
+            <tr><td><span class="tag stop">대기</span></td><td class="mono">READY_TO_INSERT</td><td>현재 설정에서는 STOP 유지</td><td class="mono">AUTO_INSERT=True일 때 INSERT_DRIVE</td></tr>
+            <tr><td><span class="tag move">삽입</span></td><td class="mono">INSERT_DRIVE → INSERT_SETTLE</td><td>0.3 m 이하 segment 단위 삽입</td><td class="mono">READY_TO_INSERT 반복 또는 DONE</td></tr>
+            <tr><td><span class="tag stop">복구</span></td><td class="mono">RECOVER_VISUAL</td><td>STOP 상태에서 PnP 복구 대기</td><td class="mono">ACQUIRE_VERIFY 또는 FAILED</td></tr>
+            <tr><td><span class="tag stop">종료</span></td><td class="mono">DONE / FAILED</td><td>STOP 유지, 탐지 생략</td><td>종료 상태 유지</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="config" class="card">
+      <h2>현재 동작을 결정하는 핵심값</h2>
+      <p class="sub">HTML에 표시된 값은 작성 시점의 코드값이다. 실제 기준은 항상 <span class="mono">calib/fsm_v4/config.py</span>다.</p>
+      <div class="config-grid">
+        <div class="metric warn"><span>실차 CAN</span><b>ON</b></div>
+        <div class="metric"><span>자동 삽입</span><b>OFF</b></div>
+        <div class="metric"><span>팔레트 W × L × H</span><b>1.10 × 1.10 × 0.15 m</b></div>
+        <div class="metric"><span>HFOV fallback</span><b>55°</b></div>
+        <div class="metric"><span>카메라 → 회전중심 Z</span><b>−0.68 m</b></div>
+        <div class="metric"><span>카메라 → 포크 끝 Z</span><b>+1.18 m</b></div>
+        <div class="metric"><span>회전중심 → 포크 끝</span><b>1.86 m</b></div>
+        <div class="metric"><span>Staging 거리</span><b>2.26 m</b></div>
+        <div class="metric"><span>초기 stand-off</span><b>3.0 ± 0.1 m</b></div>
+        <div class="metric"><span>Waypoint 회전 상한</span><b>20°</b></div>
+        <div class="metric"><span>전진 macro-step</span><b>0.2–0.8 m</b></div>
+        <div class="metric"><span>검색 제한</span><b>30 s</b></div>
+      </div>
+    </section>
+
+    <section id="code" class="card">
+      <h2>코드에서 따라갈 위치</h2>
+      <p class="sub">파이프라인을 수정할 때의 최소 파일 지도다.</p>
+      <div class="code-map">
+        <div class="file"><code>main_rec_v4.py</code><span>기본은 내장 응답으로 즉시 시작하고, --calibrate일 때만 자동 적합을 선행하는 v4 진입점</span></div>
+        <div class="file"><code>main_rec.py</code><span>카메라, 추론, PnP, HUD, 녹화와 프레임별 fsm.step 호출</span></div>
+        <div class="file"><code>calib/fsm_v4/top.py</code><span>상태 전이, timeout, 실패·복구, 회전·이동 실행의 중심</span></div>
+        <div class="file"><code>calib/fsm_v4/planner.py</code><span>회전중심 기하와 화면 가시성을 이용한 waypoint 선택</span></div>
+        <div class="file"><code>calib/fsm_v4/controllers.py</code><span>회전/직진 중 측정값과 모델을 이용한 선제 STOP</span></div>
+        <div class="file"><code>calib/fsm_v4/rotation_artifact.py</code><span>생성 artifact와 모델 hash를 검증하고 heading/bearing 응답으로 연결</span></div>
+        <div class="file"><code>rotation_fit/auto_calibrate_rotation.py</code><span>재추론·로그 검증·적합·검증·원자 배포 오케스트레이터</span></div>
+        <div class="file"><code>calib/fsm_v4/pose.py</code><span>VisualPose 구성, 필터링, 차량/팔레트 좌표 변환</span></div>
+        <div class="file"><code>calib/fsm_v4/config.py</code><span>v4 제어값과 확정 외부파라미터의 단일 기준</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page">FSM v4 pipeline · generated from the current local source · 2026-09-04</footer>
+
+  <script>
+    const stages = [
+      {
+        code: "PRECHECK · SEARCH_SWEEP · ACQUIRE_VERIFY",
+        title: "탐색하고 신뢰할 pose를 잠근다",
+        short: "오른쪽 검색 → 첫 탐지 STOP → 연속 pose 검증",
+        kind: "observe",
+        observe: "설정 유효성, 탐지 성공, 필터된 PnP pose의 연속 안정성",
+        command: "PRECHECK/ACQUIRE는 STOP, SEARCH는 ROT_RIGHT",
+        exit: "안정 pose가 모이면 FACE 또는 STANDOFF로 이동",
+        fail: "30초 미탐 또는 반복해서 불안정한 후보"
+      },
+      {
+        code: "FACE_ROTATE · FACE_SETTLE",
+        title: "팔레트 전면을 카메라 중앙에 맞춘다",
+        short: "가시 범위 안에서 회전하고 완전히 멈춘 뒤 재측정",
+        kind: "motion",
+        observe: "전면 중심 bearing, live image-edge margin, PnP 회전 속도",
+        command: "ROT_LEFT 또는 ROT_RIGHT → 예측 STOP",
+        exit: "중심 오차가 허용 범위면 STANDOFF_VERIFY",
+        fail: "안전한 회전각 없음, 방향변경 예산 초과, timeout"
+      },
+      {
+        code: "STANDOFF_VERIFY · STANDOFF_MOVE · STANDOFF_SETTLE",
+        title: "먼저 4 m 안전거리를 만든다",
+        short: "너무 멀면 전진, 너무 가까우면 제한된 후진",
+        kind: "motion",
+        observe: "camera-Z와 3.0 m 목표의 차이, 이동 중 예상 정지 Z",
+        command: "FWD 또는 BACK → predictive STOP",
+        exit: "3.0 ± 0.1 m이면 STAGING_PLAN",
+        fail: "후진 거리 한도, 보정 횟수 또는 이동 timeout 초과"
+      },
+      {
+        code: "STAGING_PLAN",
+        title: "가시성을 잃지 않는 다음 한 동작을 고른다",
+        short: "회전중심 기준 목표 벡터 + 화면 코너 여유 계산",
+        kind: "plan",
+        observe: "팔레트 좌표 pose, 전면 코너 픽셀, intrinsics, 누적 전진 예산",
+        command: "직접 이동하지 않고 RECENTER / TURN / DRIVE 중 하나 선택",
+        exit: "staging 도달 시 FINAL_POSE_LOCK",
+        fail: "가시성 안전 후보 없음, 보정 주기 또는 전체 정렬시간 초과"
+      },
+      {
+        code: "RECENTER_ROTATE · RECENTER_SETTLE",
+        title: "화면 가장자리의 팔레트를 다시 중앙으로 옮긴다",
+        short: "전진 여유를 만들기 위한 가시성 회전",
+        kind: "motion",
+        observe: "현재 center bearing과 회전 전체 경로의 최소 화면 여유",
+        command: "가시성이 보장된 제한 회전 → STOP",
+        exit: "안정화 후 STAGING_PLAN에서 처음부터 다시 계산",
+        fail: "최소 제어각보다 작거나 안전 회전이 없음"
+      },
+      {
+        code: "WAYPOINT_TURN · WAYPOINT_TURN_SETTLE",
+        title: "선택된 waypoint 방향으로 짧게 회전한다",
+        short: "최대 20°, 중간 경로까지 가시성 검사",
+        kind: "motion",
+        observe: "yaw/bearing 오차, fitted coast, 실시간 PnP 속도",
+        command: "ROT_LEFT/RIGHT → fitted/live 조건으로 STOP",
+        exit: "settle 후 STAGING_PLAN에서 전진량을 재계산",
+        fail: "화면 경계 접근, 회전 timeout 또는 pose 장기 손실"
+      },
+      {
+        code: "WAYPOINT_DRIVE · WAYPOINT_DRIVE_SETTLE",
+        title: "보이는 범위 안에서 짧게 전진한다",
+        short: "0.2–0.8 m segment, staging overtravel 방지",
+        kind: "motion",
+        observe: "회전중심 이동량, fitted 속도 envelope, 전면 가시성",
+        command: "FWD → 예상 이동량이 목표에 닿기 전에 STOP",
+        exit: "staging이면 FINAL, 아니면 STAGING_PLAN",
+        fail: "무진전 2회, overtravel, 누적거리 또는 timeout 초과"
+      },
+      {
+        code: "FINAL_POSE_LOCK · FINAL_ROTATE · FINAL_SETTLE",
+        title: "위치·거리·yaw를 동시에 잠근다",
+        short: "한 조건이라도 어긋나면 재계획 또는 최종 회전",
+        kind: "observe",
+        observe: "pallet-frame lateral, longitudinal, yaw 세 조건",
+        command: "위치 불일치면 계획으로 복귀, yaw만 틀리면 FINAL_ROTATE",
+        exit: "세 조건이 모두 맞으면 READY_TO_INSERT",
+        fail: "최종 yaw 회전이 화면 밖으로 나가거나 제어 불가능"
+      },
+      {
+        code: "READY_TO_INSERT · INSERT_DRIVE · INSERT_SETTLE",
+        title: "삽입 대기 또는 분할 삽입",
+        short: "현재 설정에서는 READY에서 STOP 유지",
+        kind: "terminal",
+        observe: "자동 삽입 flag, 잔여 삽입거리, yaw/lateral interlock",
+        command: "OFF: STOP 유지 · ON: 최대 0.3 m씩 FWD",
+        exit: "잔여거리 ≤ 0.02 m이면 DONE",
+        fail: "삽입 timeout 또는 pose 안전범위 이탈"
+      },
+      {
+        code: "RECOVER_VISUAL",
+        title: "시야를 잃으면 움직이지 않고 복구를 기다린다",
+        short: "연속 1초 손실 → STOP, 추가 1초 복구 창",
+        kind: "observe",
+        observe: "PnP가 다시 유효해지는지와 recovery deadline",
+        command: "항상 STOP",
+        exit: "복구되면 ACQUIRE_VERIFY에서 pose를 다시 잠금",
+        fail: "복구시간 안에 PnP가 돌아오지 않음"
+      },
+      {
+        code: "DONE · FAILED",
+        title: "종료 상태는 모두 STOP을 유지한다",
+        short: "성공 또는 실패 이유를 기록하고 종료",
+        kind: "terminal",
+        observe: "FAILED는 failure_state와 failure_reason을 HUD/trace에 표시",
+        command: "STOP",
+        exit: "자동 전이 없음",
+        fail: "FAILED 자체가 공통 실패 종착점"
+      }
+    ];
+
+    const list = document.getElementById("state-list");
+    const detail = document.getElementById("state-detail");
+
+    function renderDetail(index) {
+      const s = stages[index];
+      document.querySelectorAll(".state-button").forEach((button, i) => {
+        button.classList.toggle("active", i === index);
+        button.setAttribute("aria-pressed", i === index ? "true" : "false");
+      });
+      detail.innerHTML = `
+        <div class="state-code mono">${s.code}</div>
+        <h3>${s.title}</h3>
+        <p class="sub">${s.short}</p>
+        <div class="detail-grid">
+          <div class="detail-box"><b>무엇을 보는가</b>${s.observe}</div>
+          <div class="detail-box"><b>차량 명령</b>${s.command}</div>
+          <div class="detail-box"><b>정상 전이</b>${s.exit}</div>
+          <div class="detail-box"><b>실패/복구 조건</b>${s.fail}</div>
+        </div>`;
+    }
+
+    stages.forEach((stage, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "state-button";
+      button.dataset.kind = stage.kind;
+      button.innerHTML = `<b>${index + 1}. ${stage.title}</b><small class="mono">${stage.code}</small>`;
+      button.addEventListener("click", () => renderDetail(index));
+      list.appendChild(button);
+    });
+    renderDetail(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "repository": "https://huggingface.co/CanelE452/pallet-pose-yolo26n-cleanlabel",
+  "revision": "c40e610f46331fc385a7ec6b0ff41876142c075c",
+  "model_sha256": "4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e",
+  "padding_px": 100,
+  "padding_mode": "BORDER_REFLECT_101",
+  "subtract_padding_before_pnp": true,
+  "imgsz": 640,
+  "confidence": 0.4,
+  "instance_selection": "max_box_conf",
+  "pnp": "Existing live multi-face PnP solver retained; measured intrinsics and dimensions from each recording",
+  "angle_column": "yaw_deg",
+  "angle_domain": "heading",
+  "selection_source": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\c4_command_clips_20260906\\user_selected_refit\\endpoints\\endpoint_extraction_report.json",
+  "linear_excludes_duration_at_or_above_s": 5,
+  "selected_method": "Previous 15-video selection, endpoint checks, recording-balanced isotonic interpolation; retains durations >=5s as in original selected fit",
+  "deployment_performed": false
+}

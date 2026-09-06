@@ -1,0 +1,115 @@
+[
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\baseline_val\\heldout_keypoint_comparison.mp4",
+    "frames": 38,
+    "fps": 2.0,
+    "resolution": [
+      640,
+      480
+    ],
+    "decoded_indices": [
+      0,
+      19,
+      37
+    ]
+  },
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\continuous_videos\\20260903_191906_v4_vs_c4_raw_keypoints.mp4",
+    "frames": 171,
+    "fps": 20.028,
+    "resolution": [
+      1280,
+      800
+    ],
+    "decoded_indices": [
+      0,
+      85,
+      170
+    ]
+  },
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\continuous_videos\\20260903_192254_v4_vs_c4_raw_keypoints.mp4",
+    "frames": 300,
+    "fps": 17.508,
+    "resolution": [
+      1280,
+      800
+    ],
+    "decoded_indices": [
+      0,
+      150,
+      299
+    ]
+  },
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\continuous_videos\\20260904_150944_v4_vs_c4_raw_keypoints.mp4",
+    "frames": 300,
+    "fps": 11.188,
+    "resolution": [
+      1280,
+      800
+    ],
+    "decoded_indices": [
+      0,
+      150,
+      299
+    ]
+  },
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\continuous_videos\\20260904_190700_v4_vs_c4_raw_keypoints.mp4",
+    "frames": 300,
+    "fps": 13.652,
+    "resolution": [
+      1280,
+      800
+    ],
+    "decoded_indices": [
+      0,
+      150,
+      299
+    ]
+  },
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\final_test\\heldout_keypoint_comparison.mp4",
+    "frames": 45,
+    "fps": 2.0,
+    "resolution": [
+      1920,
+      800
+    ],
+    "decoded_indices": [
+      0,
+      22,
+      44
+    ]
+  },
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\interim_val\\heldout_keypoint_comparison.mp4",
+    "frames": 38,
+    "fps": 2.0,
+    "resolution": [
+      1280,
+      480
+    ],
+    "decoded_indices": [
+      0,
+      19,
+      37
+    ]
+  },
+  {
+    "video": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\evaluation\\night_full\\20260903_192254_v4_vs_c4_raw_keypoints.mp4",
+    "frames": 744,
+    "fps": 17.508,
+    "resolution": [
+      1280,
+      800
+    ],
+    "decoded_indices": [
+      0,
+      372,
+      420,
+      743
+    ]
+  }
+]

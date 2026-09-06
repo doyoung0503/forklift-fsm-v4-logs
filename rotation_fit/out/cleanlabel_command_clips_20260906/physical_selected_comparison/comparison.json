@@ -1,0 +1,1523 @@
+{
+  "selected_recordings": [
+    "forklift_v4_recording_20260901_173507",
+    "forklift_v4_recording_20260901_174342",
+    "forklift_v4_recording_20260903_192118",
+    "forklift_v4_recording_20260904_102504",
+    "forklift_v4_recording_20260904_102630",
+    "forklift_v4_recording_20260904_103429",
+    "forklift_v4_recording_20260904_103739",
+    "forklift_v4_recording_20260904_104212",
+    "forklift_v4_recording_20260904_105508",
+    "forklift_v4_recording_20260904_142318",
+    "forklift_v4_recording_20260904_144221",
+    "forklift_v4_recording_20260904_144733",
+    "forklift_v4_recording_20260904_145924",
+    "forklift_v4_recording_20260904_150944",
+    "forklift_v4_recording_20260904_190446"
+  ],
+  "settings": {
+    "command_strength": 30,
+    "angle_period_deg": 360.0,
+    "pre_command_sec": 1.0,
+    "inertia_horizon_sec": 2.0,
+    "inertia_window_sec": 0.2,
+    "onset_sustain_sec": 0.25,
+    "onset_confirm_frames": 3,
+    "onset_min_delta_deg": 0.2,
+    "onset_noise_multiplier": 4.0,
+    "onset_min_rate_deg_s": 0.3,
+    "smoothing_window_sec": 0.3,
+    "stop_rate_window_sec": 0.6,
+    "max_frame_gap_sec": 0.35,
+    "max_baseline_noise_deg": 2.0,
+    "max_baseline_rate_deg_s": 1.0,
+    "min_command_sec": 0.15,
+    "min_drive_frames": 5,
+    "min_cruise_observation_sec": 0.25,
+    "min_cruise_segments": 2,
+    "min_inertia_speed_span_deg_s": 1.0,
+    "min_loo_predictions": 4,
+    "max_loo_rmse_deg": 3.0,
+    "fit_inertia_intercept": false,
+    "require_actual_can_timing": true,
+    "can_time_point": "return"
+  },
+  "model_hash": "sha256:4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e",
+  "source_hashes": [
+    {
+      "recording": "forklift_v4_recording_20260901_173507",
+      "pose_csv_sha256": "02a1de6517ccd622229d3ef5a447f918d3a1add9528562c2af4c724d1c171bd7"
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174342",
+      "pose_csv_sha256": "b6ea580eba068602d704b03d68bf9eec53716150618e175cd3c4d117ca1bbbb8"
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_192118",
+      "pose_csv_sha256": "22115f4315587c2bf76c6ad6542893d0a905767f47b6745d7903f0f3f2b673fb"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102504",
+      "pose_csv_sha256": "b29a6cbe53bcb5e8b6e729253818fcc923c88b3f3ca04cbf64bef5fa58a7205c"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102630",
+      "pose_csv_sha256": "7d223ab411c1392eed03b01bfbc205cf2ecb6f2ab4d7abff5629d02774d46fb7"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103429",
+      "pose_csv_sha256": "a412ef868bfdf9d6a9ad8f627241d3e24e6978060ce886b3c68e4380e4bac471"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103739",
+      "pose_csv_sha256": "4abc50be6b92ad52864d0dec6cffa9e0c040533c17b3db973d4d3a517fddee49"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_104212",
+      "pose_csv_sha256": "861db56c8c6a7c7f22ef1c230edf145df80e1be8894a7ea0d01e5ee457c5c052"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_105508",
+      "pose_csv_sha256": "6992ee6ef9c77a4f328d29038ea35b4cfefae7d49b2aff63aabffbc00a44f248"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_142318",
+      "pose_csv_sha256": "9fb33008ba055db6df3dd1522eff72fa5ed48d6b00bb15c562a122efbfcbecca"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144221",
+      "pose_csv_sha256": "66e74105f8c70417b4cb0836252b552193c13ad8ebee972e67e990fa954d8b39"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144733",
+      "pose_csv_sha256": "9e2b0b47348550ebb36f818ee822fa409ea613863cb569d02a244d7c0bced3d6"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_145924",
+      "pose_csv_sha256": "27c28253093cfe6263ba28db042c0421a4ce53d4de256c70388473703bd31789"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_150944",
+      "pose_csv_sha256": "72366e81120c3971cb50490dfd269cf382dcd72bb4e7535f2741b24df95ac0ee"
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_190446",
+      "pose_csv_sha256": "c6bef1b4bc3966b8e20e0a7cb506e2d924fff12b110ea83138acf2729c31a169"
+    }
+  ],
+  "endpoint_points": 31,
+  "endpoint_recordings": 12,
+  "physical_training_command_count": 46,
+  "excluded_commands_at_or_above_5s": [
+    {
+      "recording": "forklift_v4_recording_20260901_174342",
+      "step": 7,
+      "hold_sec": 5.65599999999904
+    }
+  ],
+  "comparison": "Same held-out endpoint targets and selected 15-video pool. Physical model learns usable motion traces; endpoint models learn stable pairs. No held-out video in any training or direction-sign screening.",
+  "scores": {
+    "linear": {
+      "in_sample": {
+        "n": 31,
+        "rmse_deg": 1.7857216148338695,
+        "mae_deg": 1.3847720876416003,
+        "bias_deg": -0.013494241935481186,
+        "r2": 0.8485648786561851,
+        "p90_absolute_error_deg": 2.47725339221702
+      },
+      "loo": {
+        "n": 31,
+        "rmse_deg": 2.0411789844861397,
+        "mae_deg": 1.54684255660519,
+        "bias_deg": -0.07879250738489722,
+        "r2": 0.8021385098609612,
+        "p90_absolute_error_deg": 2.7857944337903486
+      },
+      "evaluated_points": 31,
+      "total_test_points": 31,
+      "equal_recording_loo_rmse_deg": 2.010608632410873,
+      "rmse_by_recording": {
+        "forklift_v4_recording_20260901_173507": {
+          "n": 5,
+          "rmse_deg": 1.3745986129041574,
+          "mae_deg": 1.1829796497609697,
+          "bias_deg": -0.5570034811309734,
+          "r2": 0.1229639475546267,
+          "p90_absolute_error_deg": 2.0177652235771464
+        },
+        "forklift_v4_recording_20260901_174342": {
+          "n": 2,
+          "rmse_deg": 0.7323851084659441,
+          "mae_deg": 0.6805837867024687,
+          "bias_deg": -0.6805837867024687,
+          "r2": 0.8709993660561824,
+          "p90_absolute_error_deg": 0.8970183959576818
+        },
+        "forklift_v4_recording_20260904_102504": {
+          "n": 1,
+          "rmse_deg": 4.401692987635405,
+          "mae_deg": 4.401692987635405,
+          "bias_deg": 4.401692987635405,
+          "r2": null,
+          "p90_absolute_error_deg": 4.401692987635405
+        },
+        "forklift_v4_recording_20260904_103429": {
+          "n": 1,
+          "rmse_deg": 0.2198009479372951,
+          "mae_deg": 0.2198009479372951,
+          "bias_deg": 0.2198009479372951,
+          "r2": null,
+          "p90_absolute_error_deg": 0.2198009479372951
+        },
+        "forklift_v4_recording_20260904_103739": {
+          "n": 7,
+          "rmse_deg": 1.9774020703483304,
+          "mae_deg": 1.8038311262562436,
+          "bias_deg": 0.681344636508129,
+          "r2": 0.0249391389856245,
+          "p90_absolute_error_deg": 2.7900573264659028
+        },
+        "forklift_v4_recording_20260904_104212": {
+          "n": 4,
+          "rmse_deg": 3.660824705707312,
+          "mae_deg": 3.035519054801287,
+          "bias_deg": -2.4147342584119276,
+          "r2": 0.2712228083396061,
+          "p90_absolute_error_deg": 5.329798899538797
+        },
+        "forklift_v4_recording_20260904_142318": {
+          "n": 1,
+          "rmse_deg": 0.9434202358145871,
+          "mae_deg": 0.9434202358145871,
+          "bias_deg": -0.9434202358145871,
+          "r2": null,
+          "p90_absolute_error_deg": 0.9434202358145871
+        },
+        "forklift_v4_recording_20260904_144221": {
+          "n": 1,
+          "rmse_deg": 0.20459800000000428,
+          "mae_deg": 0.20459800000000428,
+          "bias_deg": -0.20459800000000428,
+          "r2": null,
+          "p90_absolute_error_deg": 0.20459800000000428
+        },
+        "forklift_v4_recording_20260904_144733": {
+          "n": 2,
+          "rmse_deg": 2.057769956270888,
+          "mae_deg": 1.909159121430314,
+          "bias_deg": 0.7678076855505718,
+          "r2": 0.6028560054521925,
+          "p90_absolute_error_deg": 2.5234052698707714
+        },
+        "forklift_v4_recording_20260904_145924": {
+          "n": 2,
+          "rmse_deg": 1.0484494661521482,
+          "mae_deg": 1.0044933384092656,
+          "bias_deg": 1.0044933384092656,
+          "r2": 0.8818751104650738,
+          "p90_absolute_error_deg": 1.2448123479493463
+        },
+        "forklift_v4_recording_20260904_150944": {
+          "n": 2,
+          "rmse_deg": 1.6167271765248141,
+          "mae_deg": 1.4604487298250068,
+          "bias_deg": -0.6934668491473992,
+          "r2": -28.66827370534787,
+          "p90_absolute_error_deg": 2.015222209142926
+        },
+        "forklift_v4_recording_20260904_190446": {
+          "n": 3,
+          "rmse_deg": 0.6857938238893979,
+          "mae_deg": 0.46314825961192757,
+          "bias_deg": 0.3206659262786034,
+          "r2": 0.9670414212499078,
+          "p90_absolute_error_deg": 0.9727012230686356
+        }
+      },
+      "complete_coverage": true
+    },
+    "isotonic": {
+      "in_sample": {
+        "n": 31,
+        "rmse_deg": 1.5393191444338228,
+        "mae_deg": 0.9555562640459021,
+        "bias_deg": -0.1217794934775698,
+        "r2": 0.8874730777965039,
+        "p90_absolute_error_deg": 2.5626278157894733
+      },
+      "loo": {
+        "n": 31,
+        "rmse_deg": 2.34429121750672,
+        "mae_deg": 1.633938579100185,
+        "bias_deg": -0.0010506506606189187,
+        "r2": 0.7390109899713333,
+        "p90_absolute_error_deg": 3.9537044999999864
+      },
+      "evaluated_points": 31,
+      "total_test_points": 31,
+      "equal_recording_loo_rmse_deg": 2.098067262650814,
+      "rmse_by_recording": {
+        "forklift_v4_recording_20260901_173507": {
+          "n": 5,
+          "rmse_deg": 1.4343849593680171,
+          "mae_deg": 1.3474601481128663,
+          "bias_deg": -0.422107029664903,
+          "r2": 0.045013815087307174,
+          "p90_absolute_error_deg": 1.8644174999999925
+        },
+        "forklift_v4_recording_20260901_174342": {
+          "n": 2,
+          "rmse_deg": 0.29028702936376155,
+          "mae_deg": 0.27182931150793377,
+          "bias_deg": -0.10185963293650757,
+          "r2": 0.9797339972984971,
+          "p90_absolute_error_deg": 0.3533170178571398
+        },
+        "forklift_v4_recording_20260904_102504": {
+          "n": 1,
+          "rmse_deg": 3.9537044999999864,
+          "mae_deg": 3.9537044999999864,
+          "bias_deg": 3.9537044999999864,
+          "r2": null,
+          "p90_absolute_error_deg": 3.9537044999999864
+        },
+        "forklift_v4_recording_20260904_103429": {
+          "n": 1,
+          "rmse_deg": 0.8473264903808886,
+          "mae_deg": 0.8473264903808886,
+          "bias_deg": 0.8473264903808886,
+          "r2": null,
+          "p90_absolute_error_deg": 0.8473264903808886
+        },
+        "forklift_v4_recording_20260904_103739": {
+          "n": 7,
+          "rmse_deg": 3.4355404444938227,
+          "mae_deg": 2.347785430996016,
+          "bias_deg": 0.13180797376588543,
+          "r2": -1.943282080285511,
+          "p90_absolute_error_deg": 5.370346649999977
+        },
+        "forklift_v4_recording_20260904_104212": {
+          "n": 4,
+          "rmse_deg": 2.9449043904769217,
+          "mae_deg": 2.3475300742190335,
+          "bias_deg": -2.2975517617191343,
+          "r2": 0.5283940195005523,
+          "p90_absolute_error_deg": 4.251221606249998
+        },
+        "forklift_v4_recording_20260904_142318": {
+          "n": 1,
+          "rmse_deg": 1.377946066732573,
+          "mae_deg": 1.377946066732573,
+          "bias_deg": 1.377946066732573,
+          "r2": null,
+          "p90_absolute_error_deg": 1.377946066732573
+        },
+        "forklift_v4_recording_20260904_144221": {
+          "n": 1,
+          "rmse_deg": 0.0977362500000112,
+          "mae_deg": 0.0977362500000112,
+          "bias_deg": -0.0977362500000112,
+          "r2": null,
+          "p90_absolute_error_deg": 0.0977362500000112
+        },
+        "forklift_v4_recording_20260904_144733": {
+          "n": 2,
+          "rmse_deg": 2.7766590972185954,
+          "mae_deg": 2.482707053787974,
+          "bias_deg": 1.243383057323134,
+          "r2": 0.2768981362858821,
+          "p90_absolute_error_deg": 3.4774134996464814
+        },
+        "forklift_v4_recording_20260904_145924": {
+          "n": 2,
+          "rmse_deg": 1.1889407587052219,
+          "mae_deg": 1.0809101523578435,
+          "bias_deg": 1.0809101523578435,
+          "r2": 0.8480968287038324,
+          "p90_absolute_error_deg": 1.477062341489479
+        },
+        "forklift_v4_recording_20260904_150944": {
+          "n": 2,
+          "rmse_deg": 1.5416088884905113,
+          "mae_deg": 1.3523916341951323,
+          "bias_deg": -0.739996508662013,
+          "r2": -25.9753576178735,
+          "p90_absolute_error_deg": 1.9443888411247428
+        },
+        "forklift_v4_recording_20260904_190446": {
+          "n": 3,
+          "rmse_deg": 0.6689581828817162,
+          "mae_deg": 0.47926242896064314,
+          "bias_deg": 0.4331337550274405,
+          "r2": 0.9686397672403952,
+          "p90_absolute_error_deg": 0.9530282672653957
+        }
+      },
+      "complete_coverage": true
+    },
+    "physical": {
+      "in_sample": {
+        "n": 31,
+        "rmse_deg": 4.6870914711157505,
+        "mae_deg": 3.7302608695115,
+        "bias_deg": -3.6031059285979476,
+        "r2": -0.0432921920090108,
+        "p90_absolute_error_deg": 7.380291987884885
+      },
+      "loo": {
+        "n": 31,
+        "rmse_deg": 4.410216346890227,
+        "mae_deg": 3.326818433448463,
+        "bias_deg": -3.1980968047136624,
+        "r2": 0.07632564009163012,
+        "p90_absolute_error_deg": 6.409734407309319
+      },
+      "evaluated_points": 31,
+      "total_test_points": 31,
+      "equal_recording_loo_rmse_deg": 4.283868283071229,
+      "rmse_by_recording": {
+        "forklift_v4_recording_20260901_173507": {
+          "n": 5,
+          "rmse_deg": 2.8950564104002643,
+          "mae_deg": 2.767154497427946,
+          "bias_deg": -2.767154497427946,
+          "r2": -2.890269645097942,
+          "p90_absolute_error_deg": 3.7437789907289765
+        },
+        "forklift_v4_recording_20260901_174342": {
+          "n": 2,
+          "rmse_deg": 2.8774684759608453,
+          "mae_deg": 2.5171318366979145,
+          "bias_deg": -2.5171318366979145,
+          "r2": -0.9912875705025075,
+          "p90_absolute_error_deg": 3.6325143603064465
+        },
+        "forklift_v4_recording_20260904_102504": {
+          "n": 1,
+          "rmse_deg": 2.2728048897116278,
+          "mae_deg": 2.2728048897116278,
+          "bias_deg": -2.2728048897116278,
+          "r2": null,
+          "p90_absolute_error_deg": 2.2728048897116278
+        },
+        "forklift_v4_recording_20260904_103429": {
+          "n": 1,
+          "rmse_deg": 2.373191363569485,
+          "mae_deg": 2.373191363569485,
+          "bias_deg": -2.373191363569485,
+          "r2": null,
+          "p90_absolute_error_deg": 2.373191363569485
+        },
+        "forklift_v4_recording_20260904_103739": {
+          "n": 7,
+          "rmse_deg": 3.3591674951490433,
+          "mae_deg": 2.959676647257709,
+          "bias_deg": -2.959676647257709,
+          "r2": -1.8138767661177533,
+          "p90_absolute_error_deg": 5.1578027746626685
+        },
+        "forklift_v4_recording_20260904_104212": {
+          "n": 4,
+          "rmse_deg": 9.065779059995046,
+          "mae_deg": 8.292604870890386,
+          "bias_deg": -8.292604870890386,
+          "r2": -3.4693788172230713,
+          "p90_absolute_error_deg": 12.354690759084544
+        },
+        "forklift_v4_recording_20260904_142318": {
+          "n": 1,
+          "rmse_deg": 8.723380508820181,
+          "mae_deg": 8.723380508820181,
+          "bias_deg": -8.723380508820181,
+          "r2": null,
+          "p90_absolute_error_deg": 8.723380508820181
+        },
+        "forklift_v4_recording_20260904_144221": {
+          "n": 1,
+          "rmse_deg": 0.20459800000000428,
+          "mae_deg": 0.20459800000000428,
+          "bias_deg": -0.20459800000000428,
+          "r2": null,
+          "p90_absolute_error_deg": 0.20459800000000428
+        },
+        "forklift_v4_recording_20260904_144733": {
+          "n": 2,
+          "rmse_deg": 2.975431245603802,
+          "mae_deg": 2.7307635940161883,
+          "bias_deg": -1.1815757660476893,
+          "r2": 0.16966337592986958,
+          "p90_absolute_error_deg": 3.67602420685434
+        },
+        "forklift_v4_recording_20260904_145924": {
+          "n": 2,
+          "rmse_deg": 2.554504828195202,
+          "mae_deg": 2.015488327801673,
+          "bias_deg": -1.5694909103807562,
+          "r2": 0.29877100506770704,
+          "p90_absolute_error_deg": 3.271081056106278
+        },
+        "forklift_v4_recording_20260904_150944": {
+          "n": 2,
+          "rmse_deg": 2.0638524336831208,
+          "mae_deg": 1.9262623844999651,
+          "bias_deg": -1.9262623844999651,
+          "r2": -47.34772945668149,
+          "p90_absolute_error_deg": 2.519018708980236
+        },
+        "forklift_v4_recording_20260904_190446": {
+          "n": 3,
+          "rmse_deg": 1.8734238402165,
+          "mae_deg": 1.1513919624214528,
+          "bias_deg": -1.1513919624214528,
+          "r2": 0.7540462653382748,
+          "p90_absolute_error_deg": 2.624486109811496
+        }
+      },
+      "complete_coverage": true
+    }
+  },
+  "folds": [
+    {
+      "recording": "forklift_v4_recording_20260901_173507",
+      "test_count": 5,
+      "physical": {
+        "dead_time_sec": 1.0623305754883177,
+        "phase_fit": {
+          "accel_deg_s2": 26.502389839663284,
+          "accel_duration_sec": 0.15000000000000238,
+          "max_rate_deg_s": 3.9753584759495557,
+          "rmse_deg": 2.084083243820782,
+          "n_samples": 248,
+          "n_segments": 21,
+          "cruise_segments": 21,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.3715402868380656,
+          "rmse_deg": 1.8452398635694178,
+          "n_segments": 18,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 14.594678432324136,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 39,
+        "drive_usable": 21,
+        "inertia_usable": 18,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 8,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 13,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.0623305754883177,
+            "accel_duration_sec": 0.15000000000000238,
+            "accel_deg_s2": 26.502389839663284,
+            "max_rate_deg_s": 3.9753584759495557,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.3715402868380656
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.747959878475925,
+        "effective_delay_s": 1.2494677942810417,
+        "weighted_sse": 90.5898346435489
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174342",
+      "test_count": 2,
+      "physical": {
+        "dead_time_sec": 1.1373159626555207,
+        "phase_fit": {
+          "accel_deg_s2": 27.47159086199625,
+          "accel_duration_sec": 0.1500000000000007,
+          "max_rate_deg_s": 4.120738629299456,
+          "rmse_deg": 2.0563228175067123,
+          "n_samples": 263,
+          "n_segments": 23,
+          "cruise_segments": 23,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.3459335576131047,
+          "rmse_deg": 2.401725609409626,
+          "n_segments": 20,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 44,
+        "drive_usable": 23,
+        "inertia_usable": 20,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 9,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 14,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.1373159626555207,
+            "accel_duration_sec": 0.1500000000000007,
+            "accel_deg_s2": 27.47159086199625,
+            "max_rate_deg_s": 4.120738629299456,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.3459335576131047
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.719000000000051,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 4.873171999999999,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.300833791821837,
+        "effective_delay_s": 1.2160427103596607,
+        "weighted_sse": 97.88558465826458
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102504",
+      "test_count": 1,
+      "physical": {
+        "dead_time_sec": 1.1265248154006713,
+        "phase_fit": {
+          "accel_deg_s2": 27.910472966141903,
+          "accel_duration_sec": 0.15000000000000002,
+          "max_rate_deg_s": 4.186570944921286,
+          "rmse_deg": 2.056671781478309,
+          "n_samples": 264,
+          "n_segments": 24,
+          "cruise_segments": 24,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.33593982162179853,
+          "rmse_deg": 2.338909664425182,
+          "n_segments": 21,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 44,
+        "drive_usable": 24,
+        "inertia_usable": 21,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 9,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 15,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.1265248154006713,
+            "accel_duration_sec": 0.15000000000000002,
+            "accel_deg_s2": 27.910472966141903,
+            "max_rate_deg_s": 4.186570944921286,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.33593982162179853
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.697432878520216,
+        "effective_delay_s": 1.2243676804233565,
+        "weighted_sse": 80.92234020831621
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103429",
+      "test_count": 1,
+      "physical": {
+        "dead_time_sec": 1.1157336681458219,
+        "phase_fit": {
+          "accel_deg_s2": 27.809066251011373,
+          "accel_duration_sec": 0.15000000000000074,
+          "max_rate_deg_s": 4.171359937651727,
+          "rmse_deg": 2.0144357243046525,
+          "n_samples": 276,
+          "n_segments": 25,
+          "cruise_segments": 25,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.34023914705643815,
+          "rmse_deg": 2.3160239889192176,
+          "n_segments": 22,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 44,
+        "drive_usable": 25,
+        "inertia_usable": 22,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 9,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 16,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.1157336681458219,
+            "accel_duration_sec": 0.15000000000000074,
+            "accel_deg_s2": 27.809066251011373,
+            "max_rate_deg_s": 4.171359937651727,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.34023914705643815
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.167938191344554,
+        "effective_delay_s": 1.2018896128419438,
+        "weighted_sse": 98.80693431518483
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103739",
+      "test_count": 7,
+      "physical": {
+        "dead_time_sec": 1.173568545230296,
+        "phase_fit": {
+          "accel_deg_s2": 17.30352871095533,
+          "accel_duration_sec": 0.37914074248163504,
+          "max_rate_deg_s": 6.560472723023893,
+          "rmse_deg": 1.837403712396404,
+          "n_samples": 164,
+          "n_segments": 18,
+          "cruise_segments": 15,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.3404393001529033,
+          "rmse_deg": 2.5021259859047458,
+          "n_segments": 16,
+          "speed_min_deg_s": 2.4670041373748375,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 38,
+        "drive_usable": 18,
+        "inertia_usable": 16,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 6,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 12,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          1.6053333877960085
+        ],
+        "acceleration_at_lower_bound": false,
+        "warning": "",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.173568545230296,
+            "accel_duration_sec": 0.37914074248163504,
+            "accel_deg_s2": 17.30352871095533,
+            "max_rate_deg_s": 6.560472723023893,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.3404393001529033
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.945972113012607,
+        "effective_delay_s": 1.239000611464045,
+        "weighted_sse": 73.95009317001174
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_104212",
+      "test_count": 4,
+      "physical": {
+        "dead_time_sec": 1.0623305754883177,
+        "phase_fit": {
+          "accel_deg_s2": 24.84261344111332,
+          "accel_duration_sec": 0.15000000000000369,
+          "max_rate_deg_s": 3.726392016167089,
+          "rmse_deg": 1.7825144815571392,
+          "n_samples": 226,
+          "n_segments": 21,
+          "cruise_segments": 21,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.3212151791604265,
+          "rmse_deg": 2.3311080006071094,
+          "n_segments": 18,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 41,
+        "drive_usable": 21,
+        "inertia_usable": 18,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 7,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 14,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.0623305754883177,
+            "accel_duration_sec": 0.15000000000000369,
+            "accel_deg_s2": 24.84261344111332,
+            "max_rate_deg_s": 3.726392016167089,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.3212151791604265
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 15.369256
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 9.510664568196598,
+        "effective_delay_s": 1.1033036971895145,
+        "weighted_sse": 56.54080712102817
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_142318",
+      "test_count": 1,
+      "physical": {
+        "dead_time_sec": 1.114342701437863,
+        "phase_fit": {
+          "accel_deg_s2": 26.67738851926017,
+          "accel_duration_sec": 0.15000000000000022,
+          "max_rate_deg_s": 4.001608277889031,
+          "rmse_deg": 1.8341890094100055,
+          "n_samples": 263,
+          "n_segments": 24,
+          "cruise_segments": 24,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.33723838068672507,
+          "rmse_deg": 2.3652784681232912,
+          "n_segments": 21,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 45,
+        "drive_usable": 24,
+        "inertia_usable": 21,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 8,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 16,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.114342701437863,
+            "accel_duration_sec": 0.15000000000000022,
+            "accel_deg_s2": 26.67738851926017,
+            "max_rate_deg_s": 4.001608277889031,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.33723838068672507
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.011084883670765,
+        "effective_delay_s": 1.194570660743696,
+        "weighted_sse": 98.07898119811341
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144221",
+      "test_count": 1,
+      "physical": {
+        "dead_time_sec": 1.1265248154006713,
+        "phase_fit": {
+          "accel_deg_s2": 28.274217277096202,
+          "accel_duration_sec": 0.15000000000000033,
+          "max_rate_deg_s": 4.24113259156444,
+          "rmse_deg": 2.036104160834469,
+          "n_samples": 268,
+          "n_segments": 24,
+          "cruise_segments": 24,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.34023914705643815,
+          "rmse_deg": 2.3160239889192176,
+          "n_segments": 22,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 44,
+        "drive_usable": 24,
+        "inertia_usable": 22,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 9,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 15,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.1265248154006713,
+            "accel_duration_sec": 0.15000000000000033,
+            "accel_deg_s2": 28.274217277096202,
+            "max_rate_deg_s": 4.24113259156444,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.34023914705643815
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.183270369712986,
+        "effective_delay_s": 1.203659075093497,
+        "weighted_sse": 98.81099191462737
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144733",
+      "test_count": 2,
+      "physical": {
+        "dead_time_sec": 1.1265248154006713,
+        "phase_fit": {
+          "accel_deg_s2": 28.508501652469263,
+          "accel_duration_sec": 0.15000000000000002,
+          "max_rate_deg_s": 4.27627524787039,
+          "rmse_deg": 2.0447641188181565,
+          "n_samples": 267,
+          "n_segments": 24,
+          "cruise_segments": 24,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.33539979635948586,
+          "rmse_deg": 2.222819544919126,
+          "n_segments": 21,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 44,
+        "drive_usable": 24,
+        "inertia_usable": 21,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 9,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 15,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.1265248154006713,
+            "accel_duration_sec": 0.15000000000000002,
+            "accel_deg_s2": 28.508501652469263,
+            "max_rate_deg_s": 4.27627524787039,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.33539979635948586
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 10.849111028557385,
+        "effective_delay_s": 1.1746756873122588,
+        "weighted_sse": 90.78604917085579
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_145924",
+      "test_count": 2,
+      "physical": {
+        "dead_time_sec": 1.114342701437863,
+        "phase_fit": {
+          "accel_deg_s2": 27.54629866128813,
+          "accel_duration_sec": 0.15000000000000022,
+          "max_rate_deg_s": 4.131944799193225,
+          "rmse_deg": 2.0422564360650384,
+          "n_samples": 268,
+          "n_segments": 24,
+          "cruise_segments": 24,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.3495553562550768,
+          "rmse_deg": 2.3823761653247812,
+          "n_segments": 21,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 44,
+        "drive_usable": 24,
+        "inertia_usable": 21,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 9,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 15,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.114342701437863,
+            "accel_duration_sec": 0.15000000000000022,
+            "accel_deg_s2": 27.54629866128813,
+            "max_rate_deg_s": 4.131944799193225,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.3495553562550768
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 10.978609732829453,
+        "effective_delay_s": 1.182641332633894,
+        "weighted_sse": 96.91771909922946
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_150944",
+      "test_count": 2,
+      "physical": {
+        "dead_time_sec": 1.1373159626555207,
+        "phase_fit": {
+          "accel_deg_s2": 29.170913339861922,
+          "accel_duration_sec": 0.15000000000000002,
+          "max_rate_deg_s": 4.375637000979289,
+          "rmse_deg": 2.0262948692814513,
+          "n_samples": 259,
+          "n_segments": 23,
+          "cruise_segments": 23,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.3361315390561228,
+          "rmse_deg": 2.3424241271968267,
+          "n_segments": 21,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 43,
+        "drive_usable": 23,
+        "inertia_usable": 21,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 7,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 16,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.1373159626555207,
+            "accel_duration_sec": 0.15000000000000002,
+            "accel_deg_s2": 29.170913339861922,
+            "max_rate_deg_s": 4.375637000979289,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.3361315390561228
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 0,
+      "linear_parameters": {
+        "slope_deg_s": 11.464339702685171,
+        "effective_delay_s": 1.227026277400346,
+        "weighted_sse": 93.91878735548508
+      }
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_190446",
+      "test_count": 3,
+      "physical": {
+        "dead_time_sec": 1.114342701437863,
+        "phase_fit": {
+          "accel_deg_s2": 27.65026603536196,
+          "accel_duration_sec": 0.15000000000000047,
+          "max_rate_deg_s": 4.147539905304307,
+          "rmse_deg": 2.0306996816096654,
+          "n_samples": 270,
+          "n_segments": 24,
+          "cruise_segments": 24,
+          "identifiable": true,
+          "note": ""
+        },
+        "inertia_fit": {
+          "intercept_deg": 0.0,
+          "slope_sec": 0.33476190996300215,
+          "rmse_deg": 2.2642184233124256,
+          "n_segments": 21,
+          "speed_min_deg_s": 1.842244797650084,
+          "speed_max_deg_s": 24.410395416339,
+          "identifiable": true,
+          "note": ""
+        },
+        "segment_count": 42,
+        "drive_usable": 24,
+        "inertia_usable": 21,
+        "direction_sign_audit": {
+          "directions": {
+            "LEFT": {
+              "positive": 9,
+              "negative": 0,
+              "modal_sign": 1
+            },
+            "RIGHT": {
+              "positive": 0,
+              "negative": 15,
+              "modal_sign": -1
+            }
+          },
+          "ambiguous_directions": [],
+          "left_right_modal_signs_are_opposite": true
+        },
+        "acceleration_duration_bounds_s": [
+          0.15,
+          2.68911106145282
+        ],
+        "acceleration_at_lower_bound": true,
+        "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+        "parameters": {
+          "schema_version": 1,
+          "model_type": "log_rotation_piecewise",
+          "parameters": {
+            "command_strength": 30,
+            "dead_time_sec": 1.114342701437863,
+            "accel_duration_sec": 0.15000000000000047,
+            "accel_deg_s2": 27.65026603536196,
+            "max_rate_deg_s": 4.147539905304307,
+            "inertia_intercept_deg": 0.0,
+            "inertia_slope_sec": 0.33476190996300215
+          },
+          "fit_metadata": {
+            "fitted_min_hold_sec": 1.5159999999996217,
+            "fitted_max_hold_sec": 2.530999999999949,
+            "fitted_min_angle_deg": 3.7614345,
+            "fitted_max_angle_deg": 20.1499495
+          }
+        },
+        "deployment_performed": false,
+        "safe_for_control": false
+      },
+      "endpoint_outside_training_time_range": 1,
+      "linear_parameters": {
+        "slope_deg_s": 11.204116438578733,
+        "effective_delay_s": 1.201356776479115,
+        "weighted_sse": 97.49251817736685
+      }
+    }
+  ],
+  "physical_fit": {
+    "dead_time_sec": 1.1157336681458219,
+    "phase_fit": {
+      "accel_deg_s2": 27.809066251011373,
+      "accel_duration_sec": 0.15000000000000074,
+      "max_rate_deg_s": 4.171359937651727,
+      "rmse_deg": 2.0144357243046525,
+      "n_samples": 276,
+      "n_segments": 25,
+      "cruise_segments": 25,
+      "identifiable": true,
+      "note": ""
+    },
+    "inertia_fit": {
+      "intercept_deg": 0.0,
+      "slope_sec": 0.34023914705643815,
+      "rmse_deg": 2.3160239889192176,
+      "n_segments": 22,
+      "speed_min_deg_s": 1.842244797650084,
+      "speed_max_deg_s": 24.410395416339,
+      "identifiable": true,
+      "note": ""
+    },
+    "segment_count": 46,
+    "drive_usable": 25,
+    "inertia_usable": 22,
+    "direction_sign_audit": {
+      "directions": {
+        "LEFT": {
+          "positive": 9,
+          "negative": 0,
+          "modal_sign": 1
+        },
+        "RIGHT": {
+          "positive": 0,
+          "negative": 16,
+          "modal_sign": -1
+        }
+      },
+      "ambiguous_directions": [],
+      "left_right_modal_signs_are_opposite": true
+    },
+    "acceleration_duration_bounds_s": [
+      0.15,
+      2.68911106145282
+    ],
+    "acceleration_at_lower_bound": true,
+    "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+    "parameters": {
+      "schema_version": 1,
+      "model_type": "log_rotation_piecewise",
+      "parameters": {
+        "command_strength": 30,
+        "dead_time_sec": 1.1157336681458219,
+        "accel_duration_sec": 0.15000000000000074,
+        "accel_deg_s2": 27.809066251011373,
+        "max_rate_deg_s": 4.171359937651727,
+        "inertia_intercept_deg": 0.0,
+        "inertia_slope_sec": 0.34023914705643815
+      },
+      "fit_metadata": {
+        "fitted_min_hold_sec": 1.5159999999996217,
+        "fitted_max_hold_sec": 2.530999999999949,
+        "fitted_min_angle_deg": 3.7614345,
+        "fitted_max_angle_deg": 20.1499495
+      }
+    },
+    "deployment_performed": false,
+    "safe_for_control": false
+  },
+  "limitations": [
+    "Endpoint selection is fixed from prior analysis; validation is conditional on that selection.",
+    "Physical inertia targets STOP+2s; shared evaluation uses stable tails up to STOP+2.7s.",
+    "Physical and linear extrapolations are included without clipping; isotonic boundary-clamps as in existing validation.",
+    "No independent physical yaw truth. Cannot infer an inertia time profile from one post-STOP endpoint.",
+    "Lower-bound acceleration duration is not proof of a measured short acceleration phase."
+  ],
+  "deployment_performed": false,
+  "safe_for_control": false
+}

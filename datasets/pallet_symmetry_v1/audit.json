@@ -1,0 +1,40 @@
+{
+  "archives_sha256": {
+    "forklift_20260903_every_10_frames_manual_gt.zip": "c011c8e9748e897d348520a9b26bc861f06defd908dbc1559266dc0dca701ff7",
+    "kimjihoon_9-4_sampled_manual_gt.zip": "4d975387dbf89ed990b687b7a432af6f900d8b6dae4780c527ff1575c52c0e76"
+  },
+  "counts": {
+    "train": 162,
+    "val": 38,
+    "test": 45
+  },
+  "groups": {
+    "train": {
+      "forklift_v4_recording_20260903_190408": 28,
+      "forklift_v4_recording_20260903_192118": 2,
+      "forklift_v4_recording_20260904_144221": 1,
+      "forklift_v4_recording_20260904_144733": 66,
+      "forklift_v4_recording_20260904_145924": 60,
+      "forklift_v4_recording_20260904_150816": 5
+    },
+    "val": {
+      "forklift_v4_recording_20260903_190743": 16,
+      "forklift_v4_recording_20260904_142318": 13,
+      "forklift_v4_recording_20260904_142958": 9
+    },
+    "test": {
+      "forklift_v4_recording_20260903_192254": 5,
+      "forklift_v4_recording_20260904_144614": 13,
+      "forklift_v4_recording_20260904_150335": 8,
+      "forklift_v4_recording_20260904_150944": 19
+    }
+  },
+  "duplicates": [],
+  "rejected": [],
+  "total": 245,
+  "point_sources": {
+    "manual_click": 980,
+    "pnp_projected": 980,
+    "centroid_auto": 245
+  }
+}

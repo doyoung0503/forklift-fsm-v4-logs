@@ -1,0 +1,70 @@
+{
+  "model_type": "delayed_linear_settled_endpoint",
+  "parameters": {
+    "slope_deg_s": 10.915433965596758,
+    "effective_delay_s": 1.1819280947675697,
+    "weighted_sse": 175.50114431565876
+  },
+  "function": "theta_deg(T_s) = slope_deg_s * max(T_s - effective_delay_s, 0)",
+  "inverse": "T_s = effective_delay_s + theta_deg/slope_deg_s for positive theta; zero -> zero",
+  "source": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\c4_command_clips_20260906\\settled_endpoints\\accepted_command_pairs.csv",
+  "source_sha256": "ea8f8800e000fc3215b4cdbe0fd0d44ddb9ddd791685091ef8ba97fb472a7276",
+  "perception_model_hash": "sha256:35033fa0137084da6fa1814e1d16daf5a96fcd053e46dd045f672e9289f0d96c",
+  "original_count": 45,
+  "exclusion_threshold_s": 5.0,
+  "excluded_count": 1,
+  "included_count": 44,
+  "recording_count": 12,
+  "weighting": "Ordinary least squares: each command pair has equal weight; LEFT/RIGHT pooled",
+  "measured_duration_range_s": [
+    0.0930000000007567,
+    2.530999999999949
+  ],
+  "in_sample": {
+    "n": 44,
+    "rmse_deg": 1.9971635813849666,
+    "mae_deg": 1.4362395094059488,
+    "bias_deg": -0.0811668068181815,
+    "r2": 0.8398823819758808,
+    "p90_absolute_error_deg": 2.9466976125515307
+  },
+  "leave_one_recording_out": {
+    "n": 44,
+    "rmse_deg": 2.279295641856935,
+    "mae_deg": 1.6559224247366702,
+    "bias_deg": 0.03286984785690993,
+    "r2": 0.7914485734399652,
+    "p90_absolute_error_deg": 3.441591133821419
+  },
+  "equal_recording_loo_rmse_deg": 2.4349879787999646,
+  "reference_rmse_gate_deg": 3.0,
+  "reference_rmse_gate_passed": true,
+  "loo_outside_training_range_count": 1,
+  "equal_recording_weight_fit_sensitivity": {
+    "slope_deg_s": 9.572901986427615,
+    "effective_delay_s": 1.1223516753204281,
+    "weighted_sse": 55.56393585619844
+  },
+  "recording_bootstrap_runs": 500,
+  "recording_bootstrap_95pct_parameter_interval": {
+    "slope_deg_s": [
+      8.106785148629331,
+      14.057449526245994
+    ],
+    "effective_delay_s": [
+      0.8883735151466697,
+      1.3358738486495962
+    ]
+  },
+  "deployment_performed": false,
+  "safe_for_control": false,
+  "limitations": [
+    "Angles are settled C4/PnP estimates, not independently measured physical ground truth.",
+    "Effective delay is a fitted endpoint intercept, not measured physical motion onset.",
+    "Endpoint rotation includes inertia after STOP; slope is not independently measured peak speed.",
+    "Cross-validation holds out a recording and refits BOTH parameters; it does not retrain C4.",
+    "Predictions outside each training duration range are flagged, not clipped, and included in errors.",
+    "Validation is conditional on endpoint quality selection and the user-selected duration cutoff.",
+    "Do not extrapolate the fitted function beyond the measured time range or auto-deploy."
+  ]
+}

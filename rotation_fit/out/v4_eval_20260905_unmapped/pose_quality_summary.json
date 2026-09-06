@@ -1,0 +1,135 @@
+{
+  "by_date": {
+    "20260901": {
+      "detection_rate": 0.8942807625649913,
+      "detections": 516,
+      "frames": 577,
+      "pnp_success_per_detection": 1.0,
+      "valid_pose_rate": 0.8942807625649913,
+      "valid_poses": 516,
+      "videos": 1
+    },
+    "20260904": {
+      "detection_rate": 1.0,
+      "detections": 395,
+      "frames": 395,
+      "pnp_success_per_detection": 1.0,
+      "valid_pose_rate": 1.0,
+      "valid_poses": 395,
+      "videos": 1
+    }
+  },
+  "confidence_threshold": 0.3,
+  "device": "cuda:0",
+  "evaluated_recording_count": 2,
+  "excluded_recordings": [],
+  "input_recording_count": 2,
+  "model_hash": "sha256:2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2",
+  "model_name": "pallet_yolo26n_pose_livegt_v4.pt",
+  "overall_valid_pose_rate": 0.9372427983539094,
+  "total_frames": 972,
+  "total_valid_poses": 911,
+  "videos": [
+    {
+      "confidence_median": 0.96875,
+      "confidence_p10": 0.958008,
+      "date": "20260901",
+      "detection_rate": 0.8942807625649913,
+      "detections": 516,
+      "failure_counts": {
+        "no_detection": 61,
+        "ok": 516
+      },
+      "frames": 577,
+      "longest_failure_run": {
+        "end_video_frame": 48,
+        "frames": 49,
+        "reason": "no_detection",
+        "start_video_frame": 0
+      },
+      "pnp_success_per_detection": 1.0,
+      "pose_points_used": {
+        "4": 1,
+        "5": 2,
+        "6": 1,
+        "7": 1,
+        "9": 511
+      },
+      "prefix": "forklift_v4_recording_20260901_175419",
+      "reprojection_rms_median_px": 0.7675305,
+      "reprojection_rms_p95_px": 1.109546,
+      "valid_pose_rate": 0.8942807625649913,
+      "valid_poses": 516,
+      "yaw_abs_jump_max_deg": 6.887900999999999,
+      "yaw_abs_jump_p95_deg": 1.3335659999999905,
+      "yaw_peak_jump": {
+        "from_video_frame": 547,
+        "to_video_frame": 548,
+        "value_deg": 6.887900999999999
+      },
+      "yaw_range_deg": [
+        -4.516925,
+        23.72653
+      ],
+      "z_abs_jump_max_m": 2.8106741900000003,
+      "z_abs_jump_p95_m": 0.07900810000000025,
+      "z_peak_jump": {
+        "from_video_frame": 547,
+        "to_video_frame": 548,
+        "value_m": 2.8106741900000003
+      },
+      "z_range_m": [
+        3.67918134,
+        7.38241148
+      ]
+    },
+    {
+      "confidence_median": 0.926758,
+      "confidence_p10": 0.856934,
+      "date": "20260904",
+      "detection_rate": 1.0,
+      "detections": 395,
+      "failure_counts": {
+        "ok": 395
+      },
+      "frames": 395,
+      "longest_failure_run": {
+        "end_video_frame": null,
+        "frames": 0,
+        "reason": null,
+        "start_video_frame": null
+      },
+      "pnp_success_per_detection": 1.0,
+      "pose_points_used": {
+        "9": 395
+      },
+      "prefix": "forklift_v4_recording_20260904_190700",
+      "reprojection_rms_median_px": 1.420066,
+      "reprojection_rms_p95_px": 1.716506,
+      "valid_pose_rate": 1.0,
+      "valid_poses": 395,
+      "yaw_abs_jump_max_deg": 60.391234999999995,
+      "yaw_abs_jump_p95_deg": 34.112707,
+      "yaw_peak_jump": {
+        "from_video_frame": 144,
+        "to_video_frame": 145,
+        "value_deg": 60.391234999999995
+      },
+      "yaw_range_deg": [
+        -43.444097,
+        45.067742
+      ],
+      "z_abs_jump_max_m": 1.4592709599999996,
+      "z_abs_jump_p95_m": 1.1527962699999996,
+      "z_peak_jump": {
+        "from_video_frame": 261,
+        "to_video_frame": 262,
+        "value_m": 1.4592709599999996
+      },
+      "z_range_m": [
+        4.74810076,
+        6.58049536
+      ]
+    }
+  ]
+}

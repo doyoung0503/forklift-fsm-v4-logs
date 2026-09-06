@@ -1,0 +1,31 @@
+{
+  "20260903_192254": {
+    "frames": 744,
+    "fps": 17.508,
+    "output": "training\\symmetry\\evaluation\\night_full\\20260903_192254_v4_vs_c4_raw_keypoints.mp4",
+    "models": {
+      "v4": {
+        "detected": 599,
+        "numbering_switches": 136,
+        "matched_adjacent_pairs": 546,
+        "c4_aligned_mean_step_px": 5.027488600148823,
+        "c4_aligned_p95_step_px": 23.49642276763916,
+        "c4_aligned_max_step_px": 35.4945182800293
+      },
+      "c4": {
+        "detected": 696,
+        "numbering_switches": 42,
+        "matched_adjacent_pairs": 690,
+        "c4_aligned_mean_step_px": 2.7833386255995087,
+        "c4_aligned_p95_step_px": 14.66800980567932,
+        "c4_aligned_max_step_px": 38.617733001708984
+      }
+    }
+  },
+  "notes": [
+    "Raw prediction positions/numbers, no PnP fitting or temporal smoothing.",
+    "All contiguous frames per recording, original playback FPS.",
+    "Inter-frame motion includes real camera/object movement; these are not accuracy metrics.",
+    "C4 alignment permits whole-cuboid rotation only and is used for step statistics, not drawn points."
+  ]
+}

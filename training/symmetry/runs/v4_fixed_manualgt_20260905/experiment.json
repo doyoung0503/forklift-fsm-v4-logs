@@ -1,0 +1,24 @@
+{
+  "source": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+  "sha256": "2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2",
+  "ultralytics": "8.4.138",
+  "torch": "2.7.1+cu118",
+  "python": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "mode": "fixed",
+  "permutations": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  ],
+  "generated_coordinate_weight": 0.25,
+  "front_selection": "largest visible vertical face after PnP",
+  "data": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\datasets\\pallet_symmetry_v1\\data.yaml"
+}

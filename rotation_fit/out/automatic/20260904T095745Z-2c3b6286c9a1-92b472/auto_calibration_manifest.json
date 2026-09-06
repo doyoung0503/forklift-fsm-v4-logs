@@ -1,0 +1,37 @@
+{
+  "deploy_path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\calib\\fsm_v4\\rotation_model.generated.json",
+  "error": "KeyboardInterrupt: ",
+  "failed_utc": "2026-09-04T10:00:37.189188+00:00",
+  "fit_dir": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\automatic\\20260904T095745Z-2c3b6286c9a1-92b472\\fit",
+  "model_hash": "sha256:2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2",
+  "model_path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+  "model_size_bytes": 6537959,
+  "recordings_dir": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec",
+  "results_dir": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\automatic\\20260904T095745Z-2c3b6286c9a1-92b472\\inference",
+  "run_dir": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\automatic\\20260904T095745Z-2c3b6286c9a1-92b472",
+  "run_id": "20260904T095745Z-2c3b6286c9a1-92b472",
+  "schema_version": 1,
+  "settings": {
+    "angle_column": "yaw_deg",
+    "angle_domain": "heading",
+    "bootstrap_runs": 200,
+    "command_strength": 30,
+    "confidence_threshold": 0.3,
+    "device": "auto",
+    "max_loo_rmse_deg": 3.0,
+    "min_loo_recordings": 4,
+    "results_suffix": "_new_pose.csv"
+  },
+  "stages": [
+    {
+      "at_utc": "2026-09-04T09:57:45.084951+00:00",
+      "status": "STARTED"
+    },
+    {
+      "at_utc": "2026-09-04T10:00:37.189188+00:00",
+      "status": "FAILED"
+    }
+  ],
+  "started_utc": "2026-09-04T09:57:45.084951+00:00",
+  "status": "FAILED"
+}

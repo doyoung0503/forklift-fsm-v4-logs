@@ -1,0 +1,55 @@
+{
+  "time_predictions": [
+    {
+      "command_s": 1.0,
+      "final_deg": 0.0,
+      "old_fsm_deg": 0.0,
+      "diagnostic_physical_deg": 0.0
+    },
+    {
+      "command_s": 1.5,
+      "final_deg": 2.706555980008806,
+      "old_fsm_deg": 2.970182264066664,
+      "diagnostic_physical_deg": 2.7093211340130416
+    },
+    {
+      "command_s": 2.0,
+      "final_deg": 8.75779081269353,
+      "old_fsm_deg": 8.900891131444613,
+      "diagnostic_physical_deg": 4.795001102838905
+    },
+    {
+      "command_s": 2.5,
+      "final_deg": 14.809025645378256,
+      "old_fsm_deg": 14.905891131444612,
+      "diagnostic_physical_deg": 6.880681071664768
+    }
+  ],
+  "target_holds": [
+    {
+      "target_deg": 3.0,
+      "final_s": 1.5242466230533813,
+      "old_fsm_s": 1.5028361901169336
+    },
+    {
+      "target_deg": 5.0,
+      "final_s": 1.6895021498425034,
+      "old_fsm_s": 1.6751964087056939
+    },
+    {
+      "target_deg": 10.0,
+      "final_s": 2.1026409668153088,
+      "old_fsm_s": 2.0915161422610646
+    },
+    {
+      "target_deg": 14.0,
+      "final_s": 2.4331520203935533,
+      "old_fsm_s": 2.424571929105361
+    }
+  ],
+  "interpretations": [
+    "Old FSM fallback and recent diagnostic physical fit are distinct models.",
+    "Comparison is of deterministic function shapes, not a new controlled accuracy benchmark.",
+    "All curves refer to final settled angle, not instantaneous angle during movement."
+  ]
+}

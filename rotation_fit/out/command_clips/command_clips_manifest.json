@@ -1,0 +1,1321 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "created_utc": "2026-09-06T04:26:38.330234+00:00",
+  "source_dir": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec",
+  "output_dir": "C:\\Users\\DELL\\Downloads\\로그수집\\rotation_fit\\out\\command_clips",
+  "selection": "actual CAN strength 30; model-independent; host OR affine sensor timeline",
+  "baseline_sec": 1.0,
+  "inertia_horizon_sec": 2.0,
+  "inertia_window_sec": 0.2,
+  "margin_sec": 0.5,
+  "codec": "FFV1",
+  "original_timestamps_preserved": true,
+  "source_frames": 30855,
+  "selected_frames": 4163,
+  "avoided_inference_fraction": 0.8650785934208394,
+  "recording_count": 23,
+  "excluded": [
+    {
+      "prefix": "forklift_v4_recording_20260831_161940",
+      "eligible": false,
+      "exclusion_stage": "input_discovery",
+      "exclusion_reason": "missing forklift_v4_recording_20260831_161940_raw.mp4, forklift_v4_recording_20260831_161940_inference_timing.csv",
+      "source_video": null,
+      "frame_mapping_method": null,
+      "video_frame_count": null,
+      "timing_row_count": null,
+      "joined_timing_frames": null,
+      "joined_ratio": null,
+      "timing_span_frames": null,
+      "timing_span_coverage_ratio": null,
+      "raw_first_frame_i": null,
+      "raw_last_frame_i": null,
+      "timing_last_frame_i": null
+    },
+    {
+      "prefix": "forklift_v4_recording_20260901_175419",
+      "exclusion_reason": "legacy raw/timing alignment is ambiguous: expected raw[0]=frame_i 36, raw_last=612, timing_last=630, joined=577/577"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260903_190408",
+      "exclusion_reason": "no timed frames around actual CAN strength-30 rotation commands"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260903_192417",
+      "exclusion_reason": "no timed frames around actual CAN strength-30 rotation commands"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_142958",
+      "exclusion_reason": "no timed frames around actual CAN strength-30 rotation commands"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_144614",
+      "exclusion_reason": "no timed frames around actual CAN strength-30 rotation commands"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_150335",
+      "exclusion_reason": "no timed frames around actual CAN strength-30 rotation commands"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_150625",
+      "exclusion_reason": "no timed frames around actual CAN strength-30 rotation commands"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_150816",
+      "exclusion_reason": "no timed frames around actual CAN strength-30 rotation commands"
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_190700",
+      "exclusion_reason": "explicit raw-video mapping is incomplete: missing=1, extra=0"
+    }
+  ],
+  "recordings": [
+    {
+      "prefix": "forklift_v4_recording_20260901_173507",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_173507_raw.mp4",
+      "source_frames": 3729,
+      "selected_frames": 418,
+      "video_file": "forklift_v4_recording_20260901_173507_raw.avi",
+      "video_bytes": 60908986,
+      "video_sha256": "215bbeddbc7e19c53e61429d19cc5746ed9d26be4651f9a26f614a0b65899aaa",
+      "decoded_pixels_sha256": "fc99e3483b140c1ad8a4b46f8149e5aa41d563ffa7d51dd6956f97f6d278a249",
+      "source_hashes": {
+        "forklift_v4_recording_20260901_173507_raw.mp4": "5c552de6207ec5b959e1f4ea3fec7f826627835dc5c29fbedb353eabed41e80a",
+        "forklift_v4_recording_20260901_173507_inference_timing.csv": "bce16e1bd9747dae98312c66be2d54a7e3bb2d36c5773ad3f0d52a22a67cbd29",
+        "forklift_v4_recording_20260901_173507_meta.json": "28161773188905f3324b09b3921dc040befe7b16e3826f77dd04d32746e48720",
+        "forklift_v4_recording_20260901_173507_control_seq.jsonl": "d2154b388935324129ecb1c902574c1db109cd51e7f0c3ab0b61805e0331fe8e"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 20475.718,
+          "stop_host_s": 20477.25,
+          "stop_movement": "stop",
+          "next_active_host_s": 20499.75,
+          "selection_start_host_s": 20474.218,
+          "selection_end_host_s": 20479.95
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 20611.687,
+          "stop_host_s": 20613.234,
+          "stop_movement": "stop",
+          "next_active_host_s": 20626.0,
+          "selection_start_host_s": 20610.187,
+          "selection_end_host_s": 20615.934
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 20626.0,
+          "stop_host_s": 20627.968,
+          "stop_movement": "stop",
+          "next_active_host_s": 20641.671,
+          "selection_start_host_s": 20624.5,
+          "selection_end_host_s": 20630.668
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 20641.671,
+          "stop_host_s": 20643.843,
+          "stop_movement": "stop",
+          "next_active_host_s": 20655.468,
+          "selection_start_host_s": 20640.171,
+          "selection_end_host_s": 20646.543
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 20655.468,
+          "stop_host_s": 20657.468,
+          "stop_movement": "stop",
+          "next_active_host_s": 20667.5,
+          "selection_start_host_s": 20653.968,
+          "selection_end_host_s": 20660.168
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 20667.5,
+          "stop_host_s": 20669.421,
+          "stop_movement": "stop",
+          "next_active_host_s": 20691.859,
+          "selection_start_host_s": 20666.0,
+          "selection_end_host_s": 20672.121
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 20691.859,
+          "stop_host_s": 20693.765,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 20690.359,
+          "selection_end_host_s": 20696.465
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260901_174126",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174126_raw.mp4",
+      "source_frames": 757,
+      "selected_frames": 104,
+      "video_file": "forklift_v4_recording_20260901_174126_raw.avi",
+      "video_bytes": 14508068,
+      "video_sha256": "a2ecc07484b4932fa7dd0ad04ca39c6f9780115fddd8b888dd7a9b1e01fb4069",
+      "decoded_pixels_sha256": "4dbd7f0ceb2a3e86b0e4ed34ebfff074e1fa29577ef07837e45e5cbbb40b81af",
+      "source_hashes": {
+        "forklift_v4_recording_20260901_174126_raw.mp4": "e58f35d026ee35a5bd012673412b58199a48af12b7cafeb0e26a7c60420ce8ad",
+        "forklift_v4_recording_20260901_174126_inference_timing.csv": "943e7405260117308cdf847830c2bf38c7afd28198f0136a09db266810b5e2ba",
+        "forklift_v4_recording_20260901_174126_meta.json": "540cdd52c103671e716a8eef44729827f86ba3b3f0c0f5546a4ef97fb48c8a45",
+        "forklift_v4_recording_20260901_174126_control_seq.jsonl": "565ba623d178273808e035701909f14479a63a3008ecfde01c1acada8effa40f"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 20885.953,
+          "stop_host_s": 20887.203,
+          "stop_movement": "stop",
+          "next_active_host_s": 20900.375,
+          "selection_start_host_s": 20884.453,
+          "selection_end_host_s": 20889.903000000002
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 20900.375,
+          "stop_host_s": 20900.468,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 20898.875,
+          "selection_end_host_s": 20903.168
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260901_174342",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174342_raw.mp4",
+      "source_frames": 2501,
+      "selected_frames": 218,
+      "video_file": "forklift_v4_recording_20260901_174342_raw.avi",
+      "video_bytes": 27548126,
+      "video_sha256": "6838a0820d4f3b2e29e9bb6209d1158f4ae649bc3a14d488839fc1f439a5aea8",
+      "decoded_pixels_sha256": "7d1288c4cf9730af4b5b9c4ac838313dd1f57cbc556540716b6b22c18a5f8a59",
+      "source_hashes": {
+        "forklift_v4_recording_20260901_174342_raw.mp4": "4e69cd2339bf06f69ad43fc60dbaac276818d3bcd8b6dbdf0bf52375eed62d6f",
+        "forklift_v4_recording_20260901_174342_inference_timing.csv": "83de3c6f89160057da806cb1d998c2fa1bdd445bbcc3d8ec154a8226d18a267f",
+        "forklift_v4_recording_20260901_174342_meta.json": "b228eadc62380f0ceac13fb08f81b8ce664d1bb91cbc19d38cc37fb62925dfc0",
+        "forklift_v4_recording_20260901_174342_control_seq.jsonl": "11d3e8c963ec3edf5d210b1c0901bdf1cbb32d3eb633ec575aa8ea7d3f113eeb"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 21129.421,
+          "stop_host_s": 21131.25,
+          "stop_movement": "stop",
+          "next_active_host_s": 21145.25,
+          "selection_start_host_s": 21127.921,
+          "selection_end_host_s": 21133.95
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 21145.25,
+          "stop_host_s": 21150.906,
+          "stop_movement": "stop",
+          "next_active_host_s": 21169.234,
+          "selection_start_host_s": 21143.75,
+          "selection_end_host_s": 21153.606
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 21169.234,
+          "stop_host_s": 21170.75,
+          "stop_movement": "stop",
+          "next_active_host_s": 21186.765,
+          "selection_start_host_s": 21167.734,
+          "selection_end_host_s": 21173.45
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260901_174925",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260901_174925_raw.mp4",
+      "source_frames": 1923,
+      "selected_frames": 58,
+      "video_file": "forklift_v4_recording_20260901_174925_raw.avi",
+      "video_bytes": 8072570,
+      "video_sha256": "1157512becbed0b64b3b8542604cdf0fa3c23c140b26809cb458cd53bd07eb50",
+      "decoded_pixels_sha256": "78d771b0a634f3ef1a7d62fb0dd06d9466b4e5e771cec106c73ef6a03fa88835",
+      "source_hashes": {
+        "forklift_v4_recording_20260901_174925_raw.mp4": "1b796bd9cc10e76908d7132193897b3f7e23c0dd07f40b55360492bd1df8aa92",
+        "forklift_v4_recording_20260901_174925_inference_timing.csv": "0fed7181200508ba7e7eba04f0da8e78fc6e286a38dddf9278d82ac657eb90ad",
+        "forklift_v4_recording_20260901_174925_meta.json": "dcdac2d49e1e8df80bf4cc73c95fc7ceab26a819b436c8b2e3cd9f1b7d1dd543",
+        "forklift_v4_recording_20260901_174925_control_seq.jsonl": "c8598f19c97ff6248246ea5f543a4263b77ac83b47a32b2d697e05e2dbb61d94"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 21459.203,
+          "stop_host_s": 21460.687,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 21457.703,
+          "selection_end_host_s": 21463.387000000002
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260903_190743",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_190743_raw.mp4",
+      "source_frames": 803,
+      "selected_frames": 476,
+      "video_file": "forklift_v4_recording_20260903_190743_raw.avi",
+      "video_bytes": 149754882,
+      "video_sha256": "d71f76eb62691311230a92c59b7bcdaaa56a4bb857f7dc729ae8e843be940241",
+      "decoded_pixels_sha256": "83a7a3a8d23e1e75168f79a468c5b4bfdb1f598a02e08092c79f9c273c0b0652",
+      "source_hashes": {
+        "forklift_v4_recording_20260903_190743_raw.mp4": "9ab5b93b92ef2a303eb3c4851a220344c8a9ea9cebe640c8448e534fa45f7ce2",
+        "forklift_v4_recording_20260903_190743_inference_timing.csv": "dda80e08e3b51c8f07762b8a63abc96a5eec68512f5e8c24dadba4c420c8949a",
+        "forklift_v4_recording_20260903_190743_meta.json": "50618cfd3578e4e1eb5e4edb8bcf11a0b6277d9da8cc7bdaa18d0ce436959d14",
+        "forklift_v4_recording_20260903_190743_control_seq.jsonl": "e1989d0a8d9a9946e12c207eafa2beb160b98e1e933f029fcb0f1725bef37b68"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 27199.421,
+          "stop_host_s": 27200.781,
+          "stop_movement": "stop",
+          "next_active_host_s": 27204.875,
+          "selection_start_host_s": 27197.921,
+          "selection_end_host_s": 27203.481
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 27204.875,
+          "stop_host_s": 27206.875,
+          "stop_movement": "stop",
+          "next_active_host_s": 27210.562,
+          "selection_start_host_s": 27203.375,
+          "selection_end_host_s": 27209.575
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 27210.562,
+          "stop_host_s": 27211.343,
+          "stop_movement": "stop",
+          "next_active_host_s": 27214.984,
+          "selection_start_host_s": 27209.062,
+          "selection_end_host_s": 27214.043
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 27214.984,
+          "stop_host_s": 27216.468,
+          "stop_movement": "stop",
+          "next_active_host_s": 27220.156,
+          "selection_start_host_s": 27213.484,
+          "selection_end_host_s": 27219.168
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 27231.765,
+          "stop_host_s": 27232.546,
+          "stop_movement": "stop",
+          "next_active_host_s": 27235.859,
+          "selection_start_host_s": 27230.265,
+          "selection_end_host_s": 27235.246
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 27235.859,
+          "stop_host_s": 27236.718,
+          "stop_movement": "stop",
+          "next_active_host_s": 27240.093,
+          "selection_start_host_s": 27234.359,
+          "selection_end_host_s": 27239.418
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 27240.093,
+          "stop_host_s": 27240.828,
+          "stop_movement": "stop",
+          "next_active_host_s": 27244.296,
+          "selection_start_host_s": 27238.593,
+          "selection_end_host_s": 27243.528000000002
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 27244.296,
+          "stop_host_s": 27245.453,
+          "stop_movement": "stop",
+          "next_active_host_s": 27249.0,
+          "selection_start_host_s": 27242.796,
+          "selection_end_host_s": 27248.153000000002
+        }
+      ],
+      "clock_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "clock_scale": 1.0000771363874608,
+      "clock_rmse_ms": 18.048517891763503,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260903_191906",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_191906_raw.mp4",
+      "source_frames": 171,
+      "selected_frames": 59,
+      "video_file": "forklift_v4_recording_20260903_191906_raw.avi",
+      "video_bytes": 12940866,
+      "video_sha256": "37e34fde875d432865dab65eec3102221387657553033de33c2e0b775ee7f37e",
+      "decoded_pixels_sha256": "80ba096925cd022c6a805b397dfc0bcf7f3d2c9f72619b37e190ce462b48850f",
+      "source_hashes": {
+        "forklift_v4_recording_20260903_191906_raw.mp4": "a92c32b711753a5e052e1f025925c2e3baaa0bcbb875c085a3b75908ec92b166",
+        "forklift_v4_recording_20260903_191906_inference_timing.csv": "6046e4ddc440b371d670fe3583e2974f0324d5da0a1503b77486e74d99509884",
+        "forklift_v4_recording_20260903_191906_meta.json": "239d0984e4f93a66467b5a51f73adc74a042bca99aa22791896442a06172e157",
+        "forklift_v4_recording_20260903_191906_control_seq.jsonl": "7da05943323b4af7b19de484926e3421bc676a6d13230e1cb03d74f6692ec5ba"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 27882.406,
+          "stop_host_s": 27885.265,
+          "stop_movement": "stop",
+          "next_active_host_s": 27889.343,
+          "selection_start_host_s": 27880.906,
+          "selection_end_host_s": 27887.965
+        }
+      ],
+      "clock_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "clock_scale": 1.0001463501352472,
+      "clock_rmse_ms": 18.254430853438834,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260903_192118",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192118_raw.mp4",
+      "source_frames": 324,
+      "selected_frames": 63,
+      "video_file": "forklift_v4_recording_20260903_192118_raw.avi",
+      "video_bytes": 17385476,
+      "video_sha256": "d58857723da7bb7c028dde441bf6ef1962465de219db6385bc2f50286bd917f8",
+      "decoded_pixels_sha256": "758a54d3c2c79b2e2dd5153f59d4aff32dad98815b4713acced44cf5be168b95",
+      "source_hashes": {
+        "forklift_v4_recording_20260903_192118_raw.mp4": "bc8ffefa2749bcaa198d13f174a825070c8380ab487ee2cbdea06506e929ec8a",
+        "forklift_v4_recording_20260903_192118_inference_timing.csv": "36f6488e2f1df741c14c6dc02981c0ee4854f8960f9aeae430857b5ae11fd498",
+        "forklift_v4_recording_20260903_192118_meta.json": "72f839a6ecbc51dd0a80e7c8fcf62699cf84459f9869126ad7b407f738bd980b",
+        "forklift_v4_recording_20260903_192118_control_seq.jsonl": "3941de0993e8461c71fe37007d9bebe174125686c5ce61e74317de3034b489f7"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 28016.031,
+          "stop_host_s": 28018.359,
+          "stop_movement": "stop",
+          "next_active_host_s": 28022.203,
+          "selection_start_host_s": 28014.531,
+          "selection_end_host_s": 28021.059
+        }
+      ],
+      "clock_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "clock_scale": 1.0000856343380633,
+      "clock_rmse_ms": 16.68881630627034,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260903_192254",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+      "source_frames": 744,
+      "selected_frames": 381,
+      "video_file": "forklift_v4_recording_20260903_192254_raw.avi",
+      "video_bytes": 107808706,
+      "video_sha256": "62ed544d0240b72c3f0de15836905b00af26642264212075294922a2fe9ce73a",
+      "decoded_pixels_sha256": "0009ad2e52a19c7088d9d35d11103d76fb5ffb4d22effa8f05cc3c5dea13d2ed",
+      "source_hashes": {
+        "forklift_v4_recording_20260903_192254_raw.mp4": "f771afc6f7d7c75ae6e11dd7cf964b970cb800693215d3bc1970aeb601d5e47c",
+        "forklift_v4_recording_20260903_192254_inference_timing.csv": "0d35249cee5a0ed6d643bd3db899470d5555d1011afdc60b8886f1650ad1cf0b",
+        "forklift_v4_recording_20260903_192254_meta.json": "76e600405c048e7ce71fc45e6635187369251a211445ff1850d323f3a37faecc",
+        "forklift_v4_recording_20260903_192254_control_seq.jsonl": "bd0f2935023513db025572146bf6ecb8533a1ec7948bfb26f2321970295e2e90"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 28109.921,
+          "stop_host_s": 28109.984,
+          "stop_movement": "stop",
+          "next_active_host_s": 28111.375,
+          "selection_start_host_s": 28108.421,
+          "selection_end_host_s": 28112.684
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 28111.375,
+          "stop_host_s": 28112.812,
+          "stop_movement": "stop",
+          "next_active_host_s": 28118.828,
+          "selection_start_host_s": 28109.875,
+          "selection_end_host_s": 28115.512000000002
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 28118.828,
+          "stop_host_s": 28120.281,
+          "stop_movement": "stop",
+          "next_active_host_s": 28123.468,
+          "selection_start_host_s": 28117.328,
+          "selection_end_host_s": 28122.981
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 28123.468,
+          "stop_host_s": 28124.921,
+          "stop_movement": "stop",
+          "next_active_host_s": 28128.093,
+          "selection_start_host_s": 28121.968,
+          "selection_end_host_s": 28127.621
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 28128.093,
+          "stop_host_s": 28129.562,
+          "stop_movement": "stop",
+          "next_active_host_s": 28133.093,
+          "selection_start_host_s": 28126.593,
+          "selection_end_host_s": 28132.262000000002
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 28133.093,
+          "stop_host_s": 28134.578,
+          "stop_movement": "stop",
+          "next_active_host_s": 28137.593,
+          "selection_start_host_s": 28131.593,
+          "selection_end_host_s": 28137.278000000002
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 28137.593,
+          "stop_host_s": 28139.046,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 28136.093,
+          "selection_end_host_s": 28141.746
+        }
+      ],
+      "clock_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "clock_scale": 1.0000247679291845,
+      "clock_rmse_ms": 17.97894818279506,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_102339",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102339_raw.mp4",
+      "source_frames": 476,
+      "selected_frames": 17,
+      "video_file": "forklift_v4_recording_20260904_102339_raw.avi",
+      "video_bytes": 3997972,
+      "video_sha256": "1d32de3425bc0af268e9f23e8a3cfa171d316d361c39388e3c5a6874a02ffcb3",
+      "decoded_pixels_sha256": "afb9ce5603dcff87449554edc4f7871d8cc6816f43974310e6b2f9b11a1adf3b",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_102339_raw.mp4": "5a3f549c8181166dd2ec21e74d86af9673eb7fce1f5edaeb64190de86be87fc2",
+        "forklift_v4_recording_20260904_102339_inference_timing.csv": "dcb0841c817f52cc05c7aab5138c3c31646d63259c476ff069669cc490980714",
+        "forklift_v4_recording_20260904_102339_meta.json": "cd260847d7688ebd8ea7ff9720b1ffae517917fd71800d39aa860137a4a28b74",
+        "forklift_v4_recording_20260904_102339_control_seq.jsonl": "c3181e43c949f86b7f817da4c2cc8015c6ec00dc40cbf622f9616567a370b812"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 564.25,
+          "stop_host_s": 566.671,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 562.75,
+          "selection_end_host_s": 569.3710000000001
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_102504",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102504_raw.mp4",
+      "source_frames": 493,
+      "selected_frames": 93,
+      "video_file": "forklift_v4_recording_20260904_102504_raw.avi",
+      "video_bytes": 22173902,
+      "video_sha256": "b75772c1dc0bca6c881ccec4ca34b45cb93ec8851062730213f07ef0d8e4b3c0",
+      "decoded_pixels_sha256": "65132fc3cd48f99607940b0e7e75fa039b68232924762644f59e64c6372e5374",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_102504_raw.mp4": "9143040ad3eeb231b30c576255d50988b11f2add66a0a3673f1c750e10fc2f4b",
+        "forklift_v4_recording_20260904_102504_inference_timing.csv": "a66c66380913fb2ce6a62ba23c408b4a35c50a2d308cfe01e72350b50973d3ea",
+        "forklift_v4_recording_20260904_102504_meta.json": "ddcad36a3c7ad5915a168bbdddbdd2c264cf1d232cfcd441fa31f9d0e76c6777",
+        "forklift_v4_recording_20260904_102504_control_seq.jsonl": "0640435fce8041d9562921c66d75f1463d9e1a98e53905e6c5300caaff37fc30"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 647.656,
+          "stop_host_s": 649.39,
+          "stop_movement": "stop",
+          "next_active_host_s": 653.406,
+          "selection_start_host_s": 646.156,
+          "selection_end_host_s": 652.09
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 668.015,
+          "stop_host_s": 670.328,
+          "stop_movement": "stop",
+          "next_active_host_s": 674.921,
+          "selection_start_host_s": 666.515,
+          "selection_end_host_s": 673.028
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_102630",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_102630_raw.mp4",
+      "source_frames": 192,
+      "selected_frames": 65,
+      "video_file": "forklift_v4_recording_20260904_102630_raw.avi",
+      "video_bytes": 15741218,
+      "video_sha256": "617836a56ab750d293a833e291ceb29bd730587129a3bfb4027505deeefb3f44",
+      "decoded_pixels_sha256": "c1fe2060fa0ccca35720c1044eee771e80661eeceee5909958e904e46c4626f2",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_102630_raw.mp4": "02e70c1cdaf04535bd9481956c8a33cdb721c0b975359f6ba15d91a658f90751",
+        "forklift_v4_recording_20260904_102630_inference_timing.csv": "ffe222579d772deb12b2ef468ebb4e7981a7eca81fecabc99e481cb28e4d7c1f",
+        "forklift_v4_recording_20260904_102630_meta.json": "3255122de400bd64d030e677b513e5c9964faedb6aeb400073ca4ba6783e7ae2",
+        "forklift_v4_recording_20260904_102630_control_seq.jsonl": "20790842031453779a30935375ee54744e3b259f213414eac8ab83dd17412155"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 736.75,
+          "stop_host_s": 738.812,
+          "stop_movement": "stop",
+          "next_active_host_s": 749.125,
+          "selection_start_host_s": 735.25,
+          "selection_end_host_s": 741.5120000000001
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 749.125,
+          "stop_host_s": 751.453,
+          "stop_movement": "stop",
+          "next_active_host_s": 759.203,
+          "selection_start_host_s": 747.625,
+          "selection_end_host_s": 754.153
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 759.203,
+          "stop_host_s": 761.453,
+          "stop_movement": "stop",
+          "next_active_host_s": 770.453,
+          "selection_start_host_s": 757.703,
+          "selection_end_host_s": 764.153
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 770.453,
+          "stop_host_s": 772.843,
+          "stop_movement": "stop",
+          "next_active_host_s": 780.484,
+          "selection_start_host_s": 768.953,
+          "selection_end_host_s": 775.543
+        }
+      ],
+      "clock_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "clock_scale": 1.000074160876344,
+      "clock_rmse_ms": 34.12607974887293,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_103429",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103429_raw.mp4",
+      "source_frames": 1573,
+      "selected_frames": 46,
+      "video_file": "forklift_v4_recording_20260904_103429_raw.avi",
+      "video_bytes": 10888770,
+      "video_sha256": "68ef9c64e6abfe86ab98a3ce8d8aa7e4c78700dad840ae27a0c2ae6f9831dfea",
+      "decoded_pixels_sha256": "d2db909a8dc423c2d1578e4e8abb45f41d7f456048c805593850ef05d9797353",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_103429_raw.mp4": "88ab74c730b937118e2d1ef6219bfc55437ade4f5e3db6983c73dd94a33711ea",
+        "forklift_v4_recording_20260904_103429_inference_timing.csv": "79370fa4d1ab079d6bad522e3ff7f2091ba611b885d9a9487892d246fbb304b3",
+        "forklift_v4_recording_20260904_103429_meta.json": "3576b5fe11b12aad3c0e4a5aec683646bd5c18ee7ded2a916567159026bfca8d",
+        "forklift_v4_recording_20260904_103429_control_seq.jsonl": "e0d0fb9d6d96904b033eee7d09cd9670ab4c9bd26385dfb8545655556d194f15"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1213.875,
+          "stop_host_s": 1215.671,
+          "stop_movement": "stop",
+          "next_active_host_s": 1222.593,
+          "selection_start_host_s": 1212.375,
+          "selection_end_host_s": 1218.371
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1232.218,
+          "stop_host_s": 1234.0,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 1230.718,
+          "selection_end_host_s": 1236.7
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_103739",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_103739_raw.mp4",
+      "source_frames": 787,
+      "selected_frames": 575,
+      "video_file": "forklift_v4_recording_20260904_103739_raw.avi",
+      "video_bytes": 118748768,
+      "video_sha256": "df4e30e76d854906e693e09ebd73482bc1240c6660009571a611ec3667ed8e4c",
+      "decoded_pixels_sha256": "4293e3f453e220aab7dd3de09e2342c7d8f1bcc58dcbee521521d73a9ea5f39f",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_103739_raw.mp4": "ca3afdb36241e1fcf819a87f7ee3327943ec4eba6a99f3c95df91d74f70c581a",
+        "forklift_v4_recording_20260904_103739_inference_timing.csv": "d9b304a7fbb65b87eeb1d5f19510ee54cd0bd452e5b5d53e2de7c7958843af6d",
+        "forklift_v4_recording_20260904_103739_meta.json": "c46c7fcf2ece36885f6df24010374fe1c9c6393d5ad9a54f891cf3b7a2e6b6f7",
+        "forklift_v4_recording_20260904_103739_control_seq.jsonl": "576d55c56bdfbee2823e2d57353dcadab666cd8e5f3dc2e867947df3f7c8b8ca"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 1420.578,
+          "stop_host_s": 1422.937,
+          "stop_movement": "stop",
+          "next_active_host_s": 1426.781,
+          "selection_start_host_s": 1419.078,
+          "selection_end_host_s": 1425.637
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1426.781,
+          "stop_host_s": 1428.812,
+          "stop_movement": "stop",
+          "next_active_host_s": 1432.343,
+          "selection_start_host_s": 1425.281,
+          "selection_end_host_s": 1431.512
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 1432.343,
+          "stop_host_s": 1434.703,
+          "stop_movement": "stop",
+          "next_active_host_s": 1438.312,
+          "selection_start_host_s": 1430.843,
+          "selection_end_host_s": 1437.403
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1438.312,
+          "stop_host_s": 1440.484,
+          "stop_movement": "stop",
+          "next_active_host_s": 1444.0,
+          "selection_start_host_s": 1436.812,
+          "selection_end_host_s": 1443.184
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 1444.0,
+          "stop_host_s": 1446.531,
+          "stop_movement": "stop",
+          "next_active_host_s": 1450.093,
+          "selection_start_host_s": 1442.5,
+          "selection_end_host_s": 1449.231
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1450.093,
+          "stop_host_s": 1452.14,
+          "stop_movement": "stop",
+          "next_active_host_s": 1455.687,
+          "selection_start_host_s": 1448.593,
+          "selection_end_host_s": 1454.8400000000001
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 1455.687,
+          "stop_host_s": 1457.796,
+          "stop_movement": "stop",
+          "next_active_host_s": 1461.515,
+          "selection_start_host_s": 1454.187,
+          "selection_end_host_s": 1460.496
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1461.515,
+          "stop_host_s": 1463.515,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 1460.015,
+          "selection_end_host_s": 1466.2150000000001
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_104212",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_104212_raw.mp4",
+      "source_frames": 441,
+      "selected_frames": 312,
+      "video_file": "forklift_v4_recording_20260904_104212_raw.avi",
+      "video_bytes": 63973832,
+      "video_sha256": "d8bc94bc1528994f3f90561445ec8c19415c1aaa45453292c7c0c59c714a79c3",
+      "decoded_pixels_sha256": "953dfee774b7458a09e089ef53fa0c328a79711ed1755f12686805421720a37e",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_104212_raw.mp4": "1f4d1ec75740eee1f4e7d7d20d63375fd037636c1a04250d8551c7838e49651e",
+        "forklift_v4_recording_20260904_104212_inference_timing.csv": "394e3bd27385c7faf6e89a700e1d7025ce29937d48e914e2dc4cfe2ce1722e3b",
+        "forklift_v4_recording_20260904_104212_meta.json": "81398178ddc7d7b40d1d06b7dfe4ec731e3b74ee84145952746f58e1adb1ec50",
+        "forklift_v4_recording_20260904_104212_control_seq.jsonl": "77e714e46a9a86136e4ad1b060476a27c98ebc88d03e177083de78e2fac9ddc9"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 1674.718,
+          "stop_host_s": 1676.078,
+          "stop_movement": "stop",
+          "next_active_host_s": 1679.75,
+          "selection_start_host_s": 1673.218,
+          "selection_end_host_s": 1678.778
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 1691.64,
+          "stop_host_s": 1694.171,
+          "stop_movement": "stop",
+          "next_active_host_s": 1698.0,
+          "selection_start_host_s": 1690.14,
+          "selection_end_host_s": 1696.871
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1698.0,
+          "stop_host_s": 1700.437,
+          "stop_movement": "stop",
+          "next_active_host_s": 1704.093,
+          "selection_start_host_s": 1696.5,
+          "selection_end_host_s": 1703.137
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 1704.093,
+          "stop_host_s": 1706.25,
+          "stop_movement": "stop",
+          "next_active_host_s": 1709.875,
+          "selection_start_host_s": 1702.593,
+          "selection_end_host_s": 1708.95
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1709.875,
+          "stop_host_s": 1711.968,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 1708.375,
+          "selection_end_host_s": 1714.6680000000001
+        }
+      ],
+      "clock_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "clock_scale": 1.0001333127379608,
+      "clock_rmse_ms": 18.965452066077496,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_105241",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105241_raw.mp4",
+      "source_frames": 671,
+      "selected_frames": 32,
+      "video_file": "forklift_v4_recording_20260904_105241_raw.avi",
+      "video_bytes": 6142336,
+      "video_sha256": "2de87f2af03a362d011aa0fceae7d890f82eea0dd61f6cdf76066e5bc208a5a7",
+      "decoded_pixels_sha256": "3d40593bcdf0164c6bdd67a687a4b513d805a19389bb5f3422416bc70cd50949",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_105241_raw.mp4": "20c606ace575bb6216af427fdf371f01aa7a31e62f98e08c63df5a79f2d07385",
+        "forklift_v4_recording_20260904_105241_inference_timing.csv": "1a3d34675c349014be3bdaf22269ac572aeefa8aea051b313c1280654d0ca7bb",
+        "forklift_v4_recording_20260904_105241_meta.json": "6991f737394a40ca7c8307e64affcdfd30d46a56850c05b24d9c18f10c9cc5f9",
+        "forklift_v4_recording_20260904_105241_control_seq.jsonl": "4c57751f2adf70edd499ec194e24a37309d1be4d78dd3e9807714b82e46cfa6e"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2307.25,
+          "stop_host_s": 2307.546,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 2305.75,
+          "selection_end_host_s": 2310.2459999999996
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_105508",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105508_raw.mp4",
+      "source_frames": 614,
+      "selected_frames": 55,
+      "video_file": "forklift_v4_recording_20260904_105508_raw.avi",
+      "video_bytes": 10802870,
+      "video_sha256": "543ca21d2c840638ba55f281df10d6cd5e94be8f72b5254a7da843f5d9610ec6",
+      "decoded_pixels_sha256": "a33272aeeb7ae4d6e0b80cc798bcae3fb3a1a074c93cc932253915848d9a4047",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_105508_raw.mp4": "4444a1ca6a6009324b3cd603812677c7ecbbe9b7a29bc3ae372d217edc0108b5",
+        "forklift_v4_recording_20260904_105508_inference_timing.csv": "cb7d3797fd8f5ec73b075a720d5f41e6e0e25ef605a06d0468326e6f311ca83d",
+        "forklift_v4_recording_20260904_105508_meta.json": "9da0d01575d521c8bc520c7c065400ed0f3dc3446cfd2d8555246570b51cdb04",
+        "forklift_v4_recording_20260904_105508_control_seq.jsonl": "7c3f913fc14ac666d60089fb191ab3445d94d3d14ecbf26afe793c3b77520a67"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2451.812,
+          "stop_host_s": 2454.281,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 2450.312,
+          "selection_end_host_s": 2456.9809999999998
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_105615",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_105615_raw.mp4",
+      "source_frames": 1589,
+      "selected_frames": 390,
+      "video_file": "forklift_v4_recording_20260904_105615_raw.avi",
+      "video_bytes": 81040224,
+      "video_sha256": "d3b484c5d4887479ef971b2164c1e4e5923dc71fccbc8d710a1683d0511845b8",
+      "decoded_pixels_sha256": "9ada57c3cb266458a4904f34f1c05598dbfc4a21fed5ce984ca0fda5ffe392a9",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_105615_raw.mp4": "6826eb8ae3e166ba7421999448fa583999acaf48ae47558d23ea5ac8971b6e2a",
+        "forklift_v4_recording_20260904_105615_inference_timing.csv": "3bbff5959708853d171bcb21517ad23c0245d59eb61eed35cb534e1d2a15dd1b",
+        "forklift_v4_recording_20260904_105615_meta.json": "7cb919bbfb01015c936c69e0f0cdcab32055ca7145be8ec3d63ae08dd3288f19",
+        "forklift_v4_recording_20260904_105615_control_seq.jsonl": "ff13756a9b74ee961fc50a15af5d655d88578d63cefb5a3b87fdfac3682b4366"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2530.0,
+          "stop_host_s": 2531.421,
+          "stop_movement": "stop",
+          "next_active_host_s": 2535.296,
+          "selection_start_host_s": 2528.5,
+          "selection_end_host_s": 2534.1209999999996
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2535.296,
+          "stop_host_s": 2536.453,
+          "stop_movement": "stop",
+          "next_active_host_s": 2540.25,
+          "selection_start_host_s": 2533.796,
+          "selection_end_host_s": 2539.153
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2548.453,
+          "stop_host_s": 2549.859,
+          "stop_movement": "stop",
+          "next_active_host_s": 2553.531,
+          "selection_start_host_s": 2546.953,
+          "selection_end_host_s": 2552.5589999999997
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 2559.093,
+          "stop_host_s": 2560.921,
+          "stop_movement": "stop",
+          "next_active_host_s": 2564.453,
+          "selection_start_host_s": 2557.593,
+          "selection_end_host_s": 2563.6209999999996
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2564.453,
+          "stop_host_s": 2566.093,
+          "stop_movement": "stop",
+          "next_active_host_s": 2569.625,
+          "selection_start_host_s": 2562.953,
+          "selection_end_host_s": 2568.7929999999997
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2569.625,
+          "stop_host_s": 2570.937,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 2568.125,
+          "selection_end_host_s": 2573.6369999999997
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_142318",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_142318_raw.mp4",
+      "source_frames": 5895,
+      "selected_frames": 84,
+      "video_file": "forklift_v4_recording_20260904_142318_raw.avi",
+      "video_bytes": 18468032,
+      "video_sha256": "3c00a58331334e01d4501e1deaa0cfd0993e5db1beb51fb409515b328bc39782",
+      "decoded_pixels_sha256": "c688ff71e33cc43c9860e55269a0f37d5dab02e9ad89474156513709ee4ad856",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_142318_raw.mp4": "56cfc3c9fef5fcc2971839f6fc09b4d5e22edf116415cedd4040cc7166986f0d",
+        "forklift_v4_recording_20260904_142318_inference_timing.csv": "55c27ada86adf3b3a58c94ba720a42ee4c249f62046785130785b1ac775d43f3",
+        "forklift_v4_recording_20260904_142318_meta.json": "a188eb8cd3f2d1f22e838ebed96eeab700ff3f28f9cc7487f33df1be86406a0a",
+        "forklift_v4_recording_20260904_142318_control_seq.jsonl": "1235ef04a16469f21f0218d602557e06bed5bb029a4aba856e402d1dade829fc"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 1645.609,
+          "stop_host_s": 1648.109,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 1644.109,
+          "selection_end_host_s": 1650.809
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_144221",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144221_raw.mp4",
+      "source_frames": 922,
+      "selected_frames": 105,
+      "video_file": "forklift_v4_recording_20260904_144221_raw.avi",
+      "video_bytes": 20140754,
+      "video_sha256": "04f05694292afa83cd4c5e1dbd580345c0e0b7626ffaaeefed9d2c4d0cefd392",
+      "decoded_pixels_sha256": "e5d33abff0f59e98781b2e6c3a54d5268746d7e8a27cc3eb8926ed924990f7e6",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_144221_raw.mp4": "cec330fd791d2e073ed3da8ef58e5315cb673d5f1ba5a5994017ab0181cc6e49",
+        "forklift_v4_recording_20260904_144221_inference_timing.csv": "5434d276fd7ee66aee6cd10d197578f07110a34bca15a590ff6cb0dfe916b635",
+        "forklift_v4_recording_20260904_144221_meta.json": "0892ab4113bdd5f95c5a74f0355ba026b95eed147acb927c12dbb6e269b8a261",
+        "forklift_v4_recording_20260904_144221_control_seq.jsonl": "8c9fbb41b6480bad0e9b24f0a759077746eac3e1632bd59b14808e89b0c51fc4"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 2772.781,
+          "stop_host_s": 2774.89,
+          "stop_movement": "stop",
+          "next_active_host_s": 2781.953,
+          "selection_start_host_s": 2771.281,
+          "selection_end_host_s": 2777.5899999999997
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 2781.953,
+          "stop_host_s": 2782.687,
+          "stop_movement": "stop",
+          "next_active_host_s": 2789.984,
+          "selection_start_host_s": 2780.453,
+          "selection_end_host_s": 2785.3869999999997
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_144733",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_144733_raw.mp4",
+      "source_frames": 1977,
+      "selected_frames": 122,
+      "video_file": "forklift_v4_recording_20260904_144733_raw.avi",
+      "video_bytes": 27702568,
+      "video_sha256": "745bfa951eb4f0d19142e6b6a083a23687e05669c68a25f18c69682464638a0f",
+      "decoded_pixels_sha256": "087ef9c0fae4f0aff7e9ca4a3f825f59424c4b4f62dc8dae8c1d11b2b34dc66e",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_144733_raw.mp4": "81244531c201c840bebca5d70605dfb825f2dd52301cca167e85810b8cd544b5",
+        "forklift_v4_recording_20260904_144733_inference_timing.csv": "46651c1dc78f1fffb00d62703e7679379d83b54522629cd4048b8438162954b8",
+        "forklift_v4_recording_20260904_144733_meta.json": "e477898d0c0a2ec3a323a6a3a1c8f8bca14bbbbde7dafed975caf2e3b7ff510a",
+        "forklift_v4_recording_20260904_144733_control_seq.jsonl": "79dd0d97da760e5c36b235c2bd2e41d2f0fa6c897c5988e10defce6cc6f623e6"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 3106.609,
+          "stop_host_s": 3108.156,
+          "stop_movement": "stop",
+          "next_active_host_s": 3115.0,
+          "selection_start_host_s": 3105.109,
+          "selection_end_host_s": 3110.8559999999998
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 3136.671,
+          "stop_host_s": 3138.468,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 3135.171,
+          "selection_end_host_s": 3141.1679999999997
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_145924",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_145924_raw.mp4",
+      "source_frames": 2654,
+      "selected_frames": 139,
+      "video_file": "forklift_v4_recording_20260904_145924_raw.avi",
+      "video_bytes": 30259802,
+      "video_sha256": "756657c29e979d59be1de2a96e32662e7ab9d09a97384df8f62b72940c96f9d3",
+      "decoded_pixels_sha256": "8d06b553b53d999ee764d7e4eff518308b63277cf9a1a373c00d8a5495389835",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_145924_raw.mp4": "aaab15676300875dd9558b7f4130e202755dd1c38adf13313b3bf79a071f04fe",
+        "forklift_v4_recording_20260904_145924_inference_timing.csv": "65f4ddd8431db6145901b29190bfa1dd7f56262088c9f626fb839be55c0d1bb6",
+        "forklift_v4_recording_20260904_145924_meta.json": "a166331c44ee303b205147a075eddc968268fa27bc1ddd69ef6691592d91b09f",
+        "forklift_v4_recording_20260904_145924_control_seq.jsonl": "a4753cfedfaafc4b0453bea4d48912f07228e2bd6a08cf24e4454a9cbfd82bfc"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 3806.765,
+          "stop_host_s": 3808.781,
+          "stop_movement": "stop",
+          "next_active_host_s": 3815.546,
+          "selection_start_host_s": 3805.265,
+          "selection_end_host_s": 3811.4809999999998
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 3826.203,
+          "stop_host_s": 3827.718,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 3824.703,
+          "selection_end_host_s": 3830.4179999999997
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_150944",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150944_raw.mp4",
+      "source_frames": 563,
+      "selected_frames": 138,
+      "video_file": "forklift_v4_recording_20260904_150944_raw.avi",
+      "video_bytes": 30750030,
+      "video_sha256": "527f7c06e97d69dca27658fab1b95b52afb514ab18c3abffb25c59786a9cd50b",
+      "decoded_pixels_sha256": "cab85c54d8590c9db1066534a954162f2686edbf7c8c5fc0a7a381db18ca8a24",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_150944_raw.mp4": "182277b73b6d591884e75dbaf74d7cfb2ba95d67405ef3288f9af6a072a2a1f3",
+        "forklift_v4_recording_20260904_150944_inference_timing.csv": "a287c4e74b85371a0f5ffbe32d30fb0334531b04c249448fcc807c84ca13e15c",
+        "forklift_v4_recording_20260904_150944_meta.json": "5105ff4d896662f06b4814588fe17c5406330064aee57eedc657e9398b203828",
+        "forklift_v4_recording_20260904_150944_control_seq.jsonl": "52d096badd12ca1acbb46d7f2e63f093177ea37ba8e8700751d445992974d78a"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 4429.359,
+          "stop_host_s": 4430.875,
+          "stop_movement": "stop",
+          "next_active_host_s": 4439.812,
+          "selection_start_host_s": 4427.859,
+          "selection_end_host_s": 4433.575
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 4439.812,
+          "stop_host_s": 4441.531,
+          "stop_movement": "stop",
+          "next_active_host_s": 4449.484,
+          "selection_start_host_s": 4438.312,
+          "selection_end_host_s": 4444.231
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 4449.484,
+          "stop_host_s": 4451.203,
+          "stop_movement": "stop",
+          "next_active_host_s": null,
+          "selection_start_host_s": 4447.984,
+          "selection_end_host_s": 4453.903
+        }
+      ],
+      "clock_source": "camera_input_host_mono_ms",
+      "clock_scale": null,
+      "clock_rmse_ms": null,
+      "timing_rows_without_host_timestamp": 0
+    },
+    {
+      "prefix": "forklift_v4_recording_20260904_190446",
+      "source_video": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_190446_raw.mp4",
+      "source_frames": 1056,
+      "selected_frames": 213,
+      "video_file": "forklift_v4_recording_20260904_190446_raw.avi",
+      "video_bytes": 56127156,
+      "video_sha256": "b2c9a654bb5459bebaa25f99f11faf5fcc1a42ad088e4d9641e49ae23dc40c5f",
+      "decoded_pixels_sha256": "9f2e5b8f0158f98395d98304e5b88116d600a9afd1fd3be78e6ca6554b257e3e",
+      "source_hashes": {
+        "forklift_v4_recording_20260904_190446_raw.mp4": "57b8a40f529fbcd758f35d4fb70f6a64fecbeee633360af19a3a4de5f1bdd71d",
+        "forklift_v4_recording_20260904_190446_inference_timing.csv": "06324607f550e7993d8b1a1d0e7a6e32806d513045ce607b5f5022979e2a02d7",
+        "forklift_v4_recording_20260904_190446_meta.json": "2b23a79331df5e49380a67182f6b39f2eb6fa232f40805c5fbb2369b9d0c9345",
+        "forklift_v4_recording_20260904_190446_control_seq.jsonl": "f205bbca22f096ac5651e436ec0d06776e27c48f27dd21f00c79cddead6a52e0"
+      },
+      "command_windows": [
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 18517.453,
+          "stop_host_s": 18519.187,
+          "stop_movement": "stop",
+          "next_active_host_s": 18527.093,
+          "selection_start_host_s": 18515.953,
+          "selection_end_host_s": 18521.887000000002
+        },
+        {
+          "command": "ROT_RIGHT",
+          "strength": 30,
+          "command_host_s": 18541.531,
+          "stop_host_s": 18543.562,
+          "stop_movement": "stop",
+          "next_active_host_s": 18550.453,
+          "selection_start_host_s": 18540.031,
+          "selection_end_host_s": 18546.262000000002
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 18550.453,
+          "stop_host_s": 18550.781,
+          "stop_movement": "stop",
+          "next_active_host_s": 18557.828,
+          "selection_start_host_s": 18548.953,
+          "selection_end_host_s": 18553.481
+        },
+        {
+          "command": "ROT_LEFT",
+          "strength": 30,
+          "command_host_s": 18578.531,
+          "stop_host_s": 18579.296,
+          "stop_movement": "stop",
+          "next_active_host_s": 18586.109,
+          "selection_start_host_s": 18577.031,
+          "selection_end_host_s": 18581.996
+        }
+      ],
+      "clock_source": "camera_sensor_timestamp_ms_affine_to_host_mono",
+      "clock_scale": 0.9999739559969162,
+      "clock_rmse_ms": 17.112964193321506,
+      "timing_rows_without_host_timestamp": 0
+    }
+  ]
+}

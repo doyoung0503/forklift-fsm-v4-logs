@@ -1,0 +1,70 @@
+{
+  "dead_time_sec": 1.1157336681458219,
+  "phase_fit": {
+    "accel_deg_s2": 27.809066251011373,
+    "accel_duration_sec": 0.15000000000000074,
+    "max_rate_deg_s": 4.171359937651727,
+    "rmse_deg": 2.0144357243046525,
+    "n_samples": 276,
+    "n_segments": 25,
+    "cruise_segments": 25,
+    "identifiable": true,
+    "note": ""
+  },
+  "inertia_fit": {
+    "intercept_deg": 0.0,
+    "slope_sec": 0.34023914705643815,
+    "rmse_deg": 2.3160239889192176,
+    "n_segments": 22,
+    "speed_min_deg_s": 1.842244797650084,
+    "speed_max_deg_s": 24.410395416339,
+    "identifiable": true,
+    "note": ""
+  },
+  "segment_count": 46,
+  "drive_usable": 25,
+  "inertia_usable": 22,
+  "direction_sign_audit": {
+    "directions": {
+      "LEFT": {
+        "positive": 9,
+        "negative": 0,
+        "modal_sign": 1
+      },
+      "RIGHT": {
+        "positive": 0,
+        "negative": 16,
+        "modal_sign": -1
+      }
+    },
+    "ambiguous_directions": [],
+    "left_right_modal_signs_are_opposite": true
+  },
+  "acceleration_duration_bounds_s": [
+    0.15,
+    2.68911106145282
+  ],
+  "acceleration_at_lower_bound": true,
+  "warning": "Acceleration duration is at optimizer lower bound; acceleration and its duration are not independently resolved.",
+  "parameters": {
+    "schema_version": 1,
+    "model_type": "log_rotation_piecewise",
+    "parameters": {
+      "command_strength": 30,
+      "dead_time_sec": 1.1157336681458219,
+      "accel_duration_sec": 0.15000000000000074,
+      "accel_deg_s2": 27.809066251011373,
+      "max_rate_deg_s": 4.171359937651727,
+      "inertia_intercept_deg": 0.0,
+      "inertia_slope_sec": 0.34023914705643815
+    },
+    "fit_metadata": {
+      "fitted_min_hold_sec": 1.5159999999996217,
+      "fitted_max_hold_sec": 2.530999999999949,
+      "fitted_min_angle_deg": 3.7614345,
+      "fitted_max_angle_deg": 20.1499495
+    }
+  },
+  "deployment_performed": false,
+  "safe_for_control": false
+}

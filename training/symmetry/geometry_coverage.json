@@ -1,0 +1,2556 @@
+{
+  "summary": {
+    "train": {
+      "images": 162,
+      "two_visible_vertical_faces": 7,
+      "max_generated_reprojection_residual_px": 1.1910168285683123,
+      "near_tie_ratio_lt_1_1": 0,
+      "near_tie_ratio_lt_1_25": 0,
+      "ratio_percentiles": [
+        5.086067091286135,
+        5.3902120142189975,
+        5.427241786985345,
+        71.42804172757427,
+        844.3851252750399
+      ],
+      "annotation_yaw_percentiles": [
+        -13.102311997031627,
+        -2.647090151546149,
+        -1.8282429250748744,
+        0.926523716677619,
+        15.84582905942752
+      ]
+    },
+    "val": {
+      "images": 38,
+      "two_visible_vertical_faces": 14,
+      "max_generated_reprojection_residual_px": 0.053858303375048384,
+      "near_tie_ratio_lt_1_1": 0,
+      "near_tie_ratio_lt_1_25": 0,
+      "ratio_percentiles": [
+        20.854117629762573,
+        25.646233748007507,
+        26.65805853831557,
+        27.819397182293507,
+        34.898432824821846
+      ],
+      "annotation_yaw_percentiles": [
+        -17.79506313881036,
+        -12.25158910016368,
+        15.298974260930486,
+        15.68656505724564,
+        16.245691807335543
+      ]
+    },
+    "test": {
+      "images": 45,
+      "two_visible_vertical_faces": 15,
+      "max_generated_reprojection_residual_px": 0.0011142314514848927,
+      "near_tie_ratio_lt_1_1": 0,
+      "near_tie_ratio_lt_1_25": 0,
+      "ratio_percentiles": [
+        8.759494028889135,
+        10.684540039362371,
+        10.826228964342341,
+        11.012902088608207,
+        11.602759138115202
+      ],
+      "annotation_yaw_percentiles": [
+        -13.713709622593436,
+        -2.6636617021400926,
+        1.7662947865079954,
+        12.377524065859037,
+        12.843668794539129
+      ]
+    }
+  },
+  "records": [
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000000",
+      "split": "train",
+      "visible_face_areas": [
+        4242.11658053007
+      ],
+      "generated_reprojection_max_px": 1.685370257634587e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -9.399976954889373
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000010",
+      "split": "train",
+      "visible_face_areas": [
+        4309.754503738135
+      ],
+      "generated_reprojection_max_px": 1.2262949377079253e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -10.371640053993195
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000020",
+      "split": "train",
+      "visible_face_areas": [
+        4277.894817352295
+      ],
+      "generated_reprojection_max_px": 2.8738846390671694e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -10.670076266862266
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000330",
+      "split": "train",
+      "visible_face_areas": [
+        4036.481180601986
+      ],
+      "generated_reprojection_max_px": 2.8253792458187742e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -8.746914179738798
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000340",
+      "split": "train",
+      "visible_face_areas": [
+        4375.814344290644,
+        31.849541392643005
+      ],
+      "generated_reprojection_max_px": 5.174745685929679e-10,
+      "dominance_ratio": 137.3901837500688,
+      "annotation_yaw_deg": -6.329546653678921
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000350",
+      "split": "train",
+      "visible_face_areas": [
+        4231.020862966776
+      ],
+      "generated_reprojection_max_px": 1.8840734209680723e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.796372678587295
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000360",
+      "split": "train",
+      "visible_face_areas": [
+        4293.163647975773
+      ],
+      "generated_reprojection_max_px": 1.9576605671235137e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.182215586424379
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000370",
+      "split": "train",
+      "visible_face_areas": [
+        4390.177452087402
+      ],
+      "generated_reprojection_max_px": 0.036202399458112315,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -4.942731842390551
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000380",
+      "split": "train",
+      "visible_face_areas": [
+        4344.407097025774
+      ],
+      "generated_reprojection_max_px": 1.118946270097544e-06,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.02122849329125
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000390",
+      "split": "train",
+      "visible_face_areas": [
+        4325.288681030273
+      ],
+      "generated_reprojection_max_px": 5.498259009183339e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.117552434189713
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000400",
+      "split": "train",
+      "visible_face_areas": [
+        4452.974685668945
+      ],
+      "generated_reprojection_max_px": 1.2458467282653986e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.296813318769994
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000410",
+      "split": "train",
+      "visible_face_areas": [
+        4348.156401898712
+      ],
+      "generated_reprojection_max_px": 7.971169890216826e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.03070954478325
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000420",
+      "split": "train",
+      "visible_face_areas": [
+        4344.31441116333
+      ],
+      "generated_reprojection_max_px": 8.026985617763292e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.308978827162699
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000430",
+      "split": "train",
+      "visible_face_areas": [
+        4371.945121765137
+      ],
+      "generated_reprojection_max_px": 1.951318590705314e-06,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -4.998363964705166
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000620",
+      "split": "train",
+      "visible_face_areas": [
+        4735.520588622196
+      ],
+      "generated_reprojection_max_px": 8.57102403672463e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.145130422277593
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000630",
+      "split": "train",
+      "visible_face_areas": [
+        4594.616241455078
+      ],
+      "generated_reprojection_max_px": 5.532298978555209e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.717848616964113
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000640",
+      "split": "train",
+      "visible_face_areas": [
+        4617.518444096902
+      ],
+      "generated_reprojection_max_px": 5.483185475156518e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.356743675326342
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000650",
+      "split": "train",
+      "visible_face_areas": [
+        4566.081002030522
+      ],
+      "generated_reprojection_max_px": 8.091052411251542e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.2409547093615645
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000660",
+      "split": "train",
+      "visible_face_areas": [
+        4661.055242630653
+      ],
+      "generated_reprojection_max_px": 1.0300795033986725e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.018659508238806
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000670",
+      "split": "train",
+      "visible_face_areas": [
+        4547.115590141388
+      ],
+      "generated_reprojection_max_px": 3.822560169191665e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.272279108667625
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000680",
+      "split": "train",
+      "visible_face_areas": [
+        4455.668652541004
+      ],
+      "generated_reprojection_max_px": 2.5432050820115602e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.282515578392973
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000690",
+      "split": "train",
+      "visible_face_areas": [
+        4504.685114618391,
+        5.334870285820216
+      ],
+      "generated_reprojection_max_px": 3.643461723060911e-08,
+      "dominance_ratio": 844.3851252750399,
+      "annotation_yaw_deg": -6.831335455540548
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000700",
+      "split": "train",
+      "visible_face_areas": [
+        4488.200113026425
+      ],
+      "generated_reprojection_max_px": 1.3780139276160132e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.04275069252212
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000710",
+      "split": "train",
+      "visible_face_areas": [
+        4527.310623168945
+      ],
+      "generated_reprojection_max_px": 1.654720277193347e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.367303647841384
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000720",
+      "split": "train",
+      "visible_face_areas": [
+        4521.591200092109
+      ],
+      "generated_reprojection_max_px": 4.924944561448471e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.443874316406685
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000730",
+      "split": "train",
+      "visible_face_areas": [
+        4511.1278648376465
+      ],
+      "generated_reprojection_max_px": 3.9269775379785034e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.705406432492848
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_000740",
+      "split": "train",
+      "visible_face_areas": [
+        4577.975124359131
+      ],
+      "generated_reprojection_max_px": 7.095452918864194e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.637900727779376
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190408_frame_001170",
+      "split": "train",
+      "visible_face_areas": [
+        4985.509929656982
+      ],
+      "generated_reprojection_max_px": 3.0482947118411197e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -4.9967823184906
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000000",
+      "split": "val",
+      "visible_face_areas": [
+        4901.418781041866
+      ],
+      "generated_reprojection_max_px": 6.492802825003716e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -5.730467745025799
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000010",
+      "split": "val",
+      "visible_face_areas": [
+        5067.715129135875
+      ],
+      "generated_reprojection_max_px": 0.010899742674397963,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.9211015715127004
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000020",
+      "split": "val",
+      "visible_face_areas": [
+        5044.983338431688
+      ],
+      "generated_reprojection_max_px": 3.580405308181671e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.724668723106276
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000030",
+      "split": "val",
+      "visible_face_areas": [
+        5067.850051879883
+      ],
+      "generated_reprojection_max_px": 1.1469214460888142e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.953880277964668
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000040",
+      "split": "val",
+      "visible_face_areas": [
+        5012.783646584256
+      ],
+      "generated_reprojection_max_px": 4.011479051002636e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -6.157212758459634
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000080",
+      "split": "val",
+      "visible_face_areas": [
+        5002.654473866103
+      ],
+      "generated_reprojection_max_px": 5.8862362768466354e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -8.197597743260308
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000090",
+      "split": "val",
+      "visible_face_areas": [
+        5696.682087820489
+      ],
+      "generated_reprojection_max_px": 1.655621446539987e-06,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -17.6319435059861
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000100",
+      "split": "val",
+      "visible_face_areas": [
+        5547.405955772614
+      ],
+      "generated_reprojection_max_px": 5.2725854384115404e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -17.031103057097592
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000110",
+      "split": "val",
+      "visible_face_areas": [
+        5588.039738031104
+      ],
+      "generated_reprojection_max_px": 3.483843921637003e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -17.79506313881036
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000120",
+      "split": "val",
+      "visible_face_areas": [
+        5502.580623489106
+      ],
+      "generated_reprojection_max_px": 1.3350771075459665e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -17.134224725729236
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000130",
+      "split": "val",
+      "visible_face_areas": [
+        5408.28953035688
+      ],
+      "generated_reprojection_max_px": 3.1742362087032602e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -16.759537144333862
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000230",
+      "split": "val",
+      "visible_face_areas": [
+        5317.736254156567
+      ],
+      "generated_reprojection_max_px": 1.169053582780853e-06,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -13.602919552464803
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000280",
+      "split": "val",
+      "visible_face_areas": [
+        5720.143505903892
+      ],
+      "generated_reprojection_max_px": 1.1287478254162518e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -14.173335480972385
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000420",
+      "split": "val",
+      "visible_face_areas": [
+        6260.412599779316
+      ],
+      "generated_reprojection_max_px": 6.707655070269503e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -15.15213547459812
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000610",
+      "split": "val",
+      "visible_face_areas": [
+        6141.422221262124
+      ],
+      "generated_reprojection_max_px": 0.053858303375048384,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -16.080209887341972
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_190743_frame_000620",
+      "split": "val",
+      "visible_face_areas": [
+        6231.356925824424
+      ],
+      "generated_reprojection_max_px": 0.0009208091471730223,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -15.370635905294042
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_192118_frame_000020",
+      "split": "train",
+      "visible_face_areas": [
+        1729.1966705322266
+      ],
+      "generated_reprojection_max_px": 2.3479833748245866e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -11.809171087393754
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_192118_frame_000040",
+      "split": "train",
+      "visible_face_areas": [
+        1506.0607643127441
+      ],
+      "generated_reprojection_max_px": 6.605622081432735e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.3705683992041712
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_192254_frame_000030",
+      "split": "test",
+      "visible_face_areas": [
+        3196.2172757422086
+      ],
+      "generated_reprojection_max_px": 3.6646363972540606e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.3666083233384354
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_192254_frame_000040",
+      "split": "test",
+      "visible_face_areas": [
+        3205.0338130802847
+      ],
+      "generated_reprojection_max_px": 6.387935970375953e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.5949786108866486
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_192254_frame_000050",
+      "split": "test",
+      "visible_face_areas": [
+        3124.7116165161133
+      ],
+      "generated_reprojection_max_px": 2.309998114512754e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.5350904274212236
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_192254_frame_000410",
+      "split": "test",
+      "visible_face_areas": [
+        3127.2215327208396,
+        338.14035768574104
+      ],
+      "generated_reprojection_max_px": 1.4825829916095539e-08,
+      "dominance_ratio": 9.248294270828207,
+      "annotation_yaw_deg": 0.15002805800745253
+    },
+    {
+      "stem": "forklift_v4_recording_20260903_192254_frame_000420",
+      "split": "test",
+      "visible_face_areas": [
+        3096.453045084141,
+        353.4967927224934
+      ],
+      "generated_reprojection_max_px": 5.66130272178784e-08,
+      "dominance_ratio": 8.759494028889135,
+      "annotation_yaw_deg": 0.26889394901224023
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_003325",
+      "split": "val",
+      "visible_face_areas": [
+        4460.268003019504,
+        127.80711458902806
+      ],
+      "generated_reprojection_max_px": 4.7249068605888315e-08,
+      "dominance_ratio": 34.898432824821846,
+      "annotation_yaw_deg": 15.030484134751704
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_003355",
+      "split": "val",
+      "visible_face_areas": [
+        4245.58358001709,
+        144.27662658691406
+      ],
+      "generated_reprojection_max_px": 6.133968464011672e-08,
+      "dominance_ratio": 29.426690105340775,
+      "annotation_yaw_deg": 15.393846100952365
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_003385",
+      "split": "val",
+      "visible_face_areas": [
+        4406.276056862902,
+        165.43550685048103
+      ],
+      "generated_reprojection_max_px": 9.436915335865413e-09,
+      "dominance_ratio": 26.634403585714225,
+      "annotation_yaw_deg": 15.371541103271511
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_003415",
+      "split": "val",
+      "visible_face_areas": [
+        4346.88960647583,
+        187.72189712524414
+      ],
+      "generated_reprojection_max_px": 8.195315598102887e-06,
+      "dominance_ratio": 23.15600722688028,
+      "annotation_yaw_deg": 15.84062038290195
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_003445",
+      "split": "val",
+      "visible_face_areas": [
+        4590.36026763916,
+        173.2888298034668
+      ],
+      "generated_reprojection_max_px": 0.023953978312632934,
+      "dominance_ratio": 26.48964894532011,
+      "annotation_yaw_deg": 15.318849614204773
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005005",
+      "split": "val",
+      "visible_face_areas": [
+        4475.858135223389,
+        175.43325895490125
+      ],
+      "generated_reprojection_max_px": 1.1838479030328641e-07,
+      "dominance_ratio": 25.51316758228838,
+      "annotation_yaw_deg": 15.1994417685661
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005035",
+      "split": "val",
+      "visible_face_areas": [
+        4475.789867782965,
+        214.6237950338982
+      ],
+      "generated_reprojection_max_px": 2.4654650707835334e-08,
+      "dominance_ratio": 20.854117629762573,
+      "annotation_yaw_deg": 16.245691807335543
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005065",
+      "split": "val",
+      "visible_face_areas": [
+        4514.680057525635,
+        173.33864974975586
+      ],
+      "generated_reprojection_max_px": 1.958470637436458e-06,
+      "dominance_ratio": 26.045432245164893,
+      "annotation_yaw_deg": 15.553728123771338
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005095",
+      "split": "val",
+      "visible_face_areas": [
+        4424.533046722412,
+        161.6765480041504
+      ],
+      "generated_reprojection_max_px": 4.627118824320854e-09,
+      "dominance_ratio": 27.36657295904679,
+      "annotation_yaw_deg": 15.282709019475487
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005125",
+      "split": "val",
+      "visible_face_areas": [
+        4346.948628171347,
+        156.81861082324758
+      ],
+      "generated_reprojection_max_px": 2.4927766354902813e-08,
+      "dominance_ratio": 27.71959657945735,
+      "annotation_yaw_deg": 15.354548998430076
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005155",
+      "split": "val",
+      "visible_face_areas": [
+        4446.293982575182,
+        166.64199561579153
+      ],
+      "generated_reprojection_max_px": 3.0368779877113586e-08,
+      "dominance_ratio": 26.681713490916913,
+      "annotation_yaw_deg": 15.33657523093882
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005185",
+      "split": "val",
+      "visible_face_areas": [
+        4373.674606323242,
+        155.17061233520508
+      ],
+      "generated_reprojection_max_px": 1.3651325457729517e-10,
+      "dominance_ratio": 28.186230243617747,
+      "annotation_yaw_deg": 15.315239502385486
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142318_frame_005875",
+      "split": "val",
+      "visible_face_areas": [
+        4448.117298467085,
+        159.7016820544377
+      ],
+      "generated_reprojection_max_px": 7.425426727382241e-09,
+      "dominance_ratio": 27.85266404990556,
+      "annotation_yaw_deg": 15.333240547561804
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000010",
+      "split": "val",
+      "visible_face_areas": [
+        4593.530475959182,
+        216.93246400356293
+      ],
+      "generated_reprojection_max_px": 1.3133248926968387e-08,
+      "dominance_ratio": 21.174933392559158,
+      "annotation_yaw_deg": 15.963811126266165
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000040",
+      "split": "val",
+      "visible_face_areas": [
+        6691.443196207285
+      ],
+      "generated_reprojection_max_px": 4.50749152310509e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 16.09975888436882
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000070",
+      "split": "val",
+      "visible_face_areas": [
+        6743.310335400514
+      ],
+      "generated_reprojection_max_px": 3.896350006523513e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 15.604244347252783
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000100",
+      "split": "val",
+      "visible_face_areas": [
+        6699.485074696597
+      ],
+      "generated_reprojection_max_px": 2.1489437469089614e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 15.82200930122731
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000130",
+      "split": "val",
+      "visible_face_areas": [
+        6665.120735334232
+      ],
+      "generated_reprojection_max_px": 4.423738961191178e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 15.924054437465662
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000160",
+      "split": "val",
+      "visible_face_areas": [
+        6790.707649230957
+      ],
+      "generated_reprojection_max_px": 3.639338205273745e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 15.770145445830082
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000190",
+      "split": "val",
+      "visible_face_areas": [
+        6512.274410247803
+      ],
+      "generated_reprojection_max_px": 9.031111004385998e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 16.079726355561647
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000340",
+      "split": "val",
+      "visible_face_areas": [
+        6633.826217651367
+      ],
+      "generated_reprojection_max_px": 3.360743179307545e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 15.782295302878776
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_142958_frame_000370",
+      "split": "val",
+      "visible_face_areas": [
+        6775.859916687012
+      ],
+      "generated_reprojection_max_px": 6.436427910932431e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 15.714005293909924
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144221_frame_000006",
+      "split": "train",
+      "visible_face_areas": [
+        6460.544129236601
+      ],
+      "generated_reprojection_max_px": 1.741863436046931e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 15.84582905942752
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000014",
+      "split": "test",
+      "visible_face_areas": [
+        2648.1400126498193,
+        241.72578117018566
+      ],
+      "generated_reprojection_max_px": 3.8400958566278466e-11,
+      "dominance_ratio": 10.955140985914992,
+      "annotation_yaw_deg": 12.435725201509968
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000044",
+      "split": "test",
+      "visible_face_areas": [
+        2620.172824535519,
+        225.82325405068696
+      ],
+      "generated_reprojection_max_px": 5.721616640884682e-09,
+      "dominance_ratio": 11.602759138115202,
+      "annotation_yaw_deg": 12.115165409291757
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000074",
+      "split": "test",
+      "visible_face_areas": [
+        2647.2446949207224,
+        239.73737319279462
+      ],
+      "generated_reprojection_max_px": 2.7067660635566797e-08,
+      "dominance_ratio": 11.042269545482307,
+      "annotation_yaw_deg": 12.377524065859037
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000104",
+      "split": "test",
+      "visible_face_areas": [
+        2574.150903701782,
+        230.86987686157227
+      ],
+      "generated_reprojection_max_px": 3.105284489409221e-08,
+      "dominance_ratio": 11.149791123444063,
+      "annotation_yaw_deg": 12.395153318617012
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000134",
+      "split": "test",
+      "visible_face_areas": [
+        2588.503784751985,
+        240.86735351895913
+      ],
+      "generated_reprojection_max_px": 2.8230471463049946e-08,
+      "dominance_ratio": 10.746594534025297,
+      "annotation_yaw_deg": 12.511524755119943
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000164",
+      "split": "test",
+      "visible_face_areas": [
+        2590.513880695449,
+        232.4303594911471
+      ],
+      "generated_reprojection_max_px": 4.5615187744556835e-09,
+      "dominance_ratio": 11.145333537179845,
+      "annotation_yaw_deg": 12.427457867301756
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000194",
+      "split": "test",
+      "visible_face_areas": [
+        2638.691104549449,
+        246.49127315031365
+      ],
+      "generated_reprojection_max_px": 1.680502160910077e-08,
+      "dominance_ratio": 10.70500821722942,
+      "annotation_yaw_deg": 12.548664549299884
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000224",
+      "split": "test",
+      "visible_face_areas": [
+        2642.7126846313477,
+        241.59657287597656
+      ],
+      "generated_reprojection_max_px": 3.747132840279627e-08,
+      "dominance_ratio": 10.93853548157731,
+      "annotation_yaw_deg": 12.466851843790915
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000254",
+      "split": "test",
+      "visible_face_areas": [
+        2579.276523590088,
+        238.84658432006836
+      ],
+      "generated_reprojection_max_px": 4.258476744871568e-08,
+      "dominance_ratio": 10.798883856482984,
+      "annotation_yaw_deg": 12.472543706624554
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000284",
+      "split": "test",
+      "visible_face_areas": [
+        2637.491989135742,
+        261.32668685913086
+      ],
+      "generated_reprojection_max_px": 1.0214297590153393e-06,
+      "dominance_ratio": 10.092700522995159,
+      "annotation_yaw_deg": 12.843668794539129
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000314",
+      "split": "test",
+      "visible_face_areas": [
+        2630.8604479145724,
+        243.00801845034584
+      ],
+      "generated_reprojection_max_px": 4.971598360003345e-08,
+      "dominance_ratio": 10.826228964342341,
+      "annotation_yaw_deg": 12.426245094452534
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000344",
+      "split": "test",
+      "visible_face_areas": [
+        2604.7419149335474,
+        244.25397247541696
+      ],
+      "generated_reprojection_max_px": 1.67483681661242e-08,
+      "dominance_ratio": 10.664071861495325,
+      "annotation_yaw_deg": 12.605390311877478
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144614_frame_000374",
+      "split": "test",
+      "visible_face_areas": [
+        2601.871160507202,
+        236.8883285522461
+      ],
+      "generated_reprojection_max_px": 9.13491526755347e-09,
+      "dominance_ratio": 10.983534631734106,
+      "annotation_yaw_deg": 12.438713585550357
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000006",
+      "split": "train",
+      "visible_face_areas": [
+        2606.757293701172
+      ],
+      "generated_reprojection_max_px": 1.7984697234451862e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.9466687109766454
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000036",
+      "split": "train",
+      "visible_face_areas": [
+        3480.9529457092285
+      ],
+      "generated_reprojection_max_px": 9.368909414737414e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.449362195080233
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000066",
+      "split": "train",
+      "visible_face_areas": [
+        5071.502876281738
+      ],
+      "generated_reprojection_max_px": 3.9134780571690715e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.612795473757464
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000096",
+      "split": "train",
+      "visible_face_areas": [
+        6074.83279800415
+      ],
+      "generated_reprojection_max_px": 1.766984537263932e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.946484723483538
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000126",
+      "split": "train",
+      "visible_face_areas": [
+        6010.911073684692
+      ],
+      "generated_reprojection_max_px": 2.0864993434681033e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.170453911312373
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000156",
+      "split": "train",
+      "visible_face_areas": [
+        6055.013599395752
+      ],
+      "generated_reprojection_max_px": 0.054028259983113974,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.148331939453809
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000186",
+      "split": "train",
+      "visible_face_areas": [
+        6429.045722331386
+      ],
+      "generated_reprojection_max_px": 1.2736115001017264e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.054198371066479
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000216",
+      "split": "train",
+      "visible_face_areas": [
+        6368.879771947162
+      ],
+      "generated_reprojection_max_px": 7.424934835070774e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.431372413762085
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000246",
+      "split": "train",
+      "visible_face_areas": [
+        6488.528929332504
+      ],
+      "generated_reprojection_max_px": 4.171591725779457e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.087507733300689
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000276",
+      "split": "train",
+      "visible_face_areas": [
+        6525.036100879312
+      ],
+      "generated_reprojection_max_px": 0.002154481367157399,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.470218423623932
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000306",
+      "split": "train",
+      "visible_face_areas": [
+        6532.375007678056
+      ],
+      "generated_reprojection_max_px": 1.5576322763692958e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 5.0241720879045655
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000336",
+      "split": "train",
+      "visible_face_areas": [
+        6482.489718109136
+      ],
+      "generated_reprojection_max_px": 3.04213694611516e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 5.498978153273097
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000366",
+      "split": "train",
+      "visible_face_areas": [
+        6502.681861360325
+      ],
+      "generated_reprojection_max_px": 8.78422733308643e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 4.997703403998778
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000396",
+      "split": "train",
+      "visible_face_areas": [
+        10210.898051788565
+      ],
+      "generated_reprojection_max_px": 1.1282771430922226e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 6.128660989332697
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000426",
+      "split": "train",
+      "visible_face_areas": [
+        11624.87558162678
+      ],
+      "generated_reprojection_max_px": 2.5356842126396327e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 5.4675887418900855
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000456",
+      "split": "train",
+      "visible_face_areas": [
+        11675.723309534602
+      ],
+      "generated_reprojection_max_px": 6.093986556679414e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 6.049587132961737
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000486",
+      "split": "train",
+      "visible_face_areas": [
+        11868.51321826782
+      ],
+      "generated_reprojection_max_px": 8.881664976907115e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 6.0118583975814275
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000516",
+      "split": "train",
+      "visible_face_areas": [
+        24900.030759209767
+      ],
+      "generated_reprojection_max_px": 0.028016245621639964,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 5.796659602315806
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000546",
+      "split": "train",
+      "visible_face_areas": [
+        26072.12706919061
+      ],
+      "generated_reprojection_max_px": 0.17075926563171168,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 5.812878960199541
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000576",
+      "split": "train",
+      "visible_face_areas": [
+        26250.949849318713
+      ],
+      "generated_reprojection_max_px": 3.7780343041759695e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 5.501018696931251
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000606",
+      "split": "train",
+      "visible_face_areas": [
+        26326.568588466384
+      ],
+      "generated_reprojection_max_px": 5.644428107379296e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.6329668353807945
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000636",
+      "split": "train",
+      "visible_face_areas": [
+        26823.97625014704
+      ],
+      "generated_reprojection_max_px": 5.4007447799937044e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.0131299439910815
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000666",
+      "split": "train",
+      "visible_face_areas": [
+        26304.76503793703
+      ],
+      "generated_reprojection_max_px": 3.3008271412852214e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.648154244792013
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000696",
+      "split": "train",
+      "visible_face_areas": [
+        26567.23793504847
+      ],
+      "generated_reprojection_max_px": 6.700411864008326e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.8225132738751024
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000726",
+      "split": "train",
+      "visible_face_areas": [
+        26405.660342725227
+      ],
+      "generated_reprojection_max_px": 8.180262128926566e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.9511055915382385
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000756",
+      "split": "train",
+      "visible_face_areas": [
+        26625.625324666267
+      ],
+      "generated_reprojection_max_px": 6.302757437776617e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.1547016235268015
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000786",
+      "split": "train",
+      "visible_face_areas": [
+        26466.283811821137
+      ],
+      "generated_reprojection_max_px": 8.950962898581843e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.0796993874818828
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000816",
+      "split": "train",
+      "visible_face_areas": [
+        26352.631765638478
+      ],
+      "generated_reprojection_max_px": 6.608302140196985e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.0920220068744086
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000846",
+      "split": "train",
+      "visible_face_areas": [
+        26574.91134471295
+      ],
+      "generated_reprojection_max_px": 1.056685712042939e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.8372518836500034
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000876",
+      "split": "train",
+      "visible_face_areas": [
+        26763.678255974955
+      ],
+      "generated_reprojection_max_px": 1.6870573144782924e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.8339725762746462
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000906",
+      "split": "train",
+      "visible_face_areas": [
+        26692.782936723437
+      ],
+      "generated_reprojection_max_px": 9.504613886985467e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.6438978718085573
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000936",
+      "split": "train",
+      "visible_face_areas": [
+        26797.57017356559
+      ],
+      "generated_reprojection_max_px": 6.259302502465963e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.4751497744798128
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000966",
+      "split": "train",
+      "visible_face_areas": [
+        26549.541993934312
+      ],
+      "generated_reprojection_max_px": 2.6611249029128992e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.3133326697417087
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_000996",
+      "split": "train",
+      "visible_face_areas": [
+        26891.851039847825
+      ],
+      "generated_reprojection_max_px": 1.0482357111579164e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.4272906544312853
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001026",
+      "split": "train",
+      "visible_face_areas": [
+        26356.547631971713
+      ],
+      "generated_reprojection_max_px": 1.083980507331325e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.062319651310677
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001056",
+      "split": "train",
+      "visible_face_areas": [
+        26748.29776981764
+      ],
+      "generated_reprojection_max_px": 4.755827837030086e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.996405950159258
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001086",
+      "split": "train",
+      "visible_face_areas": [
+        26555.383704642998
+      ],
+      "generated_reprojection_max_px": 1.4960937370480736e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.9757996338816948
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001116",
+      "split": "train",
+      "visible_face_areas": [
+        25703.754538549692
+      ],
+      "generated_reprojection_max_px": 1.9938603454185664e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.094008520948977
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001146",
+      "split": "train",
+      "visible_face_areas": [
+        26571.824568293523
+      ],
+      "generated_reprojection_max_px": 6.596925989973195e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.3440331592878203
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001176",
+      "split": "train",
+      "visible_face_areas": [
+        26724.319249238528
+      ],
+      "generated_reprojection_max_px": 1.072789371971567e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.4495092758558066
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001206",
+      "split": "train",
+      "visible_face_areas": [
+        26343.224610951438
+      ],
+      "generated_reprojection_max_px": 2.155038843210963e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.1285388524400477
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001236",
+      "split": "train",
+      "visible_face_areas": [
+        26062.867746571428
+      ],
+      "generated_reprojection_max_px": 6.215161347069326e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.5786714863723308
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001266",
+      "split": "train",
+      "visible_face_areas": [
+        26648.45254636981
+      ],
+      "generated_reprojection_max_px": 1.1197353843962942e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.6500541843305254
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001296",
+      "split": "train",
+      "visible_face_areas": [
+        26557.152448165463
+      ],
+      "generated_reprojection_max_px": 3.6085701068696765e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.7693859955343432
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001326",
+      "split": "train",
+      "visible_face_areas": [
+        26477.568989074323
+      ],
+      "generated_reprojection_max_px": 6.619017193215815e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.8105875553801034
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001356",
+      "split": "train",
+      "visible_face_areas": [
+        26424.492457447923
+      ],
+      "generated_reprojection_max_px": 6.178697202068714e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.004278690665688
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001386",
+      "split": "train",
+      "visible_face_areas": [
+        27421.46552829491
+      ],
+      "generated_reprojection_max_px": 9.38324909294859e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.126918600749964
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001416",
+      "split": "train",
+      "visible_face_areas": [
+        27206.808308039967
+      ],
+      "generated_reprojection_max_px": 1.7718709953041014e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.3248584425328223
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001446",
+      "split": "train",
+      "visible_face_areas": [
+        26229.913240652415
+      ],
+      "generated_reprojection_max_px": 1.1837265352639055e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.403626801763997
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001476",
+      "split": "train",
+      "visible_face_areas": [
+        26990.573855592054
+      ],
+      "generated_reprojection_max_px": 1.245586429866273e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.0417643508300087
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001506",
+      "split": "train",
+      "visible_face_areas": [
+        26910.743733595824
+      ],
+      "generated_reprojection_max_px": 5.264628857972117e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.415299578546423
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001536",
+      "split": "train",
+      "visible_face_areas": [
+        26749.256280705216
+      ],
+      "generated_reprojection_max_px": 5.6640000246338385e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.145669473419721
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001566",
+      "split": "train",
+      "visible_face_areas": [
+        26411.363815671066
+      ],
+      "generated_reprojection_max_px": 5.177688076468507e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.4976587418169585
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001596",
+      "split": "train",
+      "visible_face_areas": [
+        26469.042463897844
+      ],
+      "generated_reprojection_max_px": 5.832491240953275e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.496058205736634
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001626",
+      "split": "train",
+      "visible_face_areas": [
+        25697.342690999678
+      ],
+      "generated_reprojection_max_px": 4.9402199786058376e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.2058718943020605
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001656",
+      "split": "train",
+      "visible_face_areas": [
+        25581.86151458125
+      ],
+      "generated_reprojection_max_px": 1.3740899429985058e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.873145220815909
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001686",
+      "split": "train",
+      "visible_face_areas": [
+        25546.9741407407
+      ],
+      "generated_reprojection_max_px": 0.060411692515666686,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.5086512324594383
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001716",
+      "split": "train",
+      "visible_face_areas": [
+        25622.68636913941
+      ],
+      "generated_reprojection_max_px": 2.7053068070431796e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.891283092763233
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001746",
+      "split": "train",
+      "visible_face_areas": [
+        26629.465551658708
+      ],
+      "generated_reprojection_max_px": 1.2201647721286955e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.599783409234144
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001776",
+      "split": "train",
+      "visible_face_areas": [
+        26671.988786479807
+      ],
+      "generated_reprojection_max_px": 5.21237875822773e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.9098534040234048
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001806",
+      "split": "train",
+      "visible_face_areas": [
+        26551.379877230444
+      ],
+      "generated_reprojection_max_px": 2.711847501994469e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.046980794078601
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001836",
+      "split": "train",
+      "visible_face_areas": [
+        26192.584953283716
+      ],
+      "generated_reprojection_max_px": 0.07335952798103783,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.1709852451769924
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001866",
+      "split": "train",
+      "visible_face_areas": [
+        26613.033096951665
+      ],
+      "generated_reprojection_max_px": 8.349105125540771e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.460982823681117
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001896",
+      "split": "train",
+      "visible_face_areas": [
+        25990.32936766313
+      ],
+      "generated_reprojection_max_px": 2.2558820858741854e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.2345420244029794
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001926",
+      "split": "train",
+      "visible_face_areas": [
+        26220.15639181953
+      ],
+      "generated_reprojection_max_px": 0.058077325938413846,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -1.869498327026741
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_144733_frame_001956",
+      "split": "train",
+      "visible_face_areas": [
+        26788.893662378658
+      ],
+      "generated_reprojection_max_px": 3.1221209414741095e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.4480098973532747
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000009",
+      "split": "train",
+      "visible_face_areas": [
+        3903.269889435265
+      ],
+      "generated_reprojection_max_px": 4.004190537491873e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 10.999525489073706
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000039",
+      "split": "train",
+      "visible_face_areas": [
+        6443.641060533468
+      ],
+      "generated_reprojection_max_px": 1.1280537995352428e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 11.651917021610393
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000069",
+      "split": "train",
+      "visible_face_areas": [
+        6761.367398554925
+      ],
+      "generated_reprojection_max_px": 6.993964495217886e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 11.73833666638375
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000099",
+      "split": "train",
+      "visible_face_areas": [
+        6839.278855550103
+      ],
+      "generated_reprojection_max_px": 6.546103451395428e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 11.607824232051405
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000129",
+      "split": "train",
+      "visible_face_areas": [
+        6872.234579036012
+      ],
+      "generated_reprojection_max_px": 4.498381996161617e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 11.868336722802093
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000159",
+      "split": "train",
+      "visible_face_areas": [
+        6199.806510597467
+      ],
+      "generated_reprojection_max_px": 7.114340332728365e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.0568066580759123
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000189",
+      "split": "train",
+      "visible_face_areas": [
+        6378.521697359858
+      ],
+      "generated_reprojection_max_px": 1.3979591153924325e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.0221646398899624
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000219",
+      "split": "train",
+      "visible_face_areas": [
+        6285.602803105954
+      ],
+      "generated_reprojection_max_px": 2.863997374038167e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.00723088783142
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000249",
+      "split": "train",
+      "visible_face_areas": [
+        6687.375768338563
+      ],
+      "generated_reprojection_max_px": 3.025900086197154e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.029357899791864
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000279",
+      "split": "train",
+      "visible_face_areas": [
+        11227.011839151615
+      ],
+      "generated_reprojection_max_px": 1.4333288820801913e-05,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.325076715413475
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000309",
+      "split": "train",
+      "visible_face_areas": [
+        11718.532424181001
+      ],
+      "generated_reprojection_max_px": 0.059248411019009004,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.042434981108841
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000339",
+      "split": "train",
+      "visible_face_areas": [
+        11849.159534205217
+      ],
+      "generated_reprojection_max_px": 3.28877696432892e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.8748922316991687
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000369",
+      "split": "train",
+      "visible_face_areas": [
+        11580.335320465732
+      ],
+      "generated_reprojection_max_px": 1.3837751461457678e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.2762354810164593
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000399",
+      "split": "train",
+      "visible_face_areas": [
+        11699.04003380239
+      ],
+      "generated_reprojection_max_px": 0.0024414547099448534,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.17230680421996714
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000429",
+      "split": "train",
+      "visible_face_areas": [
+        11725.622283602133
+      ],
+      "generated_reprojection_max_px": 1.1340447835190005e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.32070214238188094
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000459",
+      "split": "train",
+      "visible_face_areas": [
+        11721.215922718402
+      ],
+      "generated_reprojection_max_px": 1.4872865387394835e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.5764261464445997
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000489",
+      "split": "train",
+      "visible_face_areas": [
+        11683.23921959661
+      ],
+      "generated_reprojection_max_px": 7.727699809218192e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.39389705370592054
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000519",
+      "split": "train",
+      "visible_face_areas": [
+        11664.538557551801
+      ],
+      "generated_reprojection_max_px": 1.0753685892300513e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.36469460234334866
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000549",
+      "split": "train",
+      "visible_face_areas": [
+        11508.056624258403
+      ],
+      "generated_reprojection_max_px": 2.5794383642789387e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.1538212682865428
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000579",
+      "split": "train",
+      "visible_face_areas": [
+        11454.771543935174
+      ],
+      "generated_reprojection_max_px": 2.7169782827431762e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.09994007970723706
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000609",
+      "split": "train",
+      "visible_face_areas": [
+        11733.094987032004
+      ],
+      "generated_reprojection_max_px": 1.4808921936665148e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.18848768816443068
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000639",
+      "split": "train",
+      "visible_face_areas": [
+        11632.21976389666
+      ],
+      "generated_reprojection_max_px": 3.629114576972546e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.0779767293978947
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000669",
+      "split": "train",
+      "visible_face_areas": [
+        11659.90417572204
+      ],
+      "generated_reprojection_max_px": 0.0025253089977309235,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.0534254651023323
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000699",
+      "split": "train",
+      "visible_face_areas": [
+        11510.86996114254
+      ],
+      "generated_reprojection_max_px": 1.5767706058915044e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.4370871559982694
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000729",
+      "split": "train",
+      "visible_face_areas": [
+        12103.386097616982
+      ],
+      "generated_reprojection_max_px": 9.074554494345249e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.058670108623149475
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000759",
+      "split": "train",
+      "visible_face_areas": [
+        11793.783588493243
+      ],
+      "generated_reprojection_max_px": 7.765897268076326e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.11628551835321967
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000789",
+      "split": "train",
+      "visible_face_areas": [
+        11728.10439522285
+      ],
+      "generated_reprojection_max_px": 0.11127547906024726,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.26012282997160013
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000819",
+      "split": "train",
+      "visible_face_areas": [
+        11269.00826139911
+      ],
+      "generated_reprojection_max_px": 1.5956856018863578e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.20141390074590387
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000849",
+      "split": "train",
+      "visible_face_areas": [
+        11358.837477899855
+      ],
+      "generated_reprojection_max_px": 1.8521640112293378e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.11733751230757619
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000879",
+      "split": "train",
+      "visible_face_areas": [
+        11640.09234249522
+      ],
+      "generated_reprojection_max_px": 5.720350941662978e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.09316585000014291
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000909",
+      "split": "train",
+      "visible_face_areas": [
+        11556.571194197051
+      ],
+      "generated_reprojection_max_px": 0.06671900745740775,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.24293053198045206
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000939",
+      "split": "train",
+      "visible_face_areas": [
+        11290.570302673383
+      ],
+      "generated_reprojection_max_px": 4.275233222787647e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.14185377668767474
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000969",
+      "split": "train",
+      "visible_face_areas": [
+        11609.898730198853
+      ],
+      "generated_reprojection_max_px": 8.107485935591192e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.4298462479211957
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_000999",
+      "split": "train",
+      "visible_face_areas": [
+        11727.839442240307
+      ],
+      "generated_reprojection_max_px": 1.7441611076969773e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.02440655043632655
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001029",
+      "split": "train",
+      "visible_face_areas": [
+        11639.61010354478
+      ],
+      "generated_reprojection_max_px": 7.757462441372906e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.1964715742866632
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001059",
+      "split": "train",
+      "visible_face_areas": [
+        11488.665323061869
+      ],
+      "generated_reprojection_max_px": 8.749792977360975e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.10065522492759163
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001089",
+      "split": "train",
+      "visible_face_areas": [
+        11406.3817685307
+      ],
+      "generated_reprojection_max_px": 1.443038941410509e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.3268716795976276
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001119",
+      "split": "train",
+      "visible_face_areas": [
+        13691.132012325106
+      ],
+      "generated_reprojection_max_px": 3.553857421792506e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.5458184714034794
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001149",
+      "split": "train",
+      "visible_face_areas": [
+        19216.437611699104
+      ],
+      "generated_reprojection_max_px": 0.19466582868404392,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 0.09882208712412135
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001179",
+      "split": "train",
+      "visible_face_areas": [
+        28150.292044428876
+      ],
+      "generated_reprojection_max_px": 0.01263369983944419,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.31792122649508003
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001209",
+      "split": "train",
+      "visible_face_areas": [
+        46589.98586488166
+      ],
+      "generated_reprojection_max_px": 1.1910168285683123,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.5177194411925996
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001539",
+      "split": "train",
+      "visible_face_areas": [
+        27648.000212139334
+      ],
+      "generated_reprojection_max_px": 6.886873029485085e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.24241362278868278
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001569",
+      "split": "train",
+      "visible_face_areas": [
+        25879.800720214844
+      ],
+      "generated_reprojection_max_px": 0.12195539312326084,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.14585102145544038
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001599",
+      "split": "train",
+      "visible_face_areas": [
+        27264.902842910145
+      ],
+      "generated_reprojection_max_px": 6.728169558669464e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.24400247473968306
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001629",
+      "split": "train",
+      "visible_face_areas": [
+        27024.759723909665
+      ],
+      "generated_reprojection_max_px": 3.71303679538871e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.29616996812744373
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001659",
+      "split": "train",
+      "visible_face_areas": [
+        27802.84935760498
+      ],
+      "generated_reprojection_max_px": 2.6988849095418373e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.2319086781833693
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001689",
+      "split": "train",
+      "visible_face_areas": [
+        27600.586826249026
+      ],
+      "generated_reprojection_max_px": 0.19699847292718858,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.12116622373451945
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_001719",
+      "split": "train",
+      "visible_face_areas": [
+        27468.98806906026
+      ],
+      "generated_reprojection_max_px": 7.892560424912537e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.39746696228408285
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002049",
+      "split": "train",
+      "visible_face_areas": [
+        16609.77927633212
+      ],
+      "generated_reprojection_max_px": 7.859757206029608e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.511193430121671
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002079",
+      "split": "train",
+      "visible_face_areas": [
+        16161.010692911688
+      ],
+      "generated_reprojection_max_px": 6.523273912624368e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.600892093330305
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002109",
+      "split": "train",
+      "visible_face_areas": [
+        15816.033799583325
+      ],
+      "generated_reprojection_max_px": 6.594741625713639e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.7295975414299107
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002139",
+      "split": "train",
+      "visible_face_areas": [
+        16563.936050571967
+      ],
+      "generated_reprojection_max_px": 1.8631766382040244e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -4.262810767998509
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002169",
+      "split": "train",
+      "visible_face_areas": [
+        16349.174177668523
+      ],
+      "generated_reprojection_max_px": 3.6127830174547374e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.654866992103725
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002199",
+      "split": "train",
+      "visible_face_areas": [
+        16210.802567534382
+      ],
+      "generated_reprojection_max_px": 3.580454019580227e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -4.166786369573156
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002229",
+      "split": "train",
+      "visible_face_areas": [
+        17043.66476128716
+      ],
+      "generated_reprojection_max_px": 1.7126627033069396e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.5850665432102335
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002259",
+      "split": "train",
+      "visible_face_areas": [
+        16600.434059143066
+      ],
+      "generated_reprojection_max_px": 8.16529380899376e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.3830883621174896
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002559",
+      "split": "train",
+      "visible_face_areas": [
+        13669.494994722307
+      ],
+      "generated_reprojection_max_px": 1.8837638684306483e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.2370167914588746
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002589",
+      "split": "train",
+      "visible_face_areas": [
+        14910.869540539716
+      ],
+      "generated_reprojection_max_px": 4.1222650223908347e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -12.349647127492963
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002619",
+      "split": "train",
+      "visible_face_areas": [
+        14795.793127429948
+      ],
+      "generated_reprojection_max_px": 0.0004866336960536281,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -13.067436050688418
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_145924_frame_002649",
+      "split": "train",
+      "visible_face_areas": [
+        14781.353795688803
+      ],
+      "generated_reprojection_max_px": 8.996069064004866e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -13.102311997031627
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000025",
+      "split": "test",
+      "visible_face_areas": [
+        5038.308309673797
+      ],
+      "generated_reprojection_max_px": 1.3610132641344995e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -11.303872424523295
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000055",
+      "split": "test",
+      "visible_face_areas": [
+        5170.535786655964
+      ],
+      "generated_reprojection_max_px": 1.3818810213842311e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -12.038960054150857
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000085",
+      "split": "test",
+      "visible_face_areas": [
+        4868.788732165005
+      ],
+      "generated_reprojection_max_px": 1.3919118037661753e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -12.383726049857529
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000115",
+      "split": "test",
+      "visible_face_areas": [
+        5227.477334195748
+      ],
+      "generated_reprojection_max_px": 3.677700540297585e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -11.302666053592315
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000145",
+      "split": "test",
+      "visible_face_areas": [
+        7551.636898362776
+      ],
+      "generated_reprojection_max_px": 7.602854962518184e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -12.5236390441178
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000175",
+      "split": "test",
+      "visible_face_areas": [
+        10351.707610396028
+      ],
+      "generated_reprojection_max_px": 2.457811179461553e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -12.85964486803436
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000205",
+      "split": "test",
+      "visible_face_areas": [
+        10325.681631575455
+      ],
+      "generated_reprojection_max_px": 7.09185934638691e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -12.544110260472227
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150335_frame_000235",
+      "split": "test",
+      "visible_face_areas": [
+        10399.74244788813
+      ],
+      "generated_reprojection_max_px": 1.0894469765238333e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -13.713709622593436
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150816_frame_000011",
+      "split": "train",
+      "visible_face_areas": [
+        2488.711285341764,
+        458.5591324325651
+      ],
+      "generated_reprojection_max_px": 2.102469446972438e-09,
+      "dominance_ratio": 5.427241786985345,
+      "annotation_yaw_deg": 12.693956403467025
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150816_frame_000041",
+      "split": "train",
+      "visible_face_areas": [
+        2490.275824499782,
+        455.6021805861965
+      ],
+      "generated_reprojection_max_px": 6.846854490481011e-09,
+      "dominance_ratio": 5.4658997050797495,
+      "annotation_yaw_deg": 12.62515932850252
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150816_frame_000071",
+      "split": "train",
+      "visible_face_areas": [
+        2530.422973823501,
+        466.70373568916693
+      ],
+      "generated_reprojection_max_px": 4.0985862056068747e-08,
+      "dominance_ratio": 5.421904262426577,
+      "annotation_yaw_deg": 12.585037940631608
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150816_frame_000101",
+      "split": "train",
+      "visible_face_areas": [
+        2435.4470299370587,
+        454.49996198294684
+      ],
+      "generated_reprojection_max_px": 3.5687485684232644e-09,
+      "dominance_ratio": 5.358519766011418,
+      "annotation_yaw_deg": 12.752524228368053
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150816_frame_000131",
+      "split": "train",
+      "visible_face_areas": [
+        2424.0177940167487,
+        476.59964969195426
+      ],
+      "generated_reprojection_max_px": 8.636714937950886e-08,
+      "dominance_ratio": 5.086067091286135,
+      "annotation_yaw_deg": 13.357452287648655
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000002",
+      "split": "test",
+      "visible_face_areas": [
+        2921.8694601517636
+      ],
+      "generated_reprojection_max_px": 5.078757956365025e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.6636617021400926
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000032",
+      "split": "test",
+      "visible_face_areas": [
+        4931.8228587668855
+      ],
+      "generated_reprojection_max_px": 5.656508289789597e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.233599093017243
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000062",
+      "split": "test",
+      "visible_face_areas": [
+        5106.117584803142
+      ],
+      "generated_reprojection_max_px": 4.985228908634298e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.1893406588970814
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000092",
+      "split": "test",
+      "visible_face_areas": [
+        5084.291699422756
+      ],
+      "generated_reprojection_max_px": 5.89457876255604e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -2.114650661977554
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000122",
+      "split": "test",
+      "visible_face_areas": [
+        5111.732720956206
+      ],
+      "generated_reprojection_max_px": 8.266604259155189e-10,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -0.6948902689300687
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000152",
+      "split": "test",
+      "visible_face_areas": [
+        5177.024154399056
+      ],
+      "generated_reprojection_max_px": 1.2972731172446597e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.6149919921503635
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000182",
+      "split": "test",
+      "visible_face_areas": [
+        5121.190453774296
+      ],
+      "generated_reprojection_max_px": 3.6584958486226385e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 3.1143575314524794
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000212",
+      "split": "test",
+      "visible_face_areas": [
+        5069.099209872773
+      ],
+      "generated_reprojection_max_px": 3.5897713962962296e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.5215964374488893
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000242",
+      "split": "test",
+      "visible_face_areas": [
+        5191.238266652916
+      ],
+      "generated_reprojection_max_px": 1.5421059348279376e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": -3.575657739307015
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000272",
+      "split": "test",
+      "visible_face_areas": [
+        5107.204430044163
+      ],
+      "generated_reprojection_max_px": 2.008257999384492e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.7286687459979628
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000302",
+      "split": "test",
+      "visible_face_areas": [
+        5041.302457752638
+      ],
+      "generated_reprojection_max_px": 1.4392718515864034e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.7662947865079954
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000332",
+      "split": "test",
+      "visible_face_areas": [
+        4988.934600601904
+      ],
+      "generated_reprojection_max_px": 6.699146685642671e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.467089308510561
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000362",
+      "split": "test",
+      "visible_face_areas": [
+        4912.646301038796
+      ],
+      "generated_reprojection_max_px": 0.0006669119715157103,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.6913478889419356
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000392",
+      "split": "test",
+      "visible_face_areas": [
+        4945.6540427622385
+      ],
+      "generated_reprojection_max_px": 0.0011142314514848927,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.092256538791525
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000422",
+      "split": "test",
+      "visible_face_areas": [
+        5060.819907461293
+      ],
+      "generated_reprojection_max_px": 2.4009017183624394e-08,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.5830222741251343
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000452",
+      "split": "test",
+      "visible_face_areas": [
+        5023.438900343142
+      ],
+      "generated_reprojection_max_px": 1.4991151338567494e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 2.137887833402458
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000482",
+      "split": "test",
+      "visible_face_areas": [
+        5089.509733507875
+      ],
+      "generated_reprojection_max_px": 1.490606657817724e-07,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.8457508056803622
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000512",
+      "split": "test",
+      "visible_face_areas": [
+        4868.40434330306
+      ],
+      "generated_reprojection_max_px": 0.0009784304078941791,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.9011515571540194
+    },
+    {
+      "stem": "forklift_v4_recording_20260904_150944_frame_000542",
+      "split": "test",
+      "visible_face_areas": [
+        5054.653006316163
+      ],
+      "generated_reprojection_max_px": 3.4142865552112626e-09,
+      "dominance_ratio": null,
+      "annotation_yaw_deg": 1.4774284590846138
+    }
+  ],
+  "notes": "Uses label PnP R/t with centered cuboid, so this is annotation coverage, not independent true pose."
+}

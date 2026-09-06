@@ -1,0 +1,236 @@
+{
+  "method": "Approximate rendered-marker centroid set motion after local image-flow affine compensation. Not raw model keypoints, not exact C4 permutation matching, not ground-truth accuracy. IDs/colors ignored; circle extraction, compression and real perspective motion can affect scores. Rank by worse model's 95th percentile residual. Visually inspect candidates before selecting.",
+  "ranked": [
+    {
+      "group": "20260903_192254",
+      "video": "20260903_192254_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 744,
+      "fps": 17.508,
+      "models": {
+        "v4": {
+          "valid_pairs": 546,
+          "coverage": 0.7338709677419355,
+          "p95_overlay_residual_px": 11.366145133972168,
+          "mean_overlay_residual_px": 4.357731342315674,
+          "over_5px_fraction": 0.2619047619047619,
+          "peaks": [
+            {
+              "frame": 331,
+              "seconds": 18.905643134567057,
+              "residual_px": 14.51541519165039
+            },
+            {
+              "frame": 229,
+              "seconds": 13.079734978295637,
+              "residual_px": 14.239753723144531
+            },
+            {
+              "frame": 9,
+              "seconds": 0.5140507196710076,
+              "residual_px": 13.052680969238281
+            },
+            {
+              "frame": 70,
+              "seconds": 3.9981722641078368,
+              "residual_px": 12.8110990524292
+            },
+            {
+              "frame": 176,
+              "seconds": 10.052547406899704,
+              "residual_px": 12.69512939453125
+            }
+          ]
+        },
+        "c4": {
+          "valid_pairs": 690,
+          "coverage": 0.9274193548387096,
+          "p95_overlay_residual_px": 10.066479253768918,
+          "mean_overlay_residual_px": 3.1917152404785156,
+          "over_5px_fraction": 0.1463768115942029,
+          "peaks": [
+            {
+              "frame": 664,
+              "seconds": 37.92551976239434,
+              "residual_px": 23.926050186157227
+            },
+            {
+              "frame": 518,
+              "seconds": 29.58647475439799,
+              "residual_px": 13.602291107177734
+            },
+            {
+              "frame": 394,
+              "seconds": 22.503998172264108,
+              "residual_px": 12.980680465698242
+            },
+            {
+              "frame": 464,
+              "seconds": 26.502170436371944,
+              "residual_px": 12.640789985656738
+            },
+            {
+              "frame": 337,
+              "seconds": 19.24834361434773,
+              "residual_px": 9.700921058654785
+            }
+          ]
+        }
+      },
+      "ranking_score": 11.366145133972168
+    },
+    {
+      "group": "20260904_190700",
+      "video": "20260904_190700_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 395,
+      "fps": 13.652,
+      "models": {
+        "v4": {
+          "valid_pairs": 394,
+          "coverage": 0.9974683544303797,
+          "p95_overlay_residual_px": 9.983234453201295,
+          "mean_overlay_residual_px": 4.818254470825195,
+          "over_5px_fraction": 0.4086294416243655,
+          "peaks": [
+            {
+              "frame": 318,
+              "seconds": 23.29329036038676,
+              "residual_px": 12.313783645629883
+            },
+            {
+              "frame": 192,
+              "seconds": 14.063873425139175,
+              "residual_px": 11.848933219909668
+            },
+            {
+              "frame": 244,
+              "seconds": 17.872839144447703,
+              "residual_px": 11.210158348083496
+            },
+            {
+              "frame": 112,
+              "seconds": 8.203926164664518,
+              "residual_px": 11.048864364624023
+            },
+            {
+              "frame": 359,
+              "seconds": 26.29651333138002,
+              "residual_px": 10.381114959716797
+            }
+          ]
+        },
+        "c4": {
+          "valid_pairs": 394,
+          "coverage": 0.9974683544303797,
+          "p95_overlay_residual_px": 2.8820344209671016,
+          "mean_overlay_residual_px": 1.5748820304870605,
+          "over_5px_fraction": 0.0,
+          "peaks": [
+            {
+              "frame": 134,
+              "seconds": 9.815411661295048,
+              "residual_px": 3.8198301792144775
+            },
+            {
+              "frame": 315,
+              "seconds": 23.07354233811896,
+              "residual_px": 3.5421154499053955
+            },
+            {
+              "frame": 48,
+              "seconds": 3.5159683562847936,
+              "residual_px": 3.4721739292144775
+            },
+            {
+              "frame": 376,
+              "seconds": 27.541752124230882,
+              "residual_px": 3.231898784637451
+            },
+            {
+              "frame": 225,
+              "seconds": 16.48110167008497,
+              "residual_px": 3.1786062717437744
+            }
+          ]
+        }
+      },
+      "ranking_score": 9.983234453201295
+    },
+    {
+      "group": "20260904_150944",
+      "video": "20260904_150944_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 563,
+      "fps": 11.188,
+      "models": {
+        "v4": {
+          "valid_pairs": 562,
+          "coverage": 0.9982238010657194,
+          "p95_overlay_residual_px": 2.8416871309280385,
+          "mean_overlay_residual_px": 0.79143887758255,
+          "over_5px_fraction": 0.0,
+          "peaks": [
+            {
+              "frame": 194,
+              "seconds": 17.34000715051841,
+              "residual_px": 4.896297931671143
+            },
+            {
+              "frame": 255,
+              "seconds": 22.792277440114407,
+              "residual_px": 4.26036262512207
+            },
+            {
+              "frame": 14,
+              "seconds": 1.2513407222023596,
+              "residual_px": 4.239232540130615
+            },
+            {
+              "frame": 126,
+              "seconds": 11.262066499821236,
+              "residual_px": 3.5423367023468018
+            },
+            {
+              "frame": 444,
+              "seconds": 39.685377189846264,
+              "residual_px": 2.436736822128296
+            }
+          ]
+        },
+        "c4": {
+          "valid_pairs": 560,
+          "coverage": 0.9946714031971581,
+          "p95_overlay_residual_px": 4.4796314001083335,
+          "mean_overlay_residual_px": 1.0027607679367065,
+          "over_5px_fraction": 0.039285714285714285,
+          "peaks": [
+            {
+              "frame": 10,
+              "seconds": 0.893814801573114,
+              "residual_px": 12.136098861694336
+            },
+            {
+              "frame": 245,
+              "seconds": 21.898462638541293,
+              "residual_px": 11.717474937438965
+            },
+            {
+              "frame": 77,
+              "seconds": 6.882373972112978,
+              "residual_px": 11.603839874267578
+            },
+            {
+              "frame": 200,
+              "seconds": 17.87629603146228,
+              "residual_px": 6.2252583503723145
+            },
+            {
+              "frame": 121,
+              "seconds": 10.815159099034679,
+              "residual_px": 4.5536322593688965
+            }
+          ]
+        }
+      },
+      "ranking_score": 4.4796314001083335
+    }
+  ]
+}

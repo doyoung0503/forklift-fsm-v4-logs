@@ -1,0 +1,2 @@
+# Install this in addition to requirements.txt only when CAN_ENABLED=True.
+canlib>=1.30

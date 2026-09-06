@@ -1,0 +1,2 @@
+{"phase": "cmd", "cmd": "STOP", "t_iso": "2026-09-06T17:15:39.056", "t_mono": 184763.343, "step": 0}
+{"phase": "debug_step", "action": "pause", "state": "PRECHECK", "t_iso": "2026-09-06T17:15:39.056", "t_mono": 184763.343, "step": 0, "initial": true, "completed_steps": 0}

@@ -1,0 +1,61 @@
+{
+  "state": "complete",
+  "inputs": [
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150625_raw.mp4",
+      "frames": 27,
+      "fps": 4.394,
+      "width": 640,
+      "height": 480
+    }
+  ],
+  "completed": [
+    {
+      "group": "20260904_150625",
+      "source": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260904_150625_raw.mp4",
+      "output": "20260904_150625_v4_vs_c4_raw_keypoints.mp4",
+      "frames": 27,
+      "fps": 4.394,
+      "detected_frames": {
+        "v4": 27,
+        "c4": 27
+      },
+      "verification": {
+        "metadata": {
+          "frames": 27,
+          "fps": 4.394,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          13,
+          26
+        ]
+      }
+    }
+  ],
+  "total_frames": 27,
+  "processed_frames": 27,
+  "settings": {
+    "conf": 0.3,
+    "imgsz": 640,
+    "device": "cpu",
+    "batch": 8,
+    "raw_keypoints": true,
+    "pnp": false,
+    "smoothing": false,
+    "effective_torch_threads": 2
+  },
+  "models": {
+    "v4": {
+      "path": "C:\\Users\\DELL\\Downloads\\로그수집\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+      "sha256": "2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2"
+    },
+    "c4": {
+      "path": "C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_c4_ft_selected.pt",
+      "sha256": "35033fa0137084da6fa1814e1d16daf5a96fcd053e46dd045f672e9289f0d96c"
+    }
+  },
+  "elapsed_seconds": 2.968849400000181
+}

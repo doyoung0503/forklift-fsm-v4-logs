@@ -1,0 +1,85 @@
+{
+  "created": "2026-08-31T16:19:41",
+  "frame": "camera_optical (OpenCV): +X right, +Y down, +Z forward",
+  "origin": "RealSense color optical center (depth aligned to color)",
+  "units": {
+    "length": "m",
+    "angle": "deg",
+    "time": "s"
+  },
+  "yaw_sign": "compute_yaw_deg_from_plane: atan2(-a, 1), 평면 z=ax+by+c 의 x-z 투영",
+  "intrinsics": {
+    "fx": 608.2978515625,
+    "fy": 607.8462524414062,
+    "ppx": 326.4007263183594,
+    "ppy": 239.5469512939453,
+    "width": 640,
+    "height": 480,
+    "model": "distortion.inverse_brown_conrady",
+    "coeffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "depth_units_m": 0.0010000000474974513,
+  "stream_fps": 30,
+  "model": "pallet_yolo26n_pose_ft.pt",
+  "fsm_version": "v4",
+  "face_kpts": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "center_kpt": 8,
+  "fsm_v4_control": "stopped_observe_visible_macro_action_settle_replan",
+  "v4_imu_used_for_control": false,
+  "v4_config_file": "calib/fsm_v4/config.py",
+  "v4_camera_to_rotation_center_x_m": 0.0,
+  "v4_camera_to_rotation_center_z_m": -0.8,
+  "v4_camera_yaw_in_vehicle_deg": 0.0,
+  "v4_camera_horizontal_fov_deg": 70.0,
+  "v4_rotation_center_to_fork_tip_m": 1.9,
+  "v4_fork_tip_clearance_m": 0.4,
+  "v4_camera_to_fork_tip_x_m": 0.0,
+  "v4_camera_to_fork_tip_z_m": 1.1,
+  "v4_staging_distance_m": 2.3,
+  "v4_extrinsics_measured": false,
+  "v4_require_measured_extrinsics": false,
+  "v4_rotate_joystick_deflection": 30,
+  "v4_forward_joystick_deflection": 60,
+  "v4_backward_joystick_deflection": 60,
+  "v4_forward_path_bias_deg": 0.0,
+  "v4_rotation_startup_delay_sec": 1.516,
+  "v4_rotation_log_speed_profile_enabled": true,
+  "v4_rotation_log_speed_profile": [
+    [
+      0.0,
+      0.2,
+      5.883287
+    ],
+    [
+      0.2,
+      0.4,
+      11.702257
+    ]
+  ],
+  "v4_rotation_stop_lookahead_sec": 0.55,
+  "v4_rotation_max_command_sec": 8.0,
+  "v4_rotation_max_waypoint_turn_deg": 20.0,
+  "v4_forward_t0_sec": 0.5069,
+  "v4_forward_accel_duration_sec": 2.0357,
+  "v4_forward_accel_m_s2": 0.139644,
+  "v4_forward_timeout_margin_sec": 1.0,
+  "v4_forward_reliable_min_distance_m": 0.2,
+  "v4_forward_macro_max_distance_m": 0.8,
+  "v4_safety_standoff_z_m": 3.0,
+  "v4_safety_standoff_band_m": 0.1,
+  "v4_face_center_immediate_stop_tol_deg": 0.5,
+  "v4_final_lateral_tol_m": 0.05,
+  "v4_final_yaw_tol_deg": 2.5,
+  "v4_auto_insert_enabled": false
+}

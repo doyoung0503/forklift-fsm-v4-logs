@@ -1,0 +1,24 @@
+﻿recording,fitted_enabled,fitted_plan_count,capture_model_known,coast_reduction_deg,correction_evidence,max_logged_plan_residual_deg,adaptive_enabled,bearing_centre_offset_m
+forklift_v4_recording_20260901_173507,,0,False,,not recorded,,,
+forklift_v4_recording_20260901_174126,,0,False,,not recorded,,,
+forklift_v4_recording_20260901_174342,,0,False,,not recorded,,,
+forklift_v4_recording_20260901_174925,,0,False,,not recorded,,,
+forklift_v4_recording_20260903_190743,True,8,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,4.440892098500626e-16,,1.0
+forklift_v4_recording_20260903_191906,True,0,False,,not recorded,,,1.0
+forklift_v4_recording_20260903_192118,True,1,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,0.0,,1.0
+forklift_v4_recording_20260903_192254,True,6,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,8.881784197001252e-16,,1.0
+forklift_v4_recording_20260904_102339,True,1,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,0.0,,1.0
+forklift_v4_recording_20260904_102504,True,2,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,0.0,,1.0
+forklift_v4_recording_20260904_102630,True,4,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,1.7763568394002505e-15,,1.0
+forklift_v4_recording_20260904_103429,True,2,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,0.0,,1.0
+forklift_v4_recording_20260904_103739,True,8,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,1.7763568394002505e-15,,1.0
+forklift_v4_recording_20260904_104212,True,5,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,3.552713678800501e-15,,1.0
+forklift_v4_recording_20260904_105241,True,0,False,,not recorded,,True,1.0
+forklift_v4_recording_20260904_105508,True,1,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,0.0,True,1.0
+forklift_v4_recording_20260904_105615,True,6,True,0.0,Reproduces every recorded plan total to <1e-5deg; metadata field absent,0.0,True,1.0
+forklift_v4_recording_20260904_142318,True,1,True,1.07,"Recorded metadata, checked against recorded plan totals",0.0,False,1.0
+forklift_v4_recording_20260904_144221,True,2,True,1.07,"Recorded metadata, checked against recorded plan totals",0.0,False,1.0
+forklift_v4_recording_20260904_144733,True,2,True,1.07,"Recorded metadata, checked against recorded plan totals",0.0,False,1.0
+forklift_v4_recording_20260904_145924,True,2,True,1.07,"Recorded metadata, checked against recorded plan totals",0.0,False,1.0
+forklift_v4_recording_20260904_150944,True,3,True,1.07,"Recorded metadata, checked against recorded plan totals",0.0,False,1.0
+forklift_v4_recording_20260904_190446,True,4,True,1.07,"Recorded metadata, checked against recorded plan totals",1.7763568394002505e-15,False,0.68

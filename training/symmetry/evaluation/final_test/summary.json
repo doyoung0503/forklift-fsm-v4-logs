@@ -1,0 +1,305 @@
+{
+  "v4": {
+    "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\extracted\\pallet_yolo26n_pose_livegt_v4.pt",
+    "sha256": "2c3b6286c9a1c669e2533a43f8700b01d30231ed5b836e1b262945ff08b226b2",
+    "overall": {
+      "images": 45,
+      "matched": 45,
+      "recall_iou50": 1.0,
+      "unmatched_detections": 0,
+      "manual_mean_px": 1.3041946923781977,
+      "manual_median_px": 1.2204582386934206,
+      "manual_p95_px": 2.494348627679818,
+      "manual_max_px": 4.098926895863643,
+      "generated_mean_px": 1.7118671195481057,
+      "manual_pck5_including_misses": 1.0,
+      "manual_pck10_including_misses": 1.0,
+      "permutation_histogram": [
+        17,
+        0,
+        0,
+        28
+      ]
+    },
+    "by_recording": {
+      "forklift_v4_recording_20260903_192254": {
+        "images": 5,
+        "matched": 5,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.640224707832921,
+        "manual_median_px": 1.6075755923585693,
+        "manual_p95_px": 2.8631774152145018,
+        "manual_max_px": 4.098926895863643,
+        "generated_mean_px": 1.555429062879823,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          2,
+          0,
+          0,
+          3
+        ]
+      },
+      "forklift_v4_recording_20260904_144614": {
+        "images": 13,
+        "matched": 13,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.1604434720669423,
+        "manual_median_px": 0.981110873996721,
+        "manual_p95_px": 2.467738329125989,
+        "manual_max_px": 2.493275732773936,
+        "generated_mean_px": 2.4302738125439065,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          0,
+          0,
+          0,
+          13
+        ]
+      },
+      "forklift_v4_recording_20260904_150335": {
+        "images": 8,
+        "matched": 8,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.5572183621021023,
+        "manual_median_px": 1.467653975354264,
+        "manual_p95_px": 2.666249579523736,
+        "manual_max_px": 3.4059690795495396,
+        "generated_mean_px": 1.6827860063994886,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      "forklift_v4_recording_20260904_150944": {
+        "images": 19,
+        "matched": 19,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.2075855570614331,
+        "manual_median_px": 1.2363204957661487,
+        "manual_p95_px": 1.9813110907507447,
+        "manual_max_px": 2.6592915247545936,
+        "generated_mean_px": 1.273738286894681,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          7,
+          0,
+          0,
+          12
+        ]
+      }
+    }
+  },
+  "c4": {
+    "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_c4_ft_selected.pt",
+    "sha256": "35033fa0137084da6fa1814e1d16daf5a96fcd053e46dd045f672e9289f0d96c",
+    "overall": {
+      "images": 45,
+      "matched": 45,
+      "recall_iou50": 1.0,
+      "unmatched_detections": 0,
+      "manual_mean_px": 3.1092376007999647,
+      "manual_median_px": 2.883125523030107,
+      "manual_p95_px": 5.269270306650207,
+      "manual_max_px": 25.776666893759305,
+      "generated_mean_px": 2.8179962475643445,
+      "manual_pck5_including_misses": 0.9277777777777778,
+      "manual_pck10_including_misses": 0.9777777777777777,
+      "permutation_histogram": [
+        16,
+        0,
+        0,
+        29
+      ]
+    },
+    "by_recording": {
+      "forklift_v4_recording_20260903_192254": {
+        "images": 5,
+        "matched": 5,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 7.102238078572881,
+        "manual_median_px": 4.495088751633844,
+        "manual_p95_px": 19.431286028051485,
+        "manual_max_px": 25.776666893759305,
+        "generated_mean_px": 6.22942834639363,
+        "manual_pck5_including_misses": 0.65,
+        "manual_pck10_including_misses": 0.8,
+        "permutation_histogram": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      "forklift_v4_recording_20260904_144614": {
+        "images": 13,
+        "matched": 13,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.95753501478404,
+        "manual_median_px": 1.9135366407171683,
+        "manual_p95_px": 3.622806684268316,
+        "manual_max_px": 4.062917012270468,
+        "generated_mean_px": 1.9922244563324616,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          0,
+          0,
+          0,
+          13
+        ]
+      },
+      "forklift_v4_recording_20260904_150335": {
+        "images": 8,
+        "matched": 8,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 2.6710565854434583,
+        "manual_median_px": 2.793312601201494,
+        "manual_p95_px": 5.122735170208514,
+        "manual_max_px": 5.42982429896764,
+        "generated_mean_px": 2.7044143012398694,
+        "manual_pck5_including_misses": 0.9375,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      "forklift_v4_recording_20260904_150944": {
+        "images": 19,
+        "matched": 19,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 3.0309523035470436,
+        "manual_median_px": 3.174808247720665,
+        "manual_p95_px": 4.90617821057632,
+        "manual_max_px": 5.2896937725184126,
+        "generated_mean_px": 2.533076687694022,
+        "manual_pck5_including_misses": 0.9473684210526315,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          3,
+          0,
+          0,
+          16
+        ]
+      }
+    }
+  },
+  "fixed": {
+    "checkpoint": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_fixed_ft_selected.pt",
+    "sha256": "505108d5cf7c0dec187eae2b8153bce21b274005b91f649f080b086ea9ca0e2d",
+    "overall": {
+      "images": 45,
+      "matched": 45,
+      "recall_iou50": 1.0,
+      "unmatched_detections": 0,
+      "manual_mean_px": 1.5571816574212196,
+      "manual_median_px": 1.2865294953645958,
+      "manual_p95_px": 3.8389934437584206,
+      "manual_max_px": 8.785900847843251,
+      "generated_mean_px": 1.3333498716005598,
+      "manual_pck5_including_misses": 0.9777777777777777,
+      "manual_pck10_including_misses": 1.0,
+      "permutation_histogram": [
+        45,
+        0,
+        0,
+        0
+      ]
+    },
+    "by_recording": {
+      "forklift_v4_recording_20260903_192254": {
+        "images": 5,
+        "matched": 5,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 3.576692164356512,
+        "manual_median_px": 3.016741632074205,
+        "manual_p95_px": 7.403946240574201,
+        "manual_max_px": 8.785900847843251,
+        "generated_mean_px": 1.7056434922557195,
+        "manual_pck5_including_misses": 0.8,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      "forklift_v4_recording_20260904_144614": {
+        "images": 13,
+        "matched": 13,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 0.895303163000614,
+        "manual_median_px": 0.7854906501465697,
+        "manual_p95_px": 1.6985569252014754,
+        "manual_max_px": 1.9001132141694255,
+        "generated_mean_px": 0.7427339704887935,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          13,
+          0,
+          0,
+          0
+        ]
+      },
+      "forklift_v4_recording_20260904_150335": {
+        "images": 8,
+        "matched": 8,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.5216866906092656,
+        "manual_median_px": 1.4864693935172415,
+        "manual_p95_px": 3.0138951346408347,
+        "manual_max_px": 3.821448625904805,
+        "generated_mean_px": 1.82355642297737,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      "forklift_v4_recording_20260904_150944": {
+        "images": 19,
+        "matched": 19,
+        "recall_iou50": 1.0,
+        "unmatched_detections": 0,
+        "manual_mean_px": 1.4935410062258008,
+        "manual_median_px": 1.3446168477220732,
+        "manual_p95_px": 3.091598948921827,
+        "manual_max_px": 4.098865307883892,
+        "generated_mean_px": 1.4330807242407007,
+        "manual_pck5_including_misses": 1.0,
+        "manual_pck10_including_misses": 1.0,
+        "permutation_histogram": [
+          19,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  }
+}

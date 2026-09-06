@@ -1,0 +1,325 @@
+{
+  "recording_count": 23,
+  "verified_capture_functions": 17,
+  "recording_audit": [
+    {
+      "recording": "forklift_v4_recording_20260901_173507",
+      "fitted_enabled": null,
+      "fitted_plan_count": 0,
+      "capture_model_known": false,
+      "coast_reduction_deg": null,
+      "correction_evidence": "not recorded",
+      "max_logged_plan_residual_deg": null,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": null
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174126",
+      "fitted_enabled": null,
+      "fitted_plan_count": 0,
+      "capture_model_known": false,
+      "coast_reduction_deg": null,
+      "correction_evidence": "not recorded",
+      "max_logged_plan_residual_deg": null,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": null
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174342",
+      "fitted_enabled": null,
+      "fitted_plan_count": 0,
+      "capture_model_known": false,
+      "coast_reduction_deg": null,
+      "correction_evidence": "not recorded",
+      "max_logged_plan_residual_deg": null,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": null
+    },
+    {
+      "recording": "forklift_v4_recording_20260901_174925",
+      "fitted_enabled": null,
+      "fitted_plan_count": 0,
+      "capture_model_known": false,
+      "coast_reduction_deg": null,
+      "correction_evidence": "not recorded",
+      "max_logged_plan_residual_deg": null,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": null
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_190743",
+      "fitted_enabled": true,
+      "fitted_plan_count": 8,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 4.440892098500626e-16,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_191906",
+      "fitted_enabled": true,
+      "fitted_plan_count": 0,
+      "capture_model_known": false,
+      "coast_reduction_deg": null,
+      "correction_evidence": "not recorded",
+      "max_logged_plan_residual_deg": null,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_192118",
+      "fitted_enabled": true,
+      "fitted_plan_count": 1,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260903_192254",
+      "fitted_enabled": true,
+      "fitted_plan_count": 6,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 8.881784197001252e-16,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102339",
+      "fitted_enabled": true,
+      "fitted_plan_count": 1,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102504",
+      "fitted_enabled": true,
+      "fitted_plan_count": 2,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_102630",
+      "fitted_enabled": true,
+      "fitted_plan_count": 4,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 1.7763568394002505e-15,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103429",
+      "fitted_enabled": true,
+      "fitted_plan_count": 2,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_103739",
+      "fitted_enabled": true,
+      "fitted_plan_count": 8,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 1.7763568394002505e-15,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_104212",
+      "fitted_enabled": true,
+      "fitted_plan_count": 5,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 3.552713678800501e-15,
+      "adaptive_enabled": null,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_105241",
+      "fitted_enabled": true,
+      "fitted_plan_count": 0,
+      "capture_model_known": false,
+      "coast_reduction_deg": null,
+      "correction_evidence": "not recorded",
+      "max_logged_plan_residual_deg": null,
+      "adaptive_enabled": true,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_105508",
+      "fitted_enabled": true,
+      "fitted_plan_count": 1,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": true,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_105615",
+      "fitted_enabled": true,
+      "fitted_plan_count": 6,
+      "capture_model_known": true,
+      "coast_reduction_deg": 0.0,
+      "correction_evidence": "Reproduces every recorded plan total to <1e-5deg; metadata field absent",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": true,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_142318",
+      "fitted_enabled": true,
+      "fitted_plan_count": 1,
+      "capture_model_known": true,
+      "coast_reduction_deg": 1.07,
+      "correction_evidence": "Recorded metadata, checked against recorded plan totals",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": false,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144221",
+      "fitted_enabled": true,
+      "fitted_plan_count": 2,
+      "capture_model_known": true,
+      "coast_reduction_deg": 1.07,
+      "correction_evidence": "Recorded metadata, checked against recorded plan totals",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": false,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_144733",
+      "fitted_enabled": true,
+      "fitted_plan_count": 2,
+      "capture_model_known": true,
+      "coast_reduction_deg": 1.07,
+      "correction_evidence": "Recorded metadata, checked against recorded plan totals",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": false,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_145924",
+      "fitted_enabled": true,
+      "fitted_plan_count": 2,
+      "capture_model_known": true,
+      "coast_reduction_deg": 1.07,
+      "correction_evidence": "Recorded metadata, checked against recorded plan totals",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": false,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_150944",
+      "fitted_enabled": true,
+      "fitted_plan_count": 3,
+      "capture_model_known": true,
+      "coast_reduction_deg": 1.07,
+      "correction_evidence": "Recorded metadata, checked against recorded plan totals",
+      "max_logged_plan_residual_deg": 0.0,
+      "adaptive_enabled": false,
+      "bearing_centre_offset_m": 1.0
+    },
+    {
+      "recording": "forklift_v4_recording_20260904_190446",
+      "fitted_enabled": true,
+      "fitted_plan_count": 4,
+      "capture_model_known": true,
+      "coast_reduction_deg": 1.07,
+      "correction_evidence": "Recorded metadata, checked against recorded plan totals",
+      "max_logged_plan_residual_deg": 1.7763568394002505e-15,
+      "adaptive_enabled": false,
+      "bearing_centre_offset_m": 0.68
+    }
+  ],
+  "paired_endpoint_count": 40,
+  "descriptive_scores": {
+    "capture_time_function": {
+      "n": 40,
+      "rmse_deg": 2.079551045736901,
+      "mae_deg": 1.5263053846947816,
+      "bias_deg": 0.9621232672525479,
+      "r2": 0.8513536063062684,
+      "p90_absolute_error_deg": 3.6508462758467353
+    },
+    "selected_linear": {
+      "n": 40,
+      "rmse_deg": 1.6922356606109505,
+      "mae_deg": 1.2722176468814195,
+      "bias_deg": 0.11007044462836695,
+      "r2": 0.9015678679145596,
+      "p90_absolute_error_deg": 2.513426585412968
+    }
+  },
+  "heading_examples": [
+    {
+      "hold_s": 1.5,
+      "capture_no_reduction_deg": 4.040182264066664,
+      "capture_reduced_deg": 2.970182264066664,
+      "selected_linear_deg": 2.706555980008806
+    },
+    {
+      "hold_s": 2.0,
+      "capture_no_reduction_deg": 9.970891131444613,
+      "capture_reduced_deg": 8.900891131444613,
+      "selected_linear_deg": 8.75779081269353
+    },
+    {
+      "hold_s": 2.5,
+      "capture_no_reduction_deg": 15.975891131444612,
+      "capture_reduced_deg": 14.905891131444612,
+      "selected_linear_deg": 14.809025645378256
+    }
+  ],
+  "target_time_examples": [
+    {
+      "angle_deg": 3.0,
+      "capture_no_reduction_s": 1.3935151959813172,
+      "capture_reduced_s": 1.5028361901169336,
+      "selected_linear_s": 1.5242466230533813
+    },
+    {
+      "angle_deg": 5.0,
+      "capture_no_reduction_s": 1.5865944346637306,
+      "capture_reduced_s": 1.6751964087056939,
+      "selected_linear_s": 1.6895021498425034
+    },
+    {
+      "angle_deg": 10.0,
+      "capture_no_reduction_s": 2.0024237192802152,
+      "capture_reduced_s": 2.0915161422610646,
+      "selected_linear_s": 2.1026409668153088
+    }
+  ],
+  "limitations": [
+    "Missing fitted metadata is unknown, not proof the fit was disabled.",
+    "Plan durations and actual CAN durations differ due to live STOP and loop timing.",
+    "Descriptive errors are against new Cleanlabel estimates on its fitting cohort, not unbiased generalization or physical truth.",
+    "3 original videos enabled adaptive timing; each logged plan was used to verify the base response.",
+    "Graph shows heading functions; bearing actions require each logged gain and correction-domain conversion."
+  ]
+}

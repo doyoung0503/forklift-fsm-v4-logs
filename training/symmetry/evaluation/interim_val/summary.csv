@@ -1,0 +1,3 @@
+model,images,matched,recall_iou50,unmatched_detections,manual_mean_px,manual_median_px,manual_p95_px,generated_mean_px,manual_pck5_including_misses,manual_pck10_including_misses,permutation_histogram
+c4,38,38,1.0,0,2.0059295624310813,1.791846078178058,3.820853536491096,1.8057690173499237,0.993421052631579,1.0,"[16, 0, 0, 22]"
+fixed,38,38,1.0,0,3.7192931595317336,3.9813019195528554,7.134016056638217,2.886444325783312,0.75,1.0,"[16, 0, 0, 22]"

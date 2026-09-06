@@ -1,0 +1,98 @@
+{
+  "state": "complete",
+  "inputs": [
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+      "frames": 744,
+      "fps": 17.508,
+      "width": 640,
+      "height": 480
+    }
+  ],
+  "completed": [
+    {
+      "source": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_raw.mp4",
+      "output": "20260903_192254_cleanlabel_current_vs_all9_pnp.mp4",
+      "frames": 744,
+      "fps": 17.508,
+      "width": 640,
+      "height": 480,
+      "verification": {
+        "metadata": {
+          "frames": 744,
+          "fps": 17.508,
+          "width": 1280,
+          "height": 800
+        },
+        "decoded_indices": [
+          0,
+          372,
+          743
+        ]
+      }
+    }
+  ],
+  "models": {
+    "cleanlabel": {
+      "path": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\third_party\\pallet_pose_yolo26n_cleanlabel\\pallet_yolo26n_pose_cleanlabel.pt",
+      "sha256": "4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e"
+    }
+  },
+  "settings": {
+    "conf": 0.4,
+    "padding": 100,
+    "padding_mode": "BORDER_REFLECT_101",
+    "imgsz": 640,
+    "device": "cpu",
+    "batch": 8,
+    "same_predictions": true,
+    "smoothing": false,
+    "current": "Unmodified runtime pose_from_visible_kpts_pnp",
+    "all9": "All 9 points, equal weight, EPNP + LM, no RANSAC or score filtering",
+    "visibility_threshold": 0.5,
+    "ransac_error_px": 8.0,
+    "pallet_size_m": [
+      1.1,
+      0.15,
+      1.1
+    ]
+  },
+  "camera_metadata_path": "C:\\Users\\DELL\\Downloads\\\ub85c\uadf8\uc218\uc9d1\\extracted\\depth_cam\\rec\\forklift_v4_recording_20260903_192254_meta.json",
+  "intrinsics": {
+    "fx": 605.906494140625,
+    "fy": 605.9697875976562,
+    "ppx": 317.59619140625,
+    "ppy": 256.29229736328125,
+    "width": 640,
+    "height": 480,
+    "model": "distortion.inverse_brown_conrady",
+    "coeffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "geometry_sha256": "35b077fa121196d66086aa47e41384180680db0efad5eb83673049df0e895e34",
+  "config_sha256": "e2b3143b5d6d0703cc3a8a1b56bfc73254b31658bb150798d7313b98b5696fe3",
+  "summary": {
+    "current": {
+      "success": 691,
+      "failures": 53,
+      "used_count_histogram": {
+        "9": 691
+      },
+      "median_rms_all9_px": 0.6367466058169288
+    },
+    "all9": {
+      "success": 691,
+      "failures": 53,
+      "used_count_histogram": {
+        "9": 691
+      },
+      "median_rms_all9_px": 0.6367466058169288
+    }
+  },
+  "elapsed_seconds": 35.58382170001278
+}

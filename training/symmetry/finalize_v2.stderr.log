@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\DELL\Downloads\로그수집\training\symmetry\render_video_comparison.py", line 115, in <module>
+    main()
+  File "C:\Users\DELL\Downloads\로그수집\training\symmetry\render_video_comparison.py", line 49, in main
+    raise FileNotFoundError(video)
+FileNotFoundError: C:\Users\DELL\Downloads\로그수집\extracted\depth_cam\rec\forklift_v4_recording_20260903_190700_raw.mp4
+Traceback (most recent call last):
+  File "C:\Users\DELL\Downloads\로그수집\training\symmetry\finalize.py", line 133, in <module>
+    main()
+  File "C:\Users\DELL\Downloads\로그수집\training\symmetry\finalize.py", line 93, in main
+    subprocess.run([sys.executable, str(BASE / "render_video_comparison.py"),
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python312\\python.exe', 'C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\render_video_comparison.py', '--candidate', 'C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_c4_ft_selected.pt', '--out', 'C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\evaluation\\continuous_videos']' returned non-zero exit status 1.

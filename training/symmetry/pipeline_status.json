@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "updated_local": "2026-09-05 15:39:15",
+  "improved_manual_error": false,
+  "review_ko": "training/symmetry/REVIEW_KO.md",
+  "video_verification": "training/symmetry/evaluation/video_qa/verification.json",
+  "report": "C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\RESULTS.md",
+  "models": {
+    "c4": "C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_c4_ft_selected.pt",
+    "fixed": "C:\\Users\\DELL\\Downloads\\로그수집\\training\\symmetry\\models\\pallet_yolo26n_pose_v4_fixed_ft_selected.pt"
+  }
+}

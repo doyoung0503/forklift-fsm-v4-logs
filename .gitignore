@@ -1,0 +1,28 @@
+# 압축 파일 (원본 배포 묶음 / 데이터셋 아카이브)
+*.zip
+*.7z
+*.tar
+*.tar.gz
+
+# 영상 파일 (녹화 원본, 시각화 렌더 결과)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# 파이썬 캐시
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# 가상환경
+venv/
+venv_infer/
+.venv/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store

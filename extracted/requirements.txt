@@ -1,0 +1,7 @@
+# FSM v4 minimal Python dependencies.
+# Install Intel RealSense and Kvaser CANlib device drivers separately.
+numpy>=1.26,<3
+opencv-python>=4.8
+pyrealsense2>=2.56
+torch>=2.1
+ultralytics>=8.4.60

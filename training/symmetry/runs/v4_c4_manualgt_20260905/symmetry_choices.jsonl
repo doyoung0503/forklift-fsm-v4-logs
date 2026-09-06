@@ -1,0 +1,13 @@
+{"epoch": 1, "permutation_counts": {"one2many": [983, 0, 0, 637], "one2one": [99, 0, 0, 63]}}
+{"epoch": 2, "permutation_counts": {"one2many": [1009, 0, 0, 611], "one2one": [101, 0, 0, 61]}}
+{"epoch": 3, "permutation_counts": {"one2many": [1034, 0, 0, 586], "one2one": [103, 0, 0, 59]}}
+{"epoch": 4, "permutation_counts": {"one2many": [1044, 0, 0, 576], "one2one": [104, 0, 0, 58]}}
+{"epoch": 5, "permutation_counts": {"one2many": [980, 0, 0, 640], "one2one": [98, 0, 0, 64]}}
+{"epoch": 6, "permutation_counts": {"one2many": [960, 0, 0, 660], "one2one": [96, 0, 0, 66]}}
+{"epoch": 7, "permutation_counts": {"one2many": [962, 0, 0, 658], "one2one": [96, 0, 0, 66]}}
+{"epoch": 8, "permutation_counts": {"one2many": [961, 0, 0, 659], "one2one": [96, 0, 0, 66]}}
+{"epoch": 9, "permutation_counts": {"one2many": [980, 0, 0, 640], "one2one": [98, 0, 0, 64]}}
+{"epoch": 10, "permutation_counts": {"one2many": [960, 0, 0, 660], "one2one": [96, 0, 0, 66]}}
+{"epoch": 11, "permutation_counts": {"one2many": [990, 0, 0, 630], "one2one": [99, 0, 0, 63]}}
+{"epoch": 12, "permutation_counts": {"one2many": [1000, 0, 0, 620], "one2one": [100, 0, 0, 62]}}
+{"epoch": 13, "permutation_counts": {"one2many": [1007, 0, 0, 613], "one2one": [101, 0, 0, 61]}}

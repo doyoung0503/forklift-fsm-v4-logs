@@ -1,0 +1,171 @@
+{
+  "model_hash": "sha256:4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e",
+  "frames": 4163,
+  "valid_poses": 3985,
+  "ranking": [
+    {
+      "recording": "20260901_173507",
+      "frames": 418,
+      "valid_poses": 417,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260901_174126",
+      "frames": 104,
+      "valid_poses": 104,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260901_174342",
+      "frames": 218,
+      "valid_poses": 217,
+      "jumps_over_5deg": 3,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260901_174925",
+      "frames": 58,
+      "valid_poses": 58,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260903_190743",
+      "frames": 476,
+      "valid_poses": 476,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260903_191906",
+      "frames": 59,
+      "valid_poses": 0,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260903_192118",
+      "frames": 63,
+      "valid_poses": 63,
+      "jumps_over_5deg": 2,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260903_192254",
+      "frames": 381,
+      "valid_poses": 369,
+      "jumps_over_5deg": 1,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_102339",
+      "frames": 17,
+      "valid_poses": 17,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_102504",
+      "frames": 93,
+      "valid_poses": 93,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_102630",
+      "frames": 65,
+      "valid_poses": 64,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_103429",
+      "frames": 46,
+      "valid_poses": 46,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_103739",
+      "frames": 575,
+      "valid_poses": 544,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_104212",
+      "frames": 312,
+      "valid_poses": 312,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_105241",
+      "frames": 32,
+      "valid_poses": 32,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_105508",
+      "frames": 55,
+      "valid_poses": 55,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_105615",
+      "frames": 390,
+      "valid_poses": 329,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_142318",
+      "frames": 84,
+      "valid_poses": 84,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_144221",
+      "frames": 105,
+      "valid_poses": 105,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_144733",
+      "frames": 122,
+      "valid_poses": 122,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_145924",
+      "frames": 139,
+      "valid_poses": 138,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_150944",
+      "frames": 138,
+      "valid_poses": 128,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    },
+    {
+      "recording": "20260904_190446",
+      "frames": 213,
+      "valid_poses": 212,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0
+    }
+  ],
+  "jump_event_count": 6,
+  "method": "Wrapped yaw step >5deg; adjacent valid rows with 0<dt<=.35s; do not bridge gaps",
+  "deployment_performed": false
+}

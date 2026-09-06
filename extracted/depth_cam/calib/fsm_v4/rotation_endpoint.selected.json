@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "model_type": "selected_delayed_linear_endpoint",
+  "operator_selected": true,
+  "model_sha256": "sha256:4ee578e02810caae56b786c23a084121f4dfb33941e11d4d3fb216b9bfbbe60e",
+  "command_strength": 30,
+  "angle_domain": "heading",
+  "parameters": {"slope_deg_s": 12.10246966536945, "effective_delay_s": 1.276363332869698},
+  "measured_duration_range_s": [0.0930000000007567, 2.530999999999949],
+  "settle_guard_sec": 3.0,
+  "inference_contract": {
+    "padding_px": 100, "padding_mode": "BORDER_REFLECT_101", "imgsz": 640,
+    "confidence": 0.4, "instance_selection": "max_box_conf", "input_width": 640, "input_height": 480
+  },
+  "validation": {
+    "points": 48, "recordings": 17, "complete_loo_coverage": true,
+    "equal_recording_loo_rmse_deg": 1.981755444151851,
+    "pooled_loo_rmse_deg": 1.8908934274297178,
+    "in_sample_rmse_deg": 1.6937717078515202,
+    "in_sample_r2": 0.8885082690000994
+  },
+  "source_fit": "rotation_fit/out/cleanlabel_command_clips_20260906/linear_under5s/model.json",
+  "source_csv_sha256": "53569d29d494efb3a53f7fea19ce854196652b445bbcfbfdce6048b0ed7cd3cd",
+  "limitations": [
+    "Operator selected for runtime, not independently physically validated.",
+    "Effective delay and slope are endpoint regression parameters, not onset/peak-speed measurements.",
+    "Total rotation includes post-STOP coast; no additional coast correction.",
+    "Hold cap remains 2.5s; actual target crossing and safety STOP remain active."
+  ]
+}

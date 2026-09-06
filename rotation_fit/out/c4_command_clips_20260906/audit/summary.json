@@ -1,0 +1,1007 @@
+{
+  "model_hash": "sha256:35033fa0137084da6fa1814e1d16daf5a96fcd053e46dd045f672e9289f0d96c",
+  "recording_count": 23,
+  "frames": 4163,
+  "valid_poses": 4087,
+  "fit_status": "DIAGNOSTIC_ONLY",
+  "safe_for_control": false,
+  "blockers": [
+    "1 recording(s) were missing or failed to load",
+    "leave-one-recording-out RMSE exceeds 3.000 deg"
+  ],
+  "counts": {
+    "segments_total": 73,
+    "segments_drive_usable": 31,
+    "segments_inertia_usable": 31,
+    "drive_exclusions_by_reason": {
+      "vehicle was not stationary before command": 3,
+      "sustained motion onset not detected before STOP": 21,
+      "command duration is too short": 2,
+      "too few command-held frames after onset": 4,
+      "fewer than four pre-command frames": 10,
+      "rotation direction cannot be inferred": 2,
+      "too few valid inference frames": 3
+    },
+    "inertia_exclusions_by_reason": {
+      "motion onset unavailable": 21,
+      "baseline unavailable": 10,
+      "rotation direction cannot be inferred": 2,
+      "too few valid inference frames": 3,
+      "estimated pre-STOP rate is not positive": 2
+    }
+  },
+  "in_sample_r2": -1.7646138343581614,
+  "validation": {
+    "in_sample": {
+      "n": 31,
+      "bias_deg": -5.435140163869069,
+      "mae_deg": 5.53624529744221,
+      "rmse_deg": 6.28897506691036,
+      "p90_abs_deg": 9.488428994890977
+    },
+    "leave_one_recording_out": {
+      "n": 31,
+      "bias_deg": -5.191820487280997,
+      "mae_deg": 6.276739407191033,
+      "rmse_deg": 7.158630175223074,
+      "p90_abs_deg": 10.35093184176469
+    },
+    "leave_one_recording_out_folds": {
+      "attempted": 12,
+      "successful": 12,
+      "rmse_deg_by_recording": {
+        "forklift_v4_recording_20260901_173507": 7.351940745332922,
+        "forklift_v4_recording_20260901_174342": 12.333223254487848,
+        "forklift_v4_recording_20260901_174925": 2.786787519943856,
+        "forklift_v4_recording_20260903_190743": 6.102600854506279,
+        "forklift_v4_recording_20260904_102504": 3.1566143638729285,
+        "forklift_v4_recording_20260904_103739": 7.498086267523016,
+        "forklift_v4_recording_20260904_104212": 9.166045178837926,
+        "forklift_v4_recording_20260904_105615": 2.4593461441822653,
+        "forklift_v4_recording_20260904_144733": 1.011618522109607,
+        "forklift_v4_recording_20260904_145924": 3.5491936980985335,
+        "forklift_v4_recording_20260904_150944": 2.34062480953962,
+        "forklift_v4_recording_20260904_190446": 4.631552131491638
+      },
+      "equal_recording_weight_rmse_deg": 6.109879824378332
+    },
+    "direction_audit": {
+      "LEFT": {
+        "n": 14,
+        "bias_deg": -5.1219466761095145,
+        "mae_deg": 5.345822329021469,
+        "rmse_deg": 6.17649516668439,
+        "p90_abs_deg": 8.65410132665189
+      },
+      "RIGHT": {
+        "n": 17,
+        "bias_deg": -5.693064212612232,
+        "mae_deg": 5.693064212612232,
+        "rmse_deg": 6.380116786418505,
+        "p90_abs_deg": 9.774657515189338
+      }
+    },
+    "rows": [
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 1,
+        "direction": "LEFT",
+        "hold_sec": 1.5319999999992433,
+        "observed_deg": 6.6063730000000005,
+        "predicted_deg": 1.8891873994955963,
+        "error_deg": -4.717185600504404
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 6,
+        "direction": "RIGHT",
+        "hold_sec": 1.5469999999986612,
+        "observed_deg": 5.593559,
+        "predicted_deg": 1.9379892735142048,
+        "error_deg": -3.655569726485795
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 7,
+        "direction": "RIGHT",
+        "hold_sec": 1.9680000000007567,
+        "observed_deg": 13.5116955,
+        "predicted_deg": 3.307695204363121,
+        "error_deg": -10.20400029563688
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 8,
+        "direction": "LEFT",
+        "hold_sec": 2.172000000002299,
+        "observed_deg": 15.752454000000002,
+        "predicted_deg": 3.971400691046971,
+        "error_deg": -11.78105330895303
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 9,
+        "direction": "RIGHT",
+        "hold_sec": 2.0,
+        "observed_deg": 10.237922,
+        "predicted_deg": 3.4118058689377304,
+        "error_deg": -6.826116131062269
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 10,
+        "direction": "LEFT",
+        "hold_sec": 1.9209999999984575,
+        "observed_deg": 7.93811,
+        "predicted_deg": 3.1547826657580664,
+        "error_deg": -4.783327334241934
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 11,
+        "direction": "RIGHT",
+        "hold_sec": 1.9059999999990396,
+        "observed_deg": 7.282142500000001,
+        "predicted_deg": 3.105980791739458,
+        "error_deg": -4.176161708260542
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_174342",
+        "step": 6,
+        "direction": "RIGHT",
+        "hold_sec": 1.8290000000015425,
+        "observed_deg": 12.3438935,
+        "predicted_deg": 2.8554645051090226,
+        "error_deg": -9.488428994890977
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_174342",
+        "step": 7,
+        "direction": "LEFT",
+        "hold_sec": 5.65599999999904,
+        "observed_deg": 14.749633000000001,
+        "predicted_deg": 15.30644929686504,
+        "error_deg": 0.5568162968650388
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_174925",
+        "step": 5,
+        "direction": "LEFT",
+        "hold_sec": 1.4840000000003783,
+        "observed_deg": 4.524141500000001,
+        "predicted_deg": 1.7330214026336817,
+        "error_deg": -2.791120097366319
+      },
+      {
+        "recording": "forklift_v4_recording_20260903_190743",
+        "step": 2,
+        "direction": "RIGHT",
+        "hold_sec": 2.0,
+        "observed_deg": 9.592075999999999,
+        "predicted_deg": 3.4118058689377304,
+        "error_deg": -6.180270131062269
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_102504",
+        "step": 4,
+        "direction": "RIGHT",
+        "hold_sec": 2.312999999999988,
+        "observed_deg": 7.545704499999999,
+        "predicted_deg": 4.430138306832173,
+        "error_deg": -3.115566193167826
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 2,
+        "direction": "RIGHT",
+        "hold_sec": 2.3589999999999236,
+        "observed_deg": 10.373984,
+        "predicted_deg": 4.579797387161505,
+        "error_deg": -5.794186612838495
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 3,
+        "direction": "LEFT",
+        "hold_sec": 2.030999999999949,
+        "observed_deg": 11.177702999999998,
+        "predicted_deg": 3.512663075246603,
+        "error_deg": -7.665039924753394
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 4,
+        "direction": "RIGHT",
+        "hold_sec": 2.3599999999999,
+        "observed_deg": 11.340239999999998,
+        "predicted_deg": 4.583050845429462,
+        "error_deg": -6.757189154570536
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 5,
+        "direction": "LEFT",
+        "hold_sec": 2.1720000000000255,
+        "observed_deg": 12.886767500000001,
+        "predicted_deg": 3.9714006910395736,
+        "error_deg": -8.915366808960428
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 6,
+        "direction": "RIGHT",
+        "hold_sec": 2.530999999999949,
+        "observed_deg": 12.624980000000003,
+        "predicted_deg": 5.139392209263348,
+        "error_deg": -7.485587790736655
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 7,
+        "direction": "LEFT",
+        "hold_sec": 2.0470000000000255,
+        "observed_deg": 8.949027999999998,
+        "predicted_deg": 3.5647184075353873,
+        "error_deg": -5.384309592464611
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 8,
+        "direction": "RIGHT",
+        "hold_sec": 2.109000000000151,
+        "observed_deg": 7.548284000000002,
+        "predicted_deg": 3.766432820153872,
+        "error_deg": -3.7818511798461305
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 9,
+        "direction": "LEFT",
+        "hold_sec": 2.0,
+        "observed_deg": 8.783764499999995,
+        "predicted_deg": 3.4118058689377304,
+        "error_deg": -5.371958631062265
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 3,
+        "direction": "RIGHT",
+        "hold_sec": 2.530999999999949,
+        "observed_deg": 17.1059515,
+        "predicted_deg": 5.139392209263348,
+        "error_deg": -11.966559290736651
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 4,
+        "direction": "LEFT",
+        "hold_sec": 2.436999999999898,
+        "observed_deg": 12.878048999999997,
+        "predicted_deg": 4.833567132068033,
+        "error_deg": -8.044481867931964
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 5,
+        "direction": "RIGHT",
+        "hold_sec": 2.1569999999999254,
+        "observed_deg": 9.5685565,
+        "predicted_deg": 3.922598817018746,
+        "error_deg": -5.645957682981254
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 6,
+        "direction": "LEFT",
+        "hold_sec": 2.0930000000000746,
+        "observed_deg": 11.5737885,
+        "predicted_deg": 3.7143774878650877,
+        "error_deg": -7.8594110121349114
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_105615",
+        "step": 7,
+        "direction": "LEFT",
+        "hold_sec": 1.8279999999999745,
+        "observed_deg": 6.426071,
+        "predicted_deg": 2.8522110468358877,
+        "error_deg": -3.5738599531641126
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_105615",
+        "step": 8,
+        "direction": "RIGHT",
+        "hold_sec": 1.6399999999998727,
+        "observed_deg": 3.2038114999999996,
+        "predicted_deg": 2.2405608924452607,
+        "error_deg": -0.9632506075547389
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_144733",
+        "step": 3,
+        "direction": "LEFT",
+        "hold_sec": 1.5470000000000255,
+        "observed_deg": 0.927676,
+        "predicted_deg": 1.9379892735186433,
+        "error_deg": 1.0103132735186433
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_145924",
+        "step": 2,
+        "direction": "RIGHT",
+        "hold_sec": 2.0160000000000764,
+        "observed_deg": 8.350684000000001,
+        "predicted_deg": 3.463861201226515,
+        "error_deg": -4.886822798773486
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_145924",
+        "step": 4,
+        "direction": "RIGHT",
+        "hold_sec": 1.5149999999998727,
+        "observed_deg": 3.0355570000000003,
+        "predicted_deg": 1.8338786089410746,
+        "error_deg": -1.2016783910589257
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_150944",
+        "step": 4,
+        "direction": "LEFT",
+        "hold_sec": 1.719000000000051,
+        "observed_deg": 4.884853,
+        "predicted_deg": 2.4975840956204864,
+        "error_deg": -2.3872689043795132
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_190446",
+        "step": 3,
+        "direction": "RIGHT",
+        "hold_sec": 2.0310000000026776,
+        "observed_deg": 8.165558,
+        "predicted_deg": 3.51266307525548,
+        "error_deg": -4.652894924744521
+      }
+    ],
+    "loo_rows": [
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 1,
+        "direction": "LEFT",
+        "error_deg": -4.748603008516726
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 6,
+        "direction": "RIGHT",
+        "error_deg": -3.6909612447542157
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 7,
+        "direction": "RIGHT",
+        "error_deg": -10.35093184176469
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 8,
+        "direction": "LEFT",
+        "error_deg": -11.98203275456629
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 9,
+        "direction": "RIGHT",
+        "error_deg": -6.981525779069885
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 10,
+        "direction": "LEFT",
+        "error_deg": -4.917806668232875
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_173507",
+        "step": 11,
+        "direction": "RIGHT",
+        "error_deg": -4.306666931995386
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_174342",
+        "step": 6,
+        "direction": "RIGHT",
+        "error_deg": -7.377711611917331
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_174342",
+        "step": 7,
+        "direction": "LEFT",
+        "error_deg": 15.804624736495954
+      },
+      {
+        "recording": "forklift_v4_recording_20260901_174925",
+        "step": 5,
+        "direction": "LEFT",
+        "error_deg": -2.786787519943856
+      },
+      {
+        "recording": "forklift_v4_recording_20260903_190743",
+        "step": 2,
+        "direction": "RIGHT",
+        "error_deg": -6.102600854506279
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_102504",
+        "step": 4,
+        "direction": "RIGHT",
+        "error_deg": -3.1566143638729285
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 2,
+        "direction": "RIGHT",
+        "error_deg": -6.853942418961311
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 3,
+        "direction": "LEFT",
+        "error_deg": -8.471342924560641
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 4,
+        "direction": "RIGHT",
+        "error_deg": -7.817717682663808
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 5,
+        "direction": "LEFT",
+        "error_deg": -9.830623606604618
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 6,
+        "direction": "RIGHT",
+        "error_deg": -8.678251775781078
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 7,
+        "direction": "LEFT",
+        "error_deg": -6.202976143799506
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 8,
+        "direction": "RIGHT",
+        "error_deg": -4.648426493350533
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_103739",
+        "step": 9,
+        "direction": "LEFT",
+        "error_deg": -6.154307249784845
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 3,
+        "direction": "RIGHT",
+        "error_deg": -12.55168358317178
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 4,
+        "direction": "LEFT",
+        "error_deg": -8.58731624365527
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 5,
+        "direction": "RIGHT",
+        "error_deg": -6.062822094031123
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_104212",
+        "step": 6,
+        "direction": "LEFT",
+        "error_deg": -8.247482288402345
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_105615",
+        "step": 7,
+        "direction": "LEFT",
+        "error_deg": -3.3811683111707107
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_105615",
+        "step": 8,
+        "direction": "RIGHT",
+        "error_deg": -0.8151489221874462
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_144733",
+        "step": 3,
+        "direction": "LEFT",
+        "error_deg": 1.011618522109607
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_145924",
+        "step": 2,
+        "direction": "RIGHT",
+        "error_deg": -4.870042063447045
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_145924",
+        "step": 4,
+        "direction": "RIGHT",
+        "error_deg": -1.2150070425726516
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_150944",
+        "step": 4,
+        "direction": "LEFT",
+        "error_deg": -2.34062480953962
+      },
+      {
+        "recording": "forklift_v4_recording_20260904_190446",
+        "step": 3,
+        "direction": "RIGHT",
+        "error_deg": -4.631552131491638
+      }
+    ]
+  },
+  "identifiability": {
+    "dead_time": true,
+    "acceleration_and_cruise": true,
+    "linear_inertia": true,
+    "notes": []
+  },
+  "ranking": [
+    {
+      "recording": "20260901_174925",
+      "frames": 58,
+      "valid_poses": 58,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 57,
+      "jumps_over_5deg": 4,
+      "jumps_over_30deg": 2,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 7.128363999999977,
+      "max_step_deg": 41.467085999999995,
+      "rate_p95_deg_s": 72.86261018934457,
+      "baseline_noise_p95_deg": 0.06464877299999984,
+      "pose_rms_p95_px": 4.468547,
+      "segments": 1,
+      "drive_usable": 1,
+      "inertia_usable": 1,
+      "drive_exclusions": "{}"
+    },
+    {
+      "recording": "20260904_142318",
+      "frames": 84,
+      "valid_poses": 84,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 83,
+      "jumps_over_5deg": 3,
+      "jumps_over_30deg": 2,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 3.3599805,
+      "max_step_deg": 51.85596100000001,
+      "rate_p95_deg_s": 43.28305708182677,
+      "baseline_noise_p95_deg": 0.5142531533999997,
+      "pose_rms_p95_px": 3.1340705,
+      "segments": 1,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"vehicle was not stationary before command\": 1}"
+    },
+    {
+      "recording": "20260903_192254",
+      "frames": 381,
+      "valid_poses": 365,
+      "valid_percent": 95.8,
+      "adjacent_pairs": 362,
+      "jumps_over_5deg": 6,
+      "jumps_over_30deg": 1,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 2.2074217000000065,
+      "max_step_deg": 32.49073799999999,
+      "rate_p95_deg_s": 27.326574114364217,
+      "baseline_noise_p95_deg": 0.5878170967200003,
+      "pose_rms_p95_px": 1.2473906000000006,
+      "segments": 7,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"command duration is too short\": 1, \"too few valid inference frames\": 1, \"fewer than four pre-command frames\": 1, \"rotation direction cannot be inferred\": 1, \"sustained motion onset not detected before STOP\": 4}"
+    },
+    {
+      "recording": "20260904_102630",
+      "frames": 65,
+      "valid_poses": 65,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 48,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 3.2543047499999984,
+      "max_step_deg": 4.362865999999997,
+      "rate_p95_deg_s": 12.381887858459084,
+      "baseline_noise_p95_deg": 0.09123245816999914,
+      "pose_rms_p95_px": 1.5737918,
+      "segments": 4,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"too few valid inference frames\": 1, \"sustained motion onset not detected before STOP\": 2, \"fewer than four pre-command frames\": 1}"
+    },
+    {
+      "recording": "20260904_103429",
+      "frames": 46,
+      "valid_poses": 46,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 43,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 2.4479766999999892,
+      "max_step_deg": 2.779906000000011,
+      "rate_p95_deg_s": 14.615734222660237,
+      "baseline_noise_p95_deg": 0.26715043529999993,
+      "pose_rms_p95_px": 1.95020075,
+      "segments": 2,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"too few valid inference frames\": 1, \"sustained motion onset not detected before STOP\": 1}"
+    },
+    {
+      "recording": "20260904_150944",
+      "frames": 138,
+      "valid_poses": 138,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 135,
+      "jumps_over_5deg": 2,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 2.0259028999999997,
+      "max_step_deg": 22.253613,
+      "rate_p95_deg_s": 16.32804032262272,
+      "baseline_noise_p95_deg": 0.13016175353999968,
+      "pose_rms_p95_px": 1.3852439,
+      "segments": 3,
+      "drive_usable": 1,
+      "inertia_usable": 1,
+      "drive_exclusions": "{\"too few command-held frames after onset\": 1, \"sustained motion onset not detected before STOP\": 1}"
+    },
+    {
+      "recording": "20260903_192118",
+      "frames": 63,
+      "valid_poses": 63,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 62,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.858479749999992,
+      "max_step_deg": 3.0147560000000055,
+      "rate_p95_deg_s": 32.76259365168658,
+      "baseline_noise_p95_deg": null,
+      "pose_rms_p95_px": 1.17641,
+      "segments": 1,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1}"
+    },
+    {
+      "recording": "20260904_102504",
+      "frames": 93,
+      "valid_poses": 92,
+      "valid_percent": 98.92,
+      "adjacent_pairs": 89,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.7318520000000022,
+      "max_step_deg": 3.176027000000005,
+      "rate_p95_deg_s": 16.90436043333202,
+      "baseline_noise_p95_deg": 0.07112476979999842,
+      "pose_rms_p95_px": 1.4805405500000002,
+      "segments": 2,
+      "drive_usable": 1,
+      "inertia_usable": 1,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1}"
+    },
+    {
+      "recording": "20260904_104212",
+      "frames": 312,
+      "valid_poses": 312,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 310,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.3949543500000103,
+      "max_step_deg": 3.3740530000000035,
+      "rate_p95_deg_s": 16.162962664962727,
+      "baseline_noise_p95_deg": 0.0931020538350004,
+      "pose_rms_p95_px": 3.0778149999999997,
+      "segments": 5,
+      "drive_usable": 4,
+      "inertia_usable": 4,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1}"
+    },
+    {
+      "recording": "20260901_173507",
+      "frames": 418,
+      "valid_poses": 418,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 411,
+      "jumps_over_5deg": 1,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.3840385000000026,
+      "max_step_deg": 5.294868000000008,
+      "rate_p95_deg_s": 14.069047872469541,
+      "baseline_noise_p95_deg": 0.15665032991999545,
+      "pose_rms_p95_px": 2.2994843499999997,
+      "segments": 7,
+      "drive_usable": 7,
+      "inertia_usable": 7,
+      "drive_exclusions": "{}"
+    },
+    {
+      "recording": "20260904_105508",
+      "frames": 55,
+      "valid_poses": 55,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 54,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.3395235999999893,
+      "max_step_deg": 2.94761299999999,
+      "rate_p95_deg_s": 15.991034042553299,
+      "baseline_noise_p95_deg": null,
+      "pose_rms_p95_px": 0.7829841000000001,
+      "segments": 1,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1}"
+    },
+    {
+      "recording": "20260901_174342",
+      "frames": 218,
+      "valid_poses": 218,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 215,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.1959262999999958,
+      "max_step_deg": 3.198950999999994,
+      "rate_p95_deg_s": 12.132555016525137,
+      "baseline_noise_p95_deg": 0.10363136783999977,
+      "pose_rms_p95_px": 2.6823642999999993,
+      "segments": 3,
+      "drive_usable": 2,
+      "inertia_usable": 2,
+      "drive_exclusions": "{\"too few command-held frames after onset\": 1}"
+    },
+    {
+      "recording": "20260904_144221",
+      "frames": 105,
+      "valid_poses": 105,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 103,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.14774539999999,
+      "max_step_deg": 2.666681000000011,
+      "rate_p95_deg_s": 13.507653310614517,
+      "baseline_noise_p95_deg": 0.164319523200003,
+      "pose_rms_p95_px": 2.9449066,
+      "segments": 2,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1, \"vehicle was not stationary before command\": 1}"
+    },
+    {
+      "recording": "20260904_103739",
+      "frames": 575,
+      "valid_poses": 575,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 574,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 1.1425737500000142,
+      "max_step_deg": 1.9362930000000063,
+      "rate_p95_deg_s": 13.80529029536458,
+      "baseline_noise_p95_deg": 0.06023573997000301,
+      "pose_rms_p95_px": 0.882598,
+      "segments": 8,
+      "drive_usable": 8,
+      "inertia_usable": 8,
+      "drive_exclusions": "{}"
+    },
+    {
+      "recording": "20260904_144733",
+      "frames": 122,
+      "valid_poses": 122,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 120,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.9384186499999996,
+      "max_step_deg": 2.2142550000000085,
+      "rate_p95_deg_s": 10.301322435900351,
+      "baseline_noise_p95_deg": 0.06772917102000053,
+      "pose_rms_p95_px": 2.52768805,
+      "segments": 2,
+      "drive_usable": 1,
+      "inertia_usable": 1,
+      "drive_exclusions": "{\"too few command-held frames after onset\": 1}"
+    },
+    {
+      "recording": "20260904_145924",
+      "frames": 139,
+      "valid_poses": 139,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 137,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.8349584000000101,
+      "max_step_deg": 1.8877709999999865,
+      "rate_p95_deg_s": 9.386953191484327,
+      "baseline_noise_p95_deg": 0.03955154259000275,
+      "pose_rms_p95_px": 3.2074081999999997,
+      "segments": 2,
+      "drive_usable": 2,
+      "inertia_usable": 2,
+      "drive_exclusions": "{}"
+    },
+    {
+      "recording": "20260903_190743",
+      "frames": 476,
+      "valid_poses": 476,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 474,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.8280928500000101,
+      "max_step_deg": 1.4474539999999934,
+      "rate_p95_deg_s": 11.29628120872001,
+      "baseline_noise_p95_deg": 0.4027463626200001,
+      "pose_rms_p95_px": 0.93701575,
+      "segments": 8,
+      "drive_usable": 1,
+      "inertia_usable": 1,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1, \"sustained motion onset not detected before STOP\": 5, \"rotation direction cannot be inferred\": 1}"
+    },
+    {
+      "recording": "20260904_190446",
+      "frames": 213,
+      "valid_poses": 213,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 209,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.8044350000000001,
+      "max_step_deg": 2.1080479999999966,
+      "rate_p95_deg_s": 9.800683540385844,
+      "baseline_noise_p95_deg": 0.23541167579999897,
+      "pose_rms_p95_px": 1.0250312,
+      "segments": 4,
+      "drive_usable": 1,
+      "inertia_usable": 1,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1, \"sustained motion onset not detected before STOP\": 2}"
+    },
+    {
+      "recording": "20260901_174126",
+      "frames": 104,
+      "valid_poses": 104,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 102,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.6720100499999865,
+      "max_step_deg": 1.191361999999998,
+      "rate_p95_deg_s": 7.175642266716054,
+      "baseline_noise_p95_deg": 0.47225743351499977,
+      "pose_rms_p95_px": 1.288166,
+      "segments": 2,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"vehicle was not stationary before command\": 1, \"sustained motion onset not detected before STOP\": 2, \"command duration is too short\": 1}"
+    },
+    {
+      "recording": "20260904_105615",
+      "frames": 390,
+      "valid_poses": 390,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 387,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.5127444999999934,
+      "max_step_deg": 1.1294499999999914,
+      "rate_p95_deg_s": 5.879941407526819,
+      "baseline_noise_p95_deg": 0.047658177000000294,
+      "pose_rms_p95_px": 1.5682455999999994,
+      "segments": 6,
+      "drive_usable": 2,
+      "inertia_usable": 2,
+      "drive_exclusions": "{\"sustained motion onset not detected before STOP\": 3, \"too few command-held frames after onset\": 1}"
+    },
+    {
+      "recording": "20260904_105241",
+      "frames": 32,
+      "valid_poses": 32,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 31,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.5119544999999874,
+      "max_step_deg": 1.065068999999994,
+      "rate_p95_deg_s": 4.2771919099246425,
+      "baseline_noise_p95_deg": 0.051616719000000054,
+      "pose_rms_p95_px": 1.132542,
+      "segments": 1,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"sustained motion onset not detected before STOP\": 1}"
+    },
+    {
+      "recording": "20260904_102339",
+      "frames": 17,
+      "valid_poses": 17,
+      "valid_percent": 100.0,
+      "adjacent_pairs": 16,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": 0.41091624999999254,
+      "max_step_deg": 0.5329089999999894,
+      "rate_p95_deg_s": 3.8881641538469656,
+      "baseline_noise_p95_deg": null,
+      "pose_rms_p95_px": 1.3293422,
+      "segments": 1,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{\"fewer than four pre-command frames\": 1}"
+    },
+    {
+      "recording": "20260903_191906",
+      "frames": 59,
+      "valid_poses": 0,
+      "valid_percent": 0.0,
+      "adjacent_pairs": 0,
+      "jumps_over_5deg": 0,
+      "jumps_over_30deg": 0,
+      "jumps_near_90deg": 0,
+      "step_p95_deg": null,
+      "max_step_deg": null,
+      "rate_p95_deg_s": null,
+      "baseline_noise_p95_deg": null,
+      "pose_rms_p95_px": null,
+      "segments": 0,
+      "drive_usable": 0,
+      "inertia_usable": 0,
+      "drive_exclusions": "{}"
+    }
+  ],
+  "jump_event_count": 16,
+  "method": "Wrapped 360-degree yaw step >5deg between adjacent valid output rows with 0<host dt<=0.35s; screening, not ground truth.",
+  "limitations": [
+    "Removed intervals and invalid poses are never bridged for jump statistics.",
+    "Screening thresholds are diagnostic, not tuned to improve fit.",
+    "Fit error is against the same model's PnP observations, not independent physical yaw ground truth.",
+    "Existing training-data overlap can limit claims about unseen scenes."
+  ]
+}

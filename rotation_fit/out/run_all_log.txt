@@ -1,0 +1,12 @@
+==============================================================================
+[log]
+fit segments: 11 / 15
+model A: rms=1.096 deg  n=321  T_on=1.3423  T_off=0.3384  tau=0.0500  w_max=13.3792
+model B: rms=1.087 deg  n=321  T_on=1.1292  T_off=0.3351  alpha=24.9485  beta=128.9328  w_max=13.5240
+-> selected model B
+per-segment T_on fit: rms=0.412 deg  mean=1.152 median=1.133 sd=0.107 min=0.930 max=1.294
+
+
+==============================================================================
+source  n_used  n_total  pts_per_seg  bearing_noise_deg     T_on    T_off    alpha     beta    w_max  traj_rms_deg  total_rms_deg  loo_rms_deg  delay_median  delay_sd  coast_median  settle_p90
+   log      11       15          NaN              0.025    1.129    0.335   24.949  128.933   13.524         1.087          1.346        1.616         1.014     0.112         4.877       1.097
