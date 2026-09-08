@@ -13,9 +13,12 @@ from calib.fsm_v4.motion import forward_seconds
 
 class SingleInsertionTests(unittest.TestCase):
     def setUp(self):
+        width = patch.object(cfg, 'FORK_WIDTH_M', .10)
+        width.start()
+        self.addCleanup(width.stop)
         self.f = object.__new__(CalibrationFSMV4)
         self.f._pipeline_started_mono = 100.
-        self.pose = SimpleNamespace(yaw_deg=19., rot_x_pallet_m=.5, pallet_z_m=1.8)
+        self.pose = SimpleNamespace(yaw_deg=0., pallet_x_m=0., rot_x_pallet_m=.5, pallet_z_m=1.8)
         self.f._observe_pose = Mock(return_value=(self.pose, 'ok'))
         self.f._vision_values = Mock(return_value=(0., .2))
         self.f._exec = Mock()

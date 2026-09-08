@@ -15,6 +15,9 @@ from ui.text_rendering import draw_ui_text
 V4_FLOW = [
     ("Acquire Pallet", {"SEARCH_SWEEP", "ACQUIRE_VERIFY", "FACE_ROTATE", "FACE_SETTLE",
                         "INITIAL_VISIBILITY_SWEEP", "INITIAL_POSE_ROTATE", "INITIAL_POSE_SETTLE"}),
+    ("Initial Correction", {"COARSE_PREPARE", "COARSE_ROTATE", "COARSE_ROTATE_SETTLE",
+                             "COARSE_DRIVE", "COARSE_DRIVE_SETTLE", "COARSE_RETURN_ROTATE",
+                             "COARSE_RETURN_SETTLE", "COARSE_REACQUIRE"}),
     ("Set Standoff", {"STANDOFF_VERIFY", "STANDOFF_MOVE", "STANDOFF_SETTLE"}),
     ("Plan Approach", {"STAGING_PLAN"}),
     ("Execute Approach", {"RECENTER_ROTATE", "RECENTER_SETTLE", "WAYPOINT_TURN",
@@ -27,7 +30,7 @@ V4_FLOW = [
 def _phase_index(fsm):
     state = getattr(fsm, "state", "PRECHECK")
     if state == "DONE":
-        return 4
+        return len(V4_FLOW) - 1
     if state == "FAILED":
         state = getattr(fsm, "failure_state", None) or getattr(fsm, "_failure_state", None)
     if state in {"RECOVER_VISUAL", "ACQUIRE_VERIFY"}:
@@ -89,7 +92,7 @@ def _draw_motion_target(image, fsm, x: int, y: int, width: int) -> None:
               width - 20, 0.43, (155, 160, 169))
         return
 
-    action = "ROTATION" if kind == "rotation" else "INSERTION TIME" if kind == "timed_insertion" else "DISTANCE"
+    action = "ROTATION" if kind == "rotation" else "FORWARD TIME" if kind == "timed_coarse" else "INSERTION TIME" if kind == "timed_insertion" else "DISTANCE"
     direction = str(status.get("direction") or "-")
     _text(image, f"LIVE {action} TARGET  |  {direction}", x + 10, y + 21,
           width - 20, 0.45, accent)
@@ -125,8 +128,8 @@ def _draw_motion_target(image, fsm, x: int, y: int, width: int) -> None:
 def draw_fsm_v4_diagram_panel(fsm, panel_size: Tuple[int, int] = (480, 900)):
     height, width = map(int, panel_size)
     # Render small camera previews at a legible base size, then scale as a unit.
-    if height < 480 or width < 420:
-        canvas = draw_fsm_v4_diagram_panel(fsm, (max(480, height), max(420, width)))
+    if height < 600 or width < 420:
+        canvas = draw_fsm_v4_diagram_panel(fsm, (max(600, height), max(420, width)))
         return cv2.resize(canvas, (width, height), interpolation=cv2.INTER_AREA)
     image = np.full((height, width, 3), (25, 28, 31), dtype=np.uint8)
     state = getattr(fsm, "state", "PRECHECK")
@@ -145,14 +148,15 @@ def draw_fsm_v4_diagram_panel(fsm, panel_size: Tuple[int, int] = (480, 900)):
 
     descriptions = [
         "Find pallet and center the view",
+        "IMU turn > timed lateral drive > opposite 90 deg",
         f"Target: {cfg.SAFETY_STANDOFF_Z_M:.1f} m | skip when already closer",
         "Calculate the next turn and distance",
         "Turn, drive and check final alignment",
         "Advance forks by the accepted distance",
     ]
-    top, gap, left, right = 68, 18, 22, width - 65
+    top, gap, left, right = 68, 10, 22, width - 65
     footer_height = 134
-    box_h = min(88, (height - top - footer_height - 4 * gap) // 5)
+    box_h = min(88, (height - top - footer_height - (len(V4_FLOW)-1) * gap) // len(V4_FLOW))
     centers = []
     for index, ((label, _states), description) in enumerate(zip(V4_FLOW, descriptions)):
         y = top + index * (box_h + gap)
@@ -166,7 +170,7 @@ def draw_fsm_v4_diagram_panel(fsm, panel_size: Tuple[int, int] = (480, 900)):
               right - left - 24, 0.62, thickness=2)
         _text(image, description, left + 12, y + box_h - 8,
               right - left - 24, 0.41, (185, 193, 204))
-        if index < 4:
+        if index < len(V4_FLOW) - 1:
             middle = (left + right) // 2
             cv2.arrowedLine(image, (middle, y + box_h + 3),
                             (middle, y + box_h + gap - 3), (120, 130, 145), 1,
@@ -174,18 +178,18 @@ def draw_fsm_v4_diagram_panel(fsm, panel_size: Tuple[int, int] = (480, 900)):
     # The only return edge shown at this level is Execute -> Plan.
     loop_x = right + 20
     loop_color = (150, 165, 190)
-    cv2.line(image, (right + 3, centers[3]), (loop_x, centers[3]), loop_color, 1, cv2.LINE_AA)
-    cv2.line(image, (loop_x, centers[3]), (loop_x, centers[2]), loop_color, 1, cv2.LINE_AA)
-    cv2.arrowedLine(image, (loop_x, centers[2]), (right + 3, centers[2]),
+    cv2.line(image, (right + 3, centers[4]), (loop_x, centers[4]), loop_color, 1, cv2.LINE_AA)
+    cv2.line(image, (loop_x, centers[4]), (loop_x, centers[3]), loop_color, 1, cv2.LINE_AA)
+    cv2.arrowedLine(image, (loop_x, centers[3]), (right + 3, centers[3]),
                     loop_color, 1, cv2.LINE_AA, tipLength=0.35)
     # Rotate a small label so the return edge does not reduce card width.
     label_image = np.full((19, 65, 3), (25, 28, 31), dtype=np.uint8)
     _text(label_image, "Replan", 2, 14, 61, 0.4, loop_color)
     label_image = cv2.rotate(label_image, cv2.ROTATE_90_COUNTERCLOCKWISE)
-    label_y = (centers[2] + centers[3] - 65) // 2
+    label_y = (centers[3] + centers[4] - 65) // 2
     image[label_y:label_y + 65, loop_x + 5:loop_x + 24] = label_image
 
-    footer_y = top + 5 * box_h + 4 * gap + 12
+    footer_y = top + len(V4_FLOW) * box_h + (len(V4_FLOW)-1) * gap + 12
     if failed:
         reason = str(getattr(fsm, "failure_reason", None)
                      or getattr(fsm, "_failure_reason", None) or "unspecified failure")

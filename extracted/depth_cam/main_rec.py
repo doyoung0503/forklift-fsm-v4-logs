@@ -189,8 +189,9 @@ class _FSMStageDebugGate:
         "WAYPOINT_TURN", "WAYPOINT_DRIVE", "FINAL_ROTATE",
         "INSERT_DRIVE",
     })
-    MOTION_ORIGIN_STATES = ACTIVE_ACTION_STATES | frozenset({"SEARCH_SWEEP"})
+    MOTION_ORIGIN_STATES = ACTIVE_ACTION_STATES | frozenset({"SEARCH_SWEEP", "COARSE_PREPARE"})
     CHECKPOINT_STATES = frozenset({
+        "COARSE_PREPARE", "COARSE_REACQUIRE",
         "PRECHECK", "SEARCH_SWEEP", "ACQUIRE_VERIFY", "RECOVER_VISUAL",
         "FACE_ROTATE", "STANDOFF_MOVE", "RECENTER_ROTATE",
         "WAYPOINT_TURN", "WAYPOINT_DRIVE", "FINAL_ROTATE",
@@ -202,6 +203,7 @@ class _FSMStageDebugGate:
     })
     TERMINAL_STATES = frozenset({"DONE", "FAILED"})
     TIMER_ATTRS = (
+        "_coarse_started",
         "_pipeline_started_mono", "_state_entered_mono",
         "_state_deadline_mono", "_invalid_since_mono",
         "_search_started_mono", "_alignment_started_mono",
@@ -497,6 +499,7 @@ def main(
 
     # === RealSense 파이프라인 구성 ===
     pipeline = rs.pipeline()
+    imu_stream = None
     # 추론 fps 상한을 걷어내기 위해 장치가 지원하는 최대 fps 부터 시도한다.
     # (STREAM_FPS 에 값을 주면 그 값으로 고정)
     candidates = [STREAM_FPS] if STREAM_FPS else list_common_fps(STREAM_W, STREAM_H)
@@ -508,15 +511,28 @@ def main(
         cfg.enable_stream(rs.stream.depth, STREAM_W, STREAM_H, rs.format.z16, f)
         cfg.enable_stream(rs.stream.color, STREAM_W, STREAM_H, rs.format.bgr8, f)
         try:
-            pipeline.start(cfg)
+            if getattr(fsm, "requires_imu", False):
+                from calib.imu_stream import ImuVideoStream
+                from calib.fsm_v4 import config as imu_config
+                cfg.enable_stream(rs.stream.gyro)
+                cfg.enable_stream(rs.stream.accel)
+                imu_stream = ImuVideoStream(rs, imu_config.COARSE_IMU_SIGN,
+                                            imu_config.COARSE_IMU_MAX_AGE_SEC)
+                pipeline.start(cfg, imu_stream)
+                fsm.imu_source = imu_stream
+            else:
+                pipeline.start(cfg)
             stream_fps = f
-            print(f"✅ 스트림 시작: {STREAM_W}x{STREAM_H} @ {f}fps (depth+color)")
+            streams_label = "depth+color+IMU" if imu_stream is not None else "depth+color"
+            print(f"✅ 스트림 시작: {STREAM_W}x{STREAM_H} @ {f}fps ({streams_label})")
             break
         except Exception as e:
             print(f"⚠️  {f}fps 시작 실패 → 다음 후보 시도: {e}")
     if stream_fps is None:
+        can_close()
         print("❌ 어떤 fps 로도 스트림을 시작하지 못했습니다.")
         sys.exit(1)
+    frame_source = imu_stream if imu_stream is not None else pipeline
 
     align = rs.align(rs.stream.color)
 
@@ -550,13 +566,13 @@ def main(
             if getattr(fsm, "vision_independent", False):
                 # Insertion timing must not wait for detections, depth or even
                 # a new camera frame. No perception/PnP call occurs here.
-                lines = [("Inference / PnP OFF: insertion accepted or FSM stopped", COLOR_META)]
+                lines = [("Inference / PnP OFF: IMU coarse / insertion / stopped", COLOR_META)]
                 previous_fsm_state = fsm.state
                 if debug_gate.should_step:
                     lines.extend(fsm.step(False, None, None, None, None))
                     debug_gate.after_step(previous_fsm_state)
                 lines.extend(debug_gate.hud_lines())
-                frames = pipeline.poll_for_frames()
+                frames = frame_source.poll_for_frames()
                 color_frame = frames.get_color_frame() if frames else None
                 if color_frame:
                     blind_view = np.asanyarray(color_frame.get_data()).copy()
@@ -582,7 +598,7 @@ def main(
                 elif key == ord('r'):
                     recording = not recording
                 continue
-            frames = pipeline.wait_for_frames()
+            frames = frame_source.wait_for_frames()
 
             aligned = align.process(frames)
             color_frame = aligned.get_color_frame()

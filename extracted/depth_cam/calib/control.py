@@ -272,8 +272,32 @@ def _set_tx_state(movement: str, control: str = "driving_mode") -> None:
         _CTX.current_movement = movement
         _CTX.current_control = control
 
-def _get_tx_state() -> tuple[str, str]:
+_motion_deadline = None
+_motion_expired = False
+
+
+def configure_motion_deadline(deadline):
+    """Optional coarse-stage lease; TX independently stops if its owner stalls."""
+    global _motion_deadline, _motion_expired
     with _CTX.state_lock:
+        _motion_deadline = deadline
+        if deadline is None:
+            _motion_expired = False
+
+
+def motion_deadline_expired():
+    _get_tx_state()
+    return _motion_expired
+
+
+def _get_tx_state() -> tuple[str, str]:
+    global _motion_expired
+    with _CTX.state_lock:
+        if _motion_deadline is not None and time.monotonic() >= _motion_deadline:
+            _motion_expired = True
+        if _motion_expired:
+            _CTX.current_movement = "stop"
+            _CTX.current_control = "driving_mode"
         return _CTX.current_movement, _CTX.current_control
 
 def _write_command_once(

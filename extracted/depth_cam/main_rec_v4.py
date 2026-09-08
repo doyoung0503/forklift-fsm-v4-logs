@@ -1,5 +1,9 @@
 """Fast-start launcher for FSM v4 visual macro-action control.
 
+The real runtime enables IMU initial correction through COARSE_IMU_ENABLED:
+model yaw -> IMU turn -> fitted lateral drive -> opposite relative 90-degree
+turn -> visual reacquisition -> existing approach/insertion states.
+
 Default/--mode real execution loads the pinned Cleanlabel pose model and selected 48-point
 endpoint response after identity validation. Missing/mismatched selected
 artifacts block startup. The legacy ``--calibrate`` physical fitter is blocked

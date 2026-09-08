@@ -12,10 +12,13 @@ from calib.fsm_v4.motion import forward_seconds
 
 class InsertionWithoutVisionTests(unittest.TestCase):
     def setUp(self):
+        width = patch.object(cfg, 'FORK_WIDTH_M', .10)
+        width.start()
+        self.addCleanup(width.stop)
         with patch("calib.fsm_v4.top.CommandExecutor"), patch("builtins.print"):
             self.fsm = CalibrationFSMV4()
         self.fsm._pipeline_started_mono = 100.0
-        self.fsm._accept_insertion(SimpleNamespace(pallet_z_m=1.8), [])
+        self.fsm._accept_insertion(SimpleNamespace(pallet_z_m=1.8, pallet_x_m=0., yaw_deg=0.), [])
         self.fsm._observe_pose = Mock(side_effect=AssertionError("PnP must be bypassed"))
         self.fsm._stable_observation = Mock(side_effect=AssertionError("No visual settle"))
 

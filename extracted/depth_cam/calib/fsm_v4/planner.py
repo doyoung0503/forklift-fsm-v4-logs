@@ -8,6 +8,7 @@ from typing import Dict, Optional, Tuple
 
 from . import config as cfg
 from .pose import VisualPose, wrap_180
+from .insertion_geometry import check_insertion_sweep
 
 
 @dataclass(frozen=True)
@@ -451,29 +452,9 @@ def staging_position_reached(pose: VisualPose) -> bool:
 
 
 def fork_opening_alignment(pose: VisualPose, *, enforce_entry_distance: bool = True):
-    """Plan-view ray/face intersection; NOT a 3D collision clearance check.
-
-    Rays start at the outer fork tips and travel along vehicle +Z. Face local
-    X is across the pallet; face normal is (sin(yaw), cos(yaw)).
-    """
-    # Do not evaluate insertion alignment outside the camera-Z activation range.
-    if (not math.isfinite(pose.pallet_z_m) or pose.pallet_z_m <= 0.0
-            or (enforce_entry_distance
-                and pose.pallet_z_m > cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M)):
-        return False, ()
-    yaw = math.radians(pose.yaw_deg)
-    c, s = math.cos(yaw), math.sin(yaw)
-    if not all(math.isfinite(v) for v in (c, s, pose.pallet_x_m, pose.pallet_z_m)) or c <= 1e-6:
-        return False, ()
-    hits = []
-    ahead = True
-    for offset in (-cfg.FORK_OUTER_SPAN_M/2, cfg.FORK_OUTER_SPAN_M/2):
-        dx = cfg.CAMERA_TO_FORK_TIP_X_M + offset - pose.pallet_x_m
-        z_hit = pose.pallet_z_m - s * dx / c
-        ahead &= z_hit >= cfg.CAMERA_TO_FORK_TIP_Z_M
-        hits.append(dx / c)
-    half = cfg.INSERT_OPENING_SPAN_M / 2
-    return bool(ahead and all(abs(x) <= half + 1e-9 for x in hits)), tuple(hits)
+    """Compatibility API: full nine-block sweep; returned hits are front outer edges."""
+    result = check_insertion_sweep(pose, enforce_entry_distance=enforce_entry_distance)
+    return result.ok, result.front_hits
 
 
 def insertion_alignment_turn(pose: VisualPose, vision_meta: Optional[Dict] = None,

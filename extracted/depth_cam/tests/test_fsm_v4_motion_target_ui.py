@@ -93,9 +93,10 @@ class MotionTargetStatusTests(unittest.TestCase):
     def test_initial_correction_and_final_alignment_have_visible_phases(self):
         for state, expected in [
             ("INITIAL_VISIBILITY_SWEEP", 0), ("INITIAL_POSE_ROTATE", 0),
-            ("INITIAL_POSE_SETTLE", 0), ("STANDOFF_MOVE", 1),
-            ("STAGING_PLAN", 2), ("FINAL_POSE_LOCK", 3),
-            ("FINAL_ROTATE", 3), ("INSERT_DRIVE", 4), ("DONE", 4),
+            ("INITIAL_POSE_SETTLE", 0), ("COARSE_ROTATE", 1), ("COARSE_DRIVE", 1),
+            ("COARSE_RETURN_ROTATE", 1), ("COARSE_REACQUIRE", 1), ("STANDOFF_MOVE", 2),
+            ("STAGING_PLAN", 3), ("FINAL_POSE_LOCK", 4),
+            ("FINAL_ROTATE", 4), ("INSERT_DRIVE", 5), ("DONE", 5),
         ]:
             with self.subTest(state=state):
                 self.assertEqual(_phase_index(SimpleNamespace(state=state)), expected)
@@ -107,14 +108,14 @@ class MotionTargetStatusTests(unittest.TestCase):
         fsm._samples = []
         fsm._failure_state = None
         fsm._set_state("RECOVER_VISUAL")
-        self.assertEqual(_phase_index(fsm), 3)
+        self.assertEqual(_phase_index(fsm), 4)
         fsm._set_state("ACQUIRE_VERIFY")
-        self.assertEqual(_phase_index(fsm), 3)
+        self.assertEqual(_phase_index(fsm), 4)
         fsm._failure_state = "ACQUIRE_VERIFY"
         fsm._set_state("FAILED")
-        self.assertEqual(_phase_index(fsm), 3)
+        self.assertEqual(_phase_index(fsm), 4)
         fsm._set_state("STAGING_PLAN")
-        self.assertEqual(_phase_index(fsm), 2)
+        self.assertEqual(_phase_index(fsm), 3)
         self.assertIsNone(fsm._visual_recovery_origin_state)
 
 

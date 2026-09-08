@@ -11,25 +11,30 @@ from calib.fsm_v4.planner import fork_opening_alignment, staging_position_reache
 
 
 class ForkOpeningTests(unittest.TestCase):
+    def setUp(self):
+        width = patch.object(cfg, 'FORK_WIDTH_M', .10)
+        width.start()
+        self.addCleanup(width.stop)
+
     def pose(self, x=0., z=1.5, yaw=0.):
         return SimpleNamespace(pallet_x_m=x, pallet_z_m=z, yaw_deg=yaw)
 
-    def test_centred_hits_and_55mm_offset_boundary(self):
+    def test_centred_hits_and_40mm_margin_boundary(self):
         ok, hits = fork_opening_alignment(self.pose())
         self.assertTrue(ok)
         self.assertEqual(hits, (-.3, .3))
-        self.assertTrue(fork_opening_alignment(self.pose(x=.055))[0])
-        self.assertFalse(fork_opening_alignment(self.pose(x=.056))[0])
+        self.assertTrue(fork_opening_alignment(self.pose(x=.039))[0])
+        self.assertFalse(fork_opening_alignment(self.pose(x=.040))[0])
 
     def test_yaw_widens_intersections(self):
         ok, hits = fork_opening_alignment(self.pose(yaw=20.))
-        self.assertTrue(ok)
+        self.assertFalse(ok)
         self.assertAlmostEqual(hits[1], .3192533317)
         self.assertFalse(fork_opening_alignment(self.pose(x=.04, yaw=20.))[0])
 
-    def test_previous_pose_is_inside_two_metre_activation_range(self):
+    def test_previous_front_only_acceptance_is_now_rejected(self):
         pose = self.pose(x=-.0044616656, z=1.8001815, yaw=-12.0525857)
-        self.assertTrue(fork_opening_alignment(pose)[0])
+        self.assertFalse(fork_opening_alignment(pose)[0])
         self.assertLess(abs(pose.yaw_deg), cfg.FINAL_YAW_TOL_DEG)
 
     def test_camera_z_activation_boundary_is_inclusive(self):
@@ -48,9 +53,9 @@ class ForkOpeningTests(unittest.TestCase):
             self.assertFalse(fork_opening_alignment(self.pose())[0])
             self.assertTrue(fork_opening_alignment(self.pose(x=.1))[0])
 
-    def test_geometry_can_pass_but_yaw_gate_rejects(self):
+    def test_large_yaw_is_rejected_by_both_geometry_and_yaw_gate(self):
         pose = self.pose(yaw=21.)
-        self.assertTrue(fork_opening_alignment(pose)[0])
+        self.assertFalse(fork_opening_alignment(pose)[0])
         self.assertGreater(abs(pose.yaw_deg), cfg.FINAL_YAW_TOL_DEG)
 
 

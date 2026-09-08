@@ -12,7 +12,12 @@ from calib.fsm_v4.top import CalibrationFSMV4
 
 
 class InsertionTurnTests(unittest.TestCase):
-    def pose(self, x=0., z=1.8, yaw=-9.2):
+    def setUp(self):
+        width = patch.object(cfg, 'FORK_WIDTH_M', .10)
+        width.start()
+        self.addCleanup(width.stop)
+
+    def pose(self, x=0., z=1.8, yaw=0.):
         return VisualPoseFilter().seed(yaw, x, z, 100.)
 
     def test_aligned_needs_no_turn_and_out_of_range_is_not_eligible(self):
@@ -21,7 +26,7 @@ class InsertionTurnTests(unittest.TestCase):
             self.pose(z=cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M + .001)))
 
     def test_commandable_left_correction_meets_all_gates(self):
-        pose = self.pose(x=-.1)
+        pose = self.pose(yaw=-5.)
         turn = p.insertion_alignment_turn(pose)
         self.assertLess(turn, 0.)
         self.assertGreaterEqual(abs(turn), cfg.INSERT_FINE_MIN_TURN_DEG)
@@ -30,32 +35,27 @@ class InsertionTurnTests(unittest.TestCase):
         self.assertLessEqual(abs(predicted.yaw_deg), cfg.FINAL_YAW_TOL_DEG)
         self.assertTrue(p.action_keeps_front_visible(pose, turn, 0., None))
 
-    def test_last_log_now_allows_final_only_subminimum_turn(self):
-        pose = self.pose(x=-.051774755, z=1.7944546, yaw=-9.2359786)
+    def test_old_front_only_log_is_rejected_and_fine_turn_clears_blocks(self):
+        old = self.pose(x=-.051774755, z=1.7944546, yaw=-9.2359786)
+        self.assertIsNone(p.insertion_alignment_turn(old))
+        pose = self.pose(yaw=-5.)
         turn = p.insertion_alignment_turn(pose)
         self.assertEqual(turn, -.5)
         self.assertTrue(p.fork_opening_alignment(p._pose_after_action(pose, turn, 0.))[0])
-        self.assertTrue(p.fork_opening_alignment(p._pose_after_action(pose, -1., 0.))[0])
-        self.assertFalse(p.fork_opening_alignment(p._pose_after_action(pose, -2.5, 0.))[0])
 
     def test_visibility_rejection_prevents_rotation(self):
         with patch('calib.fsm_v4.planner.action_keeps_front_visible',
                    side_effect=lambda pose, turn, forward, meta: turn == 0.):
             self.assertIsNone(p.insertion_alignment_turn(self.pose(x=-.1)))
 
-    def test_detected_last_run_pose_outside_margin_can_align(self):
+    def test_detected_last_run_pose_cannot_bypass_internal_walls(self):
         pose = self.pose(x=-.3997410834, z=2.1479372978, yaw=-15.4230880354)
         self.assertFalse(p.action_keeps_front_visible(pose, 0., 0.))
-        turn = p.insertion_alignment_turn(pose)
-        self.assertIsNotNone(turn)
-        self.assertLess(turn, 0.)
-        predicted = p._pose_after_action(pose, turn, 0.)
-        self.assertTrue(p.fork_opening_alignment(predicted)[0])
-        self.assertLessEqual(abs(predicted.yaw_deg), cfg.FINAL_YAW_TOL_DEG)
+        self.assertIsNone(p.insertion_alignment_turn(pose))
         f = self.fsm()
         f._near_insertion_step(pose, None, [])
-        f._begin_rotation.assert_called_once()
-        f._fail.assert_not_called()
+        f._begin_rotation.assert_not_called()
+        f._fail.assert_called_once()
 
     def fsm(self):
         f = object.__new__(CalibrationFSMV4)
@@ -68,7 +68,7 @@ class InsertionTurnTests(unittest.TestCase):
         return f
 
     def test_entry_distance_is_not_reapplied_after_alignment_turn(self):
-        pose = self.pose(x=-.3828, z=2.1995, yaw=-13.25)
+        pose = self.pose(x=-.1, z=2.1995, yaw=-5.)
         turn = p.insertion_alignment_turn(pose)
         self.assertIsNotNone(turn)
         predicted = p._pose_after_action(pose, turn, 0.)
@@ -121,7 +121,7 @@ class InsertionTurnTests(unittest.TestCase):
 
     def test_fsm_turns_then_requires_final_recheck(self):
         f = self.fsm()
-        self.assertTrue(f._near_insertion_step(self.pose(x=-.1), None, []))
+        self.assertTrue(f._near_insertion_step(self.pose(yaw=-5.), None, []))
         self.assertEqual(f._begin_rotation.call_args.args[:2], ('FINAL_ROTATE', 'insert_align'))
         f._set_state.assert_not_called()  # no immediate insertion on predicted fit
         self.assertEqual(f._insertion_alignment_attempts, 1)
@@ -133,7 +133,7 @@ class InsertionTurnTests(unittest.TestCase):
         f = self.fsm()
         f._insertion_alignment_attempts = cfg.INSERT_ALIGNMENT_MAX_CORRECTIONS
         with patch('calib.fsm_v4.top.insertion_alignment_turn', return_value=-3.):
-            f._near_insertion_step(self.pose(x=-.1), None, [])
+            f._near_insertion_step(self.pose(yaw=-5.), None, [])
         f._fail.assert_called_once()
         f._begin_rotation.assert_not_called()
 

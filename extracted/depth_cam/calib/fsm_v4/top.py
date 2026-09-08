@@ -33,12 +33,14 @@ from .planner import (
     insertion_alignment_turn,
 )
 from .pose import VisualPose, VisualPoseFilter, wrap_180
+from .insertion_geometry import check_insertion_sweep, geometry_error
+from .coarse import CoarseAlignmentMixin, COARSE_BLIND_STATES, COARSE_STATES
 
 
 Line = Tuple[str, tuple]
 
 
-class CalibrationFSMV4:
+class CalibrationFSMV4(CoarseAlignmentMixin):
     """Vision-primary bounded FSM using model/PnP observations."""
 
     accepts_vision_meta = True
@@ -48,6 +50,7 @@ class CalibrationFSMV4:
     trace_metadata = {
         "fsm_v4_control": "stopped_observe_visible_macro_action_settle_replan",
         "v4_insertion_control": "accepted_distance_fitted_time_no_vision",
+        "v4_insertion_geometry": "nine_blocks_continuous_planar_sweep_with_wall_margin",
         "v4_rotation_stop_speed_source": "raw consecutive PnP error rate",
         "v4_post_stop_rotation_sign": (
             "positive=same direction as stopped rotation; negative=rebound"
@@ -108,7 +111,7 @@ class CalibrationFSMV4:
 
     @property
     def skip_detection(self) -> bool:
-        return self.state in {"READY_TO_INSERT", "INSERT_DRIVE", "INSERT_SETTLE", "DONE", "FAILED"}
+        return self.state in COARSE_BLIND_STATES or self.state in {"READY_TO_INSERT", "INSERT_DRIVE", "INSERT_SETTLE", "DONE", "FAILED"}
 
     @property
     def vision_independent(self) -> bool:
@@ -148,6 +151,19 @@ class CalibrationFSMV4:
         uses a predicted-error margin).  Keep this separate so the runtime
         diagram can always show the operator the requested angle or distance.
         """
+        if self.state in {"COARSE_ROTATE", "COARSE_RETURN_ROTATE", "COARSE_DRIVE"}:
+            turning = self.state != "COARSE_DRIVE"
+            target = abs(self._coarse_target) if turning else self._coarse_plan[2]
+            current = (math.copysign(1.0, self._coarse_target) * self._coarse_progress
+                       if turning else max(0.0, target - (self._coarse_drive_end - time.monotonic())))
+            return {
+                "kind": "rotation" if turning else "timed_coarse",
+                "direction": self._coarse_command if turning else "FORWARD (time estimate)",
+                "fixed_target": True, "target_value": target,
+                "current_value": current, "remaining_value": max(0.0, target-current),
+                "progress_ratio": max(0.0, min(1.0, current/max(target, 1e-9))),
+                "unit": "deg" if turning else "s",
+            }
         if self.state == "SEARCH_SWEEP":
             return {
                 "kind": "rotation",
@@ -249,6 +265,7 @@ class CalibrationFSMV4:
         ]
 
     def reset(self) -> None:
+        self._coarse_reset()
         self.state = "PRECHECK"
         self._pipeline_started_mono = time.monotonic()
         self._state_entered_mono = self._pipeline_started_mono
@@ -679,19 +696,25 @@ class CalibrationFSMV4:
             return True
         return False
 
-    def _accept_insertion(self, pose, lines) -> None:
+    def _accept_insertion(self, pose, lines) -> bool:
+        check = check_insertion_sweep(
+            pose, enforce_entry_distance=not getattr(self, "_insertion_alignment_entered", False))
+        if not check.ok or abs(pose.yaw_deg) > cfg.FINAL_YAW_TOL_DEG:
+            self._fail("insertion rejected: " + (check.reason if not check.ok else "yaw limit"), lines)
+            return False
         z = float(pose.pallet_z_m)
         target = z - cfg.INSERT_CAMERA_Z_REMAINDER_M
         if (not math.isfinite(z) or z <= 0.0 or target <= 0.0
                 or (not getattr(self, "_insertion_alignment_entered", False)
                     and z > cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M)):
             self._fail("invalid accepted camera-Z insertion distance", lines)
-            return
+            return False
         self._insert_accepted_z_m = z
         self._insert_remaining_m = target
         self._set_state("READY_TO_INSERT")
         lines.append((f"[INSERT TARGET] accepted Z={z:.3f}m - "
                       f"{cfg.INSERT_CAMERA_Z_REMAINDER_M:.3f}m = {target:.3f}m", COLOR_META))
+        return True
 
     def _route_start_distance(self, pose, vision_meta, now, lines) -> bool:
         """Plan from inside the standoff; use rotation-only alignment nearby."""
@@ -719,15 +742,20 @@ class CalibrationFSMV4:
             return False
         if self._insertion_fine_timed_out(time.monotonic(), lines):
             return True
+        if geometry_error():
+            self._fail("insertion geometry: " + geometry_error(), lines)
+            return True
         turn = insertion_alignment_turn(pose, vision_meta, alignment_entered=True)
         if turn == 0.0:
             self._insertion_fine_started_mono = None
-            self._accept_insertion(pose, lines)
-            lines.append((f"[INSERT CHECK] fork rays OK, yaw={pose.yaw_deg:+.2f}deg", COLOR_STATUS_OK))
+            if not self._accept_insertion(pose, lines):
+                return True
+            lines.append((f"[INSERT CHECK] full nine-block sweep clear, yaw={pose.yaw_deg:+.2f}deg", COLOR_STATUS_OK))
         elif turn is None:
             self._fail(
                 f"no commandable visibility-safe insertion rotation "
-                f"(minimum {cfg.INSERT_FINE_MIN_TURN_DEG:.2f}deg)", lines,
+                f"(minimum {cfg.INSERT_FINE_MIN_TURN_DEG:.2f}deg): "
+                f"{check_insertion_sweep(pose, enforce_entry_distance=False).reason}", lines,
             )
         elif (abs(turn) >= cfg.ROT_MIN_COMMANDABLE_ANGLE_DEG
               and self._insertion_fine_started_mono is None
@@ -1457,6 +1485,10 @@ class CalibrationFSMV4:
             self._fail("total pipeline timeout", lines)
             return lines
 
+        if self.state in COARSE_STATES:
+            self._coarse_step(now, lines, det_ok, yaw_smooth, offset_smooth, dist_z, vision_meta)
+            return lines
+
         if self.state in {"READY_TO_INSERT", "INSERT_DRIVE", "INSERT_SETTLE"}:
             self._step_insertion_without_vision(now, lines)
             return lines
@@ -1679,7 +1711,7 @@ class CalibrationFSMV4:
                 self._initial_visibility_complete = True
                 self._initial_visible_snapshot = None
                 self._initial_visibility_stop_mono = None
-            if self._route_start_distance(pose, vision_meta, now, lines):
+            if not self._coarse_required(pose) and self._route_start_distance(pose, vision_meta, now, lines):
                 return lines
             if (
                 cfg.BEARING_BASED_ROTATION_ENABLED
@@ -1694,6 +1726,8 @@ class CalibrationFSMV4:
                         "no visibility-safe initial face rotation", lines,
                     )
             else:
+                if self._maybe_begin_coarse(pose, now, lines):
+                    return lines
                 self._set_state("STANDOFF_VERIFY")
             lines.append((f"[ACQUIRE] pose locked, centre={center:+.2f}deg", COLOR_META))
             return lines
@@ -1735,6 +1769,8 @@ class CalibrationFSMV4:
                         "no visibility-safe follow-up face rotation", lines,
                     )
             else:
+                if self._maybe_begin_coarse(pose, now, lines):
+                    return lines
                 self._set_state("STANDOFF_VERIFY")
             return lines
 
@@ -1823,7 +1859,8 @@ class CalibrationFSMV4:
                     ):
                         self._fail("final yaw below commandable angle but outside tolerance", lines)
                     return lines
-                self._accept_insertion(pose, lines)
+                if not self._accept_insertion(pose, lines):
+                    return lines
                 lines.append((
                     f"[FINAL LOCK] fork hits=({fork_hits[0]:+.3f},{fork_hits[1]:+.3f})m "
                     f"within +/-{cfg.INSERT_OPENING_SPAN_M/2:.3f}m, yaw={pose.yaw_deg:+.2f}deg",

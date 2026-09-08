@@ -6,11 +6,17 @@ from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from calib.fsm_v4.top import CalibrationFSMV4
+from calib.fsm_v4 import config as cfg
 from calib.fsm_v4.pose import VisualPoseFilter
 from calib.fsm_v4.controllers import RotationController
 
 
 class StartDistanceRoutingTests(unittest.TestCase):
+    def setUp(self):
+        width = patch.object(cfg, 'FORK_WIDTH_M', .10)
+        width.start()
+        self.addCleanup(width.stop)
+
     def run_start(self, z, x=0., yaw=0., state='ACQUIRE_VERIFY', staging_started=False):
         f = object.__new__(CalibrationFSMV4)
         f.tracer = None
@@ -51,12 +57,12 @@ class StartDistanceRoutingTests(unittest.TestCase):
                     f._begin_rotation.assert_not_called()
 
     def test_near_aligned_pose_is_ready_for_insertion(self):
-        f = self.run_start(1.8, yaw=-9.2)
+        f = self.run_start(1.8, yaw=0.)
         self.assertEqual(f.state, 'READY_TO_INSERT')
         f._begin_translation.assert_not_called()
 
     def test_near_correctable_pose_rotates_before_insertion(self):
-        f = self.run_start(1.8, x=-.1, yaw=-9.2)
+        f = self.run_start(1.8, yaw=-5.)
         self.assertEqual(f._begin_rotation.call_args.args[:2],
                          ('FINAL_ROTATE', 'insert_align'))
         f._begin_translation.assert_not_called()
@@ -71,7 +77,7 @@ class StartDistanceRoutingTests(unittest.TestCase):
         f._begin_translation.assert_not_called()
 
     def test_far_standoff_still_moves_forward(self):
-        f = self.run_start(4.5, state='STANDOFF_VERIFY')
+        f = self.run_start(cfg.SAFETY_STANDOFF_Z_M + .5, state='STANDOFF_VERIFY')
         self.assertEqual(f._begin_translation.call_args.args[:2],
                          ('STANDOFF_MOVE', 'FWD'))
 

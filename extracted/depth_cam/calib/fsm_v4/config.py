@@ -10,7 +10,7 @@ import math
 
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Dict, Tuple
+from typing import Dict, Optional, Tuple
 
 from ..config import MODEL_PATH, CAMERA_ENABLED
 from .. import config as _pose_config
@@ -24,6 +24,21 @@ from .endpoint_response import load_selected_endpoint, validate_runtime_inferenc
 # Camera optical frame: +X right, +Y down, +Z forward.
 # Rotation centre is expressed from the camera optical centre in vehicle X/Z.
 # ---------------------------------------------------------------------------
+COARSE_IMU_ENABLED = True
+COARSE_YAW_TRIGGER_DEG = 25.0
+COARSE_IMU_SIGN = 1.0  # gyro Y: positive right, as in the packaged IMU diagnostic
+COARSE_IMU_MAX_AGE_SEC = 0.25
+COARSE_COMMAND_LEASE_SEC = 0.30
+COARSE_ROTATION_TIMEOUT_SEC = 30.0
+COARSE_TOTAL_TIMEOUT_SEC = 100.0
+COARSE_SETTLE_SEC = 1.5
+COARSE_STABLE_RATE_DEG_S = 0.5
+COARSE_SETTLE_TIMEOUT_SEC = 5.0
+COARSE_MAX_LATERAL_M = 3.0
+COARSE_MIN_LATERAL_M = 0.02
+COARSE_DRIVE_HEADING_TOL_DEG = 5.0
+COARSE_REACQUIRE_TIMEOUT_SEC = 10.0
+
 CAMERA_TO_ROT_CENTER_X_M = 0.00       # PROVISIONAL; right-positive
 CAMERA_TO_ROT_CENTER_Z_M = -0.68      # measured; centre 0.68 m behind camera
 CAMERA_YAW_IN_VEHICLE_DEG = 0.00      # PROVISIONAL; camera forward, right-positive
@@ -349,8 +364,13 @@ STANDOFF_MAX_CORRECTIONS = 4
 FINAL_LATERAL_TOL_M = 0.10              # temporary field tolerance; validate before tightening
 # Field-relaxed final yaw acceptance (previously +/-2.5 deg).
 FINAL_YAW_TOL_DEG = 20.00
-# Simplified horizontal insertion gate: centred continuous opening, no middle divider.
-INSERT_OPENING_SPAN_M = 0.71
+# Legacy display span only; approval uses the nine-block geometry below.
+INSERT_OPENING_SPAN_M = 0.70
+INSERT_PALLET_SIZE_M = 1.10
+INSERT_BLOCK_SIZE_M = 0.20
+INSERT_HOLE_WIDTH_M = 0.25
+INSERT_WALL_MARGIN_M = 0.01  # Additional planar clearance, not a pose-error bound.
+FORK_WIDTH_M = 0.115  # User-measured width of ONE fork (2026-09-08); None blocks insertion.
 INSERT_ALIGNMENT_MAX_CAMERA_Z_M = 2.20  # PnP selected front-centre camera Z
 INSERT_ALIGNMENT_MAX_CORRECTIONS = 3
 INSERT_FINE_MIN_TURN_DEG = 0.50  # Final insertion alignment only; provisional micro-command floor
@@ -367,8 +387,8 @@ TOTAL_PIPELINE_TIMEOUT_SEC = 180.0
 
 # ---------------------------------------------------------------------------
 # 8) Insertion policy
-# Automatic insertion is deliberately disabled while external parameters are
-# provisional.  When enabled, insertion uses bounded fitted-distance segments.
+# Approval requires the complete planned straight sweep to clear all nine blocks.
+# Execution retains one fitted-time command without pose feedback.
 # ---------------------------------------------------------------------------
 AUTO_INSERT_ENABLED = True
 INSERT_TOTAL_DISTANCE_M = 1.00          # Legacy only; runtime uses accepted camera Z minus remainder
@@ -520,19 +540,36 @@ class V4ConfigSnapshot:
     final_lateral_tol_m: float = FINAL_LATERAL_TOL_M
     final_distance_tol_m: float = FINAL_DISTANCE_TOL_M
     final_yaw_tol_deg: float = FINAL_YAW_TOL_DEG
+    insertion_pallet_size_m: float = INSERT_PALLET_SIZE_M
+    insertion_block_size_m: float = INSERT_BLOCK_SIZE_M
+    insertion_hole_width_m: float = INSERT_HOLE_WIDTH_M
+    insertion_wall_margin_m: float = INSERT_WALL_MARGIN_M
+    fork_width_m: Optional[float] = FORK_WIDTH_M
+    fork_outer_span_m: float = FORK_OUTER_SPAN_M
     auto_insert_enabled: bool = AUTO_INSERT_ENABLED
     insertion_fine_min_turn_deg: float = INSERT_FINE_MIN_TURN_DEG
     insertion_fine_timeout_sec: float = INSERT_FINE_TIMEOUT_SEC
 
 
 def metadata() -> Dict[str, object]:
-    return {f"v4_{key}": value for key, value in asdict(V4ConfigSnapshot()).items()}
+    result = {f"v4_{key}": value for key, value in asdict(V4ConfigSnapshot()).items()}
+    result.update({f"v4_{key.lower()}": value for key, value in globals().items()
+                   if key.startswith("COARSE_")})
+    return result
 
 
 def validate() -> None:
     """Fail early on internally inconsistent edits."""
 
     errors = []
+    if not 0 < COARSE_YAW_TRIGGER_DEG < 90 or COARSE_IMU_SIGN not in (-1., 1.):
+        errors.append("invalid coarse yaw threshold or IMU sign")
+    if not 0 < COARSE_IMU_MAX_AGE_SEC <= COARSE_COMMAND_LEASE_SEC <= 1.0:
+        errors.append("invalid coarse IMU freshness / command lease")
+    if not 0 < COARSE_MIN_LATERAL_M < COARSE_MAX_LATERAL_M:
+        errors.append("invalid coarse lateral range")
+    if not 0 < COARSE_SETTLE_SEC < COARSE_SETTLE_TIMEOUT_SEC < COARSE_TOTAL_TIMEOUT_SEC:
+        errors.append("invalid coarse settle limits")
     if CAMERA_DISPLAY_SCALE <= 0.0:
         errors.append("CAMERA_DISPLAY_SCALE must be positive")
     if not 0.0 < CAMERA_HORIZONTAL_FOV_DEG < 180.0:
