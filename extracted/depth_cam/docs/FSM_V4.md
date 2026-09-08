@@ -80,8 +80,10 @@ artifact는 현재 Pose 모델 hash, 실제 CAN 시각, 좌우 부호, 식별 �
 8. `WAYPOINT_DRIVE`: 전진 적합식이 신뢰되는 거리 범위에서 한 번의 macro-step을 실행하고 PnP 이동량으로 선제 STOP한다.
 9. `WAYPOINT_*_SETTLE`: 관성 이동이 끝난 안정 pose를 얻은 뒤 진행량을 평가하고 6단계부터 재계획한다.
 10. `FINAL_POSE_LOCK`: pallet-frame 위치, lateral, 전면 yaw와 거리 조건을 동시에 검증한다.
-11. `READY_TO_INSERT`: 자동 삽입이 꺼져 있으면 STOP 유지, 켜져 있으면 분할 삽입으로 이동한다.
-12. `INSERT_DRIVE/SETTLE`: 짧은 적합거리 전진과 정지 검증을 반복한다. pose가 안전범위를 벗어나면 즉시 `FAILED`다.
+정지 관측 재사용: SETTLE에서 승인한 pose/중앙각/시야 여유는 이어지는 `STANDOFF_VERIFY`, `STAGING_PLAN`, `FINAL_POSE_LOCK`에 전달한다. 승인 관측과 현재 관측 모두 `MAX_MEASUREMENT_AGE_SEC`(현재 0.30초) 이내이며, 현재 자세와 중앙각이 기존 안정성 허용오차 안이고 시야 여유가 감소하지 않았을 때 10개 표본을 다시 모으지 않는다. 원래 측정 시각은 갱신하지 않는다. 새 동작, 관측 누락, 복구, 리셋, 디버그 재개 또는 유효기간 경과 시 재사용을 해제하고 새 표본을 수집한다. 사용 여부는 HUD의 `[OBSERVE REUSE]`로 확인한다. 제동 대기와 최초 안정성 확인은 유지한다.
+
+11. `READY_TO_INSERT`: 삽입 승인 시 확정한 카메라 Z에서 `INSERT_CAMERA_Z_REMAINDER_M`를 뺀 거리를 유지한다. 이 상태부터 추론과 PnP 검사를 중단한다. 자동 삽입이 꺼져 있으면 STOP 상태로 대기한다.
+12. `INSERT_DRIVE/SETTLE`: 확정 거리를 `forward_seconds()`로 변환한 시간만큼 한 번 전진하고 STOP 후 `STOP_MIN_SETTLE_SEC`를 기다려 `DONE`으로 전환한다. PnP 복구/자세/정지 안정성 검사를 하지 않으며 잔여 거리 재시도도 없다. 이동 거리는 실측하지 않으므로 화면에는 삽입 시간 진행률을 표시한다. 명령 시간 한계와 전체 삽입 타임아웃은 유지하며, 실행 루프는 새 카메라 프레임 없이도 타이머를 처리한다.
 13. `DONE/FAILED`: 명시적인 종료 상태에서 STOP을 유지한다.
 
 ## 제어 원칙
@@ -148,6 +150,26 @@ HFOV 70도에 좌우 8% image-edge margin을 적용한 사용 가능 반시야�
 - lateral 오차가 남았을 때 staging 평면을 넘어가지 않도록 조향 여유를 남긴다.
 
 회전을 실행한 뒤에는 기존 FSM 방식대로 STOP, settle, PnP 재관측을 거쳐 실제
-전진 거리를 다시 계산한다. `IMAGE_EDGE_VISIBILITY_GUARD_ENABLED=True`는 계획과
-별개의 실시간 보호장치로 유지된다. 안전한 회전·전진 또는 recenter 동작이 없으면
-시야를 벗어나며 진행하지 않고 실패 상태로 정지한다.
+
+## Planning-only visibility margins (2026-09-07)
+
+FACE centering remains in the initial 4 m approach. After staging starts,
+use PLAN -> turn -> STOP/settle/observe -> forward -> STOP/settle/observe -> PLAN.
+There is no staging RECENTER action. Visual reacquisition resumes staging,
+without restarting FACE or the 4 m approach. Final fork alignment is retained.
+
+Image-edge and center-bearing margin violations no longer interrupt an executing
+turn or forward command. IMAGE_EDGE_VISIBILITY_GUARD_ENABLED is now a legacy
+trace flag set to False; IMAGE_EDGE_MARGIN_NORM=0.08 still constrains planning.
+The current 55 degree HFOV gives a usable half-angle of approximately 23.62 degrees.
+
+For a start inside the safe ROI, the entire turn and forward path must preserve
+that ROI. A visible start outside the ROI may turn within the physical viewport,
+but must restore the reserved ROI before driving forward. Measured 3D corners
+are transformed with the offset camera, including vertical viewport checks.
+If no feasible joint action exists, stop with a planner failure, without centering.
+If the settled turn cannot continue straight safely, return to PLAN.
+
+Persistent detection/pose loss, command target completion, timeouts, staging
+limits and STOP settling remain active. These are geometric predictions;
+vehicle inertia and perception errors still require field validation.

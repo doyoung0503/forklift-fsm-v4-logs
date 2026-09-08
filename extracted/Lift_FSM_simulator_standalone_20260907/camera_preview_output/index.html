@@ -1,0 +1,10 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>팔레트 가상 카메라 영상</title>
+<style>body{max-width:1280px;margin:32px auto;padding:0 20px;background:#12181d;color:#e3ebef;font:16px/1.7 system-ui}h1{font-size:25px}video{width:100%;background:#000;border-radius:10px}a{color:#8ad9ff}.cyan{color:#33dcff}.yellow{color:#ffe61e}</style>
+<h1>고정된 팔레트 · 움직이는 카메라</h1>
+<p>3D 모델로 만든 RGB에 정답 기반 Gaussian 가상 레이블을 표시한 18초 영상입니다. 신경망 추론은 실행하지 않습니다.</p>
+<video controls autoplay muted loop playsinline src="pallet_camera_demo.mp4"></video>
+<p>실제 FSM 카메라 화면과 동일한 그리기 함수를 사용합니다. 자홍색 전면 0~3 · 주황색 후면 4~7 · 회색 중심점 8 · 선택 전면 FRONT(area) · XYZ 축 · yaw/pitch/roll.<br>접근 → 좌우 이동 → 주위 회전. RGB 30FPS / 레이블 10Hz / 지연 120ms / 미탐 확률 5%. 카메라 높이는 예시값 25cm입니다. 모든 팔레트 표시는 오차가 적용된 가상 포즈 기반입니다.</p>
+<p>표준편차 X/Y/Z = 1/1/2cm, yaw = 1°. 평균 0. 카메라는 정해진 경로를 움직이며 이 영상 자체는 FSM 실행 기록이 아닙니다.</p>
+<p><a href="camera_raw.mp4">오버레이 없는 원본 영상</a> · <a href="measurements.json">프레임별 좌표·가상 출력 기록</a></p>
+</html>

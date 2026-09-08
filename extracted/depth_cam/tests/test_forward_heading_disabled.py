@@ -44,11 +44,12 @@ class ForwardHeadingDisabledTests(unittest.TestCase):
         self.fsm._stop_translation.assert_not_called()
         self.fsm.execu.exec.assert_called_once_with('FWD')
 
-    def test_image_edge_guard_still_stops(self):
-        self.assertTrue(cfg.IMAGE_EDGE_VISIBILITY_GUARD_ENABLED)
-        self.run_step(margin=-.1)
-        self.assertTrue(self.fsm._stop_translation.call_args.kwargs['visibility_guard'])
-        self.fsm.execu.exec.assert_not_called()
+    def test_image_edge_margin_does_not_interrupt_forward(self):
+        with patch.object(cfg, 'IMAGE_EDGE_VISIBILITY_GUARD_ENABLED', True), \
+             patch.object(cfg, 'PALLET_CENTER_VISIBILITY_GUARD_ENABLED', True):
+            self.run_step(margin=-.1)
+        self.fsm._stop_translation.assert_not_called()
+        self.fsm.execu.exec.assert_called_once_with('FWD')
 
     def test_timeout_still_fails(self):
         self.fsm._translation_deadline_mono = 99.

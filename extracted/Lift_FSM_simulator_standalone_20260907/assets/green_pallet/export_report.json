@@ -1,0 +1,12 @@
+{
+  "source_blend": "E:\\CODING\\GitHub\\FoundationPose\\data\\pallet\\assets\\pallets\\models\\green_pallet_repaired\\green_pallet_repaired.blend",
+  "source_blend_sha256": "ed4b250ae61c1c2c4f7cd7078fd6f9cae64d4f2a8bc0ad71545665e2d99e98bd",
+  "source_unchanged": true,
+  "output": "E:\\CODING\\GitHub\\FoundationPose\\data\\pallet\\assets\\pallets\\models\\green_pallet_repaired\\obj\\green_pallet_repaired.obj",
+  "mesh_objects": 22,
+  "textures": [
+    "tex_u0_v0_diffuse.jpg"
+  ],
+  "coordinate_system": "OBJ Y-up, forward -Z, meter-scale coordinates; native Blender source is Z-up.",
+  "material_note": "Original upper-surface photographic texture retained; procedural lower material simplified to green MTL."
+}

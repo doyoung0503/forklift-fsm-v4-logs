@@ -1,9 +1,10 @@
 """Fast-start launcher for FSM v4 visual macro-action control.
 
-Direct execution loads the pinned Cleanlabel pose model and selected 48-point
+Default/--mode real execution loads the pinned Cleanlabel pose model and selected 48-point
 endpoint response after identity validation. Missing/mismatched selected
 artifacts block startup. The legacy ``--calibrate`` physical fitter is blocked
-for this selection. Importing this module itself performs no hardware work.
+for this selection. --mode simulation branches to the model-result/virtual-CAN
+runtime before hardware imports. Importing this module performs no hardware work.
 """
 
 from __future__ import annotations
@@ -312,11 +313,26 @@ def _load_runtime_components_direct(model_path: Path):
 
 def main(
     *,
+    mode: str = "real",
+    simulation_ipc: bool = False,
+    simulation_window: bool = True,
+    simulation_port: int = 8766,
+    simulation_browser: bool = True,
     require_calibration: bool = False,
     calibration_runner: Optional[Callable[[], RotationCalibrationReady]] = None,
     component_loader: Optional[Callable[[RotationCalibrationReady], tuple]] = None,
 ) -> int:
     """Start immediately by default; opt into a full calibration when needed."""
+
+    if mode not in ("real", "simulation"):
+        raise ValueError("mode must be real or simulation")
+    if mode == "simulation":
+        if require_calibration or calibration_runner is not None or component_loader is not None:
+            raise ValueError("Simulation mode does not run physical calibration or the real runtime loader")
+        # Branch before main_rec, camera, inference and hardware startup imports.
+        from simulation_runtime import run_simulation
+        return run_simulation(ipc=simulation_ipc,show_window=simulation_window,
+                              port=simulation_port,open_browser=simulation_browser)
 
     if require_calibration and calibration_runner is None:
         print('[STARTUP BLOCKED] Selected endpoint response is pinned; --calibrate uses the old physical fitter. Run offline fitting explicitly, then select a new endpoint artifact.', file=sys.stderr)
@@ -378,10 +394,11 @@ def main(
     runtime_main(
         fsm_factory=CalibrationFSMV4,
         recording_prefix="forklift_v4_recording",
-        window_title="Forklift HUD + FSM v4 visual macro control",
+        window_title="[REAL] Forklift HUD + FSM v4 visual macro control",
         fsm_version="v4",
         diagram_drawer=diagram_drawer,
         can_enabled=v4_config.CAN_ENABLED,
+        camera_enabled=getattr(v4_config, "CAMERA_ENABLED", None),
         camera_display_scale=v4_config.CAMERA_DISPLAY_SCALE,
         debug_step_mode=v4_config.DEBUG_STEP_MODE,
         interface_panel_width=v4_config.INTERFACE_PANEL_WIDTH,
@@ -391,4 +408,19 @@ def main(
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(require_calibration="--calibrate" in sys.argv[1:]))
+    import argparse
+    parser=argparse.ArgumentParser(description="FSM v4 real/simulation launcher")
+    parser.add_argument('--mode',choices=('real','simulation'),default='real')
+    parser.add_argument('--calibrate',action='store_true')
+    parser.add_argument('--ipc',action='store_true',help='Simulation worker: model/CAN JSON over stdin/stdout')
+    parser.add_argument('--no-window',action='store_true',help='Simulation worker without its native result window')
+    parser.add_argument('--port',type=int,default=8766)
+    parser.add_argument('--no-browser',action='store_true')
+    args=parser.parse_args()
+    if args.mode=='real' and (args.ipc or args.no_window or args.no_browser or args.port!=8766):
+        parser.error('IPC/window/server options require --mode simulation')
+    if args.mode=='simulation' and args.calibrate:
+        parser.error('--calibrate is not available in simulation mode')
+    raise SystemExit(main(mode=args.mode,require_calibration=args.calibrate,
+        simulation_ipc=args.ipc,simulation_window=not args.no_window,
+        simulation_port=args.port,simulation_browser=not args.no_browser))

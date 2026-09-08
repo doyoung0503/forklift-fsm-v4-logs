@@ -91,7 +91,7 @@ class InsertionTurnTests(unittest.TestCase):
         self.assertAlmostEqual(f._insert_remaining_m,
                                predicted.pallet_z_m - cfg.INSERT_CAMERA_Z_REMAINDER_M)
 
-    def test_live_edge_allows_insertion_but_preserves_other_rotation_guard(self):
+    def test_live_edge_does_not_interrupt_planned_rotations(self):
         for mode in ('insert_align', 'waypoint', 'final'):
             with self.subTest(mode=mode):
                 f = self.fsm()
@@ -115,14 +115,9 @@ class InsertionTurnTests(unittest.TestCase):
                      patch.object(cfg, 'IMAGE_EDGE_VISIBILITY_GUARD_ENABLED', True):
                     f._rotation_step(self.pose(), 0., {'bbox_margin_norm': 0.01},
                                      'FINAL_SETTLE', [])
-                if mode == 'insert_align':
-                    f.execu.exec.assert_called_once_with('ROT_LEFT')
-                    f._exec.assert_not_called()
-                    f._begin_settle.assert_not_called()
-                else:
-                    f._exec.assert_called_once_with('STOP')
-                    self.assertEqual(f._capture_rotation_stop.call_args.args[-1],
-                                     'live_image_edge')
+                f.execu.exec.assert_called_once_with('ROT_LEFT')
+                f._exec.assert_not_called()
+                f._begin_settle.assert_not_called()
 
     def test_fsm_turns_then_requires_final_recheck(self):
         f = self.fsm()

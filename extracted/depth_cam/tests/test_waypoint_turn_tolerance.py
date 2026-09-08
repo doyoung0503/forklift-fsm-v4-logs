@@ -53,9 +53,10 @@ class WaypointToleranceTests(unittest.TestCase):
             self.assertFalse(self.check(2.))
         self.fsm._begin_translation.assert_not_called()
 
-    def test_unsafe_continuation_stops_without_rotating(self):
+    def test_unsafe_continuation_replans_without_centering(self):
         self.assertTrue(self.check(2., distance=0.))
-        self.fsm._fail.assert_called_once()
+        self.fsm._fail.assert_not_called()
+        self.fsm._set_state.assert_called_once_with('STAGING_PLAN')
         self.fsm._begin_translation.assert_not_called()
 
     def test_reached_position_goes_to_final_lock(self):

@@ -1,0 +1,222 @@
+{
+  "id": "2afb1d6e11054adcb67363b2ab19a97e",
+  "model": {
+    "protocol": "lift.model.v1",
+    "sequence": 180,
+    "sim_time_s": 5.9999999999999885,
+    "clock": {
+      "domain": "simulation_monotonic",
+      "now": 1006.0
+    },
+    "step": {
+      "det_ok": true,
+      "detected_length": 1.1,
+      "dist_z": 1.6545368833552319,
+      "yaw_smooth": 0.0,
+      "offset_smooth": [
+        0.0,
+        0.0,
+        1.6545368833552319
+      ],
+      "target_bearing_deg": 0.0,
+      "vision_meta": {
+        "center_bearing_deg": 0.0,
+        "front_face_center_bearing_deg": 0.0,
+        "model_center_bearing_deg": 0.0,
+        "bbox_margin_norm": 0.18071422871771037,
+        "frame_width": 640,
+        "frame_height": 480,
+        "fx": 614.7142806307731,
+        "fy": 614.7142806307731,
+        "ppx": 320.0,
+        "ppy": 240.0,
+        "face_corners_px": [
+          [
+            115.65710637933469,
+            212.13505996081838
+          ],
+          [
+            524.3428936206653,
+            212.13505996081838
+          ],
+          [
+            524.3428936206653,
+            267.86494003918165
+          ],
+          [
+            115.65710637933469,
+            267.86494003918165
+          ]
+        ],
+        "face_corners_camera_m": [
+          [
+            -0.55,
+            -0.075,
+            1.6545368833552319
+          ],
+          [
+            0.55,
+            -0.075,
+            1.6545368833552319
+          ],
+          [
+            0.55,
+            0.075,
+            1.6545368833552319
+          ],
+          [
+            -0.55,
+            0.075,
+            1.6545368833552319
+          ]
+        ],
+        "selected_front_face": "z_min",
+        "selected_face_area_px2": 22776.009912690854,
+        "projected_face_areas_px2": {
+          "z_min": 22776.009912690854,
+          "z_max": 8217.379896276005,
+          "x_min": 3639.6575041037086,
+          "x_max": 3639.6575041037213
+        },
+        "yaw_raw_deg": 0.0,
+        "pos_x_m": 0.0,
+        "pos_z_m": 1.6545368833552319,
+        "measurement_mono": 1005.88,
+        "fsm_step_mono": 1006.0,
+        "inference_latency_sec": 0.1200000000000001,
+        "inference_start_mono": 1005.88,
+        "inference_end_mono": 1006.0,
+        "model_inference_latency_sec": 0.1200000000000001,
+        "pose_result_mono": 1006.0,
+        "camera_frame_number": 180,
+        "sensor_timestamp_ms": 5879.999999999988,
+        "sensor_timestamp_domain": "simulation_clock"
+      }
+    },
+    "result_interval_s": 0.033333333333333215,
+    "result_fps": 30.000000000000107
+  },
+  "diagnostics": {
+    "sim_time_s": 5.9999999999999885,
+    "next_model_time_s": 6.033333333333322,
+    "model_count": 181,
+    "options": {
+      "x": 0.0,
+      "z": 2.0,
+      "yaw": 0.0,
+      "hz": 30.0,
+      "max_seconds": 185.0,
+      "seed": 20260907,
+      "perception": "oracle",
+      "camera_range": 6.0,
+      "min_visible_fraction": 0.5,
+      "latency": 0.12,
+      "dropout": 0.0,
+      "loss_start": 0.0,
+      "loss_duration": 0.0,
+      "yaw_noise": 0.0,
+      "position_noise": 0.0,
+      "yaw_bias": 0.0,
+      "x_bias": 0.0,
+      "z_bias": 0.0,
+      "drive_scale": 1.0,
+      "rotation_scale": 1.0,
+      "drive_delay": 0.0,
+      "drive_coast_sec": 0.0,
+      "rotation_coast_fraction": 0.0,
+      "rotation_coast_sec": 0.6,
+      "drive_scale_sd": 0.0,
+      "rotation_scale_sd": 0.0,
+      "vertical_offset": 0.0,
+      "fork_width": 0.1,
+      "pallet_depth": 1.1,
+      "opening": "continuous",
+      "completion_tolerance": 0.05,
+      "face_selection": "largest",
+      "x_noise": 0.0,
+      "y_noise": 0.0,
+      "z_noise": 0.0,
+      "y_bias": 0.0,
+      "model_hz": 30.0,
+      "model_interval_sd": 0.0,
+      "latency_sd": 0.0,
+      "camera_hfov_deg": 55.0
+    },
+    "truth": {
+      "x": 0.0,
+      "z": 1.6545368833552319,
+      "yaw": 0.0,
+      "world_x": 0.0,
+      "world_z": 0.3454631166446973,
+      "heading": 0.0
+    },
+    "observation": {
+      "fraction": 1.0,
+      "margin": 0.18071422871771037,
+      "detected": true,
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.6545368833552319,
+      "yaw": 0.0,
+      "measured": 5.879999999999988,
+      "selected_face": "z_min",
+      "sampled_error": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "yaw": 0.0
+      },
+      "ground_truth_pose": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.6545368833552319,
+        "yaw": 0.0
+      },
+      "sequence": 180,
+      "result_fps": 30.000000000000107,
+      "latency": 0.1200000000000001
+    },
+    "collision": null,
+    "clearance": null,
+    "can": {
+      "id": 483,
+      "data": [
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ],
+      "status": "ready",
+      "received_frames": 1830
+    },
+    "vehicle_profile": {
+      "schema_version": 1,
+      "description": "Independent simulated vehicle calibration; seeded from 2026-09-07 workspace. Not live-linked to FSM tuning. Watchdog limits and analog strength scaling are simulation assumptions.",
+      "parameters": {
+        "CAMERA_TO_ROT_CENTER_X_M": 0.0,
+        "CAMERA_TO_ROT_CENTER_Z_M": -0.68,
+        "CAMERA_HORIZONTAL_FOV_DEG": 55.0,
+        "CAMERA_TO_FORK_TIP_Z_M": 1.18,
+        "FWD_T0_SEC": 0.5069,
+        "FWD_ACCEL_DURATION_SEC": 2.0357,
+        "FWD_ACCEL_M_S2": 0.139644,
+        "FWD_DISTANCE_SCALE": 1.0,
+        "PALLET_FRONT_VISIBILITY_WIDTH_M": 1.1,
+        "INSERT_OPENING_SPAN_M": 0.71,
+        "FORK_OUTER_SPAN_M": 0.6,
+        "INSERT_CAMERA_Z_REMAINDER_M": 0.3,
+        "ROTATION_SLOPE_DEG_S": 12.10246966536945,
+        "ROTATION_DELAY_SEC": 1.276363332869698,
+        "DRIVE_REFERENCE_DEFLECTION": 60,
+        "ROTATE_REFERENCE_DEFLECTION": 30,
+        "HEARTBEAT_TIMEOUT_SEC": 0.6,
+        "MOVEMENT_TIMEOUT_SEC": 0.1,
+        "CONTROL_TIMEOUT_SEC": 0.1
+      }
+    }
+  }
+}

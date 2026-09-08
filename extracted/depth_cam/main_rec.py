@@ -3,12 +3,16 @@
 import sys
 import cv2
 import numpy as np
-import pyrealsense2 as rs
+try:
+    import pyrealsense2 as rs
+except ImportError:
+    rs = None
 import os
 import math
 import time
 import hashlib
 from datetime import datetime
+from calib import config as runtime_config
 
 from calib.config import (
     STREAM_W, STREAM_H, STREAM_FPS, REC_FPS_PROBE_FRAMES,
@@ -19,6 +23,7 @@ from calib.config import (
     COLOR_ALERT, COLOR_STATUS_OK, COLOR_STATUS_TRK, COLOR_META, COLOR_BOX, COLOR_CNT, COLOR_CENTER,
     COLOR_YAW, COLOR_OFFSET, COLOR_WIDTH,
 )
+from calib.camera_overlay import draw_camera_overlay
 from calib.hud import draw_panel
 from calib.perception import Perception
 from calib.geometry import pose_from_visible_kpts_pnp
@@ -75,6 +80,9 @@ def list_common_fps(width: int, height: int):
 
 
 def realsense_check_or_exit():
+    if rs is None:
+        print("RealSense SDK unavailable. Install pyrealsense2 or set CAMERA_ENABLED = False.")
+        sys.exit(1)
     ctx = rs.context()
     devs = ctx.query_devices()
     if devs.size() == 0:
@@ -272,6 +280,7 @@ class _FSMStageDebugGate:
         for attr in (
             "_last_valid_pose", "_last_valid_center", "_last_valid_margin",
             "_last_valid_vision_meta", "_invalid_since_mono",
+            "_approved_stopped_observation",
         ):
             if hasattr(self.fsm, attr):
                 setattr(self.fsm, attr, None)
@@ -369,6 +378,46 @@ class _FSMStageDebugGate:
         )]
 
 
+def _run_camera_off_preview(
+    fsm_factory, diagram_drawer, window_title, camera_display_scale,
+    interface_panel_width, fsm_panel_width,
+):
+    """Display the real HUD without inventing camera observations or motion."""
+    configure_can_enabled(False)
+    configure_can_tx_observer(None)
+    print("[CAMERA OFF] UI preview: no camera/inference/recording; FSM paused, CAN OFF. ESC exits.")
+    try:
+        fsm = fsm_factory(tracer=None)
+        display_limit = _screen_work_area_limit()
+        vis = np.full((STREAM_H, STREAM_W, 3), (25, 28, 31), dtype=np.uint8)
+        cv2.putText(vis, "CAMERA OFF", (35, 75), cv2.FONT_HERSHEY_SIMPLEX,
+                    1.0, (90, 220, 255), 2, cv2.LINE_AA)
+        cv2.putText(vis, "No camera connected / UI preview", (35, 115),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (220, 225, 230), 1, cv2.LINE_AA)
+        lines = [
+            ("CAMERA OFF | UI PREVIEW", COLOR_STATUS_OK),
+            ("FSM paused: no camera observations", COLOR_META),
+            ("CAN OFF | Inference OFF | Recording OFF", COLOR_META),
+            ("Enable CAMERA_ENABLED in calib/config.py", COLOR_META),
+            ("Restart to apply. ESC: exit", COLOR_META),
+        ]
+        while True:
+            show = _compose_runtime_view(
+                vis, fsm, diagram_drawer, camera_display_scale,
+                interface_lines=lines, cmd_status=fsm.cmd_status,
+                interface_panel_width=interface_panel_width,
+                fsm_panel_width=fsm_panel_width,
+            )
+            cv2.imshow(window_title, _fit_view_for_display(show, display_limit))
+            if cv2.waitKey(33) & 0xFF == 27:
+                break
+            if cv2.getWindowProperty(window_title, cv2.WND_PROP_VISIBLE) < 1:
+                break
+    finally:
+        can_close()
+        cv2.destroyAllWindows()
+
+
 def main(
     fsm_factory=CalibrationFSM,
     recording_prefix="forklift_recording",
@@ -380,11 +429,19 @@ def main(
     debug_step_mode=False,
     interface_panel_width=640,
     fsm_panel_width=900,
+    camera_enabled=None,
 ):
-    realsense_check_or_exit()
     camera_display_scale = float(camera_display_scale)
     if camera_display_scale <= 0.0:
         raise ValueError("camera_display_scale must be positive")
+    if camera_enabled is None:
+        camera_enabled = runtime_config.CAMERA_ENABLED
+    if not camera_enabled:
+        return _run_camera_off_preview(
+            fsm_factory, diagram_drawer, window_title, camera_display_scale,
+            interface_panel_width, fsm_panel_width,
+        )
+    realsense_check_or_exit()
     display_limit = _screen_work_area_limit()
 
     # CAN 초기화
@@ -486,8 +543,45 @@ def main(
     disp_t0 = time.time()
     disp_n = 0
 
+    blind_view = np.zeros((STREAM_H, STREAM_W, 3), dtype=np.uint8)
+
     try:
         while True:
+            if getattr(fsm, "vision_independent", False):
+                # Insertion timing must not wait for detections, depth or even
+                # a new camera frame. No perception/PnP call occurs here.
+                lines = [("Inference / PnP OFF: insertion accepted or FSM stopped", COLOR_META)]
+                previous_fsm_state = fsm.state
+                if debug_gate.should_step:
+                    lines.extend(fsm.step(False, None, None, None, None))
+                    debug_gate.after_step(previous_fsm_state)
+                lines.extend(debug_gate.hud_lines())
+                frames = pipeline.poll_for_frames()
+                color_frame = frames.get_color_frame() if frames else None
+                if color_frame:
+                    blind_view = np.asanyarray(color_frame.get_data()).copy()
+                    if recording and raw_writer is not None:
+                        raw_writer.write(blind_view)
+                        raw_video_frame_count += 1
+                show = _compose_runtime_view(
+                    blind_view, fsm, diagram_drawer, camera_display_scale,
+                    interface_lines=lines, cmd_status=fsm.cmd_status,
+                    interface_panel_width=interface_panel_width,
+                    fsm_panel_width=fsm_panel_width,
+                )
+                if recording and video_writer is not None:
+                    cv2.putText(show, "REC", (show.shape[1]-80, 30),
+                                cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255), 2)
+                    video_writer.write(show)
+                cv2.imshow(window_title, _fit_view_for_display(show, display_limit))
+                key = cv2.waitKey(10) & 0xFF
+                if key == 27:
+                    break
+                if key == ord(' '):
+                    debug_gate.request_step()
+                elif key == ord('r'):
+                    recording = not recording
+                continue
             frames = pipeline.wait_for_frames()
 
             aligned = align.process(frames)
@@ -564,6 +658,7 @@ def main(
             except Exception:
                 color_frame_number = None
             color_img = np.asanyarray(color_frame.get_data())
+            blind_view = color_img.copy()
             depth_intrin = depth_frame.profile.as_video_stream_profile().intrinsics
             # 자세(PnP)는 컬러 영상의 키포인트로 푸니 컬러 내부파라미터를 쓴다
             color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
@@ -788,75 +883,13 @@ def main(
                 raw_video_frame_index=raw_video_frame_index,
             )
 
-            if kpts_all is not None and len(kpts_all) >= 8:
-                front = np.round(kpts_all[0:4, :2]).astype(np.int32)
-                back  = np.round(kpts_all[4:8, :2]).astype(np.int32)
-                cv2.polylines(vis, [front], isClosed=True, color=COLOR_CNT, thickness=2)
-                cv2.polylines(vis, [back], isClosed=True, color=COLOR_BOX, thickness=1)
-                for i in range(8):
-                    kx, ky = int(round(kpts_all[i, 0])), int(round(kpts_all[i, 1]))
-                    col = COLOR_CNT if i < 4 else COLOR_BOX
-                    cv2.circle(vis, (kx, ky), 4, col, -1)
-                    cv2.putText(vis, str(i), (kx + 5, ky - 5),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.45, col, 1)
-                if len(kpts_all) > POSE_CENTER_KPT:
-                    ck = kpts_all[POSE_CENTER_KPT]
-                    if np.all(np.isfinite(ck[:2])):
-                        kx, ky = int(round(ck[0])), int(round(ck[1]))
-                        cv2.drawMarker(vis, (kx, ky), COLOR_CENTER,
-                                       markerType=cv2.MARKER_CROSS,
-                                       markerSize=16, thickness=2)
-                        cv2.putText(vis, str(POSE_CENTER_KPT), (kx + 7, ky - 7),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLOR_CENTER, 2)
-            if selected_face_corners_px is not None:
-                try:
-                    selected_poly = np.round(
-                        np.asarray(selected_face_corners_px, dtype=np.float64)
-                    ).astype(np.int32)
-                    if selected_poly.shape == (4, 2):
-                        cv2.polylines(
-                            vis, [selected_poly], isClosed=True,
-                            color=(255, 0, 255), thickness=3,
-                        )
-                        label_at = tuple(selected_poly[0])
-                        cv2.putText(
-                            vis, f"FRONT(area): {selected_front_face}",
-                            (int(label_at[0]) + 5, int(label_at[1]) - 10),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 255), 2,
-                        )
-                except Exception:
-                    pass
-            # 자세를 눈으로 보이게 — 파렛트 중심에 3D 좌표축을 투영해 그린다
-            if rvec is not None:
-                K = np.array([[color_intrin.fx, 0.0, color_intrin.ppx],
-                              [0.0, color_intrin.fy, color_intrin.ppy],
-                              [0.0, 0.0, 1.0]], dtype=np.float64)
-                dist = np.asarray(color_intrin.coeffs, dtype=np.float64).reshape(-1, 1)
-                L = 0.35
-                # 표시 전용 축 방향 — 모델 좌표는 y 아래 / z 화면안쪽이라 그대로 그리면
-                # Y·Z 가 뒤로 들어가 보인다. 보기 좋게 Y 는 위, Z 는 카메라 쪽으로 뒤집어 그린다.
-                # (각도 계산 규약은 건드리지 않는다 — FSM 이 쓰는 값이다)
-                axis_pts = np.array([[0, 0, 0], [L, 0, 0], [0, -L, 0], [0, 0, -L]], dtype=np.float64)
-                proj, _ = cv2.projectPoints(axis_pts, rvec, tvec, K, dist)
-                proj = proj.reshape(-1, 2)
-                if np.all(np.isfinite(proj)):
-                    o = tuple(np.round(proj[0]).astype(int))
-                    for idx, (col, lab) in enumerate(
-                            [((0, 0, 255), "X"), ((0, 255, 0), "Y"), ((255, 128, 0), "Z")], start=1):
-                        pt = tuple(np.round(proj[idx]).astype(int))
-                        cv2.arrowedLine(vis, o, pt, col, 2, tipLength=0.2)
-                        cv2.putText(vis, lab, (pt[0] + 4, pt[1] - 4),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, col, 2)
-                    # 각도 값을 파렛트 옆에 같이 띄운다
-                    tx, ty = o[0] + 12, o[1] + 18
-                    for j, (txt, col) in enumerate([
-                            (f"yaw   {yaw_deg:+6.1f}", (200, 100, 255)),
-                            (f"pitch {pitch_deg:+6.1f}", (0, 220, 255)),
-                            (f"roll  {roll_deg:+6.1f}", (255, 200, 0))]):
-                        cv2.putText(vis, txt, (tx, ty + j * 16),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.45, col, 1, cv2.LINE_AA)
-
-            cv2.drawMarker(vis, (W // 2, H // 2), COLOR_CENTER, markerType=cv2.MARKER_CROSS, markerSize=20, thickness=2)
+            draw_camera_overlay(
+                vis, color_intrin=color_intrin, kpts_all=kpts_all,
+                selected_face_corners_px=selected_face_corners_px,
+                selected_front_face=selected_front_face,
+                rvec=rvec, tvec=tvec, yaw_deg=yaw_deg,
+                pitch_deg=pitch_deg, roll_deg=roll_deg,
+            )
 
             # 4) HUD 텍스트
             lines = []

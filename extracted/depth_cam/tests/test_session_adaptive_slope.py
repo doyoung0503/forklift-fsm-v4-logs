@@ -41,10 +41,10 @@ class SessionSlopeTests(unittest.TestCase):
         self.assertEqual(old, learner.multiplier('ROT_RIGHT'))
 
     def test_flag_off_unchanged_and_on_preserves_delay_and_base(self):
-        self.assertFalse(cfg.ROT_ADAPTIVE_SLOPE_ENABLED)
         base = cfg.ROTATION_RESPONSE
         off = RotationController()
-        off.start(4., 'ROT_RIGHT', 100., 100., domain='heading', slope_multiplier=1.5)
+        with patch.object(cfg, 'ROT_ADAPTIVE_SLOPE_ENABLED', False):
+            off.start(4., 'ROT_RIGHT', 100., 100., domain='heading', slope_multiplier=1.5)
         self.assertEqual(off.response, base)
         with patch.object(cfg, 'ROT_ADAPTIVE_SLOPE_ENABLED', True):
             on = RotationController()

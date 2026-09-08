@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Original Pallet FSM Validation Simulator</title>
+  <link rel="stylesheet" href="./styles.css?v=20260714-2">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Original Pallet FSM Validation Simulator</h1>
+      <p>CalibrationFSM · 69.4° camera FOV · pallet insertion simulator</p>
+    </div>
+    <div class="status-strip">
+      <span class="mode-pill">SIMULATION</span>
+      <span class="state-pill" id="statePill">SEARCH</span>
+      <span class="cmd-pill" id="cmdPill">STOP</span>
+      <span class="safety-pill" id="safetyPill">FORK CLEAR</span>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="viewport-panel">
+      <canvas id="simCanvas" aria-label="원본 FSM 이상적 플랜트 시뮬레이션"></canvas>
+    </section>
+
+    <aside class="control-panel">
+      <section class="panel-section action-row">
+        <button id="runBtn" type="button">Run</button>
+        <button id="stepBtn" type="button">Step 1 frame</button>
+        <button id="resetBtn" type="button">Reset</button>
+        <p class="side-clock" id="simClock">t = 0.00 s · 30 Hz</p>
+      </section>
+
+      <section class="panel-section metrics">
+        <h2>원본 FSM 상태</h2>
+        <dl>
+          <div><dt>top state</dt><dd id="topState">SEARCH</dd></div>
+          <div><dt>sub state</dt><dd id="subState">—</dd></div>
+          <div><dt>command</dt><dd id="commandReadout">STOP</dd></div>
+          <div><dt>stabilizer</dt><dd id="stableReadout">0 / 5 frames</dd></div>
+          <div><dt>STOP interlock</dt><dd id="interlockReadout">inactive</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel-section metrics sensor-metrics">
+        <h2>현재 상황</h2>
+        <dl>
+          <div><dt>팔레트 인식 / 전면 폭</dt><dd id="detReadout">인식 / 1.100 m</dd></div>
+          <div><dt>카메라에 보이는 전면</dt><dd id="visibilityReadout">100.0% / 인식 가능</dd></div>
+          <div><dt>카메라 시야 / 검출거리</dt><dd id="cameraReadout">69.4° / 3.50 m</dd></div>
+          <div><dt>전방 거리</dt><dd id="distReadout">3.100 m</dd></div>
+          <div><dt>팔레트 회전각</dt><dd id="yawReadout">12.00°</dd></div>
+          <div><dt>팔레트 좌우 위치</dt><dd id="offsetReadout">0.420 m</dd></div>
+          <div><dt>지게차 누적 회전각</dt><dd id="relYawReadout">0.00°</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel-section">
+        <h2>테스트 초기 배치 · 팔레트만 이동</h2>
+        <div class="param-grid">
+          <label>전방 거리 (m) <input id="initialDist" type="number" step="0.05" value="3.10"></label>
+          <label>좌우 위치 (m, +오른쪽) <input id="initialOffset" type="number" step="0.01" value="0.42"></label>
+          <label>팔레트 회전각 (°) <input id="initialYaw" type="number" step="0.5" value="12.0"></label>
+          <label>지게차 회전속도 (°/s) <input id="rotateSpeed" type="number" min="1" max="180" step="1" value="15"></label>
+          <label>카메라 검출거리 (m) <input id="cameraRange" type="number" min="0.5" max="10" step="0.1" value="3.5"></label>
+          <label>포크 한 개 폭 m <input id="forkTineWidth" type="number" min="0.02" max="0.25" step="0.01" value="0.10"></label>
+          <label>실시간 배속
+            <select id="timeScale">
+              <option value="0.25">0.25×</option>
+              <option value="0.5">0.5×</option>
+              <option value="1" selected>1×</option>
+              <option value="2">2×</option>
+              <option value="4">4×</option>
+              <option value="8">8×</option>
+            </select>
+          </label>
+          <label>카메라 갱신 주기 <input type="text" value="30 Hz" disabled></label>
+        </div>
+        <button id="applyScenarioBtn" class="wide-button" type="button">팔레트 배치 적용</button>
+      </section>
+
+      <section class="panel-section drive-error-section">
+        <h2>구동오차 분포 모델</h2>
+        <label class="drive-error-toggle"><input id="driveErrorEnabled" type="checkbox" checked> 구동오차 적용</label>
+        <div class="param-grid drive-error-controls">
+          <label>재현 seed <input id="driveErrorSeed" type="number" step="1" value="20260713"></label>
+          <label>실제 로그 CSV <input id="driveLogFile" type="file" accept=".csv,text/csv"></label>
+        </div>
+        <div class="button-grid">
+          <button id="refitExampleBtn" type="button">예제 270행 재적합</button>
+          <button id="downloadDriveLogBtn" type="button">예제 로그 CSV</button>
+        </div>
+        <p id="driveErrorStatus" class="hint">예제 로그 적합 준비 중</p>
+        <div class="drive-fit-table-wrap">
+          <table class="drive-fit-table">
+            <thead><tr><th>유형</th><th>조건</th><th>유형 공통 분포</th><th>조건 BIC</th><th>평균오차</th><th>표준편차</th></tr></thead>
+            <tbody id="driveFitResults"></tbody>
+          </table>
+        </div>
+        <div class="distribution-chart-controls">
+          <label>분포 비교 조건 <select id="driveFitCondition"></select></label>
+        </div>
+        <canvas id="driveDistributionChart" aria-label="오차 로그 히스토그램과 Gaussian, Student-t, Gaussian KDE 적합 분포 비교"></canvas>
+        <p id="driveDistributionSummary" class="hint">조건을 선택하면 후보 분포와 BIC를 비교합니다.</p>
+      </section>
+
+      <section class="panel-section drive-error-section estimation-error-section">
+        <h2>모델 추정오차 분포</h2>
+        <label class="drive-error-toggle"><input id="estimationErrorEnabled" type="checkbox" checked> 모델 추정오차 적용</label>
+        <div class="param-grid drive-error-controls">
+          <label>재현 seed <input id="estimationErrorSeed" type="number" step="1" value="20260714"></label>
+          <label>실제 로그 CSV <input id="estimationLogFile" type="file" accept=".csv,text/csv"></label>
+        </div>
+        <div class="button-grid">
+          <button id="refitEstimationExampleBtn" type="button">예제 270행 재적합</button>
+          <button id="downloadEstimationLogBtn" type="button">예제 로그 CSV</button>
+        </div>
+        <p id="estimationErrorStatus" class="hint">예제 로그 적합 준비 중</p>
+        <div class="drive-fit-table-wrap">
+          <table class="drive-fit-table">
+            <thead><tr><th>변수</th><th>조건</th><th>변수 공통 분포</th><th>조건 BIC</th><th>평균오차</th><th>표준편차</th></tr></thead>
+            <tbody id="estimationFitResults"></tbody>
+          </table>
+        </div>
+        <div class="distribution-chart-controls">
+          <label>분포 비교 조건 <select id="estimationFitCondition"></select></label>
+        </div>
+        <canvas id="estimationDistributionChart" aria-label="모델 추정오차 로그 히스토그램과 Gaussian, Student-t, Gaussian KDE 적합 분포 비교"></canvas>
+        <p id="estimationDistributionSummary" class="hint">전방 1.8/2.0/2.2m, 좌우 -0.30/0/+0.30m, 각도 -15/0/+15° 조건을 비교합니다.</p>
+      </section>
+
+      <section class="panel-section grid-search-section">
+        <h2>FSM threshold 그리드 서치</h2>
+        <p class="hint">비교할 숫자를 쉼표로 구분하세요. 빈칸인 항목은 검색에서 제외됩니다.</p>
+        <div class="grid-candidate-list">
+          <label><span>팔레트 각도 허용 범위 <small>°</small></span><input id="gridYawCandidates" value="1.5, 2.0, 2.5"></label>
+          <label><span>좌우 위치 허용 범위 <small>m</small></span><input id="gridOffsetCandidates" value="0.08, 0.12"></label>
+          <label><span>인식 전면 폭 기준 <small>m</small></span><input id="gridWidthCandidates" placeholder="예: 0, 0.5"></label>
+          <label><span>정렬 목표거리 · 카메라→팔레트 전면 <small>m</small></span><input id="gridDistanceCandidates" placeholder="예: 2.0, 2.2"></label>
+          <label><span>전방 거리 허용 범위 <small>m</small></span><input id="gridBandCandidates" value="0.20, 0.30"></label>
+          <label><span>연속 판정 횟수 <small>frames</small></span><input id="gridStableCandidates" placeholder="예: 3, 5, 7"></label>
+        </div>
+        <div class="param-grid grid-search-controls">
+          <label>조건별 반복 횟수 <input id="gridSearchRepeats" type="number" min="1" max="1000" step="1" value="5"></label>
+          <label>평가 우선순위 <input type="text" value="성공률 → 충돌률 → 시간" disabled></label>
+        </div>
+        <div class="button-grid grid-search-buttons">
+          <button id="runGridSearchBtn" class="batch-run-button" type="button">그리드 서치 실행</button>
+          <button id="cancelGridSearchBtn" type="button" disabled>중단</button>
+          <button id="applyBestGridBtn" type="button" disabled>최적 조합 적용</button>
+          <button id="downloadGridResultsBtn" type="button" disabled>결과 JSON</button>
+        </div>
+        <p id="gridSearchStatus" class="batch-summary">아직 실행하지 않음</p>
+        <p id="gridSearchBest" class="grid-search-best">아직 최적 조합이 없습니다.</p>
+        <div class="grid-search-table-wrap">
+          <table class="grid-search-table">
+            <thead><tr><th>순위</th><th>파라미터 조합</th><th>성공</th><th>충돌</th><th>전체 평균</th><th>성공 평균</th></tr></thead>
+            <tbody id="gridSearchResults"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel-section batch-section">
+        <h2>27조건 고속 삽입 실험</h2>
+        <p class="hint">카메라 중심↔팔레트 전면 중심 기준으로 lateral −0.30/0/+0.30m, forward 1.80/2.00/2.20m, yaw +15/0/−15°의 3×3×3 조합을 실행합니다. 지게차는 화면 하단 중앙에서 정면을 바라보는 동일 초기 자세로 고정됩니다.</p>
+        <button id="runBatchBtn" class="wide-button batch-run-button" type="button">27조건 고속 실행</button>
+        <p id="batchSummary" class="batch-summary">아직 실행하지 않음 · 애니메이션 없이 계산</p>
+        <div class="batch-table-wrap">
+          <table class="batch-table">
+            <thead>
+              <tr><th>#</th><th>lat m</th><th>fwd m</th><th>yaw °</th><th>판정</th><th>시뮬 시간</th><th>확인</th></tr>
+            </thead>
+            <tbody id="batchResults"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel-section trajectory-section">
+        <h2>3D trajectory · y=time / x=lateral / z=forward</h2>
+        <p id="trajectorySummary" class="trajectory-summary">현재 실행 · 1 point</p>
+        <canvas id="trajectoryChart" aria-label="세로 y 시간축과 바닥 x lateral, z forward 좌표축을 포함한 3D 궤적 그래프"></canvas>
+        <div class="trajectory-legend" aria-hidden="true"><span class="trajectory-start-dot"></span>start <i></i><span class="trajectory-end-dot"></span>end <b></b>plane projection</div>
+        <div class="button-grid trajectory-buttons">
+          <button id="downloadTrajectoryCsvBtn" type="button">Trajectory CSV</button>
+          <button id="downloadTrajectoryJsonBtn" type="button">Trajectory JSON</button>
+        </div>
+      </section>
+
+      <section class="panel-section video-section">
+        <h2>시뮬레이션+FSM 다이어그램 동영상</h2>
+        <div class="button-grid video-buttons">
+          <button id="startVideoBtn" type="button">녹화 시작</button>
+          <button id="stopVideoBtn" type="button" disabled>녹화 종료</button>
+          <button id="downloadVideoBtn" type="button" disabled>동영상 다운로드</button>
+        </div>
+        <p id="videoStatus" class="hint">녹화 시작 후 Run을 누르면 시뮬레이션 화면과 실시간 FSM 상태 다이어그램이 함께 기록됩니다.</p>
+      </section>
+
+      <section class="panel-section safety-section">
+        <h2>포크 삽입 충돌 검출</h2>
+        <dl>
+          <div><dt>status</dt><dd id="collisionReadout">CLEAR</dd></div>
+          <div><dt>clearance</dt><dd id="clearanceReadout">N/A</dd></div>
+          <div><dt>pallet pockets</dt><dd>0.25m × 2 · inner gap 0.30m</dd></div>
+          <div><dt>fork geometry</dt><dd id="forkGeometryReadout">outer 0.60m · tine 0.10m</dd></div>
+        </dl>
+        <p id="collisionDetail" class="hint">포크가 팔레트 전면에 도달하기 전</p>
+      </section>
+
+      <section class="panel-section motion-section">
+        <h2>원본 FSM 전진 피팅식 · 시간→거리</h2>
+        <div class="motion-reference-control">
+          <label>전진 구동 적용시간 s
+            <input id="fwdApplyDuration" type="number" min="0" max="15" step="0.1" value="10">
+          </label>
+          <strong id="fwdDistancePrediction">10.00 s → 0.000 m</strong>
+        </div>
+        <h3>현재 FSM 명령</h3>
+        <dl class="motion-readouts">
+          <div><dt>profile</dt><dd id="motionProfileReadout">대기</dd></div>
+          <div><dt>apply time</dt><dd id="motionTimeReadout">0.00 / 0.00 s</dd></div>
+          <div><dt>velocity</dt><dd id="motionVelocityReadout">0.000 m/s</dd></div>
+          <div><dt>distance</dt><dd id="motionDistanceReadout">0.000 / 0.000 m</dd></div>
+        </dl>
+        <canvas id="motionChart" aria-label="속도 시간 및 누적 거리 그래프"></canvas>
+        <div class="chart-legend">
+          <span><i class="speed-line"></i>속도 v(t)</span>
+          <span><i class="distance-line"></i>누적거리 d(t)</span>
+          <span><i class="force-band"></i>구동 입력 구간</span>
+        </div>
+      </section>
+
+      <section class="panel-section">
+        <h2>FSM 실행 상수</h2>
+        <div class="constant-grid" id="constantGrid"></div>
+        <button id="applyConstantsBtn" class="wide-button constant-apply-button" type="button">실행 상수 적용</button>
+        <p id="constantStatus" class="hint">입력값은 다음 Reset과 27조건 실험에 사용됩니다.</p>
+      </section>
+
+      <section class="panel-section fsm-list-section">
+        <h2>FSM 실시간 상태 다이어그램</h2>
+        <p class="diagram-current" id="diagramCurrent">현재: SEARCH</p>
+        <div id="fsmDiagram" class="fsm-diagram" aria-label="FSM 상태 전이 다이어그램"></div>
+      </section>
+
+      <section class="panel-section log-section">
+        <h2>전이 로그</h2>
+        <div id="logBox" class="log-box"></div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="./drive_error_model.js?v=20260714-2"></script>
+  <script src="./estimation_error_model.js?v=20260714-1"></script>
+  <script src="./hyperparameter_search.js?v=20260714-1"></script>
+  <script src="./original_fsm_core.js?v=20260714-2"></script>
+  <script src="./sim.js?v=20260714-6"></script>
+</body>
+</html>

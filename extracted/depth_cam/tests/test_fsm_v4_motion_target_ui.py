@@ -11,7 +11,7 @@ if str(DEPTH_CAM_DIR) not in sys.path:
     sys.path.insert(0, str(DEPTH_CAM_DIR))
 
 from calib.fsm_v4.top import CalibrationFSMV4  # noqa: E402
-from ui.diagram_v4 import draw_fsm_v4_diagram_panel  # noqa: E402
+from ui.diagram_v4 import _phase_index, draw_fsm_v4_diagram_panel  # noqa: E402
 
 
 class MotionTargetStatusTests(unittest.TestCase):
@@ -89,6 +89,33 @@ class MotionTargetStatusTests(unittest.TestCase):
 
         self.assertEqual(image.shape, (480, 900, 3))
         self.assertGreater(int(image.sum()), 0)
+
+    def test_initial_correction_and_final_alignment_have_visible_phases(self):
+        for state, expected in [
+            ("INITIAL_VISIBILITY_SWEEP", 0), ("INITIAL_POSE_ROTATE", 0),
+            ("INITIAL_POSE_SETTLE", 0), ("STANDOFF_MOVE", 1),
+            ("STAGING_PLAN", 2), ("FINAL_POSE_LOCK", 3),
+            ("FINAL_ROTATE", 3), ("INSERT_DRIVE", 4), ("DONE", 4),
+        ]:
+            with self.subTest(state=state):
+                self.assertEqual(_phase_index(SimpleNamespace(state=state)), expected)
+        self.assertIsNone(_phase_index(SimpleNamespace(state="PRECHECK")))
+
+    def test_recovery_and_failure_keep_interrupted_phase_until_replanning(self):
+        fsm = self._bare_fsm()
+        fsm.state = "WAYPOINT_DRIVE"
+        fsm._samples = []
+        fsm._failure_state = None
+        fsm._set_state("RECOVER_VISUAL")
+        self.assertEqual(_phase_index(fsm), 3)
+        fsm._set_state("ACQUIRE_VERIFY")
+        self.assertEqual(_phase_index(fsm), 3)
+        fsm._failure_state = "ACQUIRE_VERIFY"
+        fsm._set_state("FAILED")
+        self.assertEqual(_phase_index(fsm), 3)
+        fsm._set_state("STAGING_PLAN")
+        self.assertEqual(_phase_index(fsm), 2)
+        self.assertIsNone(fsm._visual_recovery_origin_state)
 
 
 if __name__ == "__main__":

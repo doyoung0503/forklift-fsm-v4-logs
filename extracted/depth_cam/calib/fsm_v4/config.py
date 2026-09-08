@@ -12,7 +12,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, Tuple
 
-from ..config import MODEL_PATH
+from ..config import MODEL_PATH, CAMERA_ENABLED
 from .. import config as _pose_config
 from .rotation_artifact import select_rotation_response
 from .rotation_model import RotationResponse
@@ -57,7 +57,7 @@ STAGING_DISTANCE_M = round(
 # ---------------------------------------------------------------------------
 # Monitor-only tests should leave this False.  Set True only when the Kvaser
 # interface and vehicle are connected and real movement is intended.
-CAN_ENABLED = False
+CAN_ENABLED = True
 CAMERA_DISPLAY_SCALE = 1.5
 # Fixed recording width. 550 px matches the previous normal compact layout
 # while preventing frame-to-frame width changes from long HUD strings.
@@ -65,7 +65,7 @@ INTERFACE_PANEL_WIDTH = 550
 FSM_PANEL_WIDTH = 620
 # Pause at each high-level FSM checkpoint.  SPACE runs exactly one checkpoint
 # stage while perception, HUD and recording continue in real time.
-DEBUG_STEP_MODE = True
+DEBUG_STEP_MODE = False
 ROTATE_JOYSTICK_DEFLECTION = 30
 FORWARD_JOYSTICK_DEFLECTION = 60
 BACKWARD_JOYSTICK_DEFLECTION = 60
@@ -243,7 +243,7 @@ FWD_COMMAND_MAX_SEC = 15.0
 FWD_TIMEOUT_MARGIN_SEC = 1.00          # fitted endpoint 이후 hard-timeout 여유
 FWD_RELIABLE_MIN_DISTANCE_M = 0.10     # PROVISIONAL
 FWD_MACRO_MAX_DISTANCE_M = 0.80        # PROVISIONAL
-FWD_MAX_TOTAL_CORRECTION_M = 2.20
+FWD_MAX_TOTAL_CORRECTION_M = 5.00
 FWD_STOP_LOOKAHEAD_SEC = 0.45           # PROVISIONAL
 FWD_COAST_ALLOWANCE_M = 0.04            # PROVISIONAL
 # Raw frame-to-frame PnP velocity can momentarily hit the 1.5 m/s pose gate
@@ -308,18 +308,17 @@ PALLET_CENTER_FACE_TOL_DEG = 2.50
 # optical-axis tolerance overrides the response-model endpoint and STOPs now.
 FACE_CENTER_IMMEDIATE_STOP_TOL_DEG = 0.50
 PALLET_CENTER_RECENTER_TOL_DEG = 2.50
-# Bearing-driven FACE/RECENTER is required when the predictive visibility
-# planner cannot find a forward-reachable action from the current view.
+# Bearing-driven FACE is used only before staging, during the 4 m approach.
+# Staging plans heading turns directly; there is no RECENTER fallback.
 BEARING_BASED_ROTATION_ENABLED = True
 # Disable centre-bearing-only visibility limits.
 PALLET_CENTER_VISIBILITY_GUARD_ENABLED = False
 PALLET_CENTER_SAFE_BEARING_DEG = 20.0
-# Keep the live image-edge guard as a second line of defence around the
-# predictive rotation+forward visibility constraint below.
-IMAGE_EDGE_VISIBILITY_GUARD_ENABLED = True
+# Legacy trace flag: live ROI violations no longer interrupt motion.
+# Predictive planning still enforces IMAGE_EDGE_MARGIN_NORM below.
+IMAGE_EDGE_VISIBILITY_GUARD_ENABLED = False
 BBOX_SAFE_MARGIN_NORM = 0.08
-# 8% at HFOV 70 deg leaves about 4.54 deg to the physical image edge,
-# covering the configured maximum 4 deg rotation STOP margin.
+# 8% at HFOV 55 deg reserves about 3.88 deg at each physical edge.
 IMAGE_EDGE_MARGIN_NORM = 0.08
 # Predict the complete horizontal front-face outline through each candidate
 # in-place turn and straight-forward macro action.  This is the physical outer
@@ -332,7 +331,7 @@ VISIBILITY_PATH_SAMPLE_STEP_DEG = 0.50
 VISIBILITY_FORWARD_SEARCH_ITERATIONS = 16
 VISIBILITY_MIN_CORNER_DEPTH_M = 0.10
 # Do not stop an executing forward segment on instantaneous goal bearing.
-# Visibility, distance/staging limits and timeouts remain independently active.
+# Pose-loss handling, distance/staging limits and timeouts remain active.
 DRIVE_HEADING_GUARD_ENABLED = False
 DRIVE_HEADING_TOL_DEG = 4.0
 
@@ -343,7 +342,7 @@ DRIVE_HEADING_TOL_DEG = 4.0
 # Starts at 2.2 m through the standoff band enter STAGING_PLAN directly.
 # Below 2.2 m, check rotation-only insertion alignment before any translation.
 # ---------------------------------------------------------------------------
-SAFETY_STANDOFF_Z_M = 4.00
+SAFETY_STANDOFF_Z_M = 5.00
 SAFETY_STANDOFF_BAND_M = 0.10
 STANDOFF_MAX_CORRECTIONS = 4
 # Staging acceptance is component-wise; do not add a tighter radial gate here.
@@ -397,6 +396,7 @@ class V4ConfigSnapshot:
     extrinsics_measured: bool = EXTRINSICS_MEASURED
     require_measured_extrinsics: bool = REQUIRE_MEASURED_EXTRINSICS
     can_enabled: bool = CAN_ENABLED
+    camera_enabled: bool = CAMERA_ENABLED
     camera_display_scale: float = CAMERA_DISPLAY_SCALE
     debug_step_mode: bool = DEBUG_STEP_MODE
     rotate_joystick_deflection: int = ROTATE_JOYSTICK_DEFLECTION

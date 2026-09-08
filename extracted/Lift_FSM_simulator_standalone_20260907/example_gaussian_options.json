@@ -1,0 +1,23 @@
+{
+  "perception": "fov",
+  "x": 0,
+  "z": 2,
+  "yaw": 0,
+  "vertical_offset": 0.575,
+  "model_hz": 10,
+  "model_interval_sd": 0,
+  "latency": 0.12,
+  "latency_sd": 0,
+  "camera_hfov_deg": 55,
+  "min_visible_fraction": 0.5,
+  "dropout": 0.05,
+  "x_bias": 0,
+  "x_noise": 0.01,
+  "y_bias": 0,
+  "y_noise": 0.01,
+  "z_bias": 0,
+  "z_noise": 0.02,
+  "yaw_bias": 0,
+  "yaw_noise": 1,
+  "seed": 20260907
+}

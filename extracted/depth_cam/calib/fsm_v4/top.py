@@ -42,10 +42,12 @@ class CalibrationFSMV4:
     """Vision-primary bounded FSM using model/PnP observations."""
 
     accepts_vision_meta = True
+    STOPPED_DECISION_STATES = frozenset({"STANDOFF_VERIFY", "STAGING_PLAN", "FINAL_POSE_LOCK"})
     inference_checkpoint_subs = frozenset()
     fsm_version = "v4"
     trace_metadata = {
         "fsm_v4_control": "stopped_observe_visible_macro_action_settle_replan",
+        "v4_insertion_control": "accepted_distance_fitted_time_no_vision",
         "v4_rotation_stop_speed_source": "raw consecutive PnP error rate",
         "v4_post_stop_rotation_sign": (
             "positive=same direction as stopped rotation; negative=rebound"
@@ -106,7 +108,12 @@ class CalibrationFSMV4:
 
     @property
     def skip_detection(self) -> bool:
-        return self.state in {"DONE", "FAILED"}
+        return self.state in {"READY_TO_INSERT", "INSERT_DRIVE", "INSERT_SETTLE", "DONE", "FAILED"}
+
+    @property
+    def vision_independent(self) -> bool:
+        """The runtime must keep ticking these states even without camera frames."""
+        return self.skip_detection
 
     @property
     def failure_reason(self) -> Optional[str]:
@@ -184,7 +191,17 @@ class CalibrationFSMV4:
                 "unit": "deg",
             }
 
-        translation_states = {"STANDOFF_MOVE", "WAYPOINT_DRIVE", "INSERT_DRIVE"}
+        if self.state == "INSERT_DRIVE":
+            elapsed = max(0.0, time.monotonic() - self._translation_started_mono)
+            target = self._insert_hold_sec
+            return {
+                "kind": "timed_insertion", "direction": "FORWARD (MODEL TIME)",
+                "fixed_target": True, "target_value": target,
+                "current_value": min(elapsed, target),
+                "remaining_value": max(0.0, target - elapsed),
+                "progress_ratio": min(1.0, elapsed / max(target, 1e-9)), "unit": "s",
+            }
+        translation_states = {"STANDOFF_MOVE", "WAYPOINT_DRIVE"}
         if self.state in translation_states and self._translation_target_m is not None:
             target = abs(float(self._translation_target_m))
             pose = self._last_valid_pose
@@ -239,6 +256,7 @@ class CalibrationFSMV4:
         self._invalid_since_mono: Optional[float] = None
         self._invalid_frames = 0
         self._last_valid_pose: Optional[VisualPose] = None
+        self._approved_stopped_observation = None
         self._last_valid_center: Optional[float] = None
         self._last_valid_margin: Optional[float] = None
         self._last_valid_vision_meta: Optional[Dict] = None
@@ -295,12 +313,14 @@ class CalibrationFSMV4:
         self._settle_evaluation_started_mono: Optional[float] = None
         self._insert_remaining_m = 0.0
         self._insert_accepted_z_m = None
+        self._insert_hold_sec = None
         self._insertion_alignment_attempts = 0
         self._insertion_alignment_entered = False
         self._insertion_fine_started_mono = None
         self._insertion_started_mono: Optional[float] = None
         self._failure_reason: Optional[str] = None
         self._failure_state: Optional[str] = None
+        self._visual_recovery_origin_state: Optional[str] = None
         self._pose_filter.reset()
         self._rotation.reset()
         self._exec("STOP")
@@ -402,10 +422,20 @@ class CalibrationFSMV4:
         return True
 
     def _exec(self, command: str) -> None:
+        if command != "STOP":
+            self._approved_stopped_observation = None
         self.execu.exec(command)
         self.status.start_timed(command, 0.0)
 
     def _set_state(self, state: str, deadline_sec: Optional[float] = None) -> None:
+        # Only adjacent, stationary decisions may share an approved window.
+        if state not in self.STOPPED_DECISION_STATES:
+            self._approved_stopped_observation = None
+        # Display context only: keep the interrupted phase through reacquisition.
+        if state == "RECOVER_VISUAL" and self.state != "RECOVER_VISUAL":
+            self._visual_recovery_origin_state = self.state
+        elif state not in {"RECOVER_VISUAL", "ACQUIRE_VERIFY", "FAILED"}:
+            self._visual_recovery_origin_state = None
         self.state = state
         self._state_entered_mono = time.monotonic()
         self._state_deadline_mono = (
@@ -570,6 +600,33 @@ class CalibrationFSMV4:
         self._set_state("RECOVER_VISUAL", cfg.MAX_PNP_LOSS_SEC)
         lines.append((f"[V4] {reason} -> STOP/visual recovery", COLOR_ALERT))
 
+    def _stopped_decision_observation(self, pose, center, margin, lines):
+        """Reuse a fresh approved window only while new observations still agree."""
+        approved = getattr(self, "_approved_stopped_observation", None)
+        if approved is not None:
+            previous, previous_center, previous_margin = approved
+            now = time.monotonic()
+            age = now - previous.measurement_mono
+            current_age = now - pose.measurement_mono
+            checks = (
+                0.0 <= age <= cfg.MAX_MEASUREMENT_AGE_SEC,
+                0.0 <= current_age <= cfg.MAX_MEASUREMENT_AGE_SEC,
+                pose.measurement_mono >= previous.measurement_mono,
+                abs(wrap_180(pose.yaw_deg - previous.yaw_deg)) <= cfg.STABLE_YAW_MEDIAN_TOL_DEG,
+                abs(pose.pallet_x_m - previous.pallet_x_m) <= cfg.STABLE_X_MEDIAN_TOL_M,
+                abs(pose.pallet_z_m - previous.pallet_z_m) <= cfg.STABLE_Z_MEDIAN_TOL_M,
+                abs(wrap_180(center - previous_center)) <= cfg.STABLE_YAW_MEDIAN_TOL_DEG,
+                math.isfinite(margin) and margin >= previous_margin,
+            )
+            if all(checks):
+                lines.append((f"[OBSERVE REUSE] approved stopped pose age={age:.3f}s", COLOR_META))
+                return approved
+            self._approved_stopped_observation = None
+        stable = self._stable_observation(pose, center, margin)
+        if stable is not None:
+            self._approved_stopped_observation = stable
+        return stable
+
     # -------------------------------------------------------------- rotation
     def _rotation_error(self, pose: VisualPose, center: float) -> float:
         if self._rotation_mode in {"face", "recenter"}:
@@ -599,7 +656,8 @@ class CalibrationFSMV4:
             cfg.FWD_MAX_TOTAL_CORRECTION_M - self._forward_used_m, vision_meta,
         ) if self._waypoint is not None else 0.0)
         if distance <= 0.0:
-            self._fail("accepted waypoint yaw but no safe straight continuation", lines)
+            self._set_state("STAGING_PLAN")
+            lines.append(("[TURN ACCEPT] no safe straight continuation -> replan", COLOR_META))
             return True
         self._last_goal_distance_m = goal_vector_vehicle(pose)[2]
         self._begin_translation(
@@ -902,26 +960,6 @@ class CalibrationFSMV4:
         age = measurement_age(vision_meta, now)
         update = self._rotation.update(error, now, pose.measurement_mono, age)
         command = self._rotation.command or "STOP"
-        live_margin = None if vision_meta is None else vision_meta.get(
-            "bbox_margin_norm"
-        )
-        if (
-            # Insertion alignment may start outside the conservative margin
-            # with a valid detection. Do not immediately cancel that turn;
-            # step() still handles loss of the visual pose.
-            self._rotation_mode in {"waypoint", "final"}
-            and cfg.IMAGE_EDGE_VISIBILITY_GUARD_ENABLED
-            and live_margin is not None
-            and float(live_margin) < cfg.BBOX_SAFE_MARGIN_NORM
-        ):
-            self._exec("STOP")
-            self._capture_rotation_stop(error, update, pose, "live_image_edge")
-            self._begin_settle(settle_state, now)
-            lines.append((
-                f"[V4 ROT] image-edge STOP, margin={float(live_margin):.3f}",
-                COLOR_ALERT,
-            ))
-            return
         face_centered_now = (
             self._rotation_mode == "face"
             and abs(center) <= cfg.FACE_CENTER_IMMEDIATE_STOP_TOL_DEG
@@ -1204,20 +1242,6 @@ class CalibrationFSMV4:
             return
         ready = self._translation_ready(pose, now)
         target = self._translation_target_m or 0.0
-        if enforce_visibility and (
-            (
-                cfg.PALLET_CENTER_VISIBILITY_GUARD_ENABLED
-                and abs(center) >= cfg.PALLET_CENTER_SAFE_BEARING_DEG
-            )
-            or (
-                cfg.IMAGE_EDGE_VISIBILITY_GUARD_ENABLED
-                and margin < cfg.BBOX_SAFE_MARGIN_NORM
-            )
-        ):
-            self._stop_translation(
-                settle_state, lines, visibility_guard=True, travelled_m=travelled,
-            )
-            return
         if enforce_visibility:
             gx, gz, _goal = goal_vector_vehicle(pose)
             bearing = math.degrees(math.atan2(gx, gz))
@@ -1317,6 +1341,7 @@ class CalibrationFSMV4:
         # median-centred 8/10 pose window below is the sole settle decision.
         stable = self._stable_observation(pose, center, margin)
         if stable is not None:
+            self._approved_stopped_observation = stable
             return stable
         if evaluation_elapsed >= cfg.STOP_MAX_SETTLE_SEC:
             self._fail(
@@ -1340,7 +1365,7 @@ class CalibrationFSMV4:
     ) -> None:
         """Update post-STOP diagnostics while manual FSM progression is paused."""
         del detected_length, target_bearing_deg
-        if not self._rotation_coast_tracking:
+        if self.skip_detection or not self._rotation_coast_tracking:
             return
         now = time.monotonic()
         pose, _reason = self._observe_pose(
@@ -1350,6 +1375,70 @@ class CalibrationFSMV4:
             return
         center, _margin = self._vision_values(vision_meta, pose)
         self._update_rotation_coast(pose, center)
+
+    def _step_insertion_without_vision(self, now: float, lines: List[Line]) -> None:
+        """One fitted-time command from the accepted distance; no pose feedback."""
+        if self.state == "READY_TO_INSERT":
+            self._exec("STOP")
+            if not cfg.AUTO_INSERT_ENABLED:
+                lines.append(("[READY TO INSERT] automatic insertion disabled", COLOR_STATUS_OK))
+                return
+            target = self._insert_remaining_m
+            if (self._insert_accepted_z_m is None or not math.isfinite(target) or target <= 0.0):
+                self._fail("insertion distance was not captured at acceptance", lines)
+                return
+            hold = forward_seconds(target)
+            if (not math.isfinite(hold) or hold <= 0.0
+                    or hold >= min(cfg.FWD_COMMAND_MAX_SEC, cfg.FWD_MAX_COMMAND_SEC)
+                    or hold + cfg.STOP_MIN_SETTLE_SEC >= cfg.INSERT_MAX_TOTAL_SEC):
+                self._fail("insertion duration exceeds fitted command limits", lines)
+                return
+            self._insert_hold_sec = hold
+            self._insertion_started_mono = now
+            self._translation_started_mono = now
+            self._translation_deadline_mono = now + hold
+            self._translation_target_m = target
+            self._translation_command = "FWD"
+            self._trace_begin(
+                "v4_insert_timed", "FWD", target_distance_m=target,
+                accepted_camera_z_m=self._insert_accepted_z_m,
+                fitted_duration_sec=hold, control_basis="fitted_time_no_vision",
+            )
+            self._set_state("INSERT_DRIVE", hold)
+            self.execu.exec("FWD")
+            self.status.start_timed("FWD", hold)
+            return
+        if (self._insertion_started_mono is None
+                or now - self._insertion_started_mono >= cfg.INSERT_MAX_TOTAL_SEC):
+            self._fail("insertion total timeout", lines)
+            return
+        if self.state == "INSERT_DRIVE":
+            if self._translation_deadline_mono is None:
+                self._fail("insertion command deadline missing", lines)
+                return
+            remaining = self._translation_deadline_mono - now
+            if remaining <= 0.0:
+                self._exec("STOP")
+                self._begin_settle("INSERT_SETTLE", now=now)
+                lines.append(("[INSERT] fitted command complete -> STOP", COLOR_META))
+            else:
+                self.execu.exec("FWD")
+                self.status.start_timed("FWD", remaining)
+                lines.append((f"[INSERT] inference OFF; timed forward {remaining:.2f}s left", COLOR_META))
+            return
+        self._exec("STOP")
+        if self._settle_started_mono is None:
+            self._fail("insertion stop time missing", lines)
+            return
+        if now - self._settle_started_mono >= cfg.STOP_MIN_SETTLE_SEC:
+            self._trace_end(control_basis="fitted_time_no_vision",
+                            commanded_distance_m=self._translation_target_m,
+                            command_duration_sec=self._insert_hold_sec,
+                            actual_travel_m=None, stop_reason="fitted insertion time elapsed")
+            self._insert_remaining_m = 0.0
+            self._set_state("DONE")
+        else:
+            lines.append(("[INSERT] STOP guard; no PnP verification", COLOR_META))
 
     # ------------------------------------------------------------------ step
     def step(
@@ -1368,6 +1457,18 @@ class CalibrationFSMV4:
             self._fail("total pipeline timeout", lines)
             return lines
 
+        if self.state in {"READY_TO_INSERT", "INSERT_DRIVE", "INSERT_SETTLE"}:
+            self._step_insertion_without_vision(now, lines)
+            return lines
+        if self.state == "FAILED":
+            self._exec("STOP")
+            lines.extend(self._failure_hud_lines())
+            return lines
+        if self.state == "DONE":
+            self._exec("STOP")
+            lines.append(("[V4 DONE] timed insertion complete", COLOR_STATUS_OK))
+            return lines
+
         pose, pose_reason = self._observe_pose(
             det_ok, yaw_smooth, offset_smooth, dist_z, vision_meta, now,
         )
@@ -1382,21 +1483,14 @@ class CalibrationFSMV4:
             self._last_valid_vision_meta = (
                 None if vision_meta is None else dict(vision_meta)
             )
+        if pose is None or center is None or margin is None:
+            self._approved_stopped_observation = None
 
         if self.state == "PRECHECK":
             self._exec("STOP")
             self._set_state("SEARCH_SWEEP")
             self._search_started_mono = now
             lines.append(("[V4 PRECHECK] config valid -> SEARCH", COLOR_META))
-            return lines
-
-        if self.state == "FAILED":
-            self._exec("STOP")
-            lines.extend(self._failure_hud_lines())
-            return lines
-        if self.state == "DONE":
-            self._exec("STOP")
-            lines.append(("[V4 DONE] insertion complete", COLOR_STATUS_OK))
             return lines
 
         if self.state == "INITIAL_VISIBILITY_SWEEP":
@@ -1574,6 +1668,10 @@ class CalibrationFSMV4:
                 ))
                 return lines
             pose, center, margin = stable
+            # Once staging has begun, reacquisition must not restart FACE/standoff.
+            if self._alignment_started_mono is not None:
+                self._set_state("STAGING_PLAN")
+                return lines
             if not getattr(self, "_initial_visibility_complete", False):
                 if not self._initial_front_visible(pose, vision_meta):
                     self._start_initial_direction_correction(pose, vision_meta, now, lines)
@@ -1642,7 +1740,7 @@ class CalibrationFSMV4:
 
         if self.state == "STANDOFF_VERIFY":
             self._exec("STOP")
-            stable = self._stable_observation(pose, center, margin)
+            stable = self._stopped_decision_observation(pose, center, margin, lines)
             if stable is None:
                 lines.append(("[STANDOFF] stable pose required", COLOR_STATUS_TRK))
                 return lines
@@ -1689,7 +1787,7 @@ class CalibrationFSMV4:
             ):
                 self._fail("alignment action budget timeout", lines)
                 return lines
-            stable = self._stable_observation(pose, center, margin)
+            stable = self._stopped_decision_observation(pose, center, margin, lines)
             if stable is None:
                 lines.append((f"[{self.state}] stable stopped pose required", COLOR_STATUS_TRK))
                 return lines
@@ -1741,34 +1839,6 @@ class CalibrationFSMV4:
                 return lines
             remaining = cfg.FWD_MAX_TOTAL_CORRECTION_M - self._forward_used_m
             result = plan_waypoint(pose, center, margin, remaining, vision_meta)
-            if result.needs_recenter:
-                if not cfg.BEARING_BASED_ROTATION_ENABLED:
-                    self._fail(
-                        f"bearing recenter disabled: {result.reason}", lines,
-                    )
-                elif (
-                    cfg.PREDICTIVE_VISIBILITY_PLANNER_ENABLED
-                    and result.recenter_turn_deg is None
-                ):
-                    self._fail(
-                        f"no visibility-safe recenter action: {result.reason}",
-                        lines,
-                    )
-                elif (
-                    result.recenter_turn_deg is None
-                    and abs(center) <= cfg.PALLET_CENTER_RECENTER_TOL_DEG
-                ):
-                    self._fail(f"visibility infeasible while centred: {result.reason}", lines)
-                elif not self._begin_rotation(
-                    "RECENTER_ROTATE", "recenter",
-                    (
-                        center if result.recenter_turn_deg is None
-                        else result.recenter_turn_deg
-                    ),
-                    pose,
-                ):
-                    self._fail("recenter angle below controllable minimum", lines)
-                return lines
             if result.waypoint is None:
                 if result.reason == "staging position reached":
                     self._set_state("FINAL_POSE_LOCK")
@@ -1895,54 +1965,6 @@ class CalibrationFSMV4:
                 self._set_state("FINAL_POSE_LOCK")
             else:
                 self._set_state("STAGING_PLAN")
-            return lines
-
-        if self.state == "READY_TO_INSERT":
-            self._exec("STOP")
-            if not cfg.AUTO_INSERT_ENABLED:
-                lines.append((
-                    "[READY TO INSERT] automatic insertion disabled in v4 config",
-                    COLOR_STATUS_OK,
-                ))
-                return lines
-            if self._insertion_started_mono is None:
-                self._insertion_started_mono = now
-            if now - self._insertion_started_mono >= cfg.INSERT_MAX_TOTAL_SEC:
-                self._fail("insertion total timeout", lines)
-                return lines
-            if self._insert_accepted_z_m is None or self._insert_remaining_m <= 0.0:
-                self._fail("insertion distance was not captured at acceptance", lines)
-                return lines
-            segment = self._insert_remaining_m
-            self._begin_translation(
-                "INSERT_DRIVE", "FWD", pose, segment, "v4_insert_segment",
-            )
-            return lines
-
-        if self.state == "INSERT_DRIVE":
-            # Alignment was accepted before entry. Do not reapply yaw/lateral
-            # gates during the single distance-bounded insertion action.
-            self._forward_segment_step(
-                pose, center, margin, vision_meta,
-                "INSERT_SETTLE", lines, enforce_visibility=False,
-            )
-            return lines
-
-        if self.state == "INSERT_SETTLE":
-            stable = self._settle_observation(pose, center, margin, lines)
-            if stable is None:
-                return lines
-            stable_pose, _stable_center, _stable_margin = stable
-            travelled = self._translation_progress(stable_pose)
-            self._insert_remaining_m = max(0.0, self._insert_remaining_m - travelled)
-            self._trace_end(
-                **self._translation_stop_info,
-                settled_travel_m=travelled,
-                insertion_remaining_m=self._insert_remaining_m,
-            )
-            # Stop after one action; never issue a residual-distance retry.
-            self._exec("STOP")
-            self._set_state("DONE")
             return lines
 
         self._fail(f"unknown v4 state: {self.state}", lines)

@@ -57,6 +57,9 @@ PALLET_FACE_H = PALLET_HEIGHT_M
 PALLET_BODY_D = PALLET_LENGTH_M
 
 # ===== 카메라 스트림 =====
+# True: 실제 RealSense 사용 / False: 카메라 없이 UI 테스트 (FSM 대기, CAN OFF).
+# main_rec.py와 main_rec_v4.py 공통 설정. 저장 후 프로그램을 재시작하면 반영됩니다.
+CAMERA_ENABLED = True
 STREAM_W, STREAM_H = 640, 480
 # 0 = 장치가 지원하는 최대 fps 를 자동 선택(내림차순으로 시도).
 # 특정 값으로 고정하려면 그 숫자를 넣는다 (예: 30).

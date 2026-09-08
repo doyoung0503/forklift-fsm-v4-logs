@@ -1,0 +1,2691 @@
+[
+  {
+    "tag": "164100",
+    "start_iso": "2026-09-06T16:41:00.959",
+    "duration": 86.90599999998813,
+    "insertion_start": 79.64099999997416,
+    "phase_totals": {
+      "Startup": 2.5309999999881256,
+      "Acquire Pallet": 6.844000000011874,
+      "Set Standoff": 10.780999999988126,
+      "Plan Approach": 3.1880000000528526,
+      "Execute Approach": 56.35899999993853,
+      "Insert Forks": 7.203000000008615
+    },
+    "stop_command_seconds": 53.07999999987078,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 2.4059999999881256,
+        "duration": 2.4059999999881256,
+        "state": "STARTUP",
+        "phase": "Startup"
+      },
+      {
+        "start": 2.4059999999881256,
+        "end": 2.5309999999881256,
+        "duration": 0.125,
+        "state": "PRECHECK",
+        "phase": "Startup"
+      },
+      {
+        "start": 2.5309999999881256,
+        "end": 2.640999999974156,
+        "duration": 0.10999999998603016,
+        "state": "SEARCH_SWEEP",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 2.640999999974156,
+        "end": 3.312999999994645,
+        "duration": 0.6720000000204891,
+        "state": "ACQUIRE_VERIFY",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 3.312999999994645,
+        "end": 5.562999999994645,
+        "duration": 2.25,
+        "state": "FACE_ROTATE",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 5.562999999994645,
+        "end": 9.375,
+        "duration": 3.812000000005355,
+        "state": "FACE_SETTLE",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 9.375,
+        "end": 10.030999999988126,
+        "duration": 0.6559999999881256,
+        "state": "STANDOFF_VERIFY",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 10.030999999988126,
+        "end": 15.405999999988126,
+        "duration": 5.375,
+        "state": "STANDOFF_MOVE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 15.405999999988126,
+        "end": 19.23499999998603,
+        "duration": 3.8289999999979045,
+        "state": "STANDOFF_SETTLE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 19.23499999998603,
+        "end": 20.155999999988126,
+        "duration": 0.9210000000020955,
+        "state": "STANDOFF_VERIFY",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 20.155999999988126,
+        "end": 21.125,
+        "duration": 0.9690000000118744,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 21.125,
+        "end": 23.125,
+        "duration": 2.0,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 23.125,
+        "end": 26.875,
+        "duration": 3.75,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 26.875,
+        "end": 30.20299999997951,
+        "duration": 3.327999999979511,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 30.20299999997951,
+        "end": 33.98499999998603,
+        "duration": 3.7820000000065193,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 33.98499999998603,
+        "end": 34.687999999994645,
+        "duration": 0.7030000000086147,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 34.687999999994645,
+        "end": 36.812999999994645,
+        "duration": 2.125,
+        "state": "RECENTER_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 36.812999999994645,
+        "end": 40.515999999974156,
+        "duration": 3.702999999979511,
+        "state": "RECENTER_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 40.515999999974156,
+        "end": 41.25,
+        "duration": 0.7340000000258442,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 41.25,
+        "end": 42.84399999998277,
+        "duration": 1.5939999999827705,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 42.84399999998277,
+        "end": 46.546999999991385,
+        "duration": 3.7030000000086147,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 46.546999999991385,
+        "end": 50.562999999994645,
+        "duration": 4.01600000000326,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 50.562999999994645,
+        "end": 54.20299999997951,
+        "duration": 3.639999999984866,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 54.20299999997951,
+        "end": 54.98499999998603,
+        "duration": 0.7820000000065193,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 54.98499999998603,
+        "end": 56.57799999997951,
+        "duration": 1.5929999999934807,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 56.57799999997951,
+        "end": 61.030999999988126,
+        "duration": 4.453000000008615,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 61.030999999988126,
+        "end": 63.640999999974156,
+        "duration": 2.60999999998603,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 63.640999999974156,
+        "end": 67.29699999999139,
+        "duration": 3.6560000000172295,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 67.29699999999139,
+        "end": 68.04699999999139,
+        "duration": 0.75,
+        "state": "FINAL_POSE_LOCK",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 68.04699999999139,
+        "end": 69.43799999999464,
+        "duration": 1.3910000000032596,
+        "state": "FINAL_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 69.43799999999464,
+        "end": 73.20299999997951,
+        "duration": 3.764999999984866,
+        "state": "FINAL_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 73.20299999997951,
+        "end": 73.90599999998813,
+        "duration": 0.7030000000086147,
+        "state": "FINAL_POSE_LOCK",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 73.90599999998813,
+        "end": 75.23499999998603,
+        "duration": 1.3289999999979045,
+        "state": "FINAL_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 75.23499999998603,
+        "end": 78.95299999997951,
+        "duration": 3.7179999999934807,
+        "state": "FINAL_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 78.95299999997951,
+        "end": 79.70299999997951,
+        "duration": 0.75,
+        "state": "FINAL_POSE_LOCK",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 79.70299999997951,
+        "end": 85.98499999998603,
+        "duration": 6.282000000006519,
+        "state": "INSERT_DRIVE",
+        "phase": "Insert Forks"
+      },
+      {
+        "start": 85.98499999998603,
+        "end": 86.90599999998813,
+        "duration": 0.9210000000020955,
+        "state": "RECOVER_VISUAL",
+        "phase": "Insert Forks"
+      }
+    ],
+    "commands": [
+      {
+        "start": 0.0,
+        "end": 3.265999999974156,
+        "duration": 3.265999999974156,
+        "command": "STOP"
+      },
+      {
+        "start": 3.265999999974156,
+        "end": 5.48499999998603,
+        "duration": 2.2190000000118744,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 5.48499999998603,
+        "end": 9.890999999974156,
+        "duration": 4.405999999988126,
+        "command": "STOP"
+      },
+      {
+        "start": 9.890999999974156,
+        "end": 15.312999999994645,
+        "duration": 5.422000000020489,
+        "command": "FWD"
+      },
+      {
+        "start": 15.312999999994645,
+        "end": 21.015999999974156,
+        "duration": 5.702999999979511,
+        "command": "STOP"
+      },
+      {
+        "start": 21.015999999974156,
+        "end": 22.95299999997951,
+        "duration": 1.937000000005355,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 22.95299999997951,
+        "end": 26.765999999974156,
+        "duration": 3.812999999994645,
+        "command": "STOP"
+      },
+      {
+        "start": 26.765999999974156,
+        "end": 30.125,
+        "duration": 3.359000000025844,
+        "command": "FWD"
+      },
+      {
+        "start": 30.125,
+        "end": 34.546999999991385,
+        "duration": 4.421999999991385,
+        "command": "STOP"
+      },
+      {
+        "start": 34.546999999991385,
+        "end": 36.687999999994645,
+        "duration": 2.1410000000032596,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 36.687999999994645,
+        "end": 41.187999999994645,
+        "duration": 4.5,
+        "command": "STOP"
+      },
+      {
+        "start": 41.187999999994645,
+        "end": 42.70299999997951,
+        "duration": 1.514999999984866,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 42.70299999997951,
+        "end": 46.48499999998603,
+        "duration": 3.7820000000065193,
+        "command": "STOP"
+      },
+      {
+        "start": 46.48499999998603,
+        "end": 50.5,
+        "duration": 4.01500000001397,
+        "command": "FWD"
+      },
+      {
+        "start": 50.5,
+        "end": 54.921999999991385,
+        "duration": 4.421999999991385,
+        "command": "STOP"
+      },
+      {
+        "start": 54.921999999991385,
+        "end": 56.45299999997951,
+        "duration": 1.5309999999881256,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 56.45299999997951,
+        "end": 60.890999999974156,
+        "duration": 4.437999999994645,
+        "command": "STOP"
+      },
+      {
+        "start": 60.890999999974156,
+        "end": 63.562999999994645,
+        "duration": 2.672000000020489,
+        "command": "FWD"
+      },
+      {
+        "start": 63.562999999994645,
+        "end": 67.92199999999139,
+        "duration": 4.35899999999674,
+        "command": "STOP"
+      },
+      {
+        "start": 67.92199999999139,
+        "end": 69.375,
+        "duration": 1.4530000000086147,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 69.375,
+        "end": 73.84399999998277,
+        "duration": 4.4689999999827705,
+        "command": "STOP"
+      },
+      {
+        "start": 73.84399999998277,
+        "end": 75.17199999999139,
+        "duration": 1.3280000000086147,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 75.17199999999139,
+        "end": 79.64099999997416,
+        "duration": 4.4689999999827705,
+        "command": "STOP"
+      },
+      {
+        "start": 79.64099999997416,
+        "end": 85.875,
+        "duration": 6.234000000025844,
+        "command": "FWD"
+      },
+      {
+        "start": 85.875,
+        "end": 86.90599999998813,
+        "duration": 1.0309999999881256,
+        "command": "STOP"
+      }
+    ],
+    "actions": [
+      {
+        "step": 1,
+        "kind": "v4_face_rotate",
+        "start": 3.265999999974156,
+        "end": 9.25,
+        "stop": 5.48499999998603,
+        "stop_to_end": 3.76500000001397,
+        "params": {
+          "initial_error_deg": 12.5,
+          "target_yaw_deg": null,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 2.19294204539972,
+          "fitted_hard_timeout_sec": 3.19294204539972,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 12.499999999999998,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 2.2331418145920967,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "bearing",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 2.19294204539972,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.916578712530022,
+          "adaptive_adjusted_active_sec": 0.916578712530022,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 13.637672170561748
+        },
+        "result": {
+          "stop_error_deg": 4.386475772033151,
+          "settled_error_deg": 1.4782337247384914,
+          "stop_measured_rate_deg_s": -20.04844839525925,
+          "stop_effective_rate_deg_s": -20.04844839525925,
+          "post_stop_rotation_deg": 2.9069446377179133,
+          "post_stop_peak_abs_deg": 4.298639680921724,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0
+        }
+      },
+      {
+        "step": 2,
+        "kind": "v4_standoff_move",
+        "start": 9.890999999974156,
+        "end": 19.155999999988126,
+        "stop": 15.312999999994645,
+        "stop_to_end": 3.8429999999934807,
+        "params": {
+          "target_distance_m": 1.4046525955200195,
+          "fitted_duration_sec": 6.46595496360054,
+          "hard_timeout_sec": 7.46595496360054,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "live_z_m": 4.196745872497559,
+          "predicted_z_m": 4.0767458724975585,
+          "error_m": 0.1967458724975586,
+          "travelled_m": 1.2107033622650631,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.35534161349999993,
+          "predictive_gate_ready": true,
+          "settled_z_m": 4.011162996292114
+        }
+      },
+      {
+        "step": 3,
+        "kind": "v4_waypoint_rotate",
+        "start": 21.015999999974156,
+        "end": 26.75,
+        "stop": 22.95299999997951,
+        "stop_to_end": 3.797000000020489,
+        "params": {
+          "initial_error_deg": 7.087078901000012,
+          "target_yaw_deg": -12.720123687672611,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.8619528114601132,
+          "fitted_hard_timeout_sec": 2.861952811460113,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 7.087078901000012,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.8619528114601132,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.5855894785904152,
+          "adaptive_adjusted_active_sec": 0.5855894785904152,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.10246966536945
+        },
+        "result": {
+          "stop_error_deg": 3.3569366715211117,
+          "settled_error_deg": -2.313912467560982,
+          "stop_measured_rate_deg_s": -11.599125393322915,
+          "stop_effective_rate_deg_s": -11.599125393322915,
+          "post_stop_rotation_deg": 5.468590827015703,
+          "post_stop_peak_abs_deg": 6.125246220514526,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 1.937000000005355,
+          "slope_active_sec": 0.6606366671356572,
+          "slope_settled_angle_deg": 9.400991368560994,
+          "slope_observed_deg_s": 14.230199194545413,
+          "slope_previous_deg_s": 12.10246966536945,
+          "slope_next_deg_s": 13.16633442995743,
+          "slope_next_multiplier": 1.0879047660521861,
+          "slope_hold_overrun_sec": 0.07504718854524195,
+          "slope_overshoot_deg": 2.313912467560982,
+          "slope_overshoot_equivalent_sec": 0.19119341188535388
+        }
+      },
+      {
+        "step": 4,
+        "kind": "v4_waypoint_forward",
+        "start": 26.765999999974156,
+        "end": 33.875,
+        "stop": 30.125,
+        "stop_to_end": 3.75,
+        "params": {
+          "target_distance_m": 0.6393676757812501,
+          "fitted_duration_sec": 3.773880313938203,
+          "hard_timeout_sec": 4.773880313938204,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "travelled_m": 0.5350991633149388,
+          "predicted_travel_m": 0.6550991633149388,
+          "target_m": 0.6393676757812501,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.35534161349999993,
+          "predictive_gate_ready": true,
+          "settled_travel_m": 0.6912358334079002,
+          "settled_goal_distance_m": 1.6566822772693934,
+          "settled_lateral_error_m": -0.10976229676199889,
+          "settled_longitudinal_error_m": -1.6530421670447595,
+          "total_forward_used_m": 0.6912358334079002
+        }
+      },
+      {
+        "step": 5,
+        "kind": "v4_recenter_rotate",
+        "start": 34.546999999991385,
+        "end": 40.437999999994645,
+        "stop": 36.687999999994645,
+        "stop_to_end": 3.75,
+        "params": {
+          "initial_error_deg": -12.0,
+          "target_yaw_deg": null,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 2.096801942815784,
+          "fitted_hard_timeout_sec": 3.096801942815784,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 12.000000000000004,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 2.3950314082272124,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "bearing",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 2.096801942815784,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.8204386099460859,
+          "adaptive_adjusted_active_sec": 0.8204386099460859,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 14.626322865020418
+        },
+        "result": {
+          "stop_error_deg": -6.314354205120452,
+          "settled_error_deg": -1.7728850316881335,
+          "stop_measured_rate_deg_s": 18.87182192541662,
+          "stop_effective_rate_deg_s": 18.87182192541662,
+          "post_stop_rotation_deg": 4.560917268244651,
+          "post_stop_peak_abs_deg": 5.579142796569897,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0
+        }
+      },
+      {
+        "step": 6,
+        "kind": "v4_waypoint_rotate",
+        "start": 41.187999999994645,
+        "end": 46.48499999998603,
+        "stop": 42.70299999997951,
+        "stop_to_end": 3.7820000000065193,
+        "params": {
+          "initial_error_deg": 2.7812699250000037,
+          "target_yaw_deg": -7.408104751308457,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.487604353656149,
+          "fitted_hard_timeout_sec": 2.487604353656149,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 2.7812699250000033,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.487604353656149,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.21124102078645102,
+          "adaptive_adjusted_active_sec": 0.21124102078645102,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 13.16633442995743
+        },
+        "result": {
+          "stop_error_deg": 2.222442891236909,
+          "settled_error_deg": 0.7561693063310315,
+          "stop_measured_rate_deg_s": -1.296370592085071,
+          "stop_effective_rate_deg_s": -1.296370592085071,
+          "post_stop_rotation_deg": 1.4321712022842519,
+          "post_stop_peak_abs_deg": 1.769607451222555,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 1.514999999984866,
+          "slope_active_sec": 0.23863666711516807,
+          "slope_settled_angle_deg": 2.025100618668972,
+          "slope_observed_deg_s": 8.4861251338699,
+          "slope_previous_deg_s": 13.16633442995743,
+          "slope_next_deg_s": 10.826229781913666,
+          "slope_next_multiplier": 0.8945471528751132,
+          "slope_hold_overrun_sec": 0.02739564632871705,
+          "slope_overshoot_deg": 0.0,
+          "slope_overshoot_equivalent_sec": 0.0
+        }
+      },
+      {
+        "step": 7,
+        "kind": "v4_waypoint_forward",
+        "start": 46.48499999998603,
+        "end": 54.140999999974156,
+        "stop": 50.5,
+        "stop_to_end": 3.640999999974156,
+        "params": {
+          "target_distance_m": 0.8,
+          "fitted_duration_sec": 4.338943333987324,
+          "hard_timeout_sec": 5.338943333987324,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "travelled_m": 0.6920117869511118,
+          "predicted_travel_m": 0.8120117869511118,
+          "target_m": 0.8,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.35534161349999993,
+          "predictive_gate_ready": true,
+          "settled_travel_m": 0.7742128381581005,
+          "settled_goal_distance_m": 0.9295115576231653,
+          "settled_lateral_error_m": -0.09924090632924532,
+          "settled_longitudinal_error_m": -0.9241985599783158,
+          "total_forward_used_m": 1.4654486715660007
+        }
+      },
+      {
+        "step": 8,
+        "kind": "v4_waypoint_rotate",
+        "start": 54.905999999988126,
+        "end": 60.890999999974156,
+        "stop": 56.45299999997951,
+        "stop_to_end": 4.437999999994645,
+        "params": {
+          "initial_error_deg": -2.5,
+          "target_yaw_deg": -4.6399450957596855,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.4829327413561006,
+          "fitted_hard_timeout_sec": 2.482932741356101,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 2.499999999999999,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.4829327413561006,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.2065694084864027,
+          "adaptive_adjusted_active_sec": 0.2065694084864027,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.10246966536945
+        },
+        "result": {
+          "stop_error_deg": -1.144611381456457,
+          "settled_error_deg": 0.8349748291657022,
+          "stop_measured_rate_deg_s": 2.8951068245941163,
+          "stop_effective_rate_deg_s": 2.8951068245941163,
+          "post_stop_rotation_deg": 2.0252826502133416,
+          "post_stop_peak_abs_deg": 2.9866795815084117,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_LEFT",
+          "slope_actual_hold_sec": 1.5469999999913853,
+          "slope_active_sec": 0.2706366671216873,
+          "slope_settled_angle_deg": 3.334974829165702,
+          "slope_observed_deg_s": 12.322701371674022,
+          "slope_previous_deg_s": 12.10246966536945,
+          "slope_next_deg_s": 12.212585518521735,
+          "slope_next_multiplier": 1.0090986266602573,
+          "slope_hold_overrun_sec": 0.06406725863528462,
+          "slope_overshoot_deg": 0.8349748291657022,
+          "slope_overshoot_equivalent_sec": 0.06899210262471772
+        }
+      },
+      {
+        "step": 9,
+        "kind": "v4_waypoint_forward",
+        "start": 60.890999999974156,
+        "end": 67.23499999998603,
+        "stop": 63.562999999994645,
+        "stop_to_end": 3.6719999999913853,
+        "params": {
+          "target_distance_m": 0.7345513284339995,
+          "fitted_duration_sec": 4.108711814938118,
+          "hard_timeout_sec": 5.108711814938118,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "insertion_range_entered": true,
+          "travelled_m": 0.3091247472831236,
+          "settled_travel_m": 0.4632897727524454,
+          "total_forward_used_m": 1.928738444318446
+        }
+      },
+      {
+        "step": 10,
+        "kind": "v4_insert_align_rotate",
+        "start": 67.92199999999139,
+        "end": 73.14099999997416,
+        "stop": 69.375,
+        "stop_to_end": 3.765999999974156,
+        "params": {
+          "initial_error_deg": -1.5,
+          "target_yaw_deg": -2.6570631756168837,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.399187447200368,
+          "fitted_hard_timeout_sec": 2.399187447200368,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 1.4999999999999993,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.399187447200368,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.12282411433067009,
+          "adaptive_adjusted_active_sec": 0.12282411433067009,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.212585518521735
+        },
+        "result": {
+          "stop_error_deg": -0.5703673952232293,
+          "settled_error_deg": 1.5798119155859354,
+          "stop_measured_rate_deg_s": 9.655607697299043,
+          "stop_effective_rate_deg_s": 9.655607697299043,
+          "post_stop_rotation_deg": 2.14860001076363,
+          "post_stop_peak_abs_deg": 3.431323899391316,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_LEFT",
+          "slope_actual_hold_sec": 1.4530000000086147,
+          "slope_active_sec": 0.1766366671389168,
+          "slope_settled_angle_deg": 3.0798119155859354,
+          "slope_observed_deg_s": 17.435858394926587,
+          "slope_previous_deg_s": 12.212585518521735,
+          "slope_next_deg_s": 14.82422195672416,
+          "slope_next_multiplier": 1.2248923043486617,
+          "slope_hold_overrun_sec": 0.053812552808246705,
+          "slope_overshoot_deg": 1.5798119155859354,
+          "slope_overshoot_equivalent_sec": 0.1293593328939213
+        }
+      },
+      {
+        "step": 11,
+        "kind": "v4_insert_align_rotate",
+        "start": 73.84399999998277,
+        "end": 78.89099999997416,
+        "stop": 75.17199999999139,
+        "stop_to_end": 3.7189999999827705,
+        "params": {
+          "initial_error_deg": 0.5,
+          "target_yaw_deg": -1.5966041624747334,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.3225474625318359,
+          "fitted_hard_timeout_sec": 2.322547462531836,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 0.4999999999999999,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.3225474625318359,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.04618412966213792,
+          "adaptive_adjusted_active_sec": 0.04618412966213792,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 10.826229781913666
+        },
+        "result": {
+          "stop_error_deg": 0.3901151374174958,
+          "settled_error_deg": -0.18709066138492858,
+          "stop_measured_rate_deg_s": -0.19408115527621952,
+          "stop_effective_rate_deg_s": -0.19408115527621952,
+          "post_stop_rotation_deg": 0.5633618017314177,
+          "post_stop_peak_abs_deg": 1.0598187409391642,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 1.3280000000086147,
+          "slope_active_sec": 0.05163666713891679,
+          "slope_settled_angle_deg": 0.6870906613849286,
+          "slope_observed_deg_s": 13.306255021000219,
+          "slope_previous_deg_s": 10.826229781913666,
+          "slope_next_deg_s": 12.066242401456943,
+          "slope_next_multiplier": 0.997006622209005,
+          "slope_hold_overrun_sec": 0.005452537476778874,
+          "slope_overshoot_deg": 0.18709066138492858,
+          "slope_overshoot_equivalent_sec": 0.01728123872795337
+        }
+      },
+      {
+        "step": 12,
+        "kind": "v4_insert_segment",
+        "start": 79.64099999997416,
+        "end": 86.90599999998813,
+        "stop": 85.875,
+        "stop_to_end": 1.0309999999881256,
+        "params": {
+          "target_distance_m": 1.717197012901306,
+          "fitted_duration_sec": 7.56540548356225,
+          "hard_timeout_sec": 8.56540548356225,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "error": "PnP recovery timeout",
+          "failed_state": "RECOVER_VISUAL"
+        }
+      }
+    ],
+    "settle_count": 11,
+    "settle_total": 41.92299999995157,
+    "guard_sec": 3.0,
+    "inference_median_ms": 16.0,
+    "inference_p95_ms": 31.0,
+    "cadence_median_ms": 47.0,
+    "failure": "PnP recovery timeout"
+  },
+  {
+    "tag": "165305",
+    "start_iso": "2026-09-06T16:53:05.897",
+    "duration": 152.93700000000536,
+    "insertion_start": 145.13999999998487,
+    "phase_totals": {
+      "Startup": 2.6089999999967404,
+      "Acquire Pallet": 37.76600000000326,
+      "Set Standoff": 15.655999999988126,
+      "Plan Approach": 8.656999999948312,
+      "Execute Approach": 80.45200000004843,
+      "Insert Forks": 7.797000000020489
+    },
+    "stop_command_seconds": 86.5460000000021,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 2.4679999999934807,
+        "duration": 2.4679999999934807,
+        "state": "STARTUP",
+        "phase": "Startup"
+      },
+      {
+        "start": 2.4679999999934807,
+        "end": 2.6089999999967404,
+        "duration": 0.14100000000325963,
+        "state": "PRECHECK",
+        "phase": "Startup"
+      },
+      {
+        "start": 2.6089999999967404,
+        "end": 2.75,
+        "duration": 0.14100000000325963,
+        "state": "SEARCH_SWEEP",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 2.75,
+        "end": 30.0,
+        "duration": 27.25,
+        "state": "INITIAL_VISIBILITY_SWEEP",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 30.0,
+        "end": 34.155999999988126,
+        "duration": 4.155999999988126,
+        "state": "ACQUIRE_VERIFY",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 34.155999999988126,
+        "end": 36.062000000005355,
+        "duration": 1.9060000000172295,
+        "state": "FACE_ROTATE",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 36.062000000005355,
+        "end": 40.375,
+        "duration": 4.312999999994645,
+        "state": "FACE_SETTLE",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 40.375,
+        "end": 41.625,
+        "duration": 1.25,
+        "state": "STANDOFF_VERIFY",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 41.625,
+        "end": 43.82799999997951,
+        "duration": 2.202999999979511,
+        "state": "STANDOFF_MOVE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 43.82799999997951,
+        "end": 48.155999999988126,
+        "duration": 4.328000000008615,
+        "state": "STANDOFF_SETTLE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 48.155999999988126,
+        "end": 49.405999999988126,
+        "duration": 1.25,
+        "state": "STANDOFF_VERIFY",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 49.405999999988126,
+        "end": 50.639999999984866,
+        "duration": 1.2339999999967404,
+        "state": "STANDOFF_MOVE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 50.639999999984866,
+        "end": 54.780999999988126,
+        "duration": 4.14100000000326,
+        "state": "STANDOFF_SETTLE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 54.780999999988126,
+        "end": 56.030999999988126,
+        "duration": 1.25,
+        "state": "STANDOFF_VERIFY",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 56.030999999988126,
+        "end": 57.35899999999674,
+        "duration": 1.3280000000086147,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 57.35899999999674,
+        "end": 59.546999999991385,
+        "duration": 2.187999999994645,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 59.546999999991385,
+        "end": 63.73399999999674,
+        "duration": 4.187000000005355,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 63.73399999999674,
+        "end": 66.79699999999139,
+        "duration": 3.062999999994645,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 66.79699999999139,
+        "end": 71.06200000000536,
+        "duration": 4.26500000001397,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 71.06200000000536,
+        "end": 72.23399999999674,
+        "duration": 1.1719999999913853,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 72.23399999999674,
+        "end": 74.5,
+        "duration": 2.2660000000032596,
+        "state": "RECENTER_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 74.5,
+        "end": 78.81200000000536,
+        "duration": 4.312000000005355,
+        "state": "RECENTER_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 78.81200000000536,
+        "end": 80.125,
+        "duration": 1.312999999994645,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 80.125,
+        "end": 82.34299999999348,
+        "duration": 2.2179999999934807,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 82.34299999999348,
+        "end": 86.53099999998813,
+        "duration": 4.187999999994645,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 86.53099999998813,
+        "end": 89.84299999999348,
+        "duration": 3.312000000005355,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 89.84299999999348,
+        "end": 94.06200000000536,
+        "duration": 4.219000000011874,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 94.06200000000536,
+        "end": 95.20299999997951,
+        "duration": 1.1409999999741558,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 95.20299999997951,
+        "end": 97.31200000000536,
+        "duration": 2.109000000025844,
+        "state": "RECENTER_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 97.31200000000536,
+        "end": 101.53099999998813,
+        "duration": 4.2189999999827705,
+        "state": "RECENTER_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 101.53099999998813,
+        "end": 102.82799999997951,
+        "duration": 1.2969999999913853,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 102.82799999997951,
+        "end": 104.85899999999674,
+        "duration": 2.0310000000172295,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 104.85899999999674,
+        "end": 109.13999999998487,
+        "duration": 4.280999999988126,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 109.13999999998487,
+        "end": 112.17199999999139,
+        "duration": 3.0320000000065193,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 112.17199999999139,
+        "end": 116.43700000000536,
+        "duration": 4.26500000001397,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 116.43700000000536,
+        "end": 117.59299999999348,
+        "duration": 1.1559999999881256,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 117.59299999999348,
+        "end": 119.53099999998813,
+        "duration": 1.937999999994645,
+        "state": "RECENTER_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 119.53099999998813,
+        "end": 123.81200000000536,
+        "duration": 4.2810000000172295,
+        "state": "RECENTER_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 123.81200000000536,
+        "end": 125.06200000000536,
+        "duration": 1.25,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 125.06200000000536,
+        "end": 126.70299999997951,
+        "duration": 1.6409999999741558,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 126.70299999997951,
+        "end": 130.90599999998813,
+        "duration": 4.203000000008615,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 130.90599999998813,
+        "end": 132.51499999998487,
+        "duration": 1.6089999999967404,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 132.51499999998487,
+        "end": 136.75,
+        "duration": 4.235000000015134,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 136.75,
+        "end": 137.93700000000536,
+        "duration": 1.187000000005355,
+        "state": "FINAL_POSE_LOCK",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 137.93700000000536,
+        "end": 139.73399999999674,
+        "duration": 1.7969999999913853,
+        "state": "FINAL_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 139.73399999999674,
+        "end": 144.03099999998813,
+        "duration": 4.296999999991385,
+        "state": "FINAL_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 144.03099999998813,
+        "end": 145.13999999998487,
+        "duration": 1.1089999999967404,
+        "state": "FINAL_POSE_LOCK",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 145.13999999998487,
+        "end": 145.25,
+        "duration": 0.11000000001513399,
+        "state": "READY_TO_INSERT",
+        "phase": "Insert Forks"
+      },
+      {
+        "start": 145.25,
+        "end": 151.98399999999674,
+        "duration": 6.73399999999674,
+        "state": "INSERT_DRIVE",
+        "phase": "Insert Forks"
+      },
+      {
+        "start": 151.98399999999674,
+        "end": 152.93700000000536,
+        "duration": 0.9530000000086147,
+        "state": "RECOVER_VISUAL",
+        "phase": "Insert Forks"
+      }
+    ],
+    "commands": [
+      {
+        "start": 0.0,
+        "end": 2.6089999999967404,
+        "duration": 2.6089999999967404,
+        "command": "STOP"
+      },
+      {
+        "start": 2.6089999999967404,
+        "end": 29.84299999999348,
+        "duration": 27.23399999999674,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 29.84299999999348,
+        "end": 34.0,
+        "duration": 4.157000000006519,
+        "command": "STOP"
+      },
+      {
+        "start": 34.0,
+        "end": 35.921999999991385,
+        "duration": 1.9219999999913853,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 35.921999999991385,
+        "end": 41.48399999999674,
+        "duration": 5.562000000005355,
+        "command": "STOP"
+      },
+      {
+        "start": 41.48399999999674,
+        "end": 43.671999999991385,
+        "duration": 2.187999999994645,
+        "command": "FWD"
+      },
+      {
+        "start": 43.671999999991385,
+        "end": 49.296999999991385,
+        "duration": 5.625,
+        "command": "STOP"
+      },
+      {
+        "start": 49.296999999991385,
+        "end": 50.46799999999348,
+        "duration": 1.1710000000020955,
+        "command": "FWD"
+      },
+      {
+        "start": 50.46799999999348,
+        "end": 57.23399999999674,
+        "duration": 6.76600000000326,
+        "command": "STOP"
+      },
+      {
+        "start": 57.23399999999674,
+        "end": 59.437000000005355,
+        "duration": 2.2030000000086147,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 59.437000000005355,
+        "end": 63.639999999984866,
+        "duration": 4.202999999979511,
+        "command": "STOP"
+      },
+      {
+        "start": 63.639999999984866,
+        "end": 66.67199999999139,
+        "duration": 3.0320000000065193,
+        "command": "FWD"
+      },
+      {
+        "start": 66.67199999999139,
+        "end": 72.125,
+        "duration": 5.453000000008615,
+        "command": "STOP"
+      },
+      {
+        "start": 72.125,
+        "end": 74.375,
+        "duration": 2.25,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 74.375,
+        "end": 80.0,
+        "duration": 5.625,
+        "command": "STOP"
+      },
+      {
+        "start": 80.0,
+        "end": 82.20299999997951,
+        "duration": 2.202999999979511,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 82.20299999997951,
+        "end": 86.38999999998487,
+        "duration": 4.187000000005355,
+        "command": "STOP"
+      },
+      {
+        "start": 86.38999999998487,
+        "end": 89.71799999999348,
+        "duration": 3.3280000000086147,
+        "command": "FWD"
+      },
+      {
+        "start": 89.71799999999348,
+        "end": 95.09299999999348,
+        "duration": 5.375,
+        "command": "STOP"
+      },
+      {
+        "start": 95.09299999999348,
+        "end": 97.18700000000536,
+        "duration": 2.0940000000118744,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 97.18700000000536,
+        "end": 102.71799999999348,
+        "duration": 5.530999999988126,
+        "command": "STOP"
+      },
+      {
+        "start": 102.71799999999348,
+        "end": 104.73399999999674,
+        "duration": 2.0160000000032596,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 104.73399999999674,
+        "end": 109.0,
+        "duration": 4.26600000000326,
+        "command": "STOP"
+      },
+      {
+        "start": 109.0,
+        "end": 112.04699999999139,
+        "duration": 3.0469999999913853,
+        "command": "FWD"
+      },
+      {
+        "start": 112.04699999999139,
+        "end": 117.48399999999674,
+        "duration": 5.437000000005355,
+        "command": "STOP"
+      },
+      {
+        "start": 117.48399999999674,
+        "end": 119.40599999998813,
+        "duration": 1.9219999999913853,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 119.40599999998813,
+        "end": 124.93700000000536,
+        "duration": 5.5310000000172295,
+        "command": "STOP"
+      },
+      {
+        "start": 124.93700000000536,
+        "end": 126.59299999999348,
+        "duration": 1.6559999999881256,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 126.59299999999348,
+        "end": 130.78099999998813,
+        "duration": 4.187999999994645,
+        "command": "STOP"
+      },
+      {
+        "start": 130.78099999998813,
+        "end": 132.375,
+        "duration": 1.5940000000118744,
+        "command": "FWD"
+      },
+      {
+        "start": 132.375,
+        "end": 137.79699999999139,
+        "duration": 5.421999999991385,
+        "command": "STOP"
+      },
+      {
+        "start": 137.79699999999139,
+        "end": 139.59299999999348,
+        "duration": 1.7960000000020955,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 139.59299999999348,
+        "end": 145.13999999998487,
+        "duration": 5.546999999991385,
+        "command": "STOP"
+      },
+      {
+        "start": 145.13999999998487,
+        "end": 151.875,
+        "duration": 6.735000000015134,
+        "command": "FWD"
+      },
+      {
+        "start": 151.875,
+        "end": 152.93700000000536,
+        "duration": 1.062000000005355,
+        "command": "STOP"
+      }
+    ],
+    "actions": [
+      {
+        "step": 1,
+        "kind": "v4_initial_visibility_sweep",
+        "start": 2.6089999999967404,
+        "end": 29.84299999999348,
+        "stop": 29.84299999999348,
+        "stop_to_end": 0.0,
+        "params": {
+          "timeout_sec": 31.022358154907124,
+          "nominal_search_angle_deg": 360.0,
+          "angle_basis": "time estimate; no absolute heading feedback"
+        },
+        "result": {
+          "stop_reason": "full_front_visible"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "v4_face_rotate",
+        "start": 34.0,
+        "end": 40.23399999999674,
+        "stop": 35.921999999991385,
+        "stop_to_end": 4.312000000005355,
+        "params": {
+          "initial_error_deg": 9.0,
+          "target_yaw_deg": null,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.9208502133074847,
+          "fitted_hard_timeout_sec": 2.9208502133074847,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 9.000000000000002,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 2.286675220613159,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "bearing",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.9208502133074847,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.6444868804377868,
+          "adaptive_adjusted_active_sec": 0.6444868804377868,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 13.964597687212011
+        },
+        "result": {
+          "stop_error_deg": 6.603351180667374,
+          "settled_error_deg": 1.7080753588887916,
+          "stop_measured_rate_deg_s": -12.856021323058767,
+          "stop_effective_rate_deg_s": -12.856021323058767,
+          "post_stop_rotation_deg": 4.907601137041667,
+          "post_stop_peak_abs_deg": 5.069463065782941,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0
+        }
+      },
+      {
+        "step": 3,
+        "kind": "v4_standoff_move",
+        "start": 41.48399999999674,
+        "end": 48.014999999984866,
+        "stop": 43.671999999991385,
+        "stop_to_end": 4.342999999993481,
+        "params": {
+          "target_distance_m": 0.4394714832305908,
+          "fitted_duration_sec": 3.0706971482313135,
+          "hard_timeout_sec": 4.0706971482313135,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "live_z_m": 4.201671123504639,
+          "predicted_z_m": 4.081671123504639,
+          "error_m": 0.20167112350463867,
+          "travelled_m": 0.24353915467964093,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.25615692138671875,
+          "predictive_gate_ready": true,
+          "settled_z_m": 4.132250547409058
+        }
+      },
+      {
+        "step": 4,
+        "kind": "v4_standoff_move",
+        "start": 49.296999999991385,
+        "end": 54.671999999991385,
+        "stop": 50.46799999999348,
+        "stop_to_end": 4.2039999999979045,
+        "params": {
+          "target_distance_m": 0.11713814735412598,
+          "fitted_duration_sec": 1.8021483065275614,
+          "hard_timeout_sec": 2.8021483065275614,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "live_target_immediate_stop": true,
+          "live_z_m": 4.096518516540527,
+          "live_error_m": 0.09651851654052734,
+          "settled_z_m": 4.061200141906738
+        }
+      },
+      {
+        "step": 5,
+        "kind": "v4_waypoint_rotate",
+        "start": 57.23399999999674,
+        "end": 63.625,
+        "stop": 59.437000000005355,
+        "stop_to_end": 4.187999999994645,
+        "params": {
+          "initial_error_deg": 11.0,
+          "target_yaw_deg": -21.316535509690254,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 2.18526873020987,
+          "fitted_hard_timeout_sec": 3.18526873020987,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 11.0,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 2.18526873020987,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.9089053973401722,
+          "adaptive_adjusted_active_sec": 0.9089053973401722,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.10246966536945
+        },
+        "result": {
+          "stop_error_deg": 5.5548718546028795,
+          "settled_error_deg": -0.388922950800179,
+          "stop_measured_rate_deg_s": -6.676458164760788,
+          "stop_effective_rate_deg_s": -6.676458164760788,
+          "post_stop_rotation_deg": 6.147624484824405,
+          "post_stop_peak_abs_deg": 6.833336947098417,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 2.2030000000086147,
+          "slope_active_sec": 0.9266366671389168,
+          "slope_settled_angle_deg": 11.388922950800179,
+          "slope_observed_deg_s": 12.290602514105789,
+          "slope_previous_deg_s": 12.10246966536945,
+          "slope_next_deg_s": 12.196536089737618,
+          "slope_next_multiplier": 1.0077724982560654,
+          "slope_hold_overrun_sec": 0.01773126979874462,
+          "slope_overshoot_deg": 0.388922950800179,
+          "slope_overshoot_equivalent_sec": 0.03213583355743172
+        }
+      },
+      {
+        "step": 6,
+        "kind": "v4_waypoint_forward",
+        "start": 63.639999999984866,
+        "end": 70.95299999997951,
+        "stop": 66.67199999999139,
+        "stop_to_end": 4.280999999988126,
+        "params": {
+          "target_distance_m": 0.6069213867187502,
+          "fitted_duration_sec": 3.6597426509478117,
+          "hard_timeout_sec": 4.659742650947812,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "travelled_m": 0.49436235224186503,
+          "predicted_travel_m": 0.6143623522418651,
+          "target_m": 0.6069213867187502,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.35534161349999993,
+          "predictive_gate_ready": true,
+          "settled_travel_m": 0.6201853452004508,
+          "settled_goal_distance_m": 1.8906019845975093,
+          "settled_lateral_error_m": -0.6137661775439821,
+          "settled_longitudinal_error_m": -1.7882021539711586,
+          "total_forward_used_m": 0.6201853452004508
+        }
+      },
+      {
+        "step": 7,
+        "kind": "v4_recenter_rotate",
+        "start": 72.125,
+        "end": 78.59299999999348,
+        "stop": 74.375,
+        "stop_to_end": 4.217999999993481,
+        "params": {
+          "initial_error_deg": -12.5,
+          "target_yaw_deg": null,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 2.138555457331611,
+          "fitted_hard_timeout_sec": 3.138555457331611,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 12.499999999999996,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 2.374007128159751,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "bearing",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 2.138555457331611,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.8621921244619131,
+          "adaptive_adjusted_active_sec": 0.8621921244619131,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 14.497928762456677
+        },
+        "result": {
+          "stop_error_deg": -4.45647520203471,
+          "settled_error_deg": 2.7420369811408705,
+          "stop_measured_rate_deg_s": 7.00507487249638,
+          "stop_effective_rate_deg_s": 7.00507487249638,
+          "post_stop_rotation_deg": 7.210223837504685,
+          "post_stop_peak_abs_deg": 8.14167781854269,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0
+        }
+      },
+      {
+        "step": 8,
+        "kind": "v4_waypoint_rotate",
+        "start": 80.0,
+        "end": 86.38999999998487,
+        "stop": 82.20299999997951,
+        "stop_to_end": 4.187000000005355,
+        "params": {
+          "initial_error_deg": 10.0,
+          "target_yaw_deg": -18.835006074130206,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 2.0962682572206517,
+          "fitted_hard_timeout_sec": 3.0962682572206517,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 9.999999999999998,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 2.0962682572206517,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.8199049243509537,
+          "adaptive_adjusted_active_sec": 0.8199049243509537,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.196536089737618
+        },
+        "result": {
+          "stop_error_deg": 5.148017922774812,
+          "settled_error_deg": 0.7901458180916734,
+          "stop_measured_rate_deg_s": -10.404833961307986,
+          "stop_effective_rate_deg_s": -10.404833961307986,
+          "post_stop_rotation_deg": 4.301861183216062,
+          "post_stop_peak_abs_deg": 4.86758575184993,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 2.202999999979511,
+          "slope_active_sec": 0.926636667109813,
+          "slope_settled_angle_deg": 9.209854181908327,
+          "slope_observed_deg_s": 9.939013325075873,
+          "slope_previous_deg_s": 12.196536089737618,
+          "slope_next_deg_s": 11.067774707406747,
+          "slope_next_multiplier": 0.9145054698279124,
+          "slope_hold_overrun_sec": 0.10673174275885922,
+          "slope_overshoot_deg": 0.0,
+          "slope_overshoot_equivalent_sec": 0.0
+        }
+      },
+      {
+        "step": 9,
+        "kind": "v4_waypoint_forward",
+        "start": 86.38999999998487,
+        "end": 93.95299999997951,
+        "stop": 89.71799999999348,
+        "stop_to_end": 4.23499999998603,
+        "params": {
+          "target_distance_m": 0.5770629882812501,
+          "fitted_duration_sec": 3.554708518639874,
+          "hard_timeout_sec": 4.554708518639874,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "travelled_m": 0.476463158519079,
+          "predicted_travel_m": 0.5964631585190789,
+          "target_m": 0.5770629882812501,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.24975366044223798,
+          "predictive_gate_ready": true,
+          "settled_travel_m": 0.6081520736811056,
+          "settled_goal_distance_m": 1.2812505928556461,
+          "settled_lateral_error_m": -0.36038297207265324,
+          "settled_longitudinal_error_m": -1.2295231576237295,
+          "total_forward_used_m": 1.2283374188815563
+        }
+      },
+      {
+        "step": 10,
+        "kind": "v4_recenter_rotate",
+        "start": 95.09299999999348,
+        "end": 101.42199999999139,
+        "stop": 97.18700000000536,
+        "stop_to_end": 4.23499999998603,
+        "params": {
+          "initial_error_deg": -10.5,
+          "target_yaw_deg": null,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.9765164933880743,
+          "fitted_hard_timeout_sec": 2.9765164933880746,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 10.5,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 2.4556829939213416,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "bearing",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.9765164933880743,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.7001531605183764,
+          "adaptive_adjusted_active_sec": 0.7001531605183764,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 14.996718706841307
+        },
+        "result": {
+          "stop_error_deg": -4.2817726888369805,
+          "settled_error_deg": 3.19417695151364,
+          "stop_measured_rate_deg_s": 18.67925656106686,
+          "stop_effective_rate_deg_s": 18.67925656106686,
+          "post_stop_rotation_deg": 7.481283824530578,
+          "post_stop_peak_abs_deg": 8.940089787223002,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0
+        }
+      },
+      {
+        "step": 11,
+        "kind": "v4_waypoint_rotate",
+        "start": 102.71799999999348,
+        "end": 109.0,
+        "stop": 104.73399999999674,
+        "stop_to_end": 4.26600000000326,
+        "params": {
+          "initial_error_deg": 7.5,
+          "target_yaw_deg": -13.051283166031794,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.9540063278053348,
+          "fitted_hard_timeout_sec": 2.9540063278053346,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 7.499999999999999,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.9540063278053348,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.6776429949356368,
+          "adaptive_adjusted_active_sec": 0.6776429949356368,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 11.067774707406747
+        },
+        "result": {
+          "stop_error_deg": 1.9338985751240614,
+          "settled_error_deg": -1.7014358593513634,
+          "stop_measured_rate_deg_s": -8.076016943035484,
+          "stop_effective_rate_deg_s": -8.076016943035484,
+          "post_stop_rotation_deg": 3.6323794711309745,
+          "post_stop_peak_abs_deg": 4.3339153064905815,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 2.0160000000032596,
+          "slope_active_sec": 0.7396366671335617,
+          "slope_settled_angle_deg": 9.201435859351363,
+          "slope_observed_deg_s": 12.440480939122764,
+          "slope_previous_deg_s": 11.067774707406747,
+          "slope_next_deg_s": 11.754127823264755,
+          "slope_next_multiplier": 0.9712172926901477,
+          "slope_hold_overrun_sec": 0.06199367219792484,
+          "slope_overshoot_deg": 1.7014358593513634,
+          "slope_overshoot_equivalent_sec": 0.15372881218956627
+        }
+      },
+      {
+        "step": 12,
+        "kind": "v4_waypoint_forward",
+        "start": 109.0,
+        "end": 116.31200000000536,
+        "stop": 112.04699999999139,
+        "stop_to_end": 4.26500000001397,
+        "params": {
+          "target_distance_m": 0.41467084847390656,
+          "fitted_duration_sec": 2.9834549219676694,
+          "hard_timeout_sec": 3.9834549219676694,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "travelled_m": 0.3330011103020342,
+          "predicted_travel_m": 0.4530011103020342,
+          "target_m": 0.41467084847390656,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.35534161349999993,
+          "predictive_gate_ready": true,
+          "settled_travel_m": 0.4816006993926546,
+          "settled_goal_distance_m": 0.80960688415237,
+          "settled_lateral_error_m": -0.36872559618524575,
+          "settled_longitudinal_error_m": -0.7207667733634397,
+          "total_forward_used_m": 1.709938118274211
+        }
+      },
+      {
+        "step": 13,
+        "kind": "v4_recenter_rotate",
+        "start": 117.48399999999674,
+        "end": 123.70299999997951,
+        "stop": 119.40599999998813,
+        "stop_to_end": 4.296999999991385,
+        "params": {
+          "initial_error_deg": -8.5,
+          "target_yaw_deg": null,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.8201592339928712,
+          "fitted_hard_timeout_sec": 2.820159233992871,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 8.5,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 2.559523098022518,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "bearing",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.8201592339928712,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.5437959011231732,
+          "adaptive_adjusted_active_sec": 0.5437959011231732,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 15.630864415203998
+        },
+        "result": {
+          "stop_error_deg": -6.620713720481405,
+          "settled_error_deg": 0.26374897700981137,
+          "stop_measured_rate_deg_s": 9.580064310681337,
+          "stop_effective_rate_deg_s": 9.580064310681337,
+          "post_stop_rotation_deg": 6.8734136008025075,
+          "post_stop_peak_abs_deg": 8.27141725606947,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0
+        }
+      },
+      {
+        "step": 14,
+        "kind": "v4_waypoint_rotate",
+        "start": 124.93700000000536,
+        "end": 130.78099999998813,
+        "stop": 126.59299999999348,
+        "stop_to_end": 4.187999999994645,
+        "params": {
+          "initial_error_deg": 4.0,
+          "target_yaw_deg": -11.36955335012874,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.6166693138956032,
+          "fitted_hard_timeout_sec": 2.616669313895603,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 4.000000000000001,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.6166693138956032,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.34030598102590526,
+          "adaptive_adjusted_active_sec": 0.34030598102590526,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 11.754127823264755
+        },
+        "result": {
+          "stop_error_deg": 2.0119350964174885,
+          "settled_error_deg": -1.8122059278653069,
+          "stop_measured_rate_deg_s": -8.760837931334187,
+          "stop_effective_rate_deg_s": -8.760837931334187,
+          "post_stop_rotation_deg": 3.831751263919017,
+          "post_stop_peak_abs_deg": 4.199035449307928,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 1.6559999999881256,
+          "slope_active_sec": 0.3796366671184277,
+          "slope_settled_angle_deg": 5.812205927865307,
+          "slope_observed_deg_s": 15.309917168912952,
+          "slope_previous_deg_s": 11.754127823264755,
+          "slope_next_deg_s": 13.532022496088853,
+          "slope_next_multiplier": 1.1181207530567079,
+          "slope_hold_overrun_sec": 0.03933068609252244,
+          "slope_overshoot_deg": 1.8122059278653069,
+          "slope_overshoot_equivalent_sec": 0.154176129025791
+        }
+      },
+      {
+        "step": 15,
+        "kind": "v4_waypoint_forward",
+        "start": 130.78099999998813,
+        "end": 136.63999999998487,
+        "stop": 132.375,
+        "stop_to_end": 4.264999999984866,
+        "params": {
+          "target_distance_m": 0.1937410475713115,
+          "fitted_duration_sec": 2.172668631357496,
+          "hard_timeout_sec": 3.172668631357496,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "insertion_range_entered": true,
+          "travelled_m": 0.10069698975681211,
+          "settled_travel_m": 0.14995463326852632,
+          "total_forward_used_m": 1.8598927515427373
+        }
+      },
+      {
+        "step": 16,
+        "kind": "v4_insert_align_rotate",
+        "start": 137.79699999999139,
+        "end": 143.90599999998813,
+        "stop": 139.59299999999348,
+        "stop_to_end": 4.312999999994645,
+        "params": {
+          "initial_error_deg": -6.0,
+          "target_yaw_deg": -6.16116397095081,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.7721299132370647,
+          "fitted_hard_timeout_sec": 2.7721299132370647,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 6.000000000000002,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.7721299132370647,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.49576658036736676,
+          "adaptive_adjusted_active_sec": 0.49576658036736676,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.10246966536945
+        },
+        "result": {
+          "stop_error_deg": -4.056761694094263,
+          "settled_error_deg": -0.905383145234083,
+          "stop_measured_rate_deg_s": 8.861668522440928,
+          "stop_effective_rate_deg_s": 8.861668522440928,
+          "post_stop_rotation_deg": 3.215802478469328,
+          "post_stop_peak_abs_deg": 3.9247615563792237,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_LEFT",
+          "slope_actual_hold_sec": 1.7960000000020955,
+          "slope_active_sec": 0.5196366671323975,
+          "slope_settled_angle_deg": 5.094616854765917,
+          "slope_observed_deg_s": 9.804190460385403,
+          "slope_previous_deg_s": 12.10246966536945,
+          "slope_next_deg_s": 10.953330062877425,
+          "slope_next_multiplier": 0.905049164817969,
+          "slope_hold_overrun_sec": 0.023870086765030774,
+          "slope_overshoot_deg": 0.0,
+          "slope_overshoot_equivalent_sec": 0.0
+        }
+      },
+      {
+        "step": 17,
+        "kind": "v4_insert_segment",
+        "start": 145.13999999998487,
+        "end": 152.93700000000536,
+        "stop": 151.875,
+        "stop_to_end": 1.062000000005355,
+        "params": {
+          "target_distance_m": 1.8802771091461181,
+          "fitted_duration_sec": 8.139079133259953,
+          "hard_timeout_sec": 9.139079133259953,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "error": "PnP recovery timeout",
+          "failed_state": "RECOVER_VISUAL"
+        }
+      }
+    ],
+    "settle_count": 15,
+    "settle_total": 63.79699999993318,
+    "guard_sec": 3.0,
+    "inference_median_ms": 31.0,
+    "inference_p95_ms": 47.0,
+    "cadence_median_ms": 94.0,
+    "failure": "PnP recovery timeout"
+  },
+  {
+    "tag": "170410",
+    "start_iso": "2026-09-06T17:04:10.624",
+    "duration": 65.90700000000652,
+    "insertion_start": 58.094000000011874,
+    "phase_totals": {
+      "Startup": 3.6410000000032596,
+      "Acquire Pallet": 3.0309999999881256,
+      "Set Standoff": 11.5,
+      "Plan Approach": 5.328000000008615,
+      "Execute Approach": 34.594000000011874,
+      "Insert Forks": 7.812999999994645
+    },
+    "stop_command_seconds": 39.79900000002817,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 3.375,
+        "duration": 3.375,
+        "state": "STARTUP",
+        "phase": "Startup"
+      },
+      {
+        "start": 3.375,
+        "end": 3.6410000000032596,
+        "duration": 0.26600000000325963,
+        "state": "PRECHECK",
+        "phase": "Startup"
+      },
+      {
+        "start": 3.6410000000032596,
+        "end": 3.85999999998603,
+        "duration": 0.21899999998277053,
+        "state": "SEARCH_SWEEP",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 3.85999999998603,
+        "end": 6.671999999991385,
+        "duration": 2.812000000005355,
+        "state": "ACQUIRE_VERIFY",
+        "phase": "Acquire Pallet"
+      },
+      {
+        "start": 6.671999999991385,
+        "end": 7.812999999994645,
+        "duration": 1.1410000000032596,
+        "state": "STANDOFF_VERIFY",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 7.812999999994645,
+        "end": 13.73499999998603,
+        "duration": 5.921999999991385,
+        "state": "STANDOFF_MOVE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 13.73499999998603,
+        "end": 16.953999999997905,
+        "duration": 3.2190000000118744,
+        "state": "STANDOFF_SETTLE",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 16.953999999997905,
+        "end": 18.171999999991385,
+        "duration": 1.2179999999934807,
+        "state": "STANDOFF_VERIFY",
+        "phase": "Set Standoff"
+      },
+      {
+        "start": 18.171999999991385,
+        "end": 19.5,
+        "duration": 1.3280000000086147,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 19.5,
+        "end": 23.421999999991385,
+        "duration": 3.9219999999913853,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 23.421999999991385,
+        "end": 26.703999999997905,
+        "duration": 3.2820000000065193,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 26.703999999997905,
+        "end": 27.89100000000326,
+        "duration": 1.187000000005355,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 27.89100000000326,
+        "end": 32.078999999997905,
+        "duration": 4.187999999994645,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 32.078999999997905,
+        "end": 38.125,
+        "duration": 6.0460000000020955,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 38.125,
+        "end": 40.937999999994645,
+        "duration": 2.812999999994645,
+        "state": "STAGING_PLAN",
+        "phase": "Plan Approach"
+      },
+      {
+        "start": 40.937999999994645,
+        "end": 42.51600000000326,
+        "duration": 1.5780000000086147,
+        "state": "WAYPOINT_TURN",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 42.51600000000326,
+        "end": 45.687999999994645,
+        "duration": 3.1719999999913853,
+        "state": "WAYPOINT_TURN_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 45.687999999994645,
+        "end": 47.796999999991385,
+        "duration": 2.1089999999967404,
+        "state": "WAYPOINT_DRIVE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 47.796999999991385,
+        "end": 51.046999999991385,
+        "duration": 3.25,
+        "state": "WAYPOINT_DRIVE_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 51.046999999991385,
+        "end": 52.094000000011874,
+        "duration": 1.047000000020489,
+        "state": "FINAL_POSE_LOCK",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 52.094000000011874,
+        "end": 53.78200000000652,
+        "duration": 1.687999999994645,
+        "state": "FINAL_ROTATE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 53.78200000000652,
+        "end": 56.969000000011874,
+        "duration": 3.187000000005355,
+        "state": "FINAL_SETTLE",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 56.969000000011874,
+        "end": 58.094000000011874,
+        "duration": 1.125,
+        "state": "FINAL_POSE_LOCK",
+        "phase": "Execute Approach"
+      },
+      {
+        "start": 58.094000000011874,
+        "end": 58.203999999997905,
+        "duration": 0.10999999998603016,
+        "state": "READY_TO_INSERT",
+        "phase": "Insert Forks"
+      },
+      {
+        "start": 58.203999999997905,
+        "end": 64.93799999999464,
+        "duration": 6.73399999999674,
+        "state": "INSERT_DRIVE",
+        "phase": "Insert Forks"
+      },
+      {
+        "start": 64.93799999999464,
+        "end": 65.90700000000652,
+        "duration": 0.9690000000118744,
+        "state": "RECOVER_VISUAL",
+        "phase": "Insert Forks"
+      }
+    ],
+    "commands": [
+      {
+        "start": 0.0,
+        "end": 7.7039999999979045,
+        "duration": 7.7039999999979045,
+        "command": "STOP"
+      },
+      {
+        "start": 7.7039999999979045,
+        "end": 13.60999999998603,
+        "duration": 5.905999999988126,
+        "command": "FWD"
+      },
+      {
+        "start": 13.60999999998603,
+        "end": 19.375,
+        "duration": 5.76500000001397,
+        "command": "STOP"
+      },
+      {
+        "start": 19.375,
+        "end": 23.296999999991385,
+        "duration": 3.9219999999913853,
+        "command": "FWD"
+      },
+      {
+        "start": 23.296999999991385,
+        "end": 27.78200000000652,
+        "duration": 4.485000000015134,
+        "command": "STOP"
+      },
+      {
+        "start": 27.78200000000652,
+        "end": 31.969000000011874,
+        "duration": 4.187000000005355,
+        "command": "FWD"
+      },
+      {
+        "start": 31.969000000011874,
+        "end": 40.828999999997905,
+        "duration": 8.85999999998603,
+        "command": "STOP"
+      },
+      {
+        "start": 40.828999999997905,
+        "end": 42.39100000000326,
+        "duration": 1.562000000005355,
+        "command": "ROT_LEFT"
+      },
+      {
+        "start": 42.39100000000326,
+        "end": 45.578999999997905,
+        "duration": 3.187999999994645,
+        "command": "STOP"
+      },
+      {
+        "start": 45.578999999997905,
+        "end": 47.687999999994645,
+        "duration": 2.1089999999967404,
+        "command": "FWD"
+      },
+      {
+        "start": 47.687999999994645,
+        "end": 51.98499999998603,
+        "duration": 4.296999999991385,
+        "command": "STOP"
+      },
+      {
+        "start": 51.98499999998603,
+        "end": 53.671999999991385,
+        "duration": 1.687000000005355,
+        "command": "ROT_RIGHT"
+      },
+      {
+        "start": 53.671999999991385,
+        "end": 58.094000000011874,
+        "duration": 4.422000000020489,
+        "command": "STOP"
+      },
+      {
+        "start": 58.094000000011874,
+        "end": 64.8289999999979,
+        "duration": 6.73499999998603,
+        "command": "FWD"
+      },
+      {
+        "start": 64.8289999999979,
+        "end": 65.90700000000652,
+        "duration": 1.0780000000086147,
+        "command": "STOP"
+      }
+    ],
+    "actions": [
+      {
+        "step": 1,
+        "kind": "v4_standoff_move",
+        "start": 7.7039999999979045,
+        "end": 16.828999999997905,
+        "stop": 13.60999999998603,
+        "stop_to_end": 3.2190000000118744,
+        "params": {
+          "target_distance_m": 1.6744956970214844,
+          "fitted_duration_sec": 7.415193285435398,
+          "hard_timeout_sec": 8.415193285435398,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "live_z_m": 4.186842441558838,
+          "predicted_z_m": 4.066842441558838,
+          "error_m": 0.1868424415588379,
+          "travelled_m": 1.490627889722093,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.35534161349999993,
+          "predictive_gate_ready": true,
+          "settled_z_m": 4.013651609420776
+        }
+      },
+      {
+        "step": 2,
+        "kind": "v4_waypoint_forward",
+        "start": 19.375,
+        "end": 26.437999999994645,
+        "stop": 23.296999999991385,
+        "stop_to_end": 3.1410000000032596,
+        "params": {
+          "target_distance_m": 0.8,
+          "fitted_duration_sec": 4.338943333987324,
+          "hard_timeout_sec": 5.338943333987324,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "travelled_m": 0.7123279137580039,
+          "predicted_travel_m": 0.8323279137580039,
+          "target_m": 0.8,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.3403972028480069,
+          "predictive_gate_ready": true,
+          "settled_travel_m": 0.8057806470350919,
+          "settled_goal_distance_m": 1.628574119786697,
+          "settled_lateral_error_m": 0.03589324884428627,
+          "settled_longitudinal_error_m": -1.6281785339226218,
+          "total_forward_used_m": 0.8057806470350919
+        }
+      },
+      {
+        "step": 3,
+        "kind": "v4_waypoint_forward",
+        "start": 27.78200000000652,
+        "end": 38.03200000000652,
+        "stop": 31.969000000011874,
+        "stop_to_end": 6.062999999994645,
+        "params": {
+          "target_distance_m": 0.8,
+          "fitted_duration_sec": 4.338943333987324,
+          "hard_timeout_sec": 5.338943333987324,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "travelled_m": 0.6818165884184016,
+          "predicted_travel_m": 0.8018165884184016,
+          "target_m": 0.8,
+          "predictive_advance_m": 0.12,
+          "predictive_speed_m_s": 0.3109342919327792,
+          "predictive_gate_ready": true,
+          "settled_travel_m": 0.8807240553122893,
+          "settled_goal_distance_m": 0.7502166312528561,
+          "settled_lateral_error_m": 0.05934341289808011,
+          "settled_longitudinal_error_m": -0.7478658657499966,
+          "total_forward_used_m": 1.6865047023473811
+        }
+      },
+      {
+        "step": 4,
+        "kind": "v4_waypoint_rotate",
+        "start": 40.828999999997905,
+        "end": 45.562999999994645,
+        "stop": 42.39100000000326,
+        "stop_to_end": 3.1719999999913853,
+        "params": {
+          "initial_error_deg": -2.5,
+          "target_yaw_deg": 5.189605157372341,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.4829327413561006,
+          "fitted_hard_timeout_sec": 2.482932741356101,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 2.499999999999999,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.4829327413561006,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.2065694084864027,
+          "adaptive_adjusted_active_sec": 0.2065694084864027,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.10246966536945
+        },
+        "result": {
+          "stop_error_deg": -2.1161538791980945,
+          "settled_error_deg": 0.40908529918260683,
+          "stop_measured_rate_deg_s": 2.359853938956957,
+          "stop_effective_rate_deg_s": 2.359853938956957,
+          "post_stop_rotation_deg": 2.6651609401253324,
+          "post_stop_peak_abs_deg": 3.904107430333056,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_LEFT",
+          "slope_actual_hold_sec": 1.562000000005355,
+          "slope_active_sec": 0.28563666713565716,
+          "slope_settled_angle_deg": 2.909085299182607,
+          "slope_observed_deg_s": 10.184565337338142,
+          "slope_previous_deg_s": 12.10246966536945,
+          "slope_next_deg_s": 11.143517501353797,
+          "slope_next_multiplier": 0.9207639274850122,
+          "slope_hold_overrun_sec": 0.07906725864925446,
+          "slope_overshoot_deg": 0.40908529918260683,
+          "slope_overshoot_equivalent_sec": 0.03380180330905368
+        }
+      },
+      {
+        "step": 5,
+        "kind": "v4_waypoint_forward",
+        "start": 45.578999999997905,
+        "end": 50.844000000011874,
+        "stop": 47.687999999994645,
+        "stop_to_end": 3.1560000000172295,
+        "params": {
+          "target_distance_m": 0.3889686136073145,
+          "fitted_duration_sec": 2.893041099429994,
+          "hard_timeout_sec": 3.893041099429994,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "insertion_range_entered": true,
+          "travelled_m": 0.14703770415649992,
+          "settled_travel_m": 0.21854340162811248,
+          "total_forward_used_m": 1.9050481039754936
+        }
+      },
+      {
+        "step": 6,
+        "kind": "v4_insert_align_rotate",
+        "start": 51.98499999998603,
+        "end": 56.85999999998603,
+        "stop": 53.671999999991385,
+        "stop_to_end": 3.187999999994645,
+        "params": {
+          "initial_error_deg": 4.5,
+          "target_yaw_deg": 0.5149277241307004,
+          "joystick_deflection": 30,
+          "startup_delay_sec": 1.276363332869698,
+          "stop_lookahead_sec": 0.55,
+          "fitted_hold_sec": 1.648188268145223,
+          "fitted_hard_timeout_sec": 2.6481882681452227,
+          "fitted_stop_angle_deg": null,
+          "fitted_stop_rate_deg_s": null,
+          "fitted_coast_deg": null,
+          "fitted_total_deg": 4.5,
+          "fitted_settle_sec": 3.0,
+          "fitted_angle_sd_deg": 1.981755444151851,
+          "fitted_feasible": true,
+          "fitted_note": "endpoint-only; STOP state/coast split unknown; no extra inertia correction",
+          "fitted_domain": "heading",
+          "fitted_max_rate_deg_s": null,
+          "adaptive_time_scale": 1.0,
+          "adaptive_base_hold_sec": 1.648188268145223,
+          "adaptive_excluded_delay_sec": 1.276363332869698,
+          "adaptive_base_active_sec": 0.37182493527552496,
+          "adaptive_adjusted_active_sec": 0.37182493527552496,
+          "fitted_prediction_kind": "settled_endpoint_only",
+          "fitted_endpoint_slope_deg_s": 12.10246966536945
+        },
+        "result": {
+          "stop_error_deg": 2.993786787721092,
+          "settled_error_deg": -0.49025438576325087,
+          "stop_measured_rate_deg_s": -9.707809946962168,
+          "stop_effective_rate_deg_s": -9.707809946962168,
+          "post_stop_rotation_deg": 3.4257532392432495,
+          "post_stop_peak_abs_deg": 3.5348125008044917,
+          "rotation_stop_reason": "fitted_hold_elapsed",
+          "adaptive_applied_time_scale": 1.0,
+          "slope_update_accepted": true,
+          "slope_command": "ROT_RIGHT",
+          "slope_actual_hold_sec": 1.687000000005355,
+          "slope_active_sec": 0.41063666713565716,
+          "slope_settled_angle_deg": 4.990254385763251,
+          "slope_observed_deg_s": 12.152481220374506,
+          "slope_previous_deg_s": 12.10246966536945,
+          "slope_next_deg_s": 12.127475442871976,
+          "slope_next_multiplier": 1.0020661714669759,
+          "slope_hold_overrun_sec": 0.038811731860132204,
+          "slope_overshoot_deg": 0.49025438576325087,
+          "slope_overshoot_equivalent_sec": 0.04050862338999178
+        }
+      },
+      {
+        "step": 7,
+        "kind": "v4_insert_segment",
+        "start": 58.094000000011874,
+        "end": 65.90700000000652,
+        "stop": 64.8289999999979,
+        "stop_to_end": 1.0780000000086147,
+        "params": {
+          "target_distance_m": 1.8137577295303344,
+          "fitted_duration_sec": 7.905081139890314,
+          "hard_timeout_sec": 8.905081139890314,
+          "forward_deflection": 60,
+          "backward_deflection": 60
+        },
+        "result": {
+          "error": "PnP recovery timeout",
+          "failed_state": "RECOVER_VISUAL"
+        }
+      }
+    ],
+    "settle_count": 6,
+    "settle_total": 21.93900000001304,
+    "guard_sec": 2.0,
+    "inference_median_ms": 31.0,
+    "inference_p95_ms": 47.0,
+    "cadence_median_ms": 109.0,
+    "failure": "PnP recovery timeout"
+  }
+]

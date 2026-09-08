@@ -8,6 +8,7 @@ from unittest.mock import Mock, patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from calib.fsm_v4 import config as cfg
 from calib.fsm_v4.top import CalibrationFSMV4
+from calib.fsm_v4.motion import forward_seconds
 
 
 class SingleInsertionTests(unittest.TestCase):
@@ -22,6 +23,10 @@ class SingleInsertionTests(unittest.TestCase):
         self.f._fail = Mock()
         self.f._begin_translation = Mock()
         self.f._forward_segment_step = Mock()
+        self.f._trace_begin = Mock()
+        self.f.execu = Mock()
+        self.f.status = Mock()
+        self.f._insertion_started_mono = 100.
 
     def step(self):
         with patch('calib.fsm_v4.top.time.monotonic', return_value=101.):
@@ -35,8 +40,10 @@ class SingleInsertionTests(unittest.TestCase):
         self.pose.pallet_z_m = 1.7  # subsequent frame must not change accepted target
         with patch.object(cfg, 'AUTO_INSERT_ENABLED', True):
             self.step()
-        self.f._begin_translation.assert_called_once_with(
-            'INSERT_DRIVE', 'FWD', self.pose, 1.5, 'v4_insert_segment')
+        self.assertAlmostEqual(self.f._translation_target_m, 1.5)
+        self.assertAlmostEqual(self.f._insert_hold_sec, forward_seconds(1.5))
+        self.f.execu.exec.assert_called_once_with('FWD')
+        self.f._observe_pose.assert_not_called()
 
     def test_invalid_acceptance_does_not_start(self):
         for z in (0., .3, cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M + .001, float('nan')):
@@ -52,10 +59,12 @@ class SingleInsertionTests(unittest.TestCase):
 
     def test_old_yaw_and_lateral_limits_do_not_abort(self):
         self.f.state = 'INSERT_DRIVE'
+        self.f._translation_deadline_mono = 105.
         self.step()
         self.f._fail.assert_not_called()
-        self.f._forward_segment_step.assert_called_once()
-        self.assertFalse(self.f._forward_segment_step.call_args.kwargs['enforce_visibility'])
+        self.f._forward_segment_step.assert_not_called()
+        self.f._observe_pose.assert_not_called()
+        self.f.execu.exec.assert_called_once_with('FWD')
 
     def test_settled_action_finishes_without_residual_retry(self):
         self.f.state = 'INSERT_SETTLE'
@@ -64,10 +73,14 @@ class SingleInsertionTests(unittest.TestCase):
         self.f._insert_remaining_m = 1.
         self.f._translation_stop_info = {}
         self.f._trace_end = Mock()
+        self.f._settle_started_mono = 98.
+        self.f._translation_target_m = 1.
+        self.f._insert_hold_sec = 3.
         self.step()
         self.f._exec.assert_called_with('STOP')
         self.f._set_state.assert_called_once_with('DONE')
         self.f._begin_translation.assert_not_called()
+        self.f._settle_observation.assert_not_called()
 
     def test_done_remains_stopped(self):
         self.f.state = 'DONE'

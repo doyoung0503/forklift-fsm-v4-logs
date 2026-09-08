@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "description": "Independent simulated vehicle calibration; seeded from 2026-09-07 workspace. Not live-linked to FSM tuning. Watchdog limits and analog strength scaling are simulation assumptions.",
+  "geometry_notes": {
+    "source": "User dimensions and ../depth_cam/calib/fsm_v4/config.py, checked 2026-09-07",
+    "pallet": "1.10 m width x 1.10 m depth (default scenario); 0.71 m total insertion envelope",
+    "fork": "0.60 m outer-to-outer span. Individual tine width 0.10 m is an adjustable assumption.",
+    "longitudinal": "Camera to tip 1.18 m; pivot 0.68 m behind camera; derived pivot to tip 1.86 m.",
+    "fork_root": "No measured heel/root offset found. Rendering and collision use camera Z=0 as the rear of the modeled tines.",
+    "image": "assets/pallet_top.png is the unmodified user PNG. Canvas excludes transparent padding; top view does not define underside collision geometry."
+  },
+  "parameters": {
+    "CAMERA_TO_ROT_CENTER_X_M": 0.0,
+    "CAMERA_TO_ROT_CENTER_Z_M": -0.68,
+    "CAMERA_HORIZONTAL_FOV_DEG": 55.0,
+    "CAMERA_TO_FORK_TIP_Z_M": 1.18,
+    "FWD_T0_SEC": 0.5069,
+    "FWD_ACCEL_DURATION_SEC": 2.0357,
+    "FWD_ACCEL_M_S2": 0.139644,
+    "FWD_DISTANCE_SCALE": 1.0,
+    "PALLET_FRONT_VISIBILITY_WIDTH_M": 1.1,
+    "INSERT_OPENING_SPAN_M": 0.71,
+    "FORK_OUTER_SPAN_M": 0.6,
+    "INSERT_CAMERA_Z_REMAINDER_M": 0.3,
+    "ROTATION_SLOPE_DEG_S": 12.10246966536945,
+    "ROTATION_DELAY_SEC": 1.276363332869698,
+    "DRIVE_REFERENCE_DEFLECTION": 60,
+    "ROTATE_REFERENCE_DEFLECTION": 30,
+    "HEARTBEAT_TIMEOUT_SEC": 0.6,
+    "MOVEMENT_TIMEOUT_SEC": 0.1,
+    "CONTROL_TIMEOUT_SEC": 0.1
+  }
+}

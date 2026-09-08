@@ -1,0 +1,22 @@
+# Blender 5.1.1 MTL File: 'green_pallet_repaired.blend'
+# www.blender.org
+
+newmtl Rebuilt_Green_Plastic
+Ns 280.899994
+Ka 1.000000 1.000000 1.000000
+Kd 0.015000 0.230000 0.190000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl default_tex0
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd textures/tex_u0_v0_diffuse.jpg

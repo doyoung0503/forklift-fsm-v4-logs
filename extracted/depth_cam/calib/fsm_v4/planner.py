@@ -293,6 +293,22 @@ def _pose_after_action(
     )
 
 
+def _vision_meta_after_turn(vision_meta: Optional[Dict], turn_deg: float) -> Optional[Dict]:
+    """Project measured camera-frame corners at the planned turn endpoint."""
+    if not vision_meta or "face_corners_camera_m" not in vision_meta:
+        return vision_meta
+    result = dict(vision_meta)
+    angle = math.radians(cfg.CAMERA_YAW_IN_VEHICLE_DEG)
+    c, s = math.cos(angle), math.sin(angle)
+    corners = []
+    for point in vision_meta["face_corners_camera_m"]:
+        x, y, z = map(float, point[:3])
+        vx, vz = _point_after_action((c * x + s * z, -s * x + c * z), turn_deg, 0.0)
+        corners.append((c * vx - s * vz, y, s * vx + c * vz))
+    result["face_corners_camera_m"] = corners
+    return result
+
+
 def _maximum_staging_safe_forward_m(
     pose: VisualPose, turn_deg: float, upper_m: float,
 ) -> float:
@@ -512,7 +528,7 @@ def visibility_turn_interval(
 
     lower = -cfg.ROT_MAX_WAYPOINT_TURN_DEG
     upper = cfg.ROT_MAX_WAYPOINT_TURN_DEG
-    if cfg.IMAGE_EDGE_VISIBILITY_GUARD_ENABLED and vision_meta:
+    if vision_meta:  # Planning margins are independent of legacy live-guard flags.
         corners = vision_meta.get("face_corners_px")
         fx = vision_meta.get("fx")
         ppx = vision_meta.get("ppx")
@@ -550,20 +566,6 @@ def plan_waypoint(
     raw_turn = wrap_180(
         math.degrees(math.atan2(gx, gz)) - cfg.FORWARD_PATH_BIAS_DEG
     )
-    exact_current_margins = _pixel_visibility_axis_margins_norm(
-        0.0, 0.0, vision_meta,
-    )
-    if (
-        cfg.IMAGE_EDGE_VISIBILITY_GUARD_ENABLED
-        and bbox_margin_norm < cfg.BBOX_SAFE_MARGIN_NORM
-        and exact_current_margins is None
-    ):
-        return PlanResult(
-            None, "pallet is near image edge", needs_recenter=True,
-            recenter_turn_deg=safe_recenter_turn(
-                pose, center_bearing_deg, vision_meta,
-            ),
-        )
     if staging_position_reached(pose):
         return PlanResult(None, "staging position reached")
     lateral_error, longitudinal_error = staging_position_errors(pose)
@@ -586,39 +588,22 @@ def plan_waypoint(
         return PlanResult(None, "forward correction budget exhausted")
 
     if cfg.PREDICTIVE_VISIBILITY_PLANNER_ENABLED:
-        current_margin = action_visibility_margin_deg(pose, 0.0, 0.0)
-        if current_margin < 0.0:
-            return PlanResult(
-                None,
-                f"front face outside safe FOV by {-current_margin:.2f}deg",
-                needs_recenter=True,
-                recenter_turn_deg=safe_recenter_turn(
-                    pose, center_bearing_deg, vision_meta,
-                ),
-            )
-        if exact_current_margins is not None and min(exact_current_margins) < 0.0:
-            horizontal_margin, vertical_margin = exact_current_margins
-            if vertical_margin < 0.0:
-                return PlanResult(
-                    None,
-                    "front face outside vertical safe image ROI",
-                )
-            return PlanResult(
-                None,
-                "front face outside horizontal safe image ROI",
-                needs_recenter=True,
-                recenter_turn_deg=safe_recenter_turn(
-                    pose, center_bearing_deg, vision_meta,
-                ),
-            )
-
+        # A visible start outside the reserved ROI may recover during the
+        # planned turn. Never require an independent optical-axis recenter.
+        starts_safe = action_keeps_front_visible(pose, 0.0, 0.0, vision_meta)
         candidates = []
         rotation_safe_turns = []
         for turn in _candidate_turns(raw_turn):
-            rotation_margin = action_visibility_margin_deg(pose, turn, 0.0)
-            if rotation_margin < 0.0 or not action_keeps_front_visible(
+            if not action_keeps_front_visible(
                 pose, turn, 0.0, vision_meta,
+                half_angle_deg=None if starts_safe else cfg.CAMERA_HORIZONTAL_FOV_DEG * 0.5,
+                edge_margin_norm=None if starts_safe else 0.0,
             ):
+                continue
+            turned_pose = _pose_after_action(pose, turn, 0.0)
+            turned_meta = _vision_meta_after_turn(vision_meta, turn)
+            # Forward motion must start and remain inside the reserved ROI.
+            if not action_keeps_front_visible(turned_pose, 0.0, 0.0, turned_meta):
                 continue
             rotation_safe_turns.append(turn)
             heading = math.radians(turn)
@@ -632,7 +617,7 @@ def plan_waypoint(
             if requested_forward < cfg.FWD_RELIABLE_MIN_DISTANCE_M:
                 continue
             safe_forward, path_margin = _maximum_visible_forward_m(
-                pose, turn, requested_forward, vision_meta,
+                turned_pose, 0.0, requested_forward, turned_meta,
             )
             safe_forward = min(
                 safe_forward,
@@ -641,7 +626,7 @@ def plan_waypoint(
                 ),
             )
             path_margin = action_visibility_margin_deg(
-                pose, turn, safe_forward,
+                turned_pose, 0.0, safe_forward,
             )
             if safe_forward + 1e-6 < cfg.FWD_RELIABLE_MIN_DISTANCE_M:
                 continue
@@ -662,14 +647,8 @@ def plan_waypoint(
             candidates.append((score, turn, safe_forward, path_margin))
 
         if not candidates:
-            recenter_turn = safe_recenter_turn(
-                pose, center_bearing_deg, vision_meta,
-            )
             return PlanResult(
-                None,
-                "no rotation+forward action keeps the full front face visible",
-                needs_recenter=True,
-                recenter_turn_deg=recenter_turn,
+                None, "no rotation+forward action restores safe horizontal/vertical visibility",
             )
 
         _score, turn, forward, path_margin = max(
@@ -701,7 +680,7 @@ def plan_waypoint(
     # centre.  Kept only as an explicit fallback for field comparison.
     lower, upper = visibility_turn_interval(center_bearing_deg, vision_meta)
     if lower > upper:
-        return PlanResult(None, "no visibility-safe turn", needs_recenter=True)
+        return PlanResult(None, "no visibility-safe turn")
     turn = min(upper, max(lower, raw_turn))
     predicted_center = center_bearing_deg - turn
 

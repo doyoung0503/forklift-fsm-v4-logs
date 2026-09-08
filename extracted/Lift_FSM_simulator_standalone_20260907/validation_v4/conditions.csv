@@ -1,0 +1,55 @@
+﻿perception,x_m,z_m,yaw_deg,success,fsm_state,failure_state,reason,seconds,true_remaining_m,collision,replayed_frames
+oracle,-0.3,1.8,-15.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+oracle,-0.3,1.8,0.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+oracle,-0.3,1.8,15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.4999999999999998,False,71
+oracle,-0.3,2.0,-15.0,False,DONE,,fork/slot geometry collision,18.08666666666599,0.0,True,1406
+oracle,-0.3,2.0,0.0,True,DONE,,,16.319999999999656,0.0,False,1353
+oracle,-0.3,2.0,15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.7,False,71
+oracle,-0.3,2.2,-15.0,False,DONE,,fork/slot geometry collision,17.31999999999946,0.0,True,1446
+oracle,-0.3,2.2,0.0,True,DONE,,,17.31999999999946,0.0,False,1446
+oracle,-0.3,2.2,15.0,False,FAILED,STAGING_PLAN,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.6666666666666323,1.9000000000000001,False,81
+oracle,0.0,1.8,-15.0,False,DONE,,fork/slot geometry collision,11.163333333333123,0.0,True,1130
+oracle,0.0,1.8,0.0,True,DONE,,,11.163333333333123,0.0,False,1130
+oracle,0.0,1.8,15.0,False,DONE,,fork/slot geometry collision,11.163333333333123,0.0,True,1130
+oracle,0.0,2.0,-15.0,False,DONE,,fork/slot geometry collision,11.853333333333108,0.0,True,1213
+oracle,0.0,2.0,0.0,True,DONE,,,11.853333333333108,0.0,False,1213
+oracle,0.0,2.0,15.0,False,DONE,,fork/slot geometry collision,11.853333333333108,0.0,True,1213
+oracle,0.0,2.2,-15.0,False,DONE,,fork/slot geometry collision,12.88666666666642,0.0,True,1307
+oracle,0.0,2.2,0.0,True,DONE,,,12.88666666666642,0.0,False,1307
+oracle,0.0,2.2,15.0,False,DONE,,fork/slot geometry collision,12.88666666666642,0.0,True,1307
+oracle,0.3,1.8,-15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.4999999999999998,False,71
+oracle,0.3,1.8,0.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+oracle,0.3,1.8,15.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+oracle,0.3,2.0,-15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.7,False,71
+oracle,0.3,2.0,0.0,True,DONE,,,16.319999999999656,0.0,False,1353
+oracle,0.3,2.0,15.0,False,DONE,,fork/slot geometry collision,18.08666666666599,0.0,True,1406
+oracle,0.3,2.2,-15.0,False,FAILED,STAGING_PLAN,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.6666666666666323,1.9000000000000001,False,81
+oracle,0.3,2.2,0.0,True,DONE,,,17.31999999999946,0.0,False,1446
+oracle,0.3,2.2,15.0,False,DONE,,fork/slot geometry collision,17.31999999999946,0.0,True,1446
+fov,-0.3,1.8,-15.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+fov,-0.3,1.8,0.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+fov,-0.3,1.8,15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.4999999999999998,False,71
+fov,-0.3,2.0,-15.0,False,DONE,,fork/slot geometry collision,18.08666666666599,0.0,True,1406
+fov,-0.3,2.0,0.0,True,DONE,,,16.319999999999656,0.0,False,1353
+fov,-0.3,2.0,15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.7,False,71
+fov,-0.3,2.2,-15.0,False,DONE,,fork/slot geometry collision,17.31999999999946,0.0,True,1446
+fov,-0.3,2.2,0.0,True,DONE,,,17.31999999999946,0.0,False,1446
+fov,-0.3,2.2,15.0,False,FAILED,STAGING_PLAN,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.6666666666666323,1.9000000000000001,False,81
+fov,0.0,1.8,-15.0,False,DONE,,fork/slot geometry collision,11.163333333333123,0.0,True,1130
+fov,0.0,1.8,0.0,True,DONE,,,11.163333333333123,0.0,False,1130
+fov,0.0,1.8,15.0,False,DONE,,fork/slot geometry collision,11.163333333333123,0.0,True,1130
+fov,0.0,2.0,-15.0,False,DONE,,fork/slot geometry collision,11.853333333333108,0.0,True,1213
+fov,0.0,2.0,0.0,True,DONE,,,11.853333333333108,0.0,False,1213
+fov,0.0,2.0,15.0,False,DONE,,fork/slot geometry collision,11.853333333333108,0.0,True,1213
+fov,0.0,2.2,-15.0,False,DONE,,fork/slot geometry collision,12.88666666666642,0.0,True,1307
+fov,0.0,2.2,0.0,True,DONE,,,12.88666666666642,0.0,False,1307
+fov,0.0,2.2,15.0,False,DONE,,fork/slot geometry collision,12.88666666666642,0.0,True,1307
+fov,0.3,1.8,-15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.4999999999999998,False,71
+fov,0.3,1.8,0.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+fov,0.3,1.8,15.0,False,DONE,,fork/slot geometry collision,17.45333333333277,0.0,True,1324
+fov,0.3,2.0,-15.0,False,FAILED,ACQUIRE_VERIFY,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.3333333333333055,1.7,False,71
+fov,0.3,2.0,0.0,True,DONE,,,16.319999999999656,0.0,False,1353
+fov,0.3,2.0,15.0,False,DONE,,fork/slot geometry collision,18.08666666666599,0.0,True,1406
+fov,0.3,2.2,-15.0,False,FAILED,STAGING_PLAN,no commandable visibility-safe insertion rotation (minimum 0.50deg),2.6666666666666323,1.9000000000000001,False,81
+fov,0.3,2.2,0.0,True,DONE,,,17.31999999999946,0.0,False,1446
+fov,0.3,2.2,15.0,False,DONE,,fork/slot geometry collision,17.31999999999946,0.0,True,1446

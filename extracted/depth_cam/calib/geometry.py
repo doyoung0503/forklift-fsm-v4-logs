@@ -4,7 +4,10 @@
 import cv2
 import numpy as np
 from sklearn.linear_model import RANSACRegressor
-import pyrealsense2 as rs
+try:
+    import pyrealsense2 as rs
+except ImportError:
+    rs = None  # Camera-OFF UI tests do not use depth deprojection.
 from typing import Tuple, Optional
 from .config import (
     PALLET_FACE_W, PALLET_FACE_H, PALLET_BODY_D,

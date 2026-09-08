@@ -114,6 +114,34 @@ class VisibilityGeometryTests(unittest.TestCase):
 
 
 class JointPlannerTests(unittest.TestCase):
+    def test_logged_margin_breach_plans_directly_without_recenter(self):
+        # 2026-09-06 16:54:18: visible, but about 0.55 degrees outside ROI.
+        pose = make_pose(-20.986, -.884, 3.312)
+        for meta in (None, synthetic_vision_meta(pose)):
+            with self.subTest(metadata=meta is not None):
+                self.assertFalse(action_keeps_front_visible(pose, 0., 0., meta))
+                result = plan_waypoint(pose, -15., .01, 3., meta)
+                self.assertFalse(result.needs_recenter)
+                self.assertIsNotNone(result.waypoint)
+                w = result.waypoint
+                self.assertTrue(action_keeps_front_visible(
+                    pose, w.turn_deg, 0., meta,
+                    half_angle_deg=cfg.CAMERA_HORIZONTAL_FOV_DEG / 2,
+                    edge_margin_norm=0.,
+                ))
+                turned = apply_action(pose, w.turn_deg, 0.)
+                self.assertTrue(action_keeps_front_visible(
+                    turned, 0., w.forward_m,
+                    None if meta is None else synthetic_vision_meta(turned),
+                ))
+                self.assertGreaterEqual(w.forward_m, cfg.FWD_RELIABLE_MIN_DISTANCE_M)
+
+    def test_physically_clipped_start_has_no_blind_recovery_plan(self):
+        pose = make_pose(-20., -2., 3.)
+        result = plan_waypoint(pose, -34., -.1, 3., synthetic_vision_meta(pose))
+        self.assertIsNone(result.waypoint)
+        self.assertFalse(result.needs_recenter)
+
     def test_centered_target_gets_full_safe_macro_step(self):
         pose = make_pose(0.0, 0.0, 3.0)
         result = plan_waypoint(
