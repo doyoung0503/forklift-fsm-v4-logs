@@ -4,7 +4,7 @@
 
 6단계: Acquire Pallet → Initial Correction → Set Standoff → Plan Approach → Execute Approach → Insert Forks.
 
-초기 팔레트 바라보기 후 안정된 모델 yaw의 절댓값이 25도를 초과하면 초기 보정을 한 번 수행한다. 임계값 이하는 기존 분기로 진행한다. 설정은 `calib/fsm_v4/config.py`의 `COARSE_*`에서 변경한다.
+초기보정 진입은 방향각 대신 거리별 레터럴 기준으로 판단한다. `D=-rot_z_pallet_m`, `L=abs(rot_x_pallet_m)`에 대해 `L > 0.10 + 0.190 * max(0, min(D, 5.0)-2.26)`이면 초기 보정을 한 번 수행한다. D는 카메라 Z가 아닌 팔레트 전면 수직 회전중심 거리(m)다. yaw는 회전 목표 계산에 사용한다. 설정은 `calib/fsm_v4/config.py`의 `COARSE_LATERAL_*`이며, [3~5m 재측정·검증 결과](../Lift_FSM_simulator_standalone_20260907/verification/lateral_recalibrated_20260909/README.md)에 근거한다.
 
 1. 정지 상태에서 1.5초간 gyro Y 영점 편향을 추정한다.
 2. 회전 중심의 팔레트 좌표 lateral 부호를 이용해 전면과 평행하고 중심선 쪽으로 향하는 회전각을 계산한다. 오른쪽 lateral이면 `yaw - 90°`, 왼쪽이면 `yaw + 90°`이다.

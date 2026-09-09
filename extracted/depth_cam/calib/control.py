@@ -14,6 +14,7 @@ from typing import Callable, Optional, Dict
 from dataclasses import dataclass, field
 import threading
 import time
+import math
 
 try:
     from canlib import canlib, Frame  # Kvaser CANlib (CAN ON에서만 필요)
@@ -133,6 +134,8 @@ class _BusCtx:
     is_extended: bool = False
     current_movement: str = "stop"
     current_control: str = "driving_mode"
+    timed_rotation: Optional[dict] = None
+    timed_rotation_serial: int = 0
     tx_counts: Dict[str, int] = field(default_factory=lambda: {
         "movement": 0, "control": 0, "heartbeat": 0,
     })
@@ -221,6 +224,7 @@ def _write(
                     movement or "", MOVEMENT_TEMPLATES["stop"]
                 )
             )
+        _record_timed_rotation_write(payload, write_start_ns / 1e9)
         # Keep the actually transmitted command strength in the trace.  This
         # is derived from the payload (neutral=127), rather than copied from a
         # config value that may not have been applied.  Rotation fitting can
@@ -269,8 +273,57 @@ def _set_tx_state(movement: str, control: str = "driving_mode") -> None:
     if control not in CONTROL_TEMPLATES:
         control = "driving_mode"
     with _CTX.state_lock:
+        timer = _CTX.timed_rotation
+        if timer is not None:
+            if movement == "stop":
+                timer['released'] = True
+                timer['deadline'] = None
+            elif timer['released'] or movement != timer['movement']:
+                _CTX.timed_rotation = None
+            elif timer['expired']:
+                # Repeated commands from a slow vision loop cannot restart it.
+                movement = "stop"
         _CTX.current_movement = movement
         _CTX.current_control = control
+
+
+def arm_timed_rotation(command: str, hold_sec: float) -> int:
+    """Arm one rotation; its clock starts on the first successful movement write."""
+    names = {'ROT_LEFT': 'rotate_left_slow', 'ROT_RIGHT': 'rotate_right_slow'}
+    if command not in names or not math.isfinite(hold_sec) or hold_sec <= 0:
+        raise ValueError('Invalid timed rotation')
+    with _CTX.state_lock:
+        _CTX.timed_rotation_serial += 1
+        _CTX.timed_rotation = dict(token=_CTX.timed_rotation_serial,
+            movement=names[command], hold_sec=float(hold_sec),
+            started=None, deadline=None, stopped=None, expired=False, released=False)
+        return _CTX.timed_rotation_serial
+
+
+def timed_rotation_status() -> dict:
+    with _CTX.state_lock:
+        return dict(_CTX.timed_rotation or {})
+
+
+def _record_timed_rotation_write(payload, stamp):
+    with _CTX.state_lock:
+        timer = _CTX.timed_rotation
+        if timer is None:
+            return
+        if (not timer['released'] and not timer['expired'] and timer['started'] is None
+                and payload == MOVEMENT_TEMPLATES[timer['movement']]):
+            timer['started'] = stamp
+            timer['deadline'] = stamp + timer['hold_sec']
+        elif (payload == MOVEMENT_TEMPLATES['stop'] and timer['started'] is not None
+              and timer['stopped'] is None):
+            timer['stopped'] = stamp
+            timer['deadline'] = None
+
+
+def timed_rotation_deadline():
+    with _CTX.state_lock:
+        timer = _CTX.timed_rotation
+        return timer['deadline'] if timer else None
 
 _motion_deadline = None
 _motion_expired = False
@@ -293,6 +346,15 @@ def motion_deadline_expired():
 def _get_tx_state() -> tuple[str, str]:
     global _motion_expired
     with _CTX.state_lock:
+        timer = _CTX.timed_rotation
+        if (timer is not None and timer['deadline'] is not None
+                and time.monotonic() >= timer['deadline']):
+            timer['expired'] = True
+            timer['deadline'] = None
+            _CTX.current_movement = "stop"
+            _CTX.current_control = "driving_mode"
+            _CMD_PENDING.set()
+            _CAN_WAKE.set()
         if _motion_deadline is not None and time.monotonic() >= _motion_deadline:
             _motion_expired = True
         if _motion_expired:
@@ -305,6 +367,10 @@ def _write_command_once(
     burst_index: Optional[int] = None, burst_count: Optional[int] = None,
 ) -> None:
     """명령 변경 직후 v2와 같은 control → heartbeat → movement 묶음을 송신한다."""
+    timer = timed_rotation_status()
+    if timer and movement == timer['movement']:
+        # A queued entry burst must not resurrect an expired/cancelled turn.
+        movement, control = _get_tx_state()
     _write(_mk_control(control), "control")
     _write(_mk_heartbeat(), "heartbeat")
     _write(
@@ -372,6 +438,7 @@ def _can_tx_worker(channel: int, bitrate: int) -> None:
 
         while not _CAN_STOP.is_set():
             _CAN_WAKE.clear()
+            _get_tx_state()  # Expire a timed rotation before dispatching commands.
             if _CMD_PENDING.is_set():
                 _CMD_PENDING.clear()
                 movement, control = _get_tx_state()
@@ -432,7 +499,10 @@ def _can_tx_worker(channel: int, bitrate: int) -> None:
                           f"counters={_CTX.bus_error_counters}")
                 next_diag = now + 5.0
 
-            wait_s = max(0.0, min(next_ctrl, next_mov, next_hb) - time.monotonic())
+            deadline = timed_rotation_deadline()
+            wait_s = max(0.0, min(next_ctrl, next_mov, next_hb,
+                                 deadline if deadline is not None else float('inf'))
+                         - time.monotonic())
             _CAN_WAKE.wait(min(wait_s, 0.050))
 
     except Exception as e:

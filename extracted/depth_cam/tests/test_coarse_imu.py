@@ -45,18 +45,54 @@ class CoarseTests(unittest.TestCase):
 
     def start(self):
         self.assertTrue(self.f._maybe_begin_coarse(self.pose, self.now, []))
-        for _ in range(32):
+        for _ in range(72):
             self.tick()
         self.assertEqual(self.f.state, 'COARSE_ROTATE')
 
     def settle(self):
-        for _ in range(33):
+        for _ in range(43):
             self.tick()
 
     def test_plan_right_offset(self):
         first, distance, duration, last = coarse_plan(self.pose)
         self.assertEqual((first, distance, last), (-50., .8, 90.))
         self.assertGreater(duration, 0.)
+
+    def test_bias_excludes_first_two_seconds(self):
+        self.f._maybe_begin_coarse(self.pose, self.now, [])
+        for _ in range(38):
+            self.tick(rate=12.)
+        self.assertEqual(self.f._coarse_bias_samples, [])
+        self.assertEqual(self.f.state, 'COARSE_PREPARE')
+        for _ in range(35):
+            self.tick(rate=.1)
+        self.assertEqual(self.f.state, 'COARSE_ROTATE')
+        self.assertAlmostEqual(self.f._coarse_bias, .1)
+
+    def test_turn_settle_requires_post_two_second_sample(self):
+        self.start()
+        self.tick(yaw=-50.)
+        for _ in range(39):
+            self.tick()
+        self.assertEqual(self.f.state, 'COARSE_ROTATE_SETTLE')
+        for _ in range(4):
+            self.tick()
+        self.assertEqual(self.f.state, 'COARSE_DRIVE')
+
+    def test_coarse_travel_caps_can_be_disabled_without_changing_normal_drive(self):
+        from calib.fsm_v4.motion import forward_seconds
+        self.pose.rot_x_pallet_m = 6.0
+        with patch.object(cfg, 'COARSE_TRAVEL_LIMITS_ENABLED', False):
+            _, distance, duration, _ = coarse_plan(self.pose)
+        self.assertEqual(distance, 6.0)
+        self.assertGreater(duration, 15.0)
+        self.assertEqual(forward_seconds(6.0), cfg.FWD_COMMAND_MAX_SEC)
+        with patch.object(cfg, 'COARSE_TRAVEL_LIMITS_ENABLED', True):
+            with self.assertRaisesRegex(ValueError, 'travel limits'):
+                coarse_plan(self.pose)
+            self.pose.rot_x_pallet_m = 4.0
+            with self.assertRaisesRegex(ValueError, 'time range'):
+                coarse_plan(self.pose)
 
     def test_plan_left_offset(self):
         self.pose.yaw_deg, self.pose.rot_x_pallet_m = -40., -.8
@@ -65,14 +101,14 @@ class CoarseTests(unittest.TestCase):
 
     def test_invalid_geometry_rejected(self):
         for field, value in [('yaw_deg', float('nan')), ('yaw_deg', 95.),
-                             ('rot_z_pallet_m', -1.), ('rot_x_pallet_m', 4.)]:
+                             ('rot_z_pallet_m', -1.), ('rot_x_pallet_m', 0.)]:
             pose = SimpleNamespace(**vars(self.pose))
             setattr(pose, field, value)
             with self.subTest(field=field, value=value), self.assertRaises(ValueError):
                 coarse_plan(pose)
 
-    def test_small_yaw_skips(self):
-        self.pose.yaw_deg = cfg.COARSE_YAW_TRIGGER_DEG
+    def test_small_lateral_skips_even_with_large_yaw(self):
+        self.pose.rot_x_pallet_m = .01
         self.assertFalse(self.f._maybe_begin_coarse(self.pose, self.now, []))
         self.f._exec.assert_not_called()
 

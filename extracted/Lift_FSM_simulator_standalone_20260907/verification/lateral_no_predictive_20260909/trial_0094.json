@@ -1,0 +1,557 @@
+{
+  "distance_m": 4.5,
+  "lateral_m": 0.2,
+  "facing": true,
+  "wall_seconds": 4.210495999985142,
+  "initial": {
+    "t": 0.0,
+    "state": "PRECHECK",
+    "command": "STOP",
+    "failure_reason": null,
+    "failure_state": null,
+    "remaining": 0.0,
+    "stable_frames": 0,
+    "target": null,
+    "lines": [],
+    "diagram": {
+      "phase_index": null,
+      "activity": "Checking readiness",
+      "recovery_origin": null
+    },
+    "input_mode": "waiting",
+    "vision_independent": false,
+    "skip_detection": false,
+    "model_requested": true,
+    "truth": {
+      "x": 0.0,
+      "z": 3.824442251822083,
+      "yaw": 2.544804379813087,
+      "world_x": 0.2,
+      "world_z": 0.0,
+      "heading": -2.5448043798130957
+    },
+    "observation": {
+      "fraction": 1.0,
+      "margin": 0.3314937676432219,
+      "detected": false,
+      "x": 0.0,
+      "y": 0.425,
+      "z": 3.824442251822083,
+      "yaw": 2.544804379813087,
+      "measured": 0.0,
+      "selected_face": "z_min",
+      "sampled_error": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "yaw": 0.0
+      },
+      "ground_truth_pose": {
+        "x": 0.0,
+        "y": 0.425,
+        "z": 3.824442251822083,
+        "yaw": 2.544804379813087
+      },
+      "sequence": -1,
+      "result_fps": 30.0,
+      "latency": 0.0
+    },
+    "model_packet": {
+      "protocol": "lift.model.v1",
+      "sequence": -1,
+      "sim_time_s": 0.0,
+      "clock": {
+        "domain": "simulation_monotonic",
+        "now": 1000.0
+      },
+      "step": {
+        "det_ok": false,
+        "detected_length": null,
+        "dist_z": null,
+        "yaw_smooth": null,
+        "offset_smooth": null,
+        "target_bearing_deg": null,
+        "vision_meta": {
+          "center_bearing_deg": null,
+          "front_face_center_bearing_deg": null,
+          "model_center_bearing_deg": null,
+          "bbox_margin_norm": null,
+          "frame_width": 640,
+          "frame_height": 480,
+          "fx": 614.7142806307731,
+          "fy": 614.7142806307731,
+          "ppx": 320.0,
+          "ppy": 240.0,
+          "face_corners_px": null,
+          "face_corners_camera_m": null,
+          "selected_front_face": null,
+          "selected_face_area_px2": null,
+          "projected_face_areas_px2": null,
+          "yaw_raw_deg": null,
+          "pos_x_m": null,
+          "pos_z_m": null,
+          "measurement_mono": 1000.0,
+          "fsm_step_mono": 1000.0,
+          "inference_latency_sec": 0.0,
+          "inference_start_mono": 1000.0,
+          "inference_end_mono": 1000.0,
+          "model_inference_latency_sec": 0.0,
+          "pose_result_mono": 1000.0,
+          "camera_frame_number": -1,
+          "sensor_timestamp_ms": 0.0,
+          "sensor_timestamp_domain": "simulation_clock"
+        }
+      },
+      "result_interval_s": 0.03333333333333333,
+      "result_fps": 30.0,
+      "pending": true
+    },
+    "collision": null,
+    "clearance": null,
+    "can": {
+      "id": 483,
+      "data": [
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127,
+        127
+      ]
+    },
+    "bus_status": "awaiting CAN",
+    "can_frame_count": 0,
+    "terminal": false,
+    "controller_pid": 18404,
+    "execution_mode": "subprocess",
+    "lifecycle": {
+      "finished": false,
+      "outcome": "running",
+      "reason": null
+    },
+    "logging": {
+      "run_id": null,
+      "directory": null,
+      "status": "disabled",
+      "error": null,
+      "counts": {}
+    }
+  },
+  "changes": [
+    {
+      "t": 0.0,
+      "state": "SEARCH_SWEEP",
+      "truth": {
+        "x": 0.0,
+        "z": 3.824442251822083,
+        "yaw": 2.544804379813087,
+        "world_x": 0.2,
+        "world_z": 0.0,
+        "heading": -2.5448043798130957
+      },
+      "lines": [
+        "[V4 PRECHECK] config valid -> SEARCH"
+      ]
+    },
+    {
+      "t": 0.03333333333333333,
+      "state": "ACQUIRE_VERIFY",
+      "truth": {
+        "x": 0.0,
+        "z": 3.824442251822083,
+        "yaw": 2.544804379813087,
+        "world_x": 0.2,
+        "world_z": 0.0,
+        "heading": -2.5448043798130957
+      },
+      "lines": [
+        "[SEARCH] candidate detected -> immediate STOP"
+      ]
+    },
+    {
+      "t": 2.333333333333335,
+      "state": "STAGING_PLAN",
+      "truth": {
+        "x": 0.0,
+        "z": 3.824442251822083,
+        "yaw": 2.544804379813087,
+        "world_x": 0.2,
+        "world_z": 0.0,
+        "heading": -2.5448043798130957
+      },
+      "lines": [
+        "[STANDOFF] z=3.824m -> staging"
+      ]
+    },
+    {
+      "t": 2.666666666666667,
+      "state": "WAYPOINT_TURN",
+      "truth": {
+        "x": 0.0,
+        "z": 3.824442251822083,
+        "yaw": 2.544804379813087,
+        "world_x": 0.2,
+        "world_z": 0.0,
+        "heading": -2.5448043798130957
+      },
+      "lines": [
+        "[PLAN] cycle=1, goal=(-0.100,+2.247)m, turn=-2.56deg, forward=0.800m, FOV margin=9.47deg"
+      ]
+    },
+    {
+      "t": 4.166666666666662,
+      "state": "WAYPOINT_TURN_SETTLE",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 3.819417448928022,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.2,
+        "world_z": 0.0,
+        "heading": -5.251360359819344
+      },
+      "lines": [
+        "[V4 ROT] STOP(target_crossed) error=+0.15deg, coast margin=0.00deg, t=1.50/1.49s, live rate=+12.1deg/s"
+      ]
+    },
+    {
+      "t": 6.499999999999987,
+      "state": "WAYPOINT_DRIVE",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 3.819417448928022,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.2,
+        "world_z": 0.0,
+        "heading": -5.251360359819344
+      },
+      "lines": [
+        "[TURN ACCEPT] error=+0.15deg within +/-3.00deg -> safe forward 0.800m"
+      ]
+    },
+    {
+      "t": 10.866666666666639,
+      "state": "WAYPOINT_DRIVE_SETTLE",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 3.0115364459158305,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.12605847970182787,
+        "world_z": 0.8044901283444981,
+        "heading": -5.251360359819344
+      },
+      "lines": [
+        "[V4 MOVE] predictive STOP: {'travelled_m': 0.8078810030121907, 'predicted_travel_m': 0.8078810030121907, 'target_m': 0.8, 'predictive_advance_m': 0.0, 'predictive_speed_m_s': 0.2842732907992942, 'predictive_gate_ready': True}"
+      ]
+    },
+    {
+      "t": 13.199999999999964,
+      "state": "STAGING_PLAN",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 3.0115364459158305,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.12605847970182787,
+        "world_z": 0.8044901283444981,
+        "heading": -5.251360359819344
+      },
+      "lines": []
+    },
+    {
+      "t": 13.233333333333297,
+      "state": "WAYPOINT_DRIVE",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 3.0115364459158305,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.12605847970182787,
+        "world_z": 0.8044901283444981,
+        "heading": -5.251360359819344
+      },
+      "lines": [
+        "[OBSERVE REUSE] approved stopped pose age=0.033s",
+        "[PLAN] cycle=2, goal=(+0.006,+1.441)m, turn=+0.00deg, forward=0.800m, FOV margin=4.23deg"
+      ]
+    },
+    {
+      "t": 17.600000000000033,
+      "state": "WAYPOINT_DRIVE_SETTLE",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 2.2036554429043997,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.05211695940371215,
+        "world_z": 1.608980256688405,
+        "heading": -5.251360359819344
+      },
+      "lines": [
+        "[V4 MOVE] predictive STOP: {'travelled_m': 0.8078810030114307, 'predicted_travel_m': 0.8078810030114307, 'target_m': 0.8, 'predictive_advance_m': 0.0, 'predictive_speed_m_s': 0.28427329080027713, 'predictive_gate_ready': True}"
+      ]
+    },
+    {
+      "t": 19.933333333333483,
+      "state": "STAGING_PLAN",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 2.2036554429043997,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.05211695940371215,
+        "world_z": 1.608980256688405,
+        "heading": -5.251360359819344
+      },
+      "lines": []
+    },
+    {
+      "t": 19.966666666666818,
+      "state": "WAYPOINT_TURN",
+      "truth": {
+        "x": 0.21270312710931927,
+        "z": 2.2036554429043997,
+        "yaw": 5.2513603598196426,
+        "world_x": 0.05211695940371215,
+        "world_z": 1.608980256688405,
+        "heading": -5.251360359819344
+      },
+      "lines": [
+        "[OBSERVE REUSE] approved stopped pose age=0.033s",
+        "[PLAN] cycle=3, goal=(+0.006,+0.633)m, turn=+2.50deg, forward=0.633m, FOV margin=1.32deg"
+      ]
+    },
+    {
+      "t": 21.466666666666892,
+      "state": "WAYPOINT_TURN_SETTLE",
+      "truth": {
+        "x": 0.07629748859892818,
+        "z": 2.2104826633120904,
+        "yaw": 2.5448043798458,
+        "world_x": 0.05211695940371215,
+        "world_z": 1.608980256688405,
+        "heading": -2.5448043798451114
+      },
+      "lines": [
+        "[V4 ROT] STOP(target_crossed) error=-0.21deg, coast margin=0.00deg, t=1.50/1.48s, live rate=-12.1deg/s"
+      ]
+    },
+    {
+      "t": 23.80000000000034,
+      "state": "WAYPOINT_DRIVE",
+      "truth": {
+        "x": 0.07629748859892818,
+        "z": 2.2104826633120904,
+        "yaw": 2.5448043798458,
+        "world_x": 0.05211695940371215,
+        "world_z": 1.608980256688405,
+        "heading": -2.5448043798451114
+      },
+      "lines": [
+        "[TURN ACCEPT] error=-0.21deg within +/-3.00deg -> safe forward 0.633m"
+      ]
+    },
+    {
+      "t": 24.700000000000387,
+      "state": "WAYPOINT_DRIVE_SETTLE",
+      "truth": {
+        "x": 0.07629748859892818,
+        "z": 2.199693236527072,
+        "yaw": 2.5448043798458,
+        "world_x": 0.05163790223383545,
+        "world_z": 1.6197590430104951,
+        "heading": -2.5448043798451114
+      },
+      "lines": [
+        "[V4 MOVE] predictive STOP: {'insertion_range_entered': True, 'travelled_m': 0.010789426785018368}"
+      ]
+    },
+    {
+      "t": 27.033333333333836,
+      "state": "FINAL_POSE_LOCK",
+      "truth": {
+        "x": 0.07629748859892818,
+        "z": 2.199693236527072,
+        "yaw": 2.5448043798458,
+        "world_x": 0.05163790223383545,
+        "world_z": 1.6197590430104951,
+        "heading": -2.5448043798451114
+      },
+      "lines": []
+    },
+    {
+      "t": 27.06666666666717,
+      "state": "FINAL_ROTATE",
+      "truth": {
+        "x": 0.07629748859892818,
+        "z": 2.199693236527072,
+        "yaw": 2.5448043798458,
+        "world_x": 0.05163790223383545,
+        "world_z": 1.6197590430104951,
+        "heading": -2.5448043798451114
+      },
+      "lines": [
+        "[OBSERVE REUSE] approved stopped pose age=0.033s",
+        "[INSERT ALIGN] turn=+1.50deg; settle then recheck"
+      ]
+    },
+    {
+      "t": 28.500000000000576,
+      "state": "FINAL_SETTLE",
+      "truth": {
+        "x": -0.019207358783234006,
+        "z": 2.2006397762710352,
+        "yaw": 0.6450797108920483,
+        "world_x": 0.05163790223383545,
+        "world_z": 1.6197590430104951,
+        "heading": -0.6450797108910749
+      },
+      "lines": [
+        "[V4 ROT] STOP(target_crossed) error=-0.40deg, coast margin=0.00deg, t=1.43/1.40s, live rate=-12.1deg/s"
+      ]
+    },
+    {
+      "t": 30.833333333334025,
+      "state": "FINAL_POSE_LOCK",
+      "truth": {
+        "x": -0.019207358783234006,
+        "z": 2.2006397762710352,
+        "yaw": 0.6450797108920483,
+        "world_x": 0.05163790223383545,
+        "world_z": 1.6197590430104951,
+        "heading": -0.6450797108910749
+      },
+      "lines": []
+    },
+    {
+      "t": 30.86666666666736,
+      "state": "READY_TO_INSERT",
+      "truth": {
+        "x": -0.019207358783234006,
+        "z": 2.2006397762710352,
+        "yaw": 0.6450797108920483,
+        "world_x": 0.05163790223383545,
+        "world_z": 1.6197590430104951,
+        "heading": -0.6450797108910749
+      },
+      "lines": [
+        "[OBSERVE REUSE] approved stopped pose age=0.033s",
+        "[INSERT TARGET] accepted Z=2.201m - 0.300m = 1.901m",
+        "[INSERT CHECK] full nine-block sweep clear, yaw=+0.65deg"
+      ]
+    },
+    {
+      "t": 30.87666666666736,
+      "state": "INSERT_DRIVE",
+      "truth": {
+        "x": -0.019207358783234006,
+        "z": 2.2006397762710352,
+        "yaw": 0.6450797108920483,
+        "world_x": 0.05163790223383545,
+        "world_z": 1.6197590430104951,
+        "heading": -0.6450797108910749
+      },
+      "lines": []
+    },
+    {
+      "t": 39.096666666666124,
+      "state": "INSERT_SETTLE",
+      "truth": {
+        "x": -0.019207358783234006,
+        "z": 0.29735902612769094,
+        "yaw": 0.6450797108920483,
+        "world_x": 0.030209764453921546,
+        "world_z": 3.5229191646967846,
+        "heading": -0.6450797108910749
+      },
+      "lines": [
+        "[INSERT] fitted command complete -> STOP"
+      ]
+    },
+    {
+      "t": 41.106666666665724,
+      "state": "DONE",
+      "truth": {
+        "x": -0.019207358783234006,
+        "z": 0.29735902612769094,
+        "yaw": 0.6450797108920483,
+        "world_x": 0.030209764453921546,
+        "world_z": 3.5229191646967846,
+        "heading": -0.6450797108910749
+      },
+      "lines": []
+    }
+  ],
+  "success": true,
+  "state": "DONE",
+  "elapsed": 41.106666666665724,
+  "reasons": [],
+  "failure_reason": null,
+  "failure_state": null,
+  "collision": null,
+  "final": {
+    "x": -0.019207358783234006,
+    "z": 0.29735902612769094,
+    "yaw": 0.6450797108920483,
+    "world_x": 0.030209764453921546,
+    "world_z": 3.5229191646967846,
+    "heading": -0.6450797108910749
+  },
+  "options": {
+    "x": 0.0,
+    "z": 2.0,
+    "yaw": 0.0,
+    "hz": 30.0,
+    "max_seconds": 185.0,
+    "seed": 20260909,
+    "perception": "fov",
+    "min_visible_fraction": 0.5,
+    "latency": 0.0,
+    "dropout": 0.0,
+    "loss_start": 0.0,
+    "loss_duration": 0.0,
+    "yaw_noise": 0.0,
+    "position_noise": 0.0,
+    "yaw_bias": 0.0,
+    "x_bias": 0.0,
+    "z_bias": 0.0,
+    "drive_scale": 1.0,
+    "rotation_scale": 1.0,
+    "drive_delay": 0.0,
+    "imu_scale": 1.0,
+    "imu_bias_deg_s": 0.0,
+    "imu_noise_deg_s": 0.0,
+    "drive_coast_sec": 0.0,
+    "rotation_coast_fraction": 0.0,
+    "rotation_coast_sec": 0.6,
+    "drive_scale_sd": 0.0,
+    "rotation_scale_sd": 0.0,
+    "vertical_offset": 0.425,
+    "fork_width": 0.115,
+    "pallet_depth": 1.1,
+    "opening": "continuous",
+    "completion_tolerance": 0.05,
+    "face_selection": "fixed",
+    "x_noise": 0.0,
+    "y_noise": 0.0,
+    "z_noise": 0.0,
+    "y_bias": 0.0,
+    "model_hz": 30.0,
+    "model_interval_sd": 0.0,
+    "latency_sd": 0.0,
+    "camera_hfov_deg": 55.0,
+    "placement_mode": "world",
+    "pallet_x": 0.0,
+    "pallet_z": 4.5,
+    "pallet_heading": 180.0,
+    "forklift_x": 0.2,
+    "forklift_z": 0.0,
+    "forklift_heading": -2.5448043798130957,
+    "inference_mode": "requested"
+  },
+  "overrides": {
+    "COARSE_IMU_ENABLED": false,
+    "FWD_PREDICTIVE_MAX_ADVANCE_M": 0.0
+  },
+  "source_id": "11103a1128e0d165607a980542099d891fb8e2ce02542563db09884324b494dd",
+  "simulator_id": "17e5da5b2a80eb4b1b85707d20e85cb148c8fcd105dba94c2b2d4820174d385e",
+  "trace_hash": "7bb61d5585c4ac7b4cc1fef0e72df66b5e0d899ac79706beccb90d1da9c1add8",
+  "true_remaining": 0.0
+}

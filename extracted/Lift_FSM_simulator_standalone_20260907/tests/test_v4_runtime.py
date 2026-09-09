@@ -11,13 +11,14 @@ from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from v4_runtime import (Session, Plant, scenario_options, replay_trace, environment,
                         fingerprint, cfg, control, top, command_status)
-from protocol_world import World, can_frame
+from protocol_world import World, can_frame, SPEC
+from calibrate_lateral import placement
 
 
 class RuntimeTests(unittest.TestCase):
-    def run_case(self, options=None):
+    def run_case(self, options=None, overrides=None):
         with contextlib.redirect_stdout(io.StringIO()):
-            return Session({"perception":"oracle",**(options or {})}).run()
+            return Session({"perception":"oracle",**(options or {})}, overrides).run()
 
     def test_original_class_and_constructor_precheck_are_used(self):
         s=Session()
@@ -47,19 +48,21 @@ class RuntimeTests(unittest.TestCase):
         self.assertIsNone(r["collision"])
 
     def test_fov_loss_runs_real_recovery_timeout(self):
-        r=self.run_case({"perception":"fov","z":5,"loss_start":4,"loss_duration":5})
+        r=self.run_case({"perception":"fov","z":cfg.SAFETY_STANDOFF_Z_M+.5,
+                         "loss_start":4,"loss_duration":5})
         self.assertEqual(r["state"],"FAILED")
         self.assertEqual(r["failure_reason"],"PnP recovery timeout")
         self.assertIn("STANDOFF_MOVE",[e["state"] for e in r["events"]])
         self.assertIn("RECOVER_VISUAL",[e["state"] for e in r["events"]])
 
     def test_uncommandable_alignment_fails_in_original_fsm(self):
-        r=self.run_case({"x":.3,"yaw":-15})
+        # This runner has no IMU; isolate the normal alignment rejection.
+        r=self.run_case({"x":.3,"z":1.5,"yaw":-15}, {'COARSE_IMU_ENABLED':False})
         self.assertEqual(r["state"],"FAILED")
         self.assertIn("no commandable visibility-safe insertion rotation",r["failure_reason"])
 
     def test_far_start_executes_standoff_and_staging(self):
-        r=self.run_case({"z":5.})
+        r=self.run_case({"z":cfg.SAFETY_STANDOFF_Z_M+.5})
         states=[e["state"] for e in r["events"]]
         self.assertIn("STANDOFF_MOVE",states)
         self.assertIn("STAGING_PLAN",states)
@@ -126,20 +129,15 @@ class RuntimeTests(unittest.TestCase):
         self.assertAlmostEqual(p.x,0)
         self.assertAlmostEqual(p.z,2)
 
-    def test_collision_monitor_does_not_rewrite_controller_state(self):
-        r=self.run_case({"x":-.3,"z":1.8,"yaw":-15})
-        self.assertIsNotNone(r["collision"])
+    def test_removed_continuous_wall_monitor_cannot_reject_fsm_completion(self):
+        # Previously failed only because the obsolete continuous wall monitor
+        # disagreed with the FSM's nine-block insertion geometry.
+        r=self.run_case(placement(3., .28125), {'COARSE_IMU_ENABLED':False,
+                                             'FWD_PREDICTIVE_MAX_ADVANCE_M':0.})
+        self.assertIsNone(r["collision"])
         self.assertEqual(r["state"],"DONE")
-        self.assertFalse(r["success"])
-        self.assertIn("fork/slot geometry collision",r["reasons"])
-
-    def test_opening_geometry_and_clearance(self):
-        p=Plant(scenario_options({"z":1.,"x":0}))
-        p.check_collision(0)
-        self.assertIsNone(p.collision)
-        self.assertAlmostEqual(p.minimum_clearance,(cfg.INSERT_OPENING_SPAN_M-cfg.FORK_OUTER_SPAN_M)/2)
-        p.x=.1;p.check_collision(.1)
-        self.assertIsNotNone(p.collision)
+        self.assertTrue(r["success"])
+        self.assertEqual(r["reasons"],[])
 
     def test_clock_config_and_source_are_restored(self):
         clock,status_clock=top.time,command_status.time
@@ -152,6 +150,29 @@ class RuntimeTests(unittest.TestCase):
         self.assertIs(command_status.time,status_clock)
         self.assertEqual(cfg.FINAL_YAW_TOL_DEG,original)
         self.assertTrue(fingerprint()["disk_matches_loaded"])
+
+    def test_coarse_disable_override_is_typed_and_restored(self):
+        original = cfg.COARSE_IMU_ENABLED
+        with self.assertRaisesRegex(RuntimeError, "exit"):
+            with environment(0., {"COARSE_IMU_ENABLED": False}):
+                self.assertIs(cfg.COARSE_IMU_ENABLED, False)
+                raise RuntimeError("exit")
+        self.assertIs(cfg.COARSE_IMU_ENABLED, original)
+        for invalid in (0, 1, "false", None):
+            with self.assertRaisesRegex(ValueError, "boolean"):
+                with environment(0., {"COARSE_IMU_ENABLED": invalid}):
+                    pass
+            self.assertIs(cfg.COARSE_IMU_ENABLED, original)
+
+    def test_zero_predictive_advance_override_is_restored(self):
+        original = cfg.FWD_PREDICTIVE_MAX_ADVANCE_M
+        with environment(0., {"FWD_PREDICTIVE_MAX_ADVANCE_M": 0.}):
+            self.assertEqual(cfg.FWD_PREDICTIVE_MAX_ADVANCE_M, 0.)
+        self.assertEqual(cfg.FWD_PREDICTIVE_MAX_ADVANCE_M, original)
+        with self.assertRaises(ValueError):
+            with environment(0., {"FWD_PREDICTIVE_MAX_ADVANCE_M": -.01}):
+                pass
+        self.assertEqual(cfg.FWD_PREDICTIVE_MAX_ADVANCE_M, original)
 
     def test_virtual_can_writes_without_physical_initialization(self):
         with patch.object(control,"can_init",side_effect=AssertionError("physical CAN init")), \

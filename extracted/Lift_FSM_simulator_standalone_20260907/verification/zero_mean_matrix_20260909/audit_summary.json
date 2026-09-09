@@ -1,0 +1,42 @@
+{
+  "main_total": 213,
+  "main_passed": 58,
+  "groups": {
+    "basic": {
+      "total": 135,
+      "passed": 56
+    },
+    "large_yaw": {
+      "total": 42,
+      "passed": 0
+    },
+    "lateral": {
+      "total": 18,
+      "passed": 0
+    },
+    "perception_noise": {
+      "total": 9,
+      "passed": 2
+    },
+    "observation_loss": {
+      "total": 9,
+      "passed": 0
+    },
+    "control_imu_zero": {
+      "total": 15,
+      "passed": 14
+    }
+  },
+  "reasons": {
+    "coarse turn timeout or reversed IMU direction": 136,
+    "FSM DONE with insertion distance remaining": 14,
+    "PnP recovery timeout": 3,
+    "coarse first-turn overshoot exceeds heading tolerance": 2
+  },
+  "source_ids": [
+    "18f3b1c122d3eef8d50b3422f9064df3478105947be5e05d941b5082e6ed130b"
+  ],
+  "paired_imu5_passed": 2,
+  "paired_imu0_passed": 14,
+  "paired_total": 15
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -13,6 +14,8 @@ if str(DEPTH_CAM_DIR) not in sys.path:
 from calib.fsm_v4 import config as cfg  # noqa: E402
 from calib.fsm_v4.planner import (  # noqa: E402
     action_keeps_front_visible,
+    adaptive_forward_limit_m,
+    safe_straight_continuation_m,
     action_visibility_margin_deg,
     configured_visible_half_angle_deg,
     plan_waypoint,
@@ -114,6 +117,40 @@ class VisibilityGeometryTests(unittest.TestCase):
 
 
 class JointPlannerTests(unittest.TestCase):
+    def test_adaptive_cap_thresholds_and_signs(self):
+        for sign in (-1, 1):
+            for lateral, expected in ((0., 1.5), (.1, 1.5), (.15, 1.15),
+                                      (.2, .8), (.4, .8)):
+                with self.subTest(sign=sign, lateral=lateral):
+                    pose = make_pose(0., cfg.CAMERA_TO_ROT_CENTER_X_M - sign * lateral, 4.)
+                    self.assertAlmostEqual(adaptive_forward_limit_m(pose), expected)
+
+    def test_extended_drive_bounds_predicted_lateral(self):
+        pose = make_pose(0., cfg.CAMERA_TO_ROT_CENTER_X_M, 4.)
+        for turn in (-10., 10.):
+            cap = adaptive_forward_limit_m(pose, turn)
+            self.assertGreater(cap, .8)
+            self.assertLess(cap, 1.5)
+            self.assertAlmostEqual(abs(apply_action(pose, turn, cap).rot_x_pallet_m), .2)
+        self.assertAlmostEqual(adaptive_forward_limit_m(pose, 20.), .8)
+
+    def test_continuation_rechecks_pose_request_and_budget(self):
+        pose = make_pose(0., 0., 4.)
+        self.assertAlmostEqual(safe_straight_continuation_m(pose, 1.5, 5.), 1.5)
+        self.assertAlmostEqual(safe_straight_continuation_m(pose, 1.5, .6), .6)
+        self.assertAlmostEqual(safe_straight_continuation_m(pose, .7, 5.), .7)
+        changed = make_pose(0., .25, 4.)
+        self.assertLessEqual(safe_straight_continuation_m(changed, 1.5, 5.), .8)
+        turned = apply_action(pose, 10., 0.)
+        self.assertLessEqual(safe_straight_continuation_m(turned, 1.5, 5.),
+                               adaptive_forward_limit_m(turned))
+
+    def test_legacy_planner_uses_adaptive_cap(self):
+        pose = make_pose(0., 0., 4.)
+        with patch.object(cfg, 'PREDICTIVE_VISIBILITY_PLANNER_ENABLED', False):
+            result = plan_waypoint(pose, 0., .2, 5., None)
+        self.assertAlmostEqual(result.waypoint.forward_m, 1.5)
+
     def test_logged_margin_breach_plans_directly_without_recenter(self):
         # 2026-09-06 16:54:18: visible, but about 0.55 degrees outside ROI.
         pose = make_pose(-20.986, -.884, 3.312)
@@ -143,7 +180,7 @@ class JointPlannerTests(unittest.TestCase):
         self.assertFalse(result.needs_recenter)
 
     def test_centered_target_gets_full_safe_macro_step(self):
-        pose = make_pose(0.0, 0.0, 3.0)
+        pose = make_pose(0.0, 0.0, 4.0)
         result = plan_waypoint(
             pose, 0.0, 0.20, cfg.FWD_MAX_TOTAL_CORRECTION_M,
             synthetic_vision_meta(pose),
@@ -151,7 +188,7 @@ class JointPlannerTests(unittest.TestCase):
         self.assertIsNotNone(result.waypoint)
         waypoint = result.waypoint
         self.assertEqual(waypoint.turn_deg, 0.0)
-        self.assertAlmostEqual(waypoint.forward_m, 0.8)
+        self.assertAlmostEqual(waypoint.forward_m, 1.5)
         self.assertGreaterEqual(waypoint.visibility_min_margin_deg, 0.0)
 
     def test_offset_target_does_not_turn_directly_into_forward_clipping(self):

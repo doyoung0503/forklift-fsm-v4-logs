@@ -1,0 +1,1417 @@
+{
+  "failure_counts": {
+    "waypoint planner: no rotation+forward action restores safe horizontal/vertical visibility": 50,
+    "fork/slot geometry collision": 26
+  },
+  "note": "Saved truth geometry only; angle scans exclude motion visibility checks. No runtime edits.",
+  "collisions": [
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.3875,
+      "accepted": {
+        "x": -0.0310762282038128,
+        "z": 1.794020290823319,
+        "yaw": 5.859954162906973,
+        "world_x": 0.2835045851467817,
+        "world_z": 0.5420807007621927,
+        "heading": -5.859954162905856
+      },
+      "final": {
+        "x": -0.0310762282038128,
+        "z": 0.29725034667073624,
+        "yaw": 5.859954162906973,
+        "world_x": 0.13068844147594988,
+        "world_z": 2.031029152506557,
+        "heading": -5.859954162905856
+      },
+      "first_collision": {
+        "t": 26.971666666665506,
+        "side": "left",
+        "clearance": -3.271177668440206e-05,
+        "x": -0.0310762282038128,
+        "z": 0.32283494283661407,
+        "yaw": 5.859954162906973
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550327117766844,
+        0.8252294855538622
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2703364367121656,
+          0.33281538190143545
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2703364367121656,
+          0.33281538190143545
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0023640973839840207,
+      "final_continuous_clearance_m": -0.0026448295164346325,
+      "forward_overrun_m": 0.002749653329263746
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.38125,
+      "accepted": {
+        "x": -0.031055436171947625,
+        "z": 1.7932262751585655,
+        "yaw": 5.742515864265641,
+        "world_x": 0.2783658974918085,
+        "world_z": 0.542292719756044,
+        "heading": -5.742515864264517
+      },
+      "final": {
+        "x": -0.031055436171947625,
+        "z": 0.2992990639132983,
+        "yaw": 5.742515864265641,
+        "world_x": 0.12888638640636124,
+        "world_z": 2.028722801618136,
+        "heading": -5.742515864264517
+      },
+      "first_collision": {
+        "t": 27.02666666666789,
+        "side": "left",
+        "clearance": -5.053499974316811e-06,
+        "x": -0.031055436171947625,
+        "z": 0.3064058961819326,
+        "yaw": 5.742515864265641
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550050534999743,
+        0.8422999754409554
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.270301043501405,
+          0.3327251853705492
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.270301043501405,
+          0.3327251853705492
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0006460152698194443,
+      "final_continuous_clearance_m": -0.0007161495994933986,
+      "forward_overrun_m": 0.0007009360867016867
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.28125,
+      "accepted": {
+        "x": -0.017288948271120885,
+        "z": 2.204256036857394,
+        "yaw": 4.855825046890317,
+        "world_x": 0.2613754694005229,
+        "world_z": 0.12755945964476037,
+        "heading": -4.855825046890353
+      },
+      "final": {
+        "x": -0.017288948271120885,
+        "z": 0.2981325539782814,
+        "yaw": 4.855825046890317,
+        "world_x": 0.10002456171578893,
+        "world_z": 2.0268415915494695,
+        "heading": -4.855825046890353
+      },
+      "first_collision": {
+        "t": 22.980000000001024,
+        "side": "left",
+        "clearance": -2.18239008017429e-05,
+        "x": -0.017288948271120885,
+        "z": 0.3137675849686935,
+        "yaw": 4.855825046890317
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550218239008017,
+        0.8391922545965057
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2837293972904621,
+          0.31843184590542023
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2837293972904621,
+          0.31843184590542023
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0011872323075908797,
+      "final_continuous_clearance_m": -0.0013453092178031256,
+      "forward_overrun_m": 0.0018674460217185662
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": -0.3875,
+      "accepted": {
+        "x": 0.0310762282038128,
+        "z": 1.794020290823319,
+        "yaw": -5.859954162906973,
+        "world_x": -0.2835045851467817,
+        "world_z": 0.5420807007621927,
+        "heading": 5.859954162905856
+      },
+      "final": {
+        "x": 0.0310762282038128,
+        "z": 0.29725034667073624,
+        "yaw": -5.859954162906973,
+        "world_x": -0.13068844147594988,
+        "world_z": 2.031029152506557,
+        "heading": 5.859954162905856
+      },
+      "first_collision": {
+        "t": 26.971666666665506,
+        "side": "right",
+        "clearance": -3.271177668440206e-05,
+        "x": 0.0310762282038128,
+        "z": 0.32283494283661407,
+        "yaw": -5.859954162906973
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550327117766844,
+        0.8252294855538622
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33281538190143545,
+          0.2703364367121656
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33281538190143545,
+          0.2703364367121656
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0023640973839840207,
+      "final_continuous_clearance_m": -0.0026448295164346325,
+      "forward_overrun_m": 0.002749653329263746
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": -0.38125,
+      "accepted": {
+        "x": 0.031055436171947625,
+        "z": 1.7932262751585655,
+        "yaw": -5.742515864265641,
+        "world_x": -0.2783658974918085,
+        "world_z": 0.542292719756044,
+        "heading": 5.742515864264517
+      },
+      "final": {
+        "x": 0.031055436171947625,
+        "z": 0.2992990639132983,
+        "yaw": -5.742515864265641,
+        "world_x": -0.12888638640636124,
+        "world_z": 2.028722801618136,
+        "heading": 5.742515864264517
+      },
+      "first_collision": {
+        "t": 27.02666666666789,
+        "side": "right",
+        "clearance": -5.053499974316811e-06,
+        "x": 0.031055436171947625,
+        "z": 0.3064058961819326,
+        "yaw": -5.742515864265641
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550050534999743,
+        0.8422999754409554
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3327251853705492,
+          0.270301043501405
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3327251853705492,
+          0.270301043501405
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0006460152698194443,
+      "final_continuous_clearance_m": -0.0007161495994933986,
+      "forward_overrun_m": 0.0007009360867016867
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": -0.28125,
+      "accepted": {
+        "x": 0.017288948271120885,
+        "z": 2.204256036857394,
+        "yaw": -4.855825046890317,
+        "world_x": -0.2613754694005229,
+        "world_z": 0.12755945964476037,
+        "heading": 4.855825046890353
+      },
+      "final": {
+        "x": 0.017288948271120885,
+        "z": 0.2981325539782814,
+        "yaw": -4.855825046890317,
+        "world_x": -0.10002456171578893,
+        "world_z": 2.0268415915494695,
+        "heading": 4.855825046890353
+      },
+      "first_collision": {
+        "t": 22.980000000001024,
+        "side": "right",
+        "clearance": -2.18239008017429e-05,
+        "x": 0.017288948271120885,
+        "z": 0.3137675849686935,
+        "yaw": -4.855825046890317
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550218239008017,
+        0.8391922545965057
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.31843184590542023,
+          0.2837293972904621
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.31843184590542023,
+          0.2837293972904621
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0011872323075908797,
+      "final_continuous_clearance_m": -0.0013453092178031256,
+      "forward_overrun_m": 0.0018674460217185662
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": 0.425,
+      "accepted": {
+        "x": -0.025674536274630004,
+        "z": 2.2106752368973925,
+        "yaw": 5.423448918844855,
+        "world_x": 0.2987739386643141,
+        "world_z": 0.6246919050996218,
+        "heading": -5.423448918845104
+      },
+      "final": {
+        "x": -0.025674536274630004,
+        "z": 0.29886628828757755,
+        "yaw": 5.423448918844855,
+        "world_x": 0.11807788212224607,
+        "world_z": 2.5279423854974654,
+        "heading": -5.423448918845104
+      },
+      "first_collision": {
+        "t": 25.171666666665043,
+        "side": "left",
+        "clearance": -3.500753896262809e-05,
+        "x": -0.025674536274630004,
+        "z": 0.31307995282342904,
+        "yaw": 5.423448918844855
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550350075389626,
+        0.8371110868137968
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.27555904059042374,
+          0.3271390177997125
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.27555904059042374,
+          0.3271390177997125
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0012712690894007839,
+      "final_continuous_clearance_m": -0.0013784227021292894,
+      "forward_overrun_m": 0.001133711712422436
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": -0.425,
+      "accepted": {
+        "x": 0.025674536274630004,
+        "z": 2.2106752368973925,
+        "yaw": -5.423448918844855,
+        "world_x": -0.2987739386643141,
+        "world_z": 0.6246919050996218,
+        "heading": 5.423448918845104
+      },
+      "final": {
+        "x": 0.025674536274630004,
+        "z": 0.29886628828757755,
+        "yaw": -5.423448918844855,
+        "world_x": -0.11807788212224607,
+        "world_z": 2.5279423854974654,
+        "heading": 5.423448918845104
+      },
+      "first_collision": {
+        "t": 25.171666666665043,
+        "side": "right",
+        "clearance": -3.500753896262809e-05,
+        "x": 0.025674536274630004,
+        "z": 0.31307995282342904,
+        "yaw": -5.423448918844855
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550350075389626,
+        0.8371110868137968
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3271390177997125,
+          0.27555904059042374
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3271390177997125,
+          0.27555904059042374
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0012712690894007839,
+      "final_continuous_clearance_m": -0.0013784227021292894,
+      "forward_overrun_m": 0.001133711712422436
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.675,
+      "accepted": {
+        "x": -0.0322755126631262,
+        "z": 1.7957157445495442,
+        "yaw": 6.07842292119085,
+        "world_x": 0.29424661857169526,
+        "world_z": 1.5416206387159372,
+        "heading": -6.078422921190114
+      },
+      "final": {
+        "x": -0.0322755126631262,
+        "z": 0.2989458001650852,
+        "yaw": 6.07842292119085,
+        "world_x": 0.13575424035304712,
+        "world_z": 3.0299755804079136,
+        "heading": -6.078422921190114
+      },
+      "first_collision": {
+        "t": 38.916666666666075,
+        "side": "left",
+        "clearance": -7.380849776467135e-05,
+        "x": -0.0322755126631262,
+        "z": 0.3408761105580763,
+        "yaw": 6.07842292119085
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.35507380849776465,
+        0.8060570038594207
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.269238173500467,
+          0.334154163551665
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.269238173500467,
+          0.334154163551665
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.004402163699567974,
+      "final_continuous_clearance_m": -0.004513792503700653,
+      "forward_overrun_m": 0.0010541998349147819
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.6625,
+      "accepted": {
+        "x": -0.032149677433074335,
+        "z": 1.7936583567233706,
+        "yaw": 5.904242372058604,
+        "world_x": 0.28643493462142017,
+        "world_z": 1.5427710127513554,
+        "heading": -5.9042423720578725
+      },
+      "final": {
+        "x": -0.032149677433074335,
+        "z": 0.299731145246911,
+        "yaw": 5.904242372058604,
+        "world_x": 0.13276033775819432,
+        "world_z": 3.0287732440646873,
+        "heading": -5.9042423720578725
+      },
+      "first_collision": {
+        "t": 38.98666666666606,
+        "side": "left",
+        "clearance": -5.489843664163718e-06,
+        "x": -0.032149677433074335,
+        "z": 0.31891959237590684,
+        "yaw": 5.904242372058604
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.35500548984366415,
+        0.82895980956506
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.26927879181700537,
+          0.33392106077915373
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.26927879181700537,
+          0.33392106077915373
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0019516761831654406,
+      "final_continuous_clearance_m": -0.001979332246645815,
+      "forward_overrun_m": 0.0002688547530889651
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.65625,
+      "accepted": {
+        "x": -0.032087618291963146,
+        "z": 1.7926436987347367,
+        "yaw": 5.817086070856362,
+        "world_x": 0.2825321771850563,
+        "world_z": 1.5433412843873933,
+        "heading": -5.8170860708555985
+      },
+      "final": {
+        "x": -0.032087618291963146,
+        "z": 0.2987164872582776,
+        "yaw": 5.817086070856362,
+        "world_x": 0.13111821096910461,
+        "world_z": 3.0295755606790657,
+        "heading": -5.8170860708555985
+      },
+      "first_collision": {
+        "t": 39.02666666666605,
+        "side": "left",
+        "clearance": -6.115134675577227e-05,
+        "x": -0.032087618291963146,
+        "z": 0.3065340027552753,
+        "yaw": 5.817086070856362
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.35506115134675575,
+        0.8418143924996236
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.26929912982744725,
+          0.3338065454920047
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.26929912982744725,
+          0.3338065454920047
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0007233919598473859,
+      "final_continuous_clearance_m": -0.0008534797937257421,
+      "forward_overrun_m": 0.0012835127417223924
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.67625,
+      "accepted": {
+        "x": -0.032288221993466835,
+        "z": 1.7959235402639018,
+        "yaw": 6.095831205623085,
+        "world_x": 0.29502824265568356,
+        "world_z": 1.5415048825454043,
+        "heading": -6.095831205622343
+      },
+      "final": {
+        "x": -0.032288221993466835,
+        "z": 0.2991535958794428,
+        "yaw": 6.095831205623085,
+        "world_x": 0.13608366207877817,
+        "world_z": 3.0298116005029025,
+        "heading": -6.095831205622343
+      },
+      "first_collision": {
+        "t": 38.90916666666608,
+        "side": "left",
+        "clearance": -5.758823646295763e-05,
+        "x": -0.032288221993466835,
+        "z": 0.3432159559534328,
+        "yaw": 6.095831205623085
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.35505758823646294,
+        0.8036238183939379
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2692341156853563,
+          0.33417777233128365
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2692341156853563,
+          0.33417777233128365
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.004646765096287475,
+      "final_continuous_clearance_m": -0.004736646208909567,
+      "forward_overrun_m": 0.0008464041205571982
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.675,
+      "accepted": {
+        "x": 0.0322755126631262,
+        "z": 1.7957157445495442,
+        "yaw": -6.07842292119085,
+        "world_x": -0.29424661857169526,
+        "world_z": 1.5416206387159372,
+        "heading": 6.078422921190114
+      },
+      "final": {
+        "x": 0.0322755126631262,
+        "z": 0.2989458001650852,
+        "yaw": -6.07842292119085,
+        "world_x": -0.13575424035304712,
+        "world_z": 3.0299755804079136,
+        "heading": 6.078422921190114
+      },
+      "first_collision": {
+        "t": 38.916666666666075,
+        "side": "right",
+        "clearance": -7.380849776467135e-05,
+        "x": 0.0322755126631262,
+        "z": 0.3408761105580763,
+        "yaw": -6.07842292119085
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.35507380849776465,
+        0.8060570038594207
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.334154163551665,
+          0.269238173500467
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.334154163551665,
+          0.269238173500467
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.004402163699567974,
+      "final_continuous_clearance_m": -0.004513792503700653,
+      "forward_overrun_m": 0.0010541998349147819
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.6625,
+      "accepted": {
+        "x": 0.032149677433074335,
+        "z": 1.7936583567233706,
+        "yaw": -5.904242372058604,
+        "world_x": -0.28643493462142017,
+        "world_z": 1.5427710127513554,
+        "heading": 5.9042423720578725
+      },
+      "final": {
+        "x": 0.032149677433074335,
+        "z": 0.299731145246911,
+        "yaw": -5.904242372058604,
+        "world_x": -0.13276033775819432,
+        "world_z": 3.0287732440646873,
+        "heading": 5.9042423720578725
+      },
+      "first_collision": {
+        "t": 38.98666666666606,
+        "side": "right",
+        "clearance": -5.489843664163718e-06,
+        "x": 0.032149677433074335,
+        "z": 0.31891959237590684,
+        "yaw": -5.904242372058604
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.35500548984366415,
+        0.82895980956506
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33392106077915373,
+          0.26927879181700537
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33392106077915373,
+          0.26927879181700537
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0019516761831654406,
+      "final_continuous_clearance_m": -0.001979332246645815,
+      "forward_overrun_m": 0.0002688547530889651
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.65625,
+      "accepted": {
+        "x": 0.032087618291963146,
+        "z": 1.7926436987347367,
+        "yaw": -5.817086070856362,
+        "world_x": -0.2825321771850563,
+        "world_z": 1.5433412843873933,
+        "heading": 5.8170860708555985
+      },
+      "final": {
+        "x": 0.032087618291963146,
+        "z": 0.2987164872582776,
+        "yaw": -5.817086070856362,
+        "world_x": -0.13111821096910461,
+        "world_z": 3.0295755606790657,
+        "heading": 5.8170860708555985
+      },
+      "first_collision": {
+        "t": 39.02666666666605,
+        "side": "right",
+        "clearance": -6.115134675577227e-05,
+        "x": 0.032087618291963146,
+        "z": 0.3065340027552753,
+        "yaw": -5.817086070856362
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.35506115134675575,
+        0.8418143924996236
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3338065454920047,
+          0.26929912982744725
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3338065454920047,
+          0.26929912982744725
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0007233919598473859,
+      "final_continuous_clearance_m": -0.0008534797937257421,
+      "forward_overrun_m": 0.0012835127417223924
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.67625,
+      "accepted": {
+        "x": 0.032288221993466835,
+        "z": 1.7959235402639018,
+        "yaw": -6.095831205623085,
+        "world_x": -0.29502824265568356,
+        "world_z": 1.5415048825454043,
+        "heading": 6.095831205622343
+      },
+      "final": {
+        "x": 0.032288221993466835,
+        "z": 0.2991535958794428,
+        "yaw": -6.095831205623085,
+        "world_x": -0.13608366207877817,
+        "world_z": 3.0298116005029025,
+        "heading": 6.095831205622343
+      },
+      "first_collision": {
+        "t": 38.90916666666608,
+        "side": "right",
+        "clearance": -5.758823646295763e-05,
+        "x": 0.032288221993466835,
+        "z": 0.3432159559534328,
+        "yaw": -6.095831205623085
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.35505758823646294,
+        0.8036238183939379
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33417777233128365,
+          0.2692341156853563
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33417777233128365,
+          0.2692341156853563
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.004646765096287475,
+      "final_continuous_clearance_m": -0.004736646208909567,
+      "forward_overrun_m": 0.0008464041205571982
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": 0.875,
+      "accepted": {
+        "x": -0.03284354276707509,
+        "z": 1.7920565610007086,
+        "yaw": 6.003540849743274,
+        "world_x": 0.29121561804228263,
+        "world_z": 2.044936700836983,
+        "heading": -6.003540849741926
+      },
+      "final": {
+        "x": -0.03284354276707509,
+        "z": 0.29812934952424996,
+        "yaw": 6.003540849743274,
+        "world_x": 0.1349658845170976,
+        "world_z": 3.5306703694204953,
+        "heading": -6.003540849741926
+      },
+      "first_collision": {
+        "t": 48.75666666666551,
+        "side": "left",
+        "clearance": -2.712235767260429e-05,
+        "x": -0.03284354276707509,
+        "z": 0.325845995377244,
+        "yaw": 6.003540849743274
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550271223576726,
+        0.8215274667622312
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2686297750540842,
+          0.33467911256125366
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2686297750540842,
+          0.33467911256125366
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0027303530501490147,
+      "final_continuous_clearance_m": -0.002926004241257496,
+      "forward_overrun_m": 0.0018706504757500242
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": 0.8625,
+      "accepted": {
+        "x": -0.03312782588138695,
+        "z": 1.7953059296912732,
+        "yaw": 5.850104623393179,
+        "world_x": 0.28525400092985004,
+        "world_z": 2.040962169187548,
+        "heading": -5.850104623391755
+      },
+      "final": {
+        "x": -0.03312782588138695,
+        "z": 0.29853598530681824,
+        "yaw": 5.850104623393179,
+        "world_x": 0.13269381999629254,
+        "world_z": 3.5299368693102897,
+        "heading": -5.850104623391755
+      },
+      "first_collision": {
+        "t": 48.81833333333216,
+        "side": "left",
+        "clearance": -3.688402109219835e-05,
+        "x": -0.03312782588138695,
+        "z": 0.30137871821481765,
+        "yaw": 5.850104623393179
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550368840210922,
+        0.8468440972866408
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.26826933270276415,
+          0.33487185334729624
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.26826933270276415,
+          0.33487185334729624
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.000177411629291524,
+      "final_continuous_clearance_m": -0.00032663318957154575,
+      "forward_overrun_m": 0.0014640146931817477
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": 0.8825,
+      "accepted": {
+        "x": -0.03296882323652182,
+        "z": 1.7934885233184188,
+        "yaw": 6.095526086636255,
+        "world_x": 0.29543333788445575,
+        "world_z": 2.043996832013259,
+        "heading": -6.095526086634949
+      },
+      "final": {
+        "x": -0.03296882323652182,
+        "z": 0.29956131184195967,
+        "yaw": 6.095526086636255,
+        "world_x": 0.1367985426906149,
+        "world_z": 3.529477735607439,
+        "heading": -6.095526086634949
+      },
+      "first_collision": {
+        "t": 48.72166666666552,
+        "side": "left",
+        "clearance": -8.79106181305156e-05,
+        "x": -0.03296882323652182,
+        "z": 0.336516839645952,
+        "yaw": 6.095526086636255
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550879106181305,
+        0.8103592208998371
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2685494914907807,
+          0.33486205336110914
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2685494914907807,
+          0.33486205336110914
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.003965503404353754,
+      "final_continuous_clearance_m": -0.004012086133130699,
+      "forward_overrun_m": 0.00043868815804032346
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": -0.875,
+      "accepted": {
+        "x": 0.03284354276707509,
+        "z": 1.7920565610007086,
+        "yaw": -6.003540849743274,
+        "world_x": -0.29121561804228263,
+        "world_z": 2.044936700836983,
+        "heading": 6.003540849741926
+      },
+      "final": {
+        "x": 0.03284354276707509,
+        "z": 0.29812934952424996,
+        "yaw": -6.003540849743274,
+        "world_x": -0.1349658845170976,
+        "world_z": 3.5306703694204953,
+        "heading": 6.003540849741926
+      },
+      "first_collision": {
+        "t": 48.75666666666551,
+        "side": "right",
+        "clearance": -2.712235767260429e-05,
+        "x": 0.03284354276707509,
+        "z": 0.325845995377244,
+        "yaw": -6.003540849743274
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550271223576726,
+        0.8215274667622312
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33467911256125366,
+          0.2686297750540842
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33467911256125366,
+          0.2686297750540842
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0027303530501490147,
+      "final_continuous_clearance_m": -0.002926004241257496,
+      "forward_overrun_m": 0.0018706504757500242
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": -0.8625,
+      "accepted": {
+        "x": 0.03312782588138695,
+        "z": 1.7953059296912732,
+        "yaw": -5.850104623393179,
+        "world_x": -0.28525400092985004,
+        "world_z": 2.040962169187548,
+        "heading": 5.850104623391755
+      },
+      "final": {
+        "x": 0.03312782588138695,
+        "z": 0.29853598530681824,
+        "yaw": -5.850104623393179,
+        "world_x": -0.13269381999629254,
+        "world_z": 3.5299368693102897,
+        "heading": 5.850104623391755
+      },
+      "first_collision": {
+        "t": 48.81833333333216,
+        "side": "right",
+        "clearance": -3.688402109219835e-05,
+        "x": 0.03312782588138695,
+        "z": 0.30137871821481765,
+        "yaw": -5.850104623393179
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550368840210922,
+        0.8468440972866408
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33487185334729624,
+          0.26826933270276415
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33487185334729624,
+          0.26826933270276415
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.000177411629291524,
+      "final_continuous_clearance_m": -0.00032663318957154575,
+      "forward_overrun_m": 0.0014640146931817477
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": -0.8825,
+      "accepted": {
+        "x": 0.03296882323652182,
+        "z": 1.7934885233184188,
+        "yaw": -6.095526086636255,
+        "world_x": -0.29543333788445575,
+        "world_z": 2.043996832013259,
+        "heading": 6.095526086634949
+      },
+      "final": {
+        "x": 0.03296882323652182,
+        "z": 0.29956131184195967,
+        "yaw": -6.095526086636255,
+        "world_x": -0.1367985426906149,
+        "world_z": 3.529477735607439,
+        "heading": 6.095526086634949
+      },
+      "first_collision": {
+        "t": 48.72166666666552,
+        "side": "right",
+        "clearance": -8.79106181305156e-05,
+        "x": 0.03296882323652182,
+        "z": 0.336516839645952,
+        "yaw": -6.095526086636255
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550879106181305,
+        0.8103592208998371
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33486205336110914,
+          0.2685494914907807
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33486205336110914,
+          0.2685494914907807
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.003965503404353754,
+      "final_continuous_clearance_m": -0.004012086133130699,
+      "forward_overrun_m": 0.00043868815804032346
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 1.01875,
+      "accepted": {
+        "x": -0.030292585854030465,
+        "z": 1.793076355960182,
+        "yaw": 5.895464921246457,
+        "world_x": 0.28415144620196525,
+        "world_z": 2.5431153346586517,
+        "heading": -5.895464921245029
+      },
+      "final": {
+        "x": -0.030292585854030465,
+        "z": 0.29914914448372676,
+        "yaw": 5.895464921246457,
+        "world_x": 0.1307044998720464,
+        "world_z": 4.029141090778581,
+        "heading": -5.895464921245029
+      },
+      "first_collision": {
+        "t": 54.39333333333186,
+        "side": "left",
+        "clearance": -3.361421725039948e-05,
+        "x": -0.030292585854030465,
+        "z": 0.33539398906071904,
+        "yaw": 5.895464921246457
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.3550336142172504,
+        0.8124361733305003
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2711414950045417,
+          0.33204880852444324
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2711414950045417,
+          0.33204880852444324
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0036690654615155194,
+      "final_continuous_clearance_m": -0.0037564600679843574,
+      "forward_overrun_m": 0.0008508555162732301
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 0.855625,
+      "accepted": {
+        "x": -0.023424030022809773,
+        "z": 2.2042088060285603,
+        "yaw": 5.342117333718534,
+        "world_x": 0.29184935567338904,
+        "world_z": 2.130499507658275,
+        "heading": -5.3421173337177335
+      },
+      "final": {
+        "x": -0.023424030022809773,
+        "z": 0.29808532347447836,
+        "yaw": 5.342117333718534,
+        "world_x": 0.11438448297903096,
+        "world_z": 4.028343797821047,
+        "heading": -5.3421173337177335
+      },
+      "first_collision": {
+        "t": 46.44499999999624,
+        "side": "left",
+        "clearance": -3.4980156545683094e-05,
+        "x": -0.023424030022809773,
+        "z": 0.3243806028670201,
+        "yaw": 5.342117333718534
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        -0.35503498015654567,
+        0.8261531230857079
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2777825103019716,
+          0.3248349412247411
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2777825103019716,
+          0.3248349412247411
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0023048753777150655,
+      "final_continuous_clearance_m": -0.0024831365601424293,
+      "forward_overrun_m": 0.0019146765255216303
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": -1.01875,
+      "accepted": {
+        "x": 0.030292585854030465,
+        "z": 1.793076355960182,
+        "yaw": -5.895464921246457,
+        "world_x": -0.28415144620196525,
+        "world_z": 2.5431153346586517,
+        "heading": 5.895464921245029
+      },
+      "final": {
+        "x": 0.030292585854030465,
+        "z": 0.29914914448372676,
+        "yaw": -5.895464921246457,
+        "world_x": -0.1307044998720464,
+        "world_z": 4.029141090778581,
+        "heading": 5.895464921245029
+      },
+      "first_collision": {
+        "t": 54.39333333333186,
+        "side": "right",
+        "clearance": -3.361421725039948e-05,
+        "x": 0.030292585854030465,
+        "z": 0.33539398906071904,
+        "yaw": -5.895464921246457
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.3550336142172504,
+        0.8124361733305003
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33204880852444324,
+          0.2711414950045417
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.33204880852444324,
+          0.2711414950045417
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0036690654615155194,
+      "final_continuous_clearance_m": -0.0037564600679843574,
+      "forward_overrun_m": 0.0008508555162732301
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": -0.855625,
+      "accepted": {
+        "x": 0.023424030022809773,
+        "z": 2.2042088060285603,
+        "yaw": -5.342117333718534,
+        "world_x": -0.29184935567338904,
+        "world_z": 2.130499507658275,
+        "heading": 5.3421173337177335
+      },
+      "final": {
+        "x": 0.023424030022809773,
+        "z": 0.29808532347447836,
+        "yaw": -5.342117333718534,
+        "world_x": -0.11438448297903096,
+        "world_z": 4.028343797821047,
+        "heading": 5.3421173337177335
+      },
+      "first_collision": {
+        "t": 46.44499999999624,
+        "side": "right",
+        "clearance": -3.4980156545683094e-05,
+        "x": 0.023424030022809773,
+        "z": 0.3243806028670201,
+        "yaw": -5.342117333718534
+      },
+      "colliding_tip_pallet_coordinates_m": [
+        0.35503498015654567,
+        0.8261531230857079
+      ],
+      "nominal_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3248349412247411,
+          0.2777825103019716
+        ]
+      },
+      "actual_nine_block": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.3248349412247411,
+          0.2777825103019716
+        ]
+      },
+      "nominal_continuous_clearance_m": -0.0023048753777150655,
+      "final_continuous_clearance_m": -0.0024831365601424293,
+      "forward_overrun_m": 0.0019146765255216303
+    }
+  ],
+  "turn_scans": [
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.28125,
+      "truth": {
+        "x": 0.18394869724412388,
+        "z": 2.1984361501799636,
+        "yaw": 8.855825046887134,
+        "world_x": 0.2613754694005229,
+        "world_z": 0.12755945964476037,
+        "heading": -8.855825046886714
+      },
+      "geometry_valid_intervals_deg": [
+        [
+          4.0,
+          4.41
+        ]
+      ],
+      "grid_geometry_valid_deg": [
+        4.0
+      ]
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.3,
+      "truth": {
+        "x": 0.18405906896466553,
+        "z": 2.1938336899773914,
+        "yaw": 9.210593141531575,
+        "world_x": 0.2783104920965321,
+        "world_z": 0.13375836878566721,
+        "heading": -9.210593141531163
+      },
+      "geometry_valid_intervals_deg": [
+        [
+          4.08,
+          4.42
+        ]
+      ],
+      "grid_geometry_valid_deg": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 0.91125,
+      "truth": {
+        "x": 0.13083585537427211,
+        "z": 1.7838915466950969,
+        "yaw": 8.895732011011319,
+        "world_x": 0.2517462037536908,
+        "world_z": 2.5455136130294758,
+        "heading": -8.895732011010127
+      },
+      "geometry_valid_intervals_deg": [
+        [
+          3.5700000000000003,
+          3.91
+        ]
+      ],
+      "grid_geometry_valid_deg": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 1.0125,
+      "truth": {
+        "x": 0.13822441192681895,
+        "z": 1.7878037255334203,
+        "yaw": 9.780559281920716,
+        "world_x": 0.283003091210055,
+        "world_z": 2.5445834434508643,
+        "heading": -9.780559281919123
+      },
+      "geometry_valid_intervals_deg": [
+        [
+          3.9,
+          4.07
+        ]
+      ],
+      "grid_geometry_valid_deg": [
+        4.0
+      ]
+    }
+  ]
+}

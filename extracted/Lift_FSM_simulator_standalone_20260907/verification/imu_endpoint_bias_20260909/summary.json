@@ -1,0 +1,32 @@
+[
+  {
+    "case_id": 53,
+    "success": true,
+    "state": "DONE",
+    "reasons": [],
+    "elapsed": 65.98000000000002,
+    "imu_error_model": {
+      "kind": "run_constant_gain_v1",
+      "reference_turn_deg": 90.0,
+      "endpoint_sd_deg": 5.0,
+      "sampled_gain": 1.0349316308745782
+    },
+    "stationary_samples": 3536,
+    "maximum_stationary_yaw_change_deg": 0.0
+  },
+  {
+    "case_id": 140,
+    "success": true,
+    "state": "DONE",
+    "reasons": [],
+    "elapsed": 60.913333333331956,
+    "imu_error_model": {
+      "kind": "run_constant_gain_v1",
+      "reference_turn_deg": 90.0,
+      "endpoint_sd_deg": 5.0,
+      "sampled_gain": 1.0584820063497085
+    },
+    "stationary_samples": 3214,
+    "maximum_stationary_yaw_change_deg": 0.0
+  }
+]

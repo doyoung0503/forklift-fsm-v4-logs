@@ -2,18 +2,18 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Current FSM v4 Validation Simulator</title>
+  <title>리프터 시뮬레이터</title>
   <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="v4.css">
 </head>
 <body>
   <header class="topbar">
-    <div><h1>Current FSM v4 Validation Simulator</h1><p>모델 결과 패킷 → FSM → 가상 CAN → 차량 · <a href="index.html">기존 FSM 시뮬레이터</a></p></div>
-    <div class="status-strip"><span class="mode-pill">SIMULATION · NO INFERENCE</span><span class="safety-pill" id="safetyPill">FORK CLEAR</span></div>
+    <div><h1>리프터 시뮬레이터</h1></div>
+    <div class="status-strip"><span class="mode-pill">시뮬레이션</span></div>
   </header>
   <main class="app-shell">
     <section class="viewport-panel v4-viewport">
-      <div class="view-caption"><span>평면 시뮬레이션 · 고정 월드 좌표</span><span id="simClock">t = 0.00 s</span></div>
-      <p class="help" id="cameraStatus" role="status">별도 FSM 창 연결 중 · 두 창은 같은 시뮬레이션 시각을 표시합니다.</p>
+      <div class="view-caption"><span>배치 화면</span><span id="simClock">t = 0.00 s</span></div>
+      <span id="cameraStatus" hidden></span>
       <div class="view-controls">
         <label>배율 (%) <input id="viewZoom" type="number" min="25" max="400" step="25" value="100"></label>
         <button id="resetZoomBtn">100% 복원</button>
@@ -24,23 +24,23 @@
       <canvas id="simCanvas" aria-label="팔레트와 포크의 평면 시뮬레이션"></canvas>
       <div class="view-caption"><span id="worldPoseCaption"></span><span>월드 +X 오른쪽 / +Z 위</span></div>
       <div class="view-legend"><span>노랑: 포크</span><span>파랑: 카메라 시야</span><span>청록 실선: 입구 / 점선: 삽입 통로</span><span>검은 점: 회전 중심</span><span>빨강: 충돌</span></div>
-      <p class="help" id="geometryReadout" aria-label="실측 치수"></p>
-      <p class="help"><span id="palletImageStatus">실물 상면 이미지 로딩 중</span> · 175% 이상에서 치수선 표시. 포크 뿌리 위치는 별도 실측값이 없어 카메라 평면을 기준으로 표시합니다.</p>
+      <span id="geometryReadout" hidden></span>
+      <span id="palletImageStatus" hidden></span>
       <div class="replay-bar"><label for="replaySlider">궤적 재생</label><input id="replaySlider" type="range" min="0" max="0" value="0"><span id="replayClock">0 / 0</span></div>
     </section>
     <aside class="control-panel">
       <section class="panel-section action-row">
-        <button id="runBtn" disabled>Run</button><button id="stepBtn" disabled>Step 1 frame</button><button id="resetBtn" disabled>Reset</button>
+        <button id="runBtn" disabled>실행</button><button id="stepBtn" disabled>한 단계</button><button id="resetBtn" disabled>초기화</button>
         <button id="fastBtn" disabled>끝까지 계산</button>
         <label>배속 <select id="timeScale"><option>.5</option><option selected>1</option><option>2</option><option>4</option><option>8</option></select></label>
-        <p class="status-text" id="connectionStatus" role="status">Python FSM에 연결하고 있습니다.</p>
-        <p id="resultReadout" class="result-box" role="status">시나리오를 실행하세요.</p>
+        <p class="status-text" id="connectionStatus" role="status">연결 중</p>
+        <p id="resultReadout" class="result-box" role="status">실행 대기</p>
       </section>
 
       <section class="panel-section">
-        <h2>초기 배치 · 팔레트 / 지게차</h2>
-        <label class="wide-label">배치 기준<select id="placement_mode" data-option><option value="world" selected>월드 좌표 · 두 물체 각각 배치</option><option value="relative">카메라 상대 좌표 · 기존 조건</option></select></label>
-        <p class="help">월드 +X는 오른쪽, +Z는 위쪽입니다. 방향은 0°=위, 90°=오른쪽, ±180°=아래입니다. 지게차 위치는 회전 중심, 팔레트 위치는 삽입 전면 중심이며 팔레트 방향은 입구가 바라보는 방향입니다.</p>
+        <h2>초기 배치</h2>
+        <label class="wide-label">배치 기준<select id="placement_mode" data-option><option value="world" selected>월드 좌표</option><option value="relative">카메라 기준</option></select></label>
+        
         <div class="param-grid" id="worldPlacement">
           <label>팔레트 월드 X (m)<input id="pallet_x" data-option type="number" step=".1" value="0"></label>
           <label>팔레트 월드 Z (m)<input id="pallet_z" data-option type="number" step=".1" value="2"></label>
@@ -52,47 +52,49 @@
         <div class="param-grid" id="relativePlacement" hidden>
           <label>전방 거리 Z (m)<input id="z" data-option type="number" step=".05" value="2.0"></label>
           <label>좌우 X (m, +오른쪽)<input id="x" data-option type="number" step=".01" value="0"></label>
-          <label>팔레트 yaw (°)<input id="yaw" data-option type="number" step=".5" value="0"></label>
+          <label>팔레트 각도 (°)<input id="yaw" data-option type="number" step=".5" value="0"></label>
         </div>
         <button id="applyScenarioBtn" class="wide-button">초기 배치 적용</button>
-        <h2>환경 / 모델 출력</h2>
+        <h2>환경 설정</h2>
         <div class="param-grid">
-          <label>화면·환경 기본 갱신 (Hz)<input id="hz" data-option type="number" step="1" value="30"></label>
+          <label>계산 주기 (Hz)<input id="hz" data-option type="number" step="1" value="30"></label>
           <label>카메라 수평 시야각 (°)<input id="camera_hfov_deg" data-option type="number" step=".1" value="55"></label>
-          <div class="help">탐지 거리 제한 없음 · 시야각/가시 비율/미탐 설정 적용</div>
+          
           <label>최소 전면 가시 비율<input id="min_visible_fraction" data-option type="number" step=".05" value=".5"></label>
-          <label>인식 모델<select id="perception" data-option><option value="fov">카메라 시야 제한</option><option value="oracle">항상 관측 (제어 분리 실험)</option></select></label>
+          <label>인식 모델<select id="perception" data-option><option value="fov">카메라 시야 제한</option><option value="oracle">항상 관측</option></select></label>
           <label>추론 지연 평균 (s)<input id="latency" data-option type="number" min="0" step=".01" value="0"></label>
           <label>추론 요청 최대 빈도 (Hz)<input id="model_hz" data-option type="number" step="1" value="10"></label>
           <label>출력 간격 표준편차 (s)<input id="model_interval_sd" data-option type="number" step=".005" value="0"></label>
           <label>추론 지연 표준편차 (s)<input id="latency_sd" data-option type="number" min="0" step=".005" value=".05"></label>
-          <label>관측 전면 선택<select id="face_selection" data-option><option value="largest">현재 모델 후처리: 최대 투영 면</option><option value="fixed">지정 전면 유지 (대조 실험)</option></select></label>
+          <label>관측 전면 선택<select id="face_selection" data-option><option value="largest">가장 큰 면</option><option value="fixed">지정한 면</option></select></label>
           <label>포크 1개 폭 (m)<input id="fork_width" data-option type="number" step=".01" value=".1"></label>
-          <label>개구부 모델<select id="opening" data-option><option value="continuous">현재 FSM: 연속 개구부 0.71 m</option><option value="split">기존 시뮬레이터: 2개 포켓</option></select></label>
+          <label>개구부 모델<select id="opening" data-option><option value="continuous">연속 개구부</option><option value="split">분리된 두 개구부</option></select></label>
           <label>팔레트 깊이 (m)<input id="pallet_depth" data-option type="number" step=".05" value="1.1"></label>
-          <label>전면 중심 Y (m, +아래)<input id="vertical_offset" data-option type="number" step=".01" value="0.575"></label>
-          <p class="help">기본 카메라 높이 65cm (이전 영상보다 +40cm). 높이 = 전면 중심 Y + 0.075m.</p>
+          <label>전면 중심 Y (m, +아래)<input id="vertical_offset" data-option type="number" step=".01" value="0.425"></label>
+          
           <label>삽입 잔여 허용값 (m)<input id="completion_tolerance" data-option type="number" step=".01" value=".05"></label>
           <label>시뮬레이션 제한 (s)<input id="max_seconds" data-option type="number" value="185"></label>
         </div>
       </section>
-      <section class="panel-section">
-        <h2>구동오차 / STOP 관성 모델</h2>
-        <p class="help">차량은 vehicle_profile.json의 독립 보정값을 사용합니다. 이동 중 궤적과 STOP 관성 분배는 아래 가정으로 변경할 수 있습니다.</p>
+      <section class="panel-section"><details><summary>구동 오차 · 평균 0</summary>
+<label title="실행마다 고정된 측정 배율 편향. 90° 회전의 최종 오차 표준편차이며 매 측정 노이즈가 아닙니다.">IMU 90° 회전 후 오차 σ (°)<input id="imu_angle_sd_deg" data-option type="number" min="0" max="90" step=".5" value="5"></label>
+        
         <div class="param-grid">
-          <label>전후진 거리 배율<input id="drive_scale" data-option type="number" step=".05" value="1"></label>
-          <label>회전 최종각 배율<input id="rotation_scale" data-option type="number" step=".05" value="1"></label>
-          <label>전후진 배율 표준편차<input id="drive_scale_sd" data-option type="number" step=".01" value="0"></label>
-          <label>회전 배율 표준편차<input id="rotation_scale_sd" data-option type="number" step=".01" value="0"></label>
+          
+          
+          <label>전진 오차율 σ<input id="drive_scale_sd" data-option type="number" step=".01" value="0.0607956831911769"></label>
+          <label>회전 오차율 σ<input id="rotation_scale_sd" data-option type="number" step=".01" value="0.0607956831911769"></label>
+          
+          
+          
           <label>추가 전후진 지연 (s)<input id="drive_delay" data-option type="number" step=".05" value="0"></label>
-          <label>전후진 STOP 감속 (s)<input id="drive_coast_sec" data-option type="number" step=".05" value="0"></label>
-          <label>회전 최종각 중 STOP 후 비율<input id="rotation_coast_fraction" data-option type="number" step=".05" value="0"></label>
-          <label>회전 STOP 감속 (s)<input id="rotation_coast_sec" data-option type="number" step=".05" value=".6"></label>
+          <label>전후진 정지 감속 (s)<input id="drive_coast_sec" data-option type="number" step=".05" value="0"></label>
+          <label>회전 최종각 중 정지 후 비율<input id="rotation_coast_fraction" data-option type="number" step=".05" value="0"></label>
+          <label>회전 정지 감속 (s)<input id="rotation_coast_sec" data-option type="number" step=".05" value=".6"></label>
         </div>
-      </section>
-      <section class="panel-section">
-        <h2>모델 포즈 오차 · 정답 + N(평균, 표준편차²)</h2>
-        <p class="help">추론 없이 매 모델 출력 프레임마다 독립 샘플링합니다. 평균은 추정값−정답의 편향입니다. 아래 초기값은 임의의 실험값이며 로그에서 추정한 정확도가 아닙니다.</p>
+      </details></section>
+      <section class="panel-section"><details><summary>인식 오차</summary>
+        
         <div class="param-grid">
           <label>X 오차 평균 (m)<input id="x_bias" data-option type="number" step=".01" value="0"></label>
           <label>X 오차 표준편차 (m)<input id="x_noise" data-option type="number" step=".005" value=".01"></label>
@@ -100,70 +102,69 @@
           <label>Y 오차 표준편차 (m)<input id="y_noise" data-option type="number" step=".005" value=".01"></label>
           <label>Z 오차 평균 (m)<input id="z_bias" data-option type="number" step=".01" value="0"></label>
           <label>Z 오차 표준편차 (m)<input id="z_noise" data-option type="number" step=".005" value=".02"></label>
-          <label>yaw 오차 평균 (°)<input id="yaw_bias" data-option type="number" step=".5" value="0"></label>
-          <label>yaw 오차 표준편차 (°)<input id="yaw_noise" data-option type="number" step=".1" value="1"></label>
+          <label>각도 오차 평균 (°)<input id="yaw_bias" data-option type="number" step=".5" value="0"></label>
+          <label>각도 오차 표준편차 (°)<input id="yaw_noise" data-option type="number" step=".1" value="1"></label>
           <label>시야 내 프레임 미탐 확률<input id="dropout" data-option type="number" step=".01" value=".05"></label>
           <label>연속 인식 상실 시작 (s)<input id="loss_start" data-option type="number" step=".1" value="0"></label>
           <label>연속 인식 상실 기간 (s)<input id="loss_duration" data-option type="number" step=".1" value="0"></label>
-          <label>난수 seed<input id="seed" data-option type="number" value="20260907"></label>
+          <label>기본 시드<input id="seed" data-option type="number" value="20260907"></label>
         </div>
-      </section>
-      <section class="panel-section">
-        <h2>프로토콜 연결 / 외부 FSM</h2>
-        <p class="help">이 서버의 /api/world/* 에 연결한 다른 FSM도 같은 차량을 제어할 수 있습니다. 차량은 CAN ID·데이터만 해석합니다.</p>
-        <label class="wide-label">외부 world ID<input id="externalWorldId" placeholder="프로토콜 클라이언트가 생성한 world ID"></label>
-        <button id="attachWorldBtn">외부 world 관찰</button><button id="detachWorldBtn">내장 v4로 돌아가기</button>
-        <button id="downloadCanBtn">CAN 프레임 JSON</button>
+      </details></section>
+      <section class="panel-section"><details><summary>외부 연결</summary>
+        
+        <label class="wide-label">외부 환경 ID<input id="externalWorldId" placeholder="프로토콜 클라이언트가 생성한 world ID"></label>
+        <button id="attachWorldBtn">연결</button><button id="detachWorldBtn">연결 해제</button>
+        <button id="downloadCanBtn">CAN 저장</button>
         <p id="externalStatus" role="status">내장 v4 어댑터 사용 중</p>
-      </section>
+      </details></section>
       <section class="panel-section">
-        <h2>27조건 고속 삽입 실험</h2>
-        <p class="help">아래 X/Z/yaw는 지게차 카메라 상대 좌표입니다. 월드 배치와 별도로 모든 상대 조건 조합을 검사하며, 재현 버튼으로 동일한 조건과 seed를 다시 계산합니다.</p>
+        <h2>일괄 실험</h2>
+        
         <div class="param-grid">
           <label>좌우 X (m)<input id="batchX" value="-.3,0,.3"></label>
           <label>전방 Z (m)<input id="batchZ" value="1.8,2.0,2.2"></label>
-          <label>yaw (°)<input id="batchYaw" value="-15,0,15"></label>
-          <label>조건별 반복<input id="batchRepeats" type="number" value="1" min="1" max="20"></label>
+          <label>각도 (°)<input id="batchYaw" value="-15,0,15"></label>
+          <label>조건별 반복<input id="batchRepeats" type="number" value="1" min="1" max="1000"></label>
         </div>
-        <button id="runBatchBtn">조건 실험 실행</button><button id="cancelBatchBtn" disabled>중단</button>
+        <label>시드 목록<input id="batchSeeds" placeholder="비우면 기본 시드부터 반복"></label>
+        <label>동시 실행 수<input id="batchWorkers" type="number" min="1" max="32" value="2"></label>
+        
+        <pre id="batchGroups"></pre>
+        <button id="runBatchBtn">일괄 실행</button><button id="cancelBatchBtn" disabled>중단</button>
         <p id="batchSummary" role="status">실험 전</p>
-        <div class="table-scroll"><table><thead><tr><th>X / Z / yaw</th><th>FSM</th><th>검증 결과 / 원인</th><th></th></tr></thead><tbody id="batchResults"></tbody></table></div>
-        <button id="downloadBatchBtn" disabled>조건별 CSV 저장</button>
-        <button id="downloadBatchJsonBtn" disabled>전체 실험 JSON 저장</button>
+        <div class="table-scroll"><table><thead><tr><th>X / Z / yaw</th><th>FSM</th><th>결과</th><th>가상 / 계산 시간</th><th>충돌 / 잔여 거리</th><th></th></tr></thead><tbody id="batchResults"></tbody></table></div>
+        <button id="downloadBatchBtn" disabled>결과 CSV</button>
+        <button id="downloadBatchJsonBtn" disabled>결과 JSON</button>
       </section>
-      <section class="panel-section">
-        <h2>현재 FSM 설정 / threshold 그리드 서치</h2>
-        <p class="help">빈 설정은 현재 Python 값 그대로 사용합니다. 실험용 변경값은 실행 중에만 적용되며 결과에 기록됩니다.</p>
+      <section class="panel-section"><details><summary>고급 설정</summary>
+        
         <div class="param-grid" id="constantGrid"></div>
-        <button id="applyConstantsBtn">설정 적용 / 초기화</button><button id="clearConstantsBtn">원본 설정 복원</button>
+        <button id="applyConstantsBtn">적용</button><button id="clearConstantsBtn">기본값 복원</button>
         <label class="wide-label">탐색 설정 (키=값,값 / 한 줄에 하나)<textarea id="gridSpec" rows="3" placeholder="FINAL_YAW_TOL_DEG=10,20"></textarea></label>
         <button id="runGridBtn">설정 조합 탐색</button>
-        <p id="gridStatus" role="status">현재 배치 조건과 인식·구동 설정으로 비교합니다.</p>
+        <p id="gridStatus" role="status">탐색 대기</p>
         <div id="gridResults"></div>
-      </section>
-      <section class="panel-section">
-        <h2>궤적 / 원본 FSM 일치 검증</h2>
-        <button id="downloadTrajectoryCsvBtn">궤적 CSV</button><button id="downloadTrajectoryJsonBtn">전체 실행 JSON</button>
-        <button id="replayCheckBtn">원본 FSM 재입력 검증</button>
-        <p id="replayCheckStatus" role="status">동일 관측·시간을 새 Python FSM에 넣어 매 프레임 상태·명령·실패 원인·CAN 데이터를 비교합니다.</p>
-        <label class="wide-label">저장한 실행 JSON 불러오기<input id="importRun" type="file" accept=".json"></label>
-        <button id="startVideoBtn">화면 녹화 시작</button><button id="stopVideoBtn" disabled>녹화 종료</button><button id="downloadVideoBtn" disabled>동영상 저장</button>
+      </details></section>
+      <section class="panel-section"><details><summary>저장 · 재현</summary>
+        <button id="downloadTrajectoryCsvBtn">궤적 CSV</button><button id="downloadTrajectoryJsonBtn">실행 저장</button>
+        <button id="replayCheckBtn">결과 검증</button>
+        <p id="replayCheckStatus" role="status">검증 대기</p>
+        <label class="wide-label">실행 불러오기<input id="importRun" type="file" accept=".json"></label>
+        <button id="startVideoBtn">녹화</button><button id="stopVideoBtn" disabled>녹화 중지</button><button id="downloadVideoBtn" disabled>동영상 저장</button>
         <p id="videoStatus" role="status"></p>
-      </section>
-      <section class="panel-section">
-        <h2>자동 저장 로그</h2>
+      </details></section>
+      <section class="panel-section"><details><summary>실행 기록</summary>
         <p id="runLogStatus" role="status">실행 시작 시 자동 저장</p>
-        <pre id="runLogPath"></pre><p id="runLogCounts" class="help"></p>
-        <p class="help">런별 폴더에 CAN · 상태 전이 · 모델 결과 · FSM 입력 · 실제 위치 관계를 실행 중 기록합니다. 모델 로그는 추론을 실행하지 않고 생성한 결과입니다.</p>
-        <h2>전이 로그</h2><pre id="logBox">—</pre>
-      </section>
-      <section class="panel-section">
-        <h2>실행 코드 / 검증 범위</h2>
+        <pre id="runLogPath"></pre><span id="runLogCounts" hidden></span>
+        
+        <h2>단계 기록</h2><pre id="logBox">—</pre>
+      </details></section>
+      <section class="panel-section"><details><summary>코드 정보</summary>
         <p id="sourceStatus"></p>
-        <p class="help">차량·화면 서버와 별도 FSM 프로세스로 실행합니다. 카메라/추론 런처는 실행하지 않고 가상 모델 결과만 전달합니다. 실차 ui/diagram_v4.py의 단계 정의와 실제 FSM 상태로 다이어그램을 표시합니다. 원본 FSM·가상 시계·CAN 연결은 자식 프로세스 안에 있으며, 차량은 CAN 프레임만 해석합니다. 유압 동작과 실제 런처의 키보드 단계 진행은 지원 범위 밖입니다.</p>
-        <p class="help">충돌은 별도 관찰 결과입니다. 원본 FSM의 상태 전이를 바꾸지 않으므로 충돌 이후 화면 궤적은 물리적 충돌 반응을 의미하지 않습니다.</p>
+        
+        
         <details><summary>현재 설정 / 소스 해시</summary><pre id="sourceDetails"></pre></details>
-      </section>
+      </details></section>
     </aside>
   </main>
   <script src="view_geometry.js"></script>

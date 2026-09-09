@@ -1,0 +1,149 @@
+{
+  "yaw": 40,
+  "state": "FAILED",
+  "success": false,
+  "elapsed": 2.333333333333335,
+  "reasons": [
+    "coarse lateral outside configured travel limits"
+  ],
+  "changes": [
+    {
+      "t": 0.0,
+      "state": "SEARCH_SWEEP",
+      "command": "STOP",
+      "truth": {
+        "x": 0.0,
+        "z": 3.9999999999999996,
+        "yaw": 40.0,
+        "world_x": 0.0,
+        "world_z": 0.0,
+        "heading": 0.0
+      },
+      "target": {
+        "kind": "rotation",
+        "direction": "RIGHT",
+        "fixed_target": false,
+        "description": "until pallet detected (no fixed angle)"
+      },
+      "lines": [
+        "[V4 PRECHECK] config valid -> SEARCH"
+      ]
+    },
+    {
+      "t": 0.03333333333333333,
+      "state": "ACQUIRE_VERIFY",
+      "command": "STOP",
+      "truth": {
+        "x": 0.0,
+        "z": 3.9999999999999996,
+        "yaw": 40.0,
+        "world_x": 0.0,
+        "world_z": 0.0,
+        "heading": 0.0
+      },
+      "target": null,
+      "lines": [
+        "[SEARCH] candidate detected -> immediate STOP"
+      ]
+    },
+    {
+      "t": 2.333333333333335,
+      "state": "FAILED",
+      "command": "STOP",
+      "truth": {
+        "x": 0.0,
+        "z": 3.9999999999999996,
+        "yaw": 40.0,
+        "world_x": 0.0,
+        "world_z": 0.0,
+        "heading": 0.0
+      },
+      "target": null,
+      "lines": [
+        "[V4 FAILED] stage: ACQUIRE_VERIFY",
+        "reason: coarse lateral outside configured travel limits"
+      ]
+    }
+  ],
+  "coarse_started": false,
+  "coarse_completed": false,
+  "replay": {
+    "frames": 71,
+    "passed": true,
+    "mismatches": []
+  },
+  "options": {
+    "x": 0.0,
+    "z": 4.0,
+    "yaw": 40.0,
+    "hz": 30.0,
+    "max_seconds": 185.0,
+    "seed": 20260907,
+    "perception": "fov",
+    "min_visible_fraction": 0.5,
+    "latency": 0.0,
+    "dropout": 0.0,
+    "loss_start": 0.0,
+    "loss_duration": 0.0,
+    "yaw_noise": 0.0,
+    "position_noise": 0.0,
+    "yaw_bias": 0.0,
+    "x_bias": 0.0,
+    "z_bias": 0.0,
+    "drive_scale": 1.0,
+    "rotation_scale": 1.0,
+    "drive_delay": 0.0,
+    "drive_coast_sec": 0.0,
+    "rotation_coast_fraction": 0.0,
+    "rotation_coast_sec": 0.6,
+    "drive_scale_sd": 0.0,
+    "rotation_scale_sd": 0.0,
+    "vertical_offset": 0.575,
+    "fork_width": 0.1,
+    "pallet_depth": 1.1,
+    "opening": "continuous",
+    "completion_tolerance": 0.05,
+    "face_selection": "fixed",
+    "x_noise": 0.0,
+    "y_noise": 0.0,
+    "z_noise": 0.0,
+    "y_bias": 0.0,
+    "model_hz": 30.0,
+    "model_interval_sd": 0.0,
+    "latency_sd": 0.0,
+    "camera_hfov_deg": 55.0,
+    "placement_mode": "relative",
+    "pallet_x": 0.0,
+    "pallet_z": 2.0,
+    "pallet_heading": 180.0,
+    "forklift_x": 0.0,
+    "forklift_z": 0.0,
+    "forklift_heading": 0.0,
+    "inference_mode": "requested"
+  },
+  "overrides": {
+    "COARSE_YAW_TRIGGER_DEG": 10
+  },
+  "logging": {
+    "run_id": "20260908_070151_901363_3d6a5d82",
+    "directory": "verification\\coarse_yaw_10deg\\logs\\20260908_070151_901363_3d6a5d82",
+    "status": "closed",
+    "error": null,
+    "counts": {
+      "can_frames": 728,
+      "model_results": 71,
+      "fsm_steps": 71,
+      "transitions": 4,
+      "relative_poses": 73
+    }
+  },
+  "final": {
+    "x": 0.0,
+    "z": 3.9999999999999996,
+    "yaw": 40.0,
+    "world_x": 0.0,
+    "world_z": 0.0,
+    "heading": 0.0
+  },
+  "source_id": "bd4a5e947f9cb9a219c9a0399f05043814365e431248ce44a6bf6ceb9b753e4e"
+}

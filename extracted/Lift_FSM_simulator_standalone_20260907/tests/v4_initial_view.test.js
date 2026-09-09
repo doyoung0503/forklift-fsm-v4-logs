@@ -19,6 +19,7 @@ test('startup draws grid, vehicle and pallet even when old server rejects option
   const nodes=new Map(),calls=[];
   const canvas=new Proxy({}, {get:(_,k)=>(...args)=>{calls.push([k,...args]);},set:()=>true});
   const context=vm.createContext({devicePixelRatio:1,Image:class{},LiftViewGeometry:geometry,
+    location:{search:''},URLSearchParams,
     document:{getElementById(id){
       if(!nodes.has(id))nodes.set(id,{dataset:{},getBoundingClientRect:()=>({width:720,height:720}),getContext:()=>canvas});
       return nodes.get(id);

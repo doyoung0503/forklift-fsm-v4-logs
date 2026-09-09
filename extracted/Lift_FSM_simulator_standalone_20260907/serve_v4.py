@@ -6,6 +6,8 @@ import csv
 import itertools
 import json
 import threading
+import time
+from datetime import datetime, timezone
 import webbrowser
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -16,8 +18,47 @@ from process_runtime import HERE, LOCK, Session, clean, fingerprint, replay_trac
 from controller_process import ControllerProcessError
 from serve_world import REGISTRY,protocol_info
 from camera_service import CAMERA
+from batched_session import BatchedSession
+from parallel_batch import JOBS
 
 SESSIONS = {}
+
+
+def background_clock():
+    """Advance live sessions independently of browser RAF/visibility."""
+    while True:
+        with LOCK:
+            for session in list(SESSIONS.values()):
+                if not getattr(session,'playing',False) or session.done:
+                    continue
+                target=session.play_sim+(time.perf_counter()-session.play_wall)*session.play_rate
+                if session.now < target:
+                    try:
+                        if hasattr(session,'step_batch'):
+                            session.step_batch(target)
+                        else:
+                            session.step()
+                        wall=time.perf_counter()
+                        if session.logger and (session.done or wall-getattr(session,'perf_wall',0)>=1):
+                            sample=dict(wall_utc=datetime.now(timezone.utc).isoformat(),
+                                sim_time_s=session.now,state=session.status['state'],
+                                clock_domain='server',server_elapsed_s=wall-session.play_wall,
+                                sim_since_play_s=session.now-session.play_sim,
+                                time_scale=session.play_rate,
+                                phase_totals=getattr(session,'phase_perf',{}),
+                                transport_totals=getattr(session,'transport_perf',{}))
+                            with (session.logger.directory/'run_server_performance.jsonl').open('a',encoding='utf8') as handle:
+                                handle.write(json.dumps(sample)+'\n')
+                            session.perf_wall=wall
+                    except Exception as error:
+                        session.playing=False
+                        session.background_error=str(error)
+                if session.done:
+                    session.playing=False
+        time.sleep(.001)
+
+
+threading.Thread(target=background_clock,daemon=True,name='simulation-clock').start()
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -83,17 +124,25 @@ class Handler(SimpleHTTPRequestHandler):
             if not isinstance(data,dict):
                 raise ValueError("Expected JSON object")
             route = urlsplit(self.path).path
+            if route.startswith('/api/batch/'):
+                self.reply(JOBS.request(route,data))
+                return
             if route == '/api/camera':
                 # Rendering neither advances the world nor samples model errors.
                 # Keep it outside the FSM lock and in its own GPU-owning process.
-                self.reply(CAMERA.render(data['frame'],data['options']))
+                started=time.perf_counter()
+                result=CAMERA.render(data['frame'],data['options'])
+                result['server_camera_ms']=(time.perf_counter()-started)*1000
+                self.reply(result)
                 return
             if route.startswith("/api/world/"):
                 self.reply(REGISTRY.request(route,data))
                 return
+            lock_start=time.perf_counter()
             with LOCK:
+                lock_wait_ms=(time.perf_counter()-lock_start)*1000
                 if route == "/api/session":
-                    session = Session(data.get("options"), data.get("overrides"),show_window=data.get('show_window',True))
+                    session = BatchedSession(data.get("options"), data.get("overrides"),show_window=data.get('show_window',True))
                     previous=SESSIONS.pop(data.get('replace_id'),None)
                     if previous is not None:
                         previous.close()
@@ -106,11 +155,59 @@ class Handler(SimpleHTTPRequestHandler):
                     session=SESSIONS.pop(data['id'])
                     session.close()
                     result=dict(closed=True)
+                elif route == '/api/play':
+                    session=SESSIONS[data['id']]
+                    rate=float(data.get('rate',1))
+                    if not 0 < rate <= 8:
+                        raise ValueError('Playback rate must be in (0,8]')
+                    session.play_sim=session.now
+                    session.play_wall=time.perf_counter()
+                    session.play_rate=rate
+                    session.playing=not session.done
+                    result=dict(playing=session.playing)
+                elif route == '/api/pause':
+                    session=SESSIONS[data['id']]
+                    session.playing=False
+                    result=dict(playing=False,t=session.now)
+                elif route == '/api/poll':
+                    session=SESSIONS[data['id']]
+                    if session.logger and data.get('display_samples'):
+                        with (session.logger.directory/'run_performance.jsonl').open('a',encoding='utf8') as handle:
+                            for sample in data['display_samples'][:100]:
+                                handle.write(json.dumps(dict(sample,wall_utc=datetime.now(timezone.utc).isoformat()),allow_nan=False)+'\n')
+                    cursor=int(data.get('cursor',0))
+                    if not 0 <= cursor <= len(session.frames):
+                        raise ValueError('Invalid frame cursor')
+                    frames=session.frames[cursor:cursor+600]
+                    next_cursor=cursor+len(frames)
+                    result=dict(frames=frames,cursor=next_cursor,server_lock_wait_ms=lock_wait_ms,
+                                done=session.done and next_cursor==len(session.frames))
+                    if getattr(session,'background_error',None):
+                        raise ValueError(session.background_error)
+                    if result['done']:
+                        result['report']={k:v for k,v in session.report().items() if k not in ('frames','trace','can_frames')}
                 elif route == '/api/present':
+                    started=time.perf_counter()
                     result=SESSIONS[data['id']].present(data['frame'],data['presentation_id'],
                         data.get('jpeg'),data.get('options'))
+                    result['server_lock_wait_ms']=lock_wait_ms
+                    result['server_present_ms']=(time.perf_counter()-started)*1000
+                elif route == '/api/performance':
+                    session=SESSIONS[data['id']]
+                    if session.logger is None:
+                        raise ValueError('Run logging has not started')
+                    record=dict(data['sample'],wall_utc=datetime.now(timezone.utc).isoformat())
+                    # Independent of the main logger: the final display arrives
+                    # after a completed run has closed its usual file handles.
+                    with (session.logger.directory/'run_performance.jsonl').open('a',encoding='utf-8') as handle:
+                        handle.write(json.dumps(record,ensure_ascii=False,allow_nan=False)+'\n')
+                    result=dict(saved=True)
                 elif route == "/api/step":
+                    started=time.perf_counter()
                     session = SESSIONS[data["id"]]
+                    if getattr(session,'playing',False):
+                        raise ValueError('Pause server playback before manual stepping')
+                    controller_before=session.controller_wall_ms
                     count = data.get("count",1)
                     if type(count) is not int or not 1 <= count <= 120:
                         raise ValueError("count must be an integer in [1,120]")
@@ -124,6 +221,8 @@ class Handler(SimpleHTTPRequestHandler):
                         if session.done or (deadline is not None and session.now>=deadline):
                             break
                     result = dict(frames=frames,done=session.done)
+                    result['server_step_ms']=(time.perf_counter()-started)*1000
+                    result['controller_tick_ms']=session.controller_wall_ms-controller_before
                     if session.done:
                         result["report"] = {k:v for k,v in session.report().items() if k not in ("frames","trace","can_frames")}
                 elif route == "/api/report":

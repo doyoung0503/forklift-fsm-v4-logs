@@ -7,7 +7,7 @@ import math
 from . import config as cfg
 
 
-def drive_seconds(distance_m: float) -> float:
+def drive_seconds(distance_m: float, *, apply_max_limit: bool = True) -> float:
     """Shared forward/backward distance-to-time fit."""
 
     effective = max(
@@ -25,7 +25,9 @@ def drive_seconds(distance_m: float) -> float:
             cfg.FWD_T0_SEC + accel_time
             + (effective - accel_distance) / max_speed
         )
-    return max(cfg.FWD_COMMAND_MIN_SEC, min(cfg.FWD_COMMAND_MAX_SEC, seconds))
+    if apply_max_limit:
+        seconds = min(cfg.FWD_COMMAND_MAX_SEC, seconds)
+    return max(cfg.FWD_COMMAND_MIN_SEC, seconds)
 
 
 def forward_seconds(distance_m: float) -> float:

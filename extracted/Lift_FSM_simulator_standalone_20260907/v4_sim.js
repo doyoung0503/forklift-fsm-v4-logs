@@ -46,41 +46,52 @@ function controls() {
   ["runBtn","stepBtn","resetBtn","fastBtn","applyScenarioBtn","applyConstantsBtn","clearConstantsBtn",
    "runBatchBtn","runGridBtn","replayCheckBtn","downloadTrajectoryCsvBtn","downloadTrajectoryJsonBtn"]
     .forEach(id => $(id).disabled = app.busy || !app.info || !!app.externalWorld);
-  $("runBtn").textContent = app.running ? "Pause" : "Run";
+  $("runBtn").textContent = app.running ? "일시정지" : "실행";
   // Pause remains available while a camera frame/native ACK is in flight.
   $("runBtn").disabled = (!app.running && app.busy) || !app.info || !!app.externalWorld;
   $("downloadBatchBtn").disabled = !app.batches.length;
   $("downloadBatchJsonBtn").disabled = !app.batches.length && !app.grids.length;
 }
-function toggleRun() {
+async function toggleRun() {
+  if(app.serverClock && !app.report) {
+    const desired=!app.running;
+    if(desired&&app.busy) return;
+    try {
+      await api(desired?'play':'pause',{id:app.session,rate:Number($("timeScale").value)});
+      app.running=desired;app.lastPerfWall=null;app.lastWall=performance.now();controls();
+    } catch(error) {$("connectionStatus").textContent=error.message;}
+    return;
+  }
   if(app.running) {app.running=false;controls();return;}
   if(app.busy) return;
   if(app.report&&app.cursor>=app.frames.length-1) {app.cursor=0;$("replaySlider").value="0";}
-  app.running=true;app.lastWall=performance.now();controls();
+  app.running=true;app.lastPerfWall=null;app.lastWall=performance.now();controls();
 }
 async function exclusive(fn) {
   if (app.busy) return;
   app.running=false; app.busy=true; controls();
-  try { await fn(); }
+  try { if(app.serverClock&&app.session&&!app.report) await api('pause',{id:app.session}); await fn(); }
   catch (error) { $("connectionStatus").textContent=error.message; }
   finally {app.busy=false;controls();}
 }
 async function reset() {
   LiftCameraView.reset();
   const selectedOptions=options(),selectedOverrides=overrides();
+  app.lastPerfWall=null;
   const result=await api("session",{options:selectedOptions,overrides:selectedOverrides,replace_id:app.session});
   if(result.info) applyInfo(result.info);
   app.activeOptions=selectedOptions;app.activeConfig={...app.info.config,...selectedOverrides};
   app.session=result.id;app.frames=[];app.report=null;app.cursor=0;
+  app.serverClock=true;app.serverCursor=0;app.displaySamples=[];app.lastPerfWall=null;
   // Initial placement has no running clock to synchronize. Show it even while
   // the 3D renderer/native window is starting up.
   app.displayFrame=result.frame;
   draw(result.frame);
   await render(result.frame);
-  $("resultReadout").textContent="실행 전 · 현재 입력값을 적용했습니다.";
+  $("resultReadout").textContent="실행 대기";
   $("resultReadout").className="result-box";
-  $("connectionStatus").textContent=`별도 FSM 프로세스 ${result.frame.controller_pid} · 카메라/추론 미실행 · 가상 CAN`;
-  $("replayCheckStatus").textContent="실행 후 원본 FSM에 관측을 다시 입력해 비교할 수 있습니다.";
+  $("connectionStatus").textContent=`연결됨`;
+  $("replayCheckStatus").textContent="검증 대기";
   $("logBox").textContent="PRECHECK";
   $("replaySlider").max="0";$("replaySlider").value="0";
 }
@@ -121,8 +132,23 @@ async function step(count=1,duration=null) {
     } else app.cursor=Math.min(app.frames.length-1,app.cursor+count);
     $("replaySlider").value=String(app.cursor);await render(app.frames[app.cursor]);return;
   }
+  const started=performance.now(),simBefore=app.displayFrame?.t ?? 0;
   const result=await api("step",{id:app.session,count,...(duration==null?{}:{duration})});
+  if(app.serverClock) app.serverCursor+=result.frames.length;
+  const stepMs=performance.now()-started;
+  app.lastRenderTiming=null;
   await appendFrames(result.frames);
+  const finished=performance.now(),last=result.frames.at(-1);
+  const sample={browser_mono_ms:finished,sim_time_s:last.t,state:last.state,command:last.command,
+    sim_advance_s:last.t-simBefore,cycle_ms:finished-started,
+    interval_ms:app.lastPerfWall==null?null:finished-app.lastPerfWall,
+    time_scale:Number($("timeScale").value),document_hidden:document.hidden,
+    frame_count:app.frames.length,step_request_ms:stepMs,server_step_ms:result.server_step_ms,
+    controller_tick_ms:result.controller_tick_ms,
+    ...app.lastRenderTiming};
+  app.lastPerfWall=finished;
+  try {await api('performance',{id:app.session,sample});}
+  catch(error) {$("connectionStatus").textContent=`성능 로그 저장 실패: ${error.message}`;}
   if(result.done) {app.running=false;showReport(result.report);controls();}
 }
 async function fullReport() {
@@ -142,13 +168,14 @@ const csv = rows => "\uFEFF"+rows.map(row=>row.map(v=>`"${String(v??"").replaceA
 function renderLogging(log) {
   const label={waiting:'실행 시작 시 자동 저장',recording:'파일 기록 중',closed:'저장 완료',error:'로그 저장 오류',disabled:'자동 저장 꺼짐'};
   $("runLogStatus").textContent=log?`${label[log.status]||log.status}${log.error?' · '+log.error:''}`:'자동 저장 정보가 없는 실행 기록입니다.';
-  $("runLogPath").textContent=log?.directory||'Run / Step / 끝까지 계산을 실행하면 런별 폴더가 생성됩니다.';
+  $("runLogPath").textContent=log?.directory||'';
   const count=log?.counts;
   $("runLogCounts").textContent=count?`CAN ${count.can_frames??0} · 모델 결과 ${count.model_results??0} · FSM 입력 ${count.fsm_steps??0} · 상태 기록 ${count.transitions??0} · 실제 위치 ${count.relative_poses??0}`:'';
 }
 function render(frame) {
   if(!frame) return Promise.resolve(false);
-  return LiftCameraView.update(frame,app.activeOptions||options(),(shown,ack)=>{
+  return LiftCameraView.update(frame,app.activeOptions||options(),(shown,ack,timing)=>{
+    app.lastRenderTiming=timing;
     app.displayFrame=shown;app.lastFrame=shown;
     app.displayCursor=app.frames.indexOf(shown);
     paintFrame(shown,ack);
@@ -159,8 +186,6 @@ function render(frame) {
 }
 function paintFrame(frame,ack) {
   renderLogging(app.report?.logging||frame.logging);
-  $("safetyPill").textContent=frame.collision?"COLLISION":"FORK CLEAR";
-  $("safetyPill").className=`safety-pill ${frame.collision?"collision":""}`;
   $("simClock").textContent=`t = ${fmt(frame.t,2)} s`;
   $("replayClock").textContent=`${app.frames.length?(app.displayCursor??app.cursor)+1:0} / ${app.frames.length}`;
   draw(frame);
@@ -273,7 +298,7 @@ function values(text) {
 }
 function conditions() {
   const repeats=Number($("batchRepeats").value);
-  if(!Number.isInteger(repeats)||repeats<1||repeats>20) throw new Error("반복 횟수는 1~20의 정수입니다.");
+  if(!Number.isInteger(repeats)||repeats<1||repeats>1000) throw new Error("반복 횟수는 1~20의 정수입니다.");
   const result=[];
   for(const x of values($("batchX").value)) for(const z of values($("batchZ").value)) for(const yaw of values($("batchYaw").value))
     for(let repeat=0;repeat<repeats;repeat++) result.push({x,z,yaw,repeat});
@@ -282,7 +307,7 @@ function conditions() {
 }
 function batchRow(report) {
   const row=document.createElement("tr"),o=report.options;
-  [`${fmt(o.x,2)} / ${fmt(o.z,2)} / ${fmt(o.yaw,1)}°`,report.state,reasonText(report)].forEach(text=>{const cell=document.createElement("td");cell.textContent=text;row.append(cell);});
+  [`${fmt(o.x,2)} / ${fmt(o.z,2)} / ${fmt(o.yaw,1)}° · 시드 ${o.seed}`,report.state,reasonText(report),`${fmt(report.elapsed,2)} / ${fmt(report.compute_seconds,2)} s`,`${report.collision?"충돌":"없음"} / 잔여 ${fmt(report.true_remaining)} m`].forEach(text=>{const cell=document.createElement("td");cell.textContent=text;row.append(cell);});
   const cell=document.createElement("td"),button=document.createElement("button");button.textContent="재현";
   button.onclick=()=>exclusive(async()=>{
     await releaseSession();
@@ -299,18 +324,30 @@ function updateBatchSummary(total) {
   controls();
 }
 async function runBatch() {
+  const poses=conditions(),base=options(),config=overrides();
+  const explicit=$("batchSeeds").value.trim();
+  const seeds=explicit?values(explicit):null;
+  if(seeds&&seeds.some(s=>!Number.isSafeInteger(s)||s<0)) throw new Error("시드는 0 이상의 정수로 입력하세요.");
+  const unique=poses.filter(c=>c.repeat===0);
+  const cases=seeds?unique.flatMap(({repeat,...pose})=>seeds.map(seed=>({options:{...base,...pose,placement_mode:'relative',seed},overrides:config}))):
+    poses.map(({repeat,...pose})=>({options:{...base,...pose,placement_mode:'relative',seed:base.seed+repeat},overrides:config}));
+  if(cases.length>1000) throw new Error("최대 1,000건까지 실행할 수 있어요.");
   await releaseSession();
-  const cases=conditions(),base=options(),config=overrides();
   app.batches=[];app.cancel=false;$("batchResults").replaceChildren();$("cancelBatchBtn").disabled=false;
   try {
-    for(const c of cases) {
-      if(app.cancel) break;
-      const {repeat,...pose}=c;
-      const report=await api("run",{options:{...base,...pose,placement_mode:"relative",seed:base.seed+repeat},overrides:config});
-      app.batches.push(report);batchRow(report);updateBatchSummary(cases.length);
+    const job=await api('batch/start',{cases,workers:Number($("batchWorkers").value)});
+    let cursor=0,cancelSent=false;
+    while(true) {
+      if(app.cancel&&!cancelSent) {await api('batch/cancel',{id:job.id});cancelSent=true;}
+      const state=await api('batch/status',{id:job.id,cursor});cursor=state.cursor;
+      for(const report of state.results) {app.batches.push(report);batchRow(report);}
+      updateBatchSummary(state.total);
+      $("batchSummary").textContent+=`\n${state.workers}개 병렬 · ${({running:"진행 중",completed:"완료",cancelled:"중단",error:"오류"})[state.status]||state.status} · ${state.seconds.toFixed(1)}초`;
+      $("batchGroups").textContent=state.groups.map(g=>`X ${g.x} / Z ${g.z} / 각도 ${g.yaw}: ${g.passed}/${g.completed} 성공 (${(100*g.passed/g.completed).toFixed(1)}%)`).join('\n');
+      if(state.status!=='running') {if(state.error) throw new Error(state.error);break;}
+      await new Promise(resolve=>setTimeout(resolve,500));
     }
   } finally {$("cancelBatchBtn").disabled=true;}
-  if(app.cancel) $("batchSummary").textContent+=" · 사용자가 중단했습니다.";
 }
 async function gridSearch() {
   await releaseSession();
@@ -365,11 +402,44 @@ function startVideo() {
   recorder.onstop=()=>{app.video=new Blob(chunks,{type:recorder.mimeType});stream.getTracks().forEach(t=>t.stop());app.recording=null;$("downloadVideoBtn").disabled=false;$("startVideoBtn").disabled=false;$("videoStatus").textContent="녹화 완료";};
   app.recording={canvas,recorder};recorder.start();
   if(app.displayFrame) drawRecording(app.displayFrame);
-  $("startVideoBtn").disabled=true;$("stopVideoBtn").disabled=false;$("videoStatus").textContent="녹화 중 · Run 또는 궤적 재생으로 진행하세요.";
+  $("startVideoBtn").disabled=true;$("stopVideoBtn").disabled=false;$("videoStatus").textContent="녹화 중";
 }
 
 async function animate(now) {
   requestAnimationFrame(animate);
+  if(app.serverClock&&!app.report&&!app.externalWorld) {
+    if(!app.running||app.busy||now-app.lastWall<100) return;
+    app.busy=true;app.lastWall=now;
+    try {
+      const started=performance.now(),simBefore=app.displayFrame?.t??0;
+      const result=await api('poll',{id:app.session,cursor:app.serverCursor,display_samples:app.displaySamples||[]});
+      app.displaySamples=[];
+      const pollMs=performance.now()-started;
+      app.serverCursor=result.cursor;
+      if(result.frames.length) {
+        app.lastRenderTiming=null;
+        await appendFrames(result.frames);
+        const finished=performance.now(),last=app.displayFrame;
+        if(last) {
+          app.displaySamples.push({browser_mono_ms:finished,display_wall_utc:new Date().toISOString(),
+            clock_domain:'server_display',sim_time_s:last.t,state:last.state,command:last.command,
+            sim_advance_s:last.t-simBefore,cycle_ms:finished-started,poll_request_ms:pollMs,
+            poll_lock_wait_ms:result.server_lock_wait_ms,
+            interval_ms:app.lastPerfWall==null?null:finished-app.lastPerfWall,
+            document_hidden:document.hidden,time_scale:Number($("timeScale").value),
+            frame_count:app.frames.length,...app.lastRenderTiming});
+          app.lastPerfWall=finished;
+        }
+      }
+      if(result.done) {
+        app.running=false;showReport(result.report);
+        for(const sample of app.displaySamples) await api('performance',{id:app.session,sample});
+        app.displaySamples=[];
+      }
+    } catch(error) {app.running=false;$("connectionStatus").textContent=error.message;}
+    finally {app.busy=false;controls();}
+    return;
+  }
   if(app.externalWorld&&!app.busy&&now-app.lastWall>200) {
     app.lastWall=now;app.busy=true;
     try {
@@ -386,13 +456,21 @@ async function animate(now) {
     return;
   }
   if(app.externalWorld) return;
-  if(!app.running||app.busy) {app.lastWall=now;return;}
+  if(!app.running) {app.lastWall=now;return;}
+  // Preserve elapsed wall time while a step/render/ACK is in flight.
+  if(app.busy) return;
   const rate=Number($("timeScale").value),hz=app.activeOptions?.hz||Number($("hz").value);
   const count=Math.min(120,Math.floor((now-app.lastWall)*rate*hz/1000));
   if(count<1) return;
   const duration=Math.min(1,(now-app.lastWall)*rate/1000);
-  app.lastWall=now;app.busy=true;
-  try {await step(count,duration);} catch(error) {app.running=false;$("connectionStatus").textContent=error.message;}
+  const before=app.displayFrame?.t ?? 0;
+  app.busy=true;
+  try {
+    await step(count,duration);
+    // Charge only actual simulation progress. The server can return less
+    // than requested at its tick cap; retain the rest for the next batch.
+    if(app.running) app.lastWall+=Math.max(0,(app.displayFrame?.t ?? before)-before)*1000/rate;
+  } catch(error) {app.running=false;$("connectionStatus").textContent=error.message;}
   finally {app.busy=false;controls();}
 }
 function bind() {
@@ -414,10 +492,16 @@ function bind() {
   $("stepBtn").onclick=()=>exclusive(()=>step());
   ["resetBtn","applyScenarioBtn","applyConstantsBtn"].forEach(id=>$(id).onclick=()=>exclusive(reset));
   $("clearConstantsBtn").onclick=()=>exclusive(async()=>{setOverrides({});await reset();});
-  $("fastBtn").onclick=()=>exclusive(async()=>{ await releaseSession();$("connectionStatus").textContent="main_rec_v4.py 시뮬레이션 모드에서 계산하고 있습니다.";await loadReport(await api("run",{options:options(),overrides:overrides(),capture:true,show_window:true}),true);$("connectionStatus").textContent="계산 완료 · FSM 창에서 결과 확인 / 슬라이더 또는 Run으로 재생하세요.";});
+  $("fastBtn").onclick=()=>exclusive(async()=>{ await releaseSession();$("connectionStatus").textContent="계산 중";await loadReport(await api("run",{options:options(),overrides:overrides(),capture:true,show_window:true}),true);$("connectionStatus").textContent="계산 완료";});
   $("runBatchBtn").onclick=()=>exclusive(runBatch);$("runGridBtn").onclick=()=>exclusive(gridSearch);
   $("cancelBatchBtn").onclick=()=>{app.cancel=true;$("cancelBatchBtn").disabled=true;};
-  $("replaySlider").oninput=()=>{app.running=false;app.cursor=Number($("replaySlider").value);render(app.frames[app.cursor]);controls();};
+  $("replaySlider").oninput=()=>exclusive(async()=>{app.cursor=Number($("replaySlider").value);await render(app.frames[app.cursor]);});
+  $("timeScale").onchange=async()=>{
+    if(app.serverClock&&app.running&&!app.report) {
+      try {await api('play',{id:app.session,rate:Number($("timeScale").value)});}
+      catch(error) {$("connectionStatus").textContent=error.message;}
+    }
+  };
   $("downloadTrajectoryJsonBtn").onclick=()=>exclusive(async()=>download(JSON.stringify(await fullReport(),null,2),"application/json","fsm_v4_run.json"));
   $("downloadTrajectoryCsvBtn").onclick=()=>exclusive(async()=>{
     const r=await fullReport();download(csv([["t_s","state","command","truth_x_m","truth_z_m","truth_yaw_deg","world_x_m","world_z_m","detected","collision","model_sequence","model_fps","model_x_m","model_y_m","model_z_m","model_yaw_deg","error_x_m","error_y_m","error_z_m","error_yaw_deg"],...r.frames.map(f=>[f.t,f.state,f.command,f.truth.x,f.truth.z,f.truth.yaw,f.truth.world_x,f.truth.world_z,f.observation.detected,!!f.collision,f.observation.sequence,f.observation.result_fps,f.observation.x,f.observation.y,f.observation.z,f.observation.yaw,...["x","y","z","yaw"].map(k=>f.observation.sampled_error?.[k])])]),"text/csv","fsm_v4_trajectory.csv");
@@ -473,6 +557,9 @@ function applyInfo(info) {
 }
 async function init() {
   try {
+    const presetText=new URLSearchParams(location.search).get('preset');
+    const preset=presetText ? JSON.parse(presetText) : null;
+    if(preset) setOptions(preset.options || {});
     // This is a placement preview, not an FSM result. It needs no server/model.
     const initialOptions=options();
     app.displayFrame={t:0,truth:LiftViewGeometry.initialTruth(initialOptions),collision:null};
@@ -481,6 +568,7 @@ async function init() {
     bind();
     applyInfo(await api("info"));
     app.info.grid_fields.forEach(key=>{const label=document.createElement("label");label.textContent=key;const input=document.createElement("input");input.type="number";input.step="any";input.dataset.config=key;input.placeholder=app.info.config[key];label.append(input);$("constantGrid").append(label);});
+    if(preset) setOverrides(preset.overrides || {});
     await reset();controls();requestAnimationFrame(animate);
   } catch(error) {$("connectionStatus").textContent=`초기 배치 미리보기 · 연결 실패: ${error.message} · 기존 서버를 종료하고 run_v4_simulator.bat를 다시 실행하세요.`;}
 }

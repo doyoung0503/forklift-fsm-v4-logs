@@ -1,0 +1,40 @@
+{
+  "old_simulator_id": "17e5da5b2a80eb4b1b85707d20e85cb148c8fcd105dba94c2b2d4820174d385e",
+  "new_simulator_id": "e30cfc9735b4c1391c584dd5161984b745cceefc1f728e5b5049e8220584222f",
+  "changed_files": [
+    "process_runtime.py",
+    "serve_v4.py"
+  ],
+  "added_manifest_files": [
+    "batch_worker.py",
+    "batched_session.py"
+  ],
+  "session_source_byte_equivalent_after_manifest_removal": true,
+  "reason": "Direct Session does not import serve_v4, batched_session, or batch_worker",
+  "new_simulator_files": {
+    "process_runtime.py": "983a3121b480e41db5eb4c838fe709f8c6004431ae819cac2e64b7b7c0caf500",
+    "controller_process.py": "805b48f0bb1437ee3cb621f1e139266066e22ab8e74dd8c6940142879929488c",
+    "fsm_worker.py": "1324c5cf6cc27b8365ba1b6e64d54b29a45a66c4314720654c05a6ed6d31d352",
+    "current_fsm_driver.py": "1c9533e9f9d75ad26a162d51d7137386169999261843b512a4fff24cbbc4563e",
+    "batched_session.py": "fb664290635f55abcb4da09a830b65339906178cd3b71aec0624b9da8a7287d4",
+    "batch_worker.py": "cfd7464879c2c3fef299e8fb33dce2d25c51e8e88ec893967f2902d8b5fe62d2",
+    "v4_runtime.py": "08bc133160ea5bcf9e1129e47650697feb635058ce375e4aeb3153ff7664c72b",
+    "current_can_adapter.py": "7f7f6c25910cfd08e092ef6ee62e935702c16441de7ee9df0317b13fed97955b",
+    "serve_v4.py": "806f41d1da50c412fbfff5658cc5e99ea51d05e2ea9cb6580435b4d64ebec094",
+    "serve_world.py": "18b7b9e41b2a0a16a689abd368d3cdd3781ccd2016d3a5c7c28db012d5a33e9a",
+    "protocol_client.py": "aabe0c2f40d9598692d54d4eeb060b70338b2ba558f607c6df72b5c3bdf03e0f",
+    "protocol_world.py": "896b51c2a1a721ec9fd7f9d01a45f70033150a5c9c87fb994b5234997b1da58e",
+    "model_result_model.py": "f860208bab6c85fd1cafe754e8a3597f7054a1473db6979d50d494237c4cbd57",
+    "vehicle_profile.json": "cf77886fd62d9d8c8f29e98160bf2acd611bc2b0cf9fe7c8366df82af291ca00",
+    "view_geometry.js": "045ce5b004f31254fc3d237caa32810144122e1e5ae1b43b14b88ebe648f564b",
+    "v4_sim.js": "c3bd3c505e0daa760f9b218ba58f7011221b989727983b3ca4a6badeae8be704",
+    "run_logging.py": "35c0922a97887dc46b39ee334875ac06ca017a4ed76886951fed4e210d3c4417",
+    "fsm_window.py": "b3d016aa8b2921cf68862a9858133945c35c767ca74101a6f219bd1ec7d478d9",
+    "camera_view.js": "7190307805efec26186e7cdfc7200e3576e39baeca29c251d6912ccc2eb73cdc",
+    "camera_service.py": "952ffa978336f0e43032ff8117def196d88b899faccd6ae0420a9e89ffe44672",
+    "camera_worker.py": "871c3b4280e22c47838091d940410b3f372c85c5a4a582ef88802d309be0abc5",
+    "simulation_camera.py": "f91d5fc580b5c6b57d407c5aa9987ed1edb57322bff5c9b9cee4dfaae42d5ab3",
+    "camera_preview.py": "ffdbe10f17143fdb1cc667b95e8b096d5102b8edebcc7acb5aee0dad8950bf39",
+    "runtime_camera_overlay.py": "efea189f750ba0b99aa1fda71da0aac1b7cdeee996094b42b0521d41aa45b13b"
+  }
+}

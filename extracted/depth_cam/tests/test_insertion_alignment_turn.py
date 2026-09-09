@@ -55,12 +55,19 @@ class InsertionTurnTests(unittest.TestCase):
         f = self.fsm()
         f._near_insertion_step(pose, None, [])
         f._begin_rotation.assert_not_called()
-        f._fail.assert_called_once()
+        # Replanning may inspect the remaining approach room, but this pose
+        # still cannot bypass the planner's visibility or insertion checks.
+        f._set_state.assert_called_once_with('STAGING_PLAN')
+        f._fail.assert_not_called()
+        self.assertTrue(f._near_approach_active)
 
     def fsm(self):
         f = object.__new__(CalibrationFSMV4)
         f._insertion_alignment_attempts = 0
         f._insertion_fine_started_mono = None
+        f._forward_used_m = 0.
+        f._correction_cycles = 0
+        f._alignment_started_mono = None
         f.state = 'FINAL_POSE_LOCK'
         f._begin_rotation = Mock(return_value=True)
         f._set_state = Mock()

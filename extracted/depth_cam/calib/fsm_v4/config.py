@@ -25,16 +25,24 @@ from .endpoint_response import load_selected_endpoint, validate_runtime_inferenc
 # Rotation centre is expressed from the camera optical centre in vehicle X/Z.
 # ---------------------------------------------------------------------------
 COARSE_IMU_ENABLED = True
-COARSE_YAW_TRIGGER_DEG = 25.0
+# Recalibrated with TX-timed rotation and near-range replanning (2026-09-09).
+# D = -rot_z_pallet_m; trigger when abs(rot_x_pallet_m) exceeds the limit.
+# 80% of the sampled correction-capacity lower envelope, rounded down.
+COARSE_LATERAL_BASE_M = 0.10
+COARSE_LATERAL_GAIN = 0.190
+COARSE_LATERAL_CALIBRATION_MIN_DISTANCE_M = 3.0
+COARSE_LATERAL_CALIBRATION_MAX_DISTANCE_M = 5.0
 COARSE_IMU_SIGN = 1.0  # gyro Y: positive right, as in the packaged IMU diagnostic
 COARSE_IMU_MAX_AGE_SEC = 0.25
 COARSE_COMMAND_LEASE_SEC = 0.30
 COARSE_ROTATION_TIMEOUT_SEC = 30.0
 COARSE_TOTAL_TIMEOUT_SEC = 100.0
 COARSE_SETTLE_SEC = 1.5
+COARSE_IMU_POST_STOP_DELAY_SEC = 2.0  # exclude immediate post-stop samples
 COARSE_STABLE_RATE_DEG_S = 0.5
 COARSE_SETTLE_TIMEOUT_SEC = 5.0
-COARSE_MAX_LATERAL_M = 3.0
+COARSE_MAX_LATERAL_M = 5.0
+COARSE_TRAVEL_LIMITS_ENABLED = False  # optional distance / fitted FWD duration caps
 COARSE_MIN_LATERAL_M = 0.02
 COARSE_DRIVE_HEADING_TOL_DEG = 5.0
 COARSE_REACQUIRE_TIMEOUT_SEC = 10.0
@@ -178,6 +186,7 @@ ROT_COMMAND_TIMEOUT_MARGIN_SEC = 1.00      # fitted hold + margin = hard timeout
 # commanded for under 2.5 s, so that is where the evidence ends; larger turns
 # are split into several commands by the replan loop instead.
 ROT_MAX_COMMAND_HOLD_SEC = 2.50
+ROT_TX_TIMED_STOP_ENABLED = True  # CAN owner schedules STOP independently of vision.
 
 # Rotation centre distance behind the camera, used to convert the fitted
 # heading response into front-face-bearing degrees for FACE/RECENTER.
@@ -258,6 +267,9 @@ FWD_COMMAND_MAX_SEC = 15.0
 FWD_TIMEOUT_MARGIN_SEC = 1.00          # fitted endpoint 이후 hard-timeout 여유
 FWD_RELIABLE_MIN_DISTANCE_M = 0.10     # PROVISIONAL
 FWD_MACRO_MAX_DISTANCE_M = 0.80        # PROVISIONAL
+FWD_ALIGNED_MAX_DISTANCE_M = 1.50
+FWD_ALIGNED_LATERAL_FULL_M = 0.10
+FWD_ALIGNED_LATERAL_BASE_M = 0.20
 FWD_MAX_TOTAL_CORRECTION_M = 5.00
 FWD_STOP_LOOKAHEAD_SEC = 0.45           # PROVISIONAL
 FWD_COAST_ALLOWANCE_M = 0.04            # PROVISIONAL
@@ -374,6 +386,7 @@ FORK_WIDTH_M = 0.115  # User-measured width of ONE fork (2026-09-08); None block
 INSERT_ALIGNMENT_MAX_CAMERA_Z_M = 2.20  # PnP selected front-centre camera Z
 INSERT_ALIGNMENT_MAX_CORRECTIONS = 3
 INSERT_FINE_MIN_TURN_DEG = 0.50  # Final insertion alignment only; provisional micro-command floor
+INSERT_TURN_REFINE_RESOLUTION_DEG = 0.05  # fallback interval width, not minimum executed angle
 INSERT_FINE_TIMEOUT_SEC = 120.0  # Includes command, STOP settling and rechecks
 INSERT_FINE_MIN_ACTIVE_SEC = 0.02  # Reject near-zero denominators in fine-turn adaptation
 FORK_OUTER_SPAN_M = 0.60
@@ -517,6 +530,9 @@ class V4ConfigSnapshot:
     forward_timeout_margin_sec: float = FWD_TIMEOUT_MARGIN_SEC
     forward_reliable_min_distance_m: float = FWD_RELIABLE_MIN_DISTANCE_M
     forward_macro_max_distance_m: float = FWD_MACRO_MAX_DISTANCE_M
+    forward_aligned_max_distance_m: float = FWD_ALIGNED_MAX_DISTANCE_M
+    forward_aligned_lateral_full_m: float = FWD_ALIGNED_LATERAL_FULL_M
+    forward_aligned_lateral_base_m: float = FWD_ALIGNED_LATERAL_BASE_M
     forward_predictive_speed_multiplier: float = FWD_PREDICTIVE_SPEED_MULTIPLIER
     forward_predictive_max_advance_m: float = FWD_PREDICTIVE_MAX_ADVANCE_M
     forward_predictive_min_progress_ratio: float = (
@@ -548,6 +564,7 @@ class V4ConfigSnapshot:
     fork_outer_span_m: float = FORK_OUTER_SPAN_M
     auto_insert_enabled: bool = AUTO_INSERT_ENABLED
     insertion_fine_min_turn_deg: float = INSERT_FINE_MIN_TURN_DEG
+    insertion_turn_refine_resolution_deg: float = INSERT_TURN_REFINE_RESOLUTION_DEG
     insertion_fine_timeout_sec: float = INSERT_FINE_TIMEOUT_SEC
 
 
@@ -562,8 +579,17 @@ def validate() -> None:
     """Fail early on internally inconsistent edits."""
 
     errors = []
-    if not 0 < COARSE_YAW_TRIGGER_DEG < 90 or COARSE_IMU_SIGN not in (-1., 1.):
-        errors.append("invalid coarse yaw threshold or IMU sign")
+    if COARSE_IMU_SIGN not in (-1., 1.):
+        errors.append("invalid coarse IMU sign")
+    if (not all(math.isfinite(value) for value in (
+            COARSE_LATERAL_BASE_M, COARSE_LATERAL_GAIN,
+            COARSE_LATERAL_CALIBRATION_MIN_DISTANCE_M,
+            COARSE_LATERAL_CALIBRATION_MAX_DISTANCE_M))
+            or COARSE_LATERAL_BASE_M < COARSE_MIN_LATERAL_M
+            or COARSE_LATERAL_GAIN <= 0.
+            or not STAGING_DISTANCE_M < COARSE_LATERAL_CALIBRATION_MIN_DISTANCE_M
+            <= COARSE_LATERAL_CALIBRATION_MAX_DISTANCE_M):
+        errors.append("invalid coarse lateral threshold calibration")
     if not 0 < COARSE_IMU_MAX_AGE_SEC <= COARSE_COMMAND_LEASE_SEC <= 1.0:
         errors.append("invalid coarse IMU freshness / command lease")
     if not 0 < COARSE_MIN_LATERAL_M < COARSE_MAX_LATERAL_M:
@@ -639,6 +665,10 @@ def validate() -> None:
         previous_end = end
     if FWD_RELIABLE_MIN_DISTANCE_M > FWD_MACRO_MAX_DISTANCE_M:
         errors.append("forward reliable minimum exceeds macro maximum")
+    if not FWD_MACRO_MAX_DISTANCE_M <= FWD_ALIGNED_MAX_DISTANCE_M < float("inf"):
+        errors.append("aligned forward maximum must be finite and >= base maximum")
+    if not 0.0 <= FWD_ALIGNED_LATERAL_FULL_M < FWD_ALIGNED_LATERAL_BASE_M < float("inf"):
+        errors.append("aligned lateral thresholds must be finite and ordered")
     if PALLET_FRONT_VISIBILITY_WIDTH_M <= 0.0:
         errors.append("pallet visibility width must be positive")
     if VISIBILITY_TURN_SEARCH_STEP_DEG <= 0.0:
@@ -655,6 +685,10 @@ def validate() -> None:
         errors.append("forward predictive maximum advance is out of range")
     if not 0.0 <= FWD_PREDICTIVE_MIN_PROGRESS_RATIO <= 1.0:
         errors.append("forward predictive minimum progress ratio must be in [0, 1]")
+    if not (math.isfinite(INSERT_TURN_REFINE_RESOLUTION_DEG)
+            and 0.0 < INSERT_TURN_REFINE_RESOLUTION_DEG
+            < min(VISIBILITY_TURN_SEARCH_STEP_DEG, INSERT_FINE_MIN_TURN_DEG)):
+        errors.append("invalid insertion turn refinement resolution")
     if not 0.0 < INSERT_FINE_MIN_TURN_DEG < ROT_MIN_COMMANDABLE_ANGLE_DEG:
         errors.append("fine insertion minimum must be positive and below normal rotation minimum")
     if not 0.0 < INSERT_FINE_TIMEOUT_SEC <= 120.0:

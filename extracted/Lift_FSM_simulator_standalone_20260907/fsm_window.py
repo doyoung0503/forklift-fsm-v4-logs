@@ -6,13 +6,16 @@ from types import SimpleNamespace
 
 
 class FSMWindow:
-    def __init__(self):
+    def __init__(self, *, offscreen=False):
         import cv2
         import numpy as np
         from ui.diagram_v4 import draw_fsm_v4_diagram_panel
         self.cv2,self.np,self.diagram=cv2,np,draw_fsm_v4_diagram_panel
         self.title=f'[SIMULATION] main_rec_v4.py | FSM PID {os.getpid()} | Virtual CAN'
         self.closed=False
+        self.offscreen=offscreen
+        self.last_image=None
+        self.next_event_pump=0.
         self.last_draw=0.
         self.last_key=None
         self.camera_renderer=None
@@ -24,8 +27,9 @@ class FSMWindow:
         self.camera_error=None
         self.camera_requested_time=None
         self.last_render_args=None
-        cv2.namedWindow(self.title,cv2.WINDOW_NORMAL)
-        cv2.resizeWindow(self.title,1500,720)
+        if not offscreen:
+            cv2.namedWindow(self.title,cv2.WINDOW_NORMAL)
+            cv2.resizeWindow(self.title,1500,720)
 
     def render_snapshot(self,frame,options,config,overrides,jpeg=None):
         """Display an immutable recorded frame; never step or mutate the FSM."""
@@ -42,7 +46,7 @@ class FSMWindow:
             [frame['can']],dict(truth=frame['truth'],options=options,config=config),
             synchronized=True,camera_image=image)
         self.last_render_args=None
-        self.pump()
+        self.pump(force=True)  # Flush this image before acknowledging synchronized display.
 
     def render(self,driver,packet,now,lifecycle,can_frames,scene=None,*,synchronized=False,camera_image=None):
         if self.closed:
@@ -123,7 +127,9 @@ class FSMWindow:
                 cv.putText(camera_panel,str(error)[:85],(12,70),cv.FONT_HERSHEY_SIMPLEX,.4,(100,140,255),1)
         else:
             cv.putText(camera_panel,'Waiting for simulator world pose',(20,40),cv.FONT_HERSHEY_SIMPLEX,.6,(220,230,240),1)
-        cv.imshow(self.title,np.hstack([camera_panel,panel,diagram]))
+        self.last_image=np.hstack([camera_panel,panel,diagram])
+        if not self.offscreen:
+            cv.imshow(self.title,self.last_image)
 
     def _render_camera(self,frame,scene):
         # The same background thread owns the GL context for its whole life.
@@ -132,9 +138,16 @@ class FSMWindow:
             self.camera_renderer=SimulationCamera()
         return self.camera_renderer.render(frame,scene['options'],scene['config'])
 
-    def pump(self):
-        if self.closed:
-            return
+    def pump(self, *, force=False):
+        # Wall time only: virtual ticks and CAN/sensor scheduling are unchanged.
+        # Tick and idle callers share one limit; explicit presentation must flush
+        # imshow before the browser receives its matching-frame acknowledgment.
+        if self.closed or self.offscreen:
+            return False
+        wall=time.perf_counter()
+        if not force and wall < self.next_event_pump:
+            return False
+        self.next_event_pump=wall+1/30
         if self.camera_future is not None and self.camera_future.done() and self.last_render_args:
             self.render(*self.last_render_args)
         cv=self.cv2
@@ -145,11 +158,14 @@ class FSMWindow:
             visible=False
         if key in (27,ord('q')) or not visible:
             self.close()
+        return True
 
     def close(self):
         if not self.closed:
             self.closed=True
             self.camera_executor.shutdown(wait=False,cancel_futures=True)
+            if self.offscreen:
+                return
             try:
                 self.cv2.destroyWindow(self.title)
                 self.cv2.waitKey(1)

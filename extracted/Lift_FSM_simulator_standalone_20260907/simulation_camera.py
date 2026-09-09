@@ -51,25 +51,31 @@ class SimulationCamera:
                            gpu=self.camera.ctx.info['GL_RENDERER'],inference_executed=False)
 
 
+def fov_sector(camera, rotation, hfov=55., radius=10.):
+    half=math.radians(hfov/2)
+    return [camera]+[camera+rotation@np.array([radius*math.sin(a),radius*math.cos(a)])
+                     for a in np.linspace(-half,half,81)]
+
+
 def top_view(frame, options, config, trail=()):
     im=np.full((480,640,3), (243,246,248), np.uint8)
     g=world_geometry(frame['truth'],config)
     # Fixed six-metre square per run, equal scale on both axes.
-    centre=np.array([options.get('pallet_x',0),options.get('pallet_z',2)-1.5])
+    centre=np.array([options.get('top_view_center_x',options.get('pallet_x',0)),options.get('top_view_center_z',options.get('pallet_z',2)-1.5)])
+    scale=options.get('top_view_scale',72)
     def P(p):
-        q=(np.asarray(p)-centre)*72
+        q=(np.asarray(p)-centre)*options.get('top_view_scale',72)
         return (int(round(320+q[0])),int(round(240-q[1])))
-    for i in range(-10,11):
-        cv2.line(im,P([i,centre[1]-3.3]),P([i,centre[1]+3.3]),(219,225,230),1)
-        cv2.line(im,P([centre[0]-4.4,i]),P([centre[0]+4.4,i]),(219,225,230),1)
-        label(im,f'{i}',P([i,centre[1]-2.9])[0],463,(110,115,125),.35)
-        label(im,f'{i}',8,P([centre[0]-4,i])[1],(110,115,125),.35)
+    for i in range(math.floor(min(centre)-640/scale),math.ceil(max(centre)+640/scale)+1):
+        cv2.line(im,P([i,centre[1]-240/scale]),P([i,centre[1]+240/scale]),(219,225,230),1)
+        cv2.line(im,P([centre[0]-320/scale,i]),P([centre[0]+320/scale,i]),(219,225,230),1)
+        label(im,f'{i}',P([i,0])[0],463,(110,115,125),.35)
+        label(im,f'{i}',8,P([0,i])[1],(110,115,125),.35)
     def poly(points,fill,edge):
         pts=np.array([P(p) for p in points],np.int32)
         cv2.fillPoly(im,[pts],fill);cv2.polylines(im,[pts],True,edge,2,cv2.LINE_AA)
     camera=g['camera'];R=g['rotation']
-    half=math.radians(options.get('camera_hfov_deg',55)/2)
-    rays=[camera,camera+R@[-4*math.tan(half),4],camera+R@[4*math.tan(half),4]]
+    rays=fov_sector(camera,R,options.get('camera_hfov_deg',55))
     layer=im.copy();poly(rays,(245,219,194),(231,180,120));im=cv2.addWeighted(im,.32,layer,.68,0)
     a=math.radians(g['pallet_angle']);Rp=np.array([[math.cos(a),math.sin(a)],[-math.sin(a),math.cos(a)]])
     w=config.get('PALLET_FRONT_VISIBILITY_WIDTH_M',1.1)/2;d=options.get('pallet_depth',1.1)
@@ -88,7 +94,7 @@ def top_view(frame, options, config, trail=()):
     cv2.circle(im,P(camera),5,(240,115,35),-1)
     cv2.arrowedLine(im,P(camera),P(vp(0,.45)),(225,105,30),2,tipLength=.3)
     label(im,'X right / Z up | 1 m grid',15,22,(80,85,95),.45)
-    label(im,'Blue: camera | black: rotation centre | yellow: forks',15,43,(80,85,95),.4)
+    label(im,'FOV arc: 10m display radius (not detection limit)',15,43,(80,85,95),.4)
     return im
 
 

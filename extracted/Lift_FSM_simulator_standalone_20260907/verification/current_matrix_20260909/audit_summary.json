@@ -1,0 +1,40 @@
+{
+  "total": 92,
+  "passed": 74,
+  "groups": {
+    "nominal": {
+      "total": 45,
+      "passed": 45
+    },
+    "coarse": {
+      "total": 14,
+      "passed": 14
+    },
+    "drive_imu_noise": {
+      "total": 15,
+      "passed": 2
+    },
+    "perception_noise": {
+      "total": 9,
+      "passed": 5
+    },
+    "lateral_stress": {
+      "total": 6,
+      "passed": 6
+    },
+    "observation_loss": {
+      "total": 3,
+      "passed": 2
+    }
+  },
+  "failures": {
+    "FSM DONE with insertion distance remaining": 9,
+    "WAYPOINT_DRIVE forward timeout": 4,
+    "two waypoint cycles made no visual progress": 4,
+    "PnP recovery timeout": 1
+  },
+  "source_ids": [
+    "18f3b1c122d3eef8d50b3422f9064df3478105947be5e05d941b5082e6ed130b"
+  ],
+  "collisions": 0
+}

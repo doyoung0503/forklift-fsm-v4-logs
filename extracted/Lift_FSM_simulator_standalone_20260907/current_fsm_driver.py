@@ -7,6 +7,7 @@ dependencies and are intentionally not imported by the world/UI server.
 import ast
 import hashlib
 import json
+from types import SimpleNamespace
 from pathlib import Path
 
 from v4_runtime import environment,control,top,fingerprint,clean,DEPTH_CAM
@@ -78,8 +79,11 @@ class CurrentFSMDriver:
                     outcome='success' if state=='DONE' else 'failure' if state=='FAILED' else 'running',
                     reason=getattr(self.fsm,'failure_reason',None))
 
-    def tick(self,now,until,model=None,halt=False):
+    def tick(self,now,until,model=None,halt=False,imu=None):
         self.now=now
+        if imu is not None:
+            sample=(imu['yaw_deg'],1000.+imu['t'],imu['rate_deg_s'],None)
+            self.fsm.imu_source=SimpleNamespace(snapshot=lambda:sample)
         fresh=model is not None and not model.get('pending',False) and model['sequence']!=self.sequence
         with environment(now,self.overrides),self.transport.bind(now):
             blind=bool(getattr(self.fsm,'vision_independent',False))

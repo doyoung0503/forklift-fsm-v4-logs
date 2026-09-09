@@ -13,6 +13,11 @@ from calib.fsm_v4.controllers import RotationController
 
 class StartDistanceRoutingTests(unittest.TestCase):
     def setUp(self):
+        # Exercise distance routing itself; initial-correction selection has
+        # independent threshold and full-FSM regression coverage.
+        coarse = patch.object(cfg, 'COARSE_IMU_ENABLED', False)
+        coarse.start()
+        self.addCleanup(coarse.stop)
         width = patch.object(cfg, 'FORK_WIDTH_M', .10)
         width.start()
         self.addCleanup(width.stop)
@@ -68,9 +73,19 @@ class StartDistanceRoutingTests(unittest.TestCase):
         f._begin_translation.assert_not_called()
         self.assertIsNone(f.failure_reason)
 
-    def test_near_infeasible_pose_fails_without_translation(self):
+    def test_near_infeasible_pose_routes_to_plan_with_approach_room(self):
         with patch('calib.fsm_v4.top.insertion_alignment_turn', return_value=None):
             f = self.run_start(2.199)
+        self.assertEqual(f.state, 'STAGING_PLAN')
+        self.assertTrue(f._near_approach_active)
+        self.assertFalse(f._insertion_alignment_entered)
+        self.assertIsNone(f.failure_reason)
+        f._begin_rotation.assert_not_called()
+        f._begin_translation.assert_not_called()
+
+    def test_no_extra_approach_past_staging_target(self):
+        with patch('calib.fsm_v4.top.insertion_alignment_turn', return_value=None):
+            f = self.run_start(1.58)
         self.assertEqual(f.state, 'FAILED')
         self.assertIn('insertion rotation', f.failure_reason)
         f._begin_rotation.assert_not_called()

@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parent
 CASES=[('01_front',0.,2.,180.),('02_right',.30,2.2,165.),('03_left',-.30,2.2,-165.)]
 
 
-def run_cases(output,height=.65):
+def run_cases(output,height=.50):
     from process_runtime import Session,replay_trace
     output.mkdir(parents=True,exist_ok=True);cases=[]
     for index,(name,x,z,heading) in enumerate(CASES):
@@ -81,7 +81,7 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=ROOT/'fsm_camera_runs')
     p.add_argument('--render-only',action='store_true');p.add_argument('--run-only',action='store_true')
     p.add_argument('--fps',type=int,default=30);p.add_argument('--speed',type=float,default=1)
-    p.add_argument('--height',type=float,default=.65,help='Camera height above ground, metres')
+    p.add_argument('--height',type=float,default=.50,help='Camera height above ground, metres')
     args=p.parse_args()
     if args.fps<=0 or args.speed<=0:p.error('fps and speed must be positive')
     if not args.render_only:run_cases(args.output,args.height)

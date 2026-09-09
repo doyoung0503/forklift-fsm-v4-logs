@@ -8,7 +8,7 @@ function setup(withCanvas=true) {
   const requests=[],commits=[],errors=[],images=[];
   const canvas={dataset:{},getContext:()=>({drawImage(){},fillRect(){},fillText(){}})};
   const status={textContent:''};
-  const context=vm.createContext({document:{getElementById:id=>id==='cameraCanvas'?(withCanvas?canvas:null):status},
+  const context=vm.createContext({performance,document:{getElementById:id=>id==='cameraCanvas'?(withCanvas?canvas:null):status},
     Image:class {constructor(){images.push(this);} async decode(){}},fetch:(url,init)=>new Promise(resolve=>requests.push({url,data:JSON.parse(init.body),resolve}))});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../camera_view.js'),'utf8')+'\nthis.api=LiftCameraView;',context);
   const update=(t,session=null)=>context.api.update({t},{},f=>commits.push(f.t),session,e=>errors.push(e));

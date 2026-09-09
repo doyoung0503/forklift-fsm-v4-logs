@@ -1,0 +1,444 @@
+[
+  {
+    "distance_m": 3.0,
+    "side": 1,
+    "status": "sampled_monotonic",
+    "success_m": 0.275,
+    "failure_m": 0.28125,
+    "resolution_m": 0.006249999999999978,
+    "first_sampled_failure_m": 0.28125,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.06875,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1375,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.20625,
+        true
+      ],
+      [
+        0.2475,
+        true
+      ],
+      [
+        0.25,
+        true
+      ],
+      [
+        0.275,
+        true
+      ],
+      [
+        0.28125,
+        false
+      ],
+      [
+        0.2875,
+        false
+      ],
+      [
+        0.3,
+        false
+      ],
+      [
+        0.30125,
+        false
+      ],
+      [
+        0.4,
+        false
+      ],
+      [
+        0.5,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 3.0,
+    "side": -1,
+    "status": "sampled_monotonic",
+    "success_m": 0.275,
+    "failure_m": 0.28125,
+    "resolution_m": 0.006249999999999978,
+    "first_sampled_failure_m": 0.28125,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.06875,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1375,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.20625,
+        true
+      ],
+      [
+        0.2475,
+        true
+      ],
+      [
+        0.25,
+        true
+      ],
+      [
+        0.275,
+        true
+      ],
+      [
+        0.28125,
+        false
+      ],
+      [
+        0.2875,
+        false
+      ],
+      [
+        0.3,
+        false
+      ],
+      [
+        0.30125,
+        false
+      ],
+      [
+        0.4,
+        false
+      ],
+      [
+        0.5,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 3.5,
+    "side": 1,
+    "status": "sampled_monotonic",
+    "success_m": 0.36250000000000004,
+    "failure_m": 0.36875,
+    "resolution_m": 0.006249999999999978,
+    "first_sampled_failure_m": 0.36875,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.090625,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.18125,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.271875,
+        true
+      ],
+      [
+        0.3,
+        true
+      ],
+      [
+        0.32625,
+        true
+      ],
+      [
+        0.35,
+        true
+      ],
+      [
+        0.3625,
+        true
+      ],
+      [
+        0.36875,
+        false
+      ],
+      [
+        0.375,
+        false
+      ],
+      [
+        0.38875,
+        false
+      ],
+      [
+        0.4,
+        false
+      ],
+      [
+        0.5,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 3.5,
+    "side": -1,
+    "status": "sampled_monotonic",
+    "success_m": 0.36250000000000004,
+    "failure_m": 0.36875,
+    "resolution_m": 0.006249999999999978,
+    "first_sampled_failure_m": 0.36875,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.090625,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.18125,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.271875,
+        true
+      ],
+      [
+        0.3,
+        true
+      ],
+      [
+        0.32625,
+        true
+      ],
+      [
+        0.35,
+        true
+      ],
+      [
+        0.3625,
+        true
+      ],
+      [
+        0.36875,
+        false
+      ],
+      [
+        0.375,
+        false
+      ],
+      [
+        0.38875,
+        false
+      ],
+      [
+        0.4,
+        false
+      ],
+      [
+        0.5,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 4.0,
+    "side": 1,
+    "status": "sampled_monotonic",
+    "success_m": 0.55,
+    "failure_m": 0.55625,
+    "resolution_m": 0.006249999999999978,
+    "first_sampled_failure_m": 0.55625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1375,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.275,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4125,
+        true
+      ],
+      [
+        0.495,
+        true
+      ],
+      [
+        0.5,
+        true
+      ],
+      [
+        0.55,
+        true
+      ],
+      [
+        0.55625,
+        false
+      ],
+      [
+        0.5625,
+        false
+      ],
+      [
+        0.575,
+        false
+      ],
+      [
+        0.57625,
+        false
+      ],
+      [
+        0.6,
+        false
+      ],
+      [
+        0.8,
+        false
+      ],
+      [
+        1.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 4.0,
+    "side": -1,
+    "status": "sampled_monotonic",
+    "success_m": 0.55,
+    "failure_m": 0.55625,
+    "resolution_m": 0.006249999999999978,
+    "first_sampled_failure_m": 0.55625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1375,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.275,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4125,
+        true
+      ],
+      [
+        0.495,
+        true
+      ],
+      [
+        0.5,
+        true
+      ],
+      [
+        0.55,
+        true
+      ],
+      [
+        0.55625,
+        false
+      ],
+      [
+        0.5625,
+        false
+      ],
+      [
+        0.575,
+        false
+      ],
+      [
+        0.57625,
+        false
+      ],
+      [
+        0.6,
+        false
+      ],
+      [
+        0.8,
+        false
+      ],
+      [
+        1.0,
+        false
+      ]
+    ]
+  }
+]

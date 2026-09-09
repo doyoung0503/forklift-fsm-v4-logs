@@ -1,0 +1,130 @@
+{
+  "trace_matches_calibration": true,
+  "source_id": "40d6b2795d3211706ebf73e179f68cf6f64f4d1791b4a2dad6a942d7b4f70cc4",
+  "reasons": [
+    "waypoint planner: no rotation+forward action restores safe horizontal/vertical visibility"
+  ],
+  "starts_safe": true,
+  "counts": {
+    "rotation_visibility": 60,
+    "forward_below_minimum": 13
+  },
+  "candidates": [
+    {
+      "turn": 0.0,
+      "requested": 0.23107621099875908,
+      "visible": 0.15697498952735528,
+      "staging": 0.0
+    },
+    {
+      "turn": 2.5,
+      "requested": 0.2213191910604505,
+      "visible": 0.2013945202343907,
+      "staging": 0.0
+    },
+    {
+      "turn": 3.0,
+      "requested": 0.21931662315265432,
+      "visible": 0.20627528891764008,
+      "staging": 0.0
+    },
+    {
+      "turn": 3.5,
+      "requested": 0.21729735343488624,
+      "visible": 0.2109743240617123,
+      "staging": 0.0
+    },
+    {
+      "turn": 4.0,
+      "requested": 0.21526153568235315,
+      "visible": 0.21526153568235315,
+      "staging": 0.0
+    },
+    {
+      "turn": 4.5,
+      "requested": 0.21320932493045897,
+      "visible": 0.21320932493045897,
+      "staging": 0.0
+    },
+    {
+      "turn": 5.0,
+      "requested": 0.21114087746299787,
+      "visible": 0.21114087746299787,
+      "staging": 0.0
+    },
+    {
+      "turn": 5.5,
+      "requested": 0.2090563508002528,
+      "visible": 0.2090563508002528,
+      "staging": 0.0
+    },
+    {
+      "turn": 6.0,
+      "requested": 0.2069559036869997,
+      "visible": 0.2069559036869997,
+      "staging": 0.0
+    },
+    {
+      "turn": 6.5,
+      "requested": 0.2048396960804185,
+      "visible": 0.2048396960804185,
+      "staging": 0.0
+    },
+    {
+      "turn": 7.0,
+      "requested": 0.2027078891379116,
+      "visible": 0.15285367531459523,
+      "staging": 0.0
+    },
+    {
+      "turn": 7.5,
+      "requested": 0.2005606452048314,
+      "visible": 0.09705169283112822,
+      "staging": 0.0
+    },
+    {
+      "turn": 8.0,
+      "requested": 0.19839812780211674,
+      "visible": 0.04119267768865054,
+      "staging": 0.0
+    }
+  ],
+  "micro_turns": [
+    {
+      "turn": 3.5,
+      "geometry": {
+        "ok": false,
+        "reason": "left fork sweep hits row 3 column 1 (wall margin included)",
+        "front_hits": [
+          -0.2814218276268306,
+          0.3212486220026878
+        ]
+      },
+      "visibility": true
+    },
+    {
+      "turn": 3.7,
+      "geometry": {
+        "ok": true,
+        "reason": "all nine blocks clear over planned insertion",
+        "front_hits": [
+          -0.2726829488356551,
+          0.32979253429097943
+        ]
+      },
+      "visibility": true
+    },
+    {
+      "turn": 4.0,
+      "geometry": {
+        "ok": false,
+        "reason": "front pocket clearance",
+        "front_hits": [
+          -0.2595918401084755,
+          0.3426051816788728
+        ]
+      },
+      "visibility": true
+    }
+  ]
+}

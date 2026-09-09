@@ -3,7 +3,9 @@ import hashlib
 import json
 import math
 import os
+import random
 import threading
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -13,7 +15,7 @@ from run_logging import RunLogger
 
 HERE=Path(__file__).resolve().parent
 LOCK=threading.RLock()
-SIMULATOR_NAMES=('process_runtime.py','controller_process.py','fsm_worker.py','current_fsm_driver.py',
+SIMULATOR_NAMES=('process_runtime.py','controller_process.py','fsm_worker.py','current_fsm_driver.py','batched_session.py','batch_worker.py',
     'v4_runtime.py','current_can_adapter.py','serve_v4.py','serve_world.py','protocol_client.py',
     'protocol_world.py','model_result_model.py','vehicle_profile.json','view_geometry.js','v4_sim.js','run_logging.py','fsm_window.py',
     'camera_view.js','camera_service.py','camera_worker.py','simulation_camera.py','camera_preview.py','runtime_camera_overlay.py')
@@ -61,6 +63,7 @@ class Session:
         self.capture=capture
         self.show_window=bool(show_window)
         self.now=0.
+        self.controller_wall_ms=0.
         self.done=False
         self.frames,self.inputs,self.events=[],[],[]
         self.digest=hashlib.sha256()
@@ -73,12 +76,22 @@ class Session:
         self.logged_can=0
         self.world=(RequestedWorld if self.options['inference_mode']=='requested' else World)(self.options)
         self.consumed_model_sequence=-1
+        self.imu_previous=(0.,self.world.plant.heading)
+        self.imu_yaw=self.world.plant.heading
+        self.imu_initial_yaw=self.imu_yaw
+        self.imu_random=random.Random(self.options['seed'] ^ 0x494d55)
+        # One calibration error per run: sigma is the endpoint error at 90 deg.
+        # A fixed absolute yaw offset would cancel in relative turn feedback.
+        self.imu_gain=1.+self.imu_random.gauss(0.,self.options['imu_angle_sd_deg']/90.)
         self.plant=self.world.plant
         self.world.observe()
         self.controller=controller_factory()
         try:
             result=self.controller.request('init',overrides=self.overrides,show_window=self.show_window,sync_display=True)
             self.provenance=metadata(result['info'],result['pid'])
+            self.provenance['imu_error_model']=dict(kind='run_constant_gain_v1',
+                reference_turn_deg=90.,endpoint_sd_deg=self.options['imu_angle_sd_deg'],
+                sampled_gain=self.imu_gain)
             self.input_id=self.provenance['source_id']
             self.config={**self.provenance['config'],**self.overrides}
             self.status=telemetry(result.get('telemetry'))
@@ -166,22 +179,43 @@ class Session:
         frame['logging']=self.logging_info()
         return frame
 
+    def _observe_imu(self):
+        previous_t,previous_heading=self.imu_previous
+        delta=(self.plant.heading-previous_heading+180.)%360.-180.
+        dt=self.now-previous_t
+        self.imu_yaw+=delta
+        angle_error=(self.imu_yaw-self.imu_initial_yaw)*(self.imu_gain-1.)
+        self.imu_previous=(self.now,self.plant.heading)
+        return dict(t=self.now,yaw_deg=self.imu_yaw+angle_error,
+                    rate_deg_s=(delta/dt if dt>0 else 0.)*self.imu_gain,
+                    angle_error_deg=angle_error)
+
     def step(self):
         if self.done:
             return self.snapshot()
+        perf=getattr(self,'phase_perf',None)
+        if perf is None:
+            perf=self.phase_perf=dict(ticks=0,sensors_ms=0.,controller_ms=0.,world_snapshot_ms=0.,world_advance_ms=0.,trace_ms=0.,logging_ms=0.,tick_total_ms=0.)
+        tick_start=mark=time.perf_counter()
         self._start_logging()
         requesting=isinstance(self.world,RequestedWorld) and self.status.get('model_requested',True)
         if requesting and self.world.last_packet['sequence']==self.consumed_model_sequence:
             self.world.request_model()
         packet=self.world.observe()
+        imu=self._observe_imu()
         before=(self.status['state'],self.status['command'])
         halt=self.now>=self.options['max_seconds']-1e-9
         until=self.now if halt else min(self.now+1/self.options['hz'],self.world.next_model_time,self.options['max_seconds'])
         if requesting and self.world.pending is None and self.world.next_request_time>self.now+1e-9:
             until=min(until,self.world.next_request_time)
         try:
-            result=self.controller.request('tick',t=self.now,until=until,model=packet,halt=halt,
+            perf["sensors_ms"]+=(time.perf_counter()-mark)*1000
+            tick_started=time.perf_counter()
+            result=self.controller.request('tick',t=self.now,until=until,model=packet,halt=halt,imu=imu,
                 scene=dict(truth=self.plant.truth(),options=self.options,config=PROFILE['parameters']))
+            self.controller_wall_ms+=(time.perf_counter()-tick_started)*1000
+            perf["controller_ms"]+=(time.perf_counter()-tick_started)*1000
+            mark=time.perf_counter()
             if result['model_updated']:
                 self.consumed_model_sequence=packet['sequence']
             end=result['advance_until']
@@ -195,19 +229,28 @@ class Session:
             if before!=(self.status['state'],self.status['command']):
                 self.events.append(dict(t=self.now,state=self.status['state'],command=self.status['command'],
                                         lines=self.status['lines'],can=frame['can']))
+            perf["world_snapshot_ms"]+=(time.perf_counter()-mark)*1000
+            mark=time.perf_counter()
             row=dict(t=self.now,inputs=result.get('inputs',packet['step']),state=self.status['state'],command=self.status['command'],
                      failure_reason=self.status['failure_reason'],failure_state=self.status['failure_state'],
                      can=frame['can'],model_packet=packet,model_updated=result['model_updated'],
                      can_frames=result['current_can']+result['future_can'],advance_until=end,
                      halt_requested=halt,lifecycle=self.lifecycle)
             row['fsm_updated']=result.get('fsm_updated',result['model_updated'])
+            row['imu']=imu
             if result.get('cancel_requested'):
                 row['cancel_requested']=True
+            perf["trace_ms"]+=(time.perf_counter()-mark)*1000
+            mark=time.perf_counter()
             self.world.advance(end-self.now,result['future_can'])
+            perf["world_advance_ms"]+=(time.perf_counter()-mark)*1000
+            mark=time.perf_counter()
             self.digest.update(json.dumps(row,sort_keys=True,allow_nan=False).encode())
             if self.capture:
                 self.frames.append(frame);self.inputs.append(row)
             self.now=end
+            perf["trace_ms"]+=(time.perf_counter()-mark)*1000
+            mark=time.perf_counter()
             self._log_can()
             self._log_call('tick',row,frame)
             if self.done:
@@ -215,6 +258,9 @@ class Session:
                     self.controller.close()
                 self._finish_logging()
             frame['logging']=self.logging_info()
+            perf["logging_ms"]+=(time.perf_counter()-mark)*1000
+            perf["ticks"]+=1
+            perf["tick_total_ms"]+=(time.perf_counter()-tick_start)*1000
             return frame
         except (ControllerProcessError,ValueError,TypeError,KeyError) as error:
             return self._fault(error)
@@ -252,8 +298,6 @@ class Session:
         reasons=[]
         if outcome in ('failure','error','timeout','cancelled'):
             reasons.append(self.lifecycle.get('reason') or outcome)
-        if self.plant.collision:
-            reasons.append('fork/slot geometry collision')
         remaining=max(0.,self.plant.z-SPEC.INSERT_CAMERA_Z_REMAINDER_M)
         if outcome=='success' and remaining>self.options['completion_tolerance']:
             reasons.append('FSM DONE with insertion distance remaining')
@@ -285,7 +329,7 @@ def replay_trace(trace,overrides=None,source_id=None,simulator_id=None):
         for index,row in enumerate(trace):
             result=controller.request('tick',t=row['t'],until=row['advance_until'],
                 model=row['model_packet'] if row['model_updated'] else None,
-                halt=row.get('halt_requested',False),cancel=row.get('cancel_requested',False))
+                halt=row.get('halt_requested',False),cancel=row.get('cancel_requested',False),imu=row.get('imu'))
             for f in result['current_can']:
                 if f['id']==0x1e3:
                     movement=f['data']

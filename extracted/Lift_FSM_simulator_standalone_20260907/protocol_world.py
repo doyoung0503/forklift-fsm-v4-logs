@@ -29,8 +29,9 @@ DEFAULTS = dict(x=.0, z=2.0, yaw=0., hz=30., max_seconds=185., seed=20260907,
                 latency=.12, dropout=0., loss_start=0., loss_duration=0.,
                 yaw_noise=0., position_noise=0., yaw_bias=0., x_bias=0., z_bias=0.,
                 drive_scale=1., rotation_scale=1., drive_delay=0.,
+                imu_scale=1., imu_bias_deg_s=0., imu_noise_deg_s=0., imu_angle_sd_deg=5.,
                 drive_coast_sec=0., rotation_coast_fraction=0., rotation_coast_sec=.6,
-                drive_scale_sd=0., rotation_scale_sd=0., vertical_offset=0.,
+                drive_scale_sd=0.0607956831911769, rotation_scale_sd=0.0607956831911769, vertical_offset=0.,
                 fork_width=.1, pallet_depth=1.1, opening="continuous", completion_tolerance=.05,
                 face_selection="largest",x_noise=0.,y_noise=0.,z_noise=0.,y_bias=0.,
                 model_hz=30.,model_interval_sd=0.,latency_sd=0.,camera_hfov_deg=55.,
@@ -57,6 +58,7 @@ def scenario_options(options):
                   loss_start=(0, 600), loss_duration=(0, 600), yaw_noise=(0, 30),
                   position_noise=(0, 1), yaw_bias=(-90, 90), x_bias=(-2, 2), z_bias=(-2, 2),
                   drive_scale=(0, 3), rotation_scale=(0, 3), drive_delay=(0, 5),
+                  imu_scale=(.5, 1.5), imu_bias_deg_s=(-5, 5), imu_noise_deg_s=(0, 5), imu_angle_sd_deg=(0, 90),
                   drive_coast_sec=(0, 3), rotation_coast_fraction=(0, 1),
                   rotation_coast_sec=(.01, 3), drive_scale_sd=(0, 1),
                   rotation_scale_sd=(0, 1), vertical_offset=(-3, 3),
@@ -68,6 +70,8 @@ def scenario_options(options):
     for key, (lo, hi) in bounds.items():
         if not lo <= out[key] <= hi:
             raise ValueError(f"{key} must be in [{lo}, {hi}]")
+    # Retired biased gain/rate settings cannot reintroduce nonzero means via saved presets.
+    out.update(drive_scale=1.,rotation_scale=1.,imu_scale=1.,imu_bias_deg_s=0.,imu_noise_deg_s=0.)
     out["seed"] = int(out["seed"])
     if out["perception"] not in ("fov", "oracle") or out["opening"] not in ("continuous", "split"):
         raise ValueError("Invalid perception or opening model")
@@ -127,6 +131,7 @@ class Plant:
         self.drive_gain = self.rotation_gain = 1.
         self.heading=options["forklift_heading"]
         self.world_x,self.world_z=options["forklift_x"],options["forklift_z"]
+        # Legacy report fields remain null; collision acceptance belongs to FSM.
         self.collision = None
         self.minimum_clearance = None
 
@@ -188,9 +193,9 @@ class Plant:
                                 max(.0001, duration), 0.])
         self.steer,self.drive,self.elapsed=steer,drive,0.
         if steer:
-            self.rotation_gain = abs(steer)/SPEC.ROTATE_REFERENCE_DEFLECTION * max(0., self.random.gauss(self.o["rotation_scale"], self.o["rotation_scale_sd"]))
+            self.rotation_gain = abs(steer)/SPEC.ROTATE_REFERENCE_DEFLECTION * (1. + self.random.gauss(0., self.o["rotation_scale_sd"]))
         if drive:
-            self.drive_gain = abs(drive)/SPEC.DRIVE_REFERENCE_DEFLECTION * max(0., self.random.gauss(self.o["drive_scale"], self.o["drive_scale_sd"]))
+            self.drive_gain = abs(drive)/SPEC.DRIVE_REFERENCE_DEFLECTION * (1. + self.random.gauss(0., self.o["drive_scale_sd"]))
 
     def move(self, turn, forward):
         a = math.radians(turn)
@@ -204,7 +209,7 @@ class Plant:
         self.world_z += math.cos(math.radians(self.heading))*forward
 
     def advance(self, dt, now):
-        # Substeps bound translation/rotation increments for collision detection.
+        # Preserve integration cadence for bus timing and combined motion/coast.
         steps = max(1, math.ceil(dt/.005))
         ds = dt/steps
         for i in range(steps):
@@ -228,32 +233,6 @@ class Plant:
             self.coasts = [coast for coast in self.coasts if coast[3] < coast[2]]
             self.move(turn, forward)
             self.elapsed = t1
-            self.check_collision(now+i*ds)
-
-    def check_collision(self, now):
-        a = math.radians(self.yaw)
-        c, s = math.cos(a), math.sin(a)
-        spans = [(-SPEC.INSERT_OPENING_SPAN_M/2, SPEC.INSERT_OPENING_SPAN_M/2)]
-        if self.o["opening"] == "split":
-            spans = [(-.4, -.15), (.15, .4)]
-        half = SPEC.FORK_OUTER_SPAN_M/2
-        for side, bounds in (("left", (-half, -half+self.o["fork_width"])),
-                             ("right", (half-self.o["fork_width"], half))):
-            poly = []
-            for x, z in ((bounds[0], 0.), (bounds[1], 0.),
-                         (bounds[1], SPEC.CAMERA_TO_FORK_TIP_Z_M),
-                         (bounds[0], SPEC.CAMERA_TO_FORK_TIP_Z_M)):
-                dx, dz = x-self.x, z-self.z
-                poly.append((c*dx-s*dz, s*dx+c*dz))
-            engaged = clip(clip(poly, 1, 0., True), 1, self.o["pallet_depth"], False)
-            if not engaged:
-                continue
-            lo, hi = min(p[0] for p in engaged), max(p[0] for p in engaged)
-            clearance = max(min(lo-left, right-hi) for left, right in spans)
-            self.minimum_clearance = clearance if self.minimum_clearance is None else min(self.minimum_clearance, clearance)
-            if clearance < -1e-6 and self.collision is None:
-                self.collision = dict(t=now, side=side, clearance=clearance,
-                                      x=self.x, z=self.z, yaw=self.yaw)
 
     def truth(self):
         return dict(x=self.x, z=self.z, yaw=self.yaw, world_x=self.world_x,
@@ -367,7 +346,6 @@ class World:
     def __init__(self, options=None):
         self.options=scenario_options(options or {})
         self.plant=Plant(self.options)
-        self.plant.check_collision(0.)
         self.now=0.
         self.sequence=0
         self.result_model=GaussianResultModel(self.options)

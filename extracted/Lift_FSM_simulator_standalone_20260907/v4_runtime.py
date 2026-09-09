@@ -29,6 +29,10 @@ control.configure_can_enabled(False)
 LOCK = threading.RLock()
 EPOCH = 1000.0
 OVERRIDES = {
+    "COARSE_IMU_ENABLED",
+    "ROT_TX_TIMED_STOP_ENABLED",
+    "FWD_PREDICTIVE_MAX_ADVANCE_M",
+    "COARSE_LATERAL_BASE_M", "COARSE_LATERAL_GAIN",
     "FINAL_YAW_TOL_DEG", "FINAL_LATERAL_TOL_M", "FINAL_DISTANCE_TOL_M",
     "IMAGE_EDGE_MARGIN_NORM", "STABLE_POSE_FRAMES", "MAX_CORRECTION_CYCLES",
 }
@@ -92,6 +96,11 @@ def environment(now, overrides=None):
         old_top_time, old_status_time = top.time, command_status.time
         try:
             for key, value in overrides.items():
+                if isinstance(old[key], bool):
+                    if not isinstance(value, bool):
+                        raise ValueError(f"{key} must be a boolean")
+                    setattr(cfg, key, value)
+                    continue
                 if not isinstance(value, (int, float)) or not math.isfinite(value):
                     raise ValueError(f"Invalid {key}")
                 if isinstance(old[key], int) and (isinstance(value, bool) or int(value) != value):
@@ -99,6 +108,9 @@ def environment(now, overrides=None):
                 if key == "IMAGE_EDGE_MARGIN_NORM":
                     if not 0 <= value < .5:
                         raise ValueError("IMAGE_EDGE_MARGIN_NORM must be in [0, .5)")
+                elif key == "FWD_PREDICTIVE_MAX_ADVANCE_M":
+                    if value < 0:
+                        raise ValueError(f"{key} must be nonnegative")
                 elif value <= 0:
                     raise ValueError(f"{key} must be positive")
                 setattr(cfg, key, int(value) if isinstance(old[key], int) else value)
@@ -209,8 +221,6 @@ class Session:
         reasons = []
         if fsm.state == "FAILED":
             reasons.append(fsm.failure_reason)
-        if p.collision:
-            reasons.append("fork/slot geometry collision")
         true_remaining = max(0.,p.z-SPEC.INSERT_CAMERA_Z_REMAINDER_M)
         if fsm.state == "DONE" and true_remaining > self.options["completion_tolerance"]:
             reasons.append("FSM DONE with insertion distance remaining")

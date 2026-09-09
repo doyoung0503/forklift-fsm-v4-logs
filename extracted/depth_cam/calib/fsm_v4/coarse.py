@@ -1,11 +1,11 @@
-"""One-shot model yaw -> IMU turn -> fitted FWD -> opposite 90-degree turn."""
+"""Distance-adaptive lateral trigger -> IMU turn/FWD/opposite 90-degree turn."""
 import math
 from statistics import median
 
 from calib.config import COLOR_META
 from calib.control import configure_motion_deadline, motion_deadline_expired
 from . import config as cfg
-from .motion import forward_seconds
+from .motion import drive_seconds
 from .pose import wrap_180
 
 
@@ -17,6 +17,19 @@ COARSE_BLIND_STATES = frozenset({
 COARSE_STATES = COARSE_BLIND_STATES | {"COARSE_REACQUIRE"}
 
 
+def coarse_lateral_limit_m(distance_m):
+    """Pallet-normal pivot distance, metres; far limits stop growing at 5 m.
+
+    The measured domain is 3..5 m. Below 3 m the available approach term
+    shrinks to zero at staging; that extension is not a measured boundary.
+    """
+    if not math.isfinite(distance_m):
+        raise ValueError("invalid coarse distance")
+    approach = max(0., min(distance_m, cfg.COARSE_LATERAL_CALIBRATION_MAX_DISTANCE_M)
+                   - cfg.STAGING_DISTANCE_M)
+    return cfg.COARSE_LATERAL_BASE_M + cfg.COARSE_LATERAL_GAIN * approach
+
+
 def coarse_plan(pose):
     """Positive rotation is right; pallet X is right along the front face."""
     lateral = float(pose.rot_x_pallet_m)
@@ -25,14 +38,16 @@ def coarse_plan(pose):
         raise ValueError("invalid coarse pose")
     if abs(yaw) >= 90.0:
         raise ValueError("coarse correction requires a front-facing pallet pose")
-    if not cfg.COARSE_MIN_LATERAL_M <= abs(lateral) <= cfg.COARSE_MAX_LATERAL_M:
+    if abs(lateral) < cfg.COARSE_MIN_LATERAL_M or (
+            cfg.COARSE_TRAVEL_LIMITS_ENABLED and abs(lateral) > cfg.COARSE_MAX_LATERAL_M):
         raise ValueError("coarse lateral outside configured travel limits")
     if -pose.rot_z_pallet_m < cfg.STAGING_DISTANCE_M:
         raise ValueError("insufficient front-plane clearance for coarse rotation")
     side = math.copysign(1.0, lateral)
     turn = wrap_180(yaw - side * 90.0)
-    duration = forward_seconds(abs(lateral))
-    if not math.isfinite(duration) or duration >= min(cfg.FWD_COMMAND_MAX_SEC, cfg.FWD_MAX_COMMAND_SEC):
+    duration = drive_seconds(abs(lateral), apply_max_limit=cfg.COARSE_TRAVEL_LIMITS_ENABLED)
+    if not math.isfinite(duration) or (cfg.COARSE_TRAVEL_LIMITS_ENABLED
+            and duration >= min(cfg.FWD_COMMAND_MAX_SEC, cfg.FWD_MAX_COMMAND_SEC)):
         raise ValueError("coarse distance exceeds fitted forward time range")
     return turn, abs(lateral), duration, side * 90.0
 
@@ -57,11 +72,21 @@ class CoarseAlignmentMixin:
         configure_motion_deadline(None)
 
     def _coarse_required(self, pose):
-        return (cfg.COARSE_IMU_ENABLED and not getattr(self, "_coarse_done", False)
-                and abs(pose.yaw_deg) > cfg.COARSE_YAW_TRIGGER_DEG)
+        if not cfg.COARSE_IMU_ENABLED or getattr(self, "_coarse_done", False):
+            return False
+        if not all(map(math.isfinite, (pose.rot_x_pallet_m, pose.rot_z_pallet_m, pose.yaw_deg))):
+            return True  # Let coarse_plan reject invalid input with STOP.
+        return abs(pose.rot_x_pallet_m) > coarse_lateral_limit_m(-pose.rot_z_pallet_m)
 
     def _maybe_begin_coarse(self, pose, now, lines):
-        if not self._coarse_required(pose):
+        required = self._coarse_required(pose)
+        if (cfg.COARSE_IMU_ENABLED and not getattr(self, "_coarse_done", False)
+                and all(map(math.isfinite, (pose.rot_x_pallet_m, pose.rot_z_pallet_m)))):
+            lines.append((f"[COARSE CHECK] |L|={abs(pose.rot_x_pallet_m):.3f}m, "
+                          f"limit={coarse_lateral_limit_m(-pose.rot_z_pallet_m):.3f}m, "
+                          f"D={-pose.rot_z_pallet_m:.3f}m -> "
+                          f"{'initial correction' if required else 'normal approach'}", COLOR_META))
+        if not required:
             return False
         self._exec("STOP")
         try:
@@ -76,6 +101,9 @@ class CoarseAlignmentMixin:
         self._set_state("COARSE_PREPARE")
         self._trace_begin("v4_coarse_alignment", "STOP", model_yaw_deg=pose.yaw_deg,
                           lateral_m=pose.rot_x_pallet_m,
+                          trigger_basis="distance_adaptive_lateral",
+                          normal_distance_m=-pose.rot_z_pallet_m,
+                          lateral_limit_m=coarse_lateral_limit_m(-pose.rot_z_pallet_m),
                           first_turn_deg=self._coarse_plan[0],
                           forward_hold_sec=self._coarse_plan[2],
                           return_turn_deg=self._coarse_plan[3])
@@ -143,10 +171,14 @@ class CoarseAlignmentMixin:
             return
         if self.state == "COARSE_PREPARE":
             self._exec("STOP")
+            measurement_start = self._state_entered_mono + cfg.COARSE_IMU_POST_STOP_DELAY_SEC
+            if stamp < measurement_start:
+                lines.append(("[COARSE] waiting 2s before gyro bias sampling", COLOR_META))
+                return
             if stamp != self._coarse_bias_stamp:
                 self._coarse_bias_samples.append(rate)
                 self._coarse_bias_stamp = stamp
-            if now - self._state_entered_mono < cfg.COARSE_SETTLE_SEC:
+            if stamp - measurement_start < cfg.COARSE_SETTLE_SEC:
                 return
             values = self._coarse_bias_samples
             if len(values) < 10 or max(values) - min(values) > cfg.COARSE_STABLE_RATE_DEG_S:
@@ -189,7 +221,8 @@ class CoarseAlignmentMixin:
         if now >= self._state_deadline_mono:
             self._coarse_abort("coarse stop did not settle", lines)
             return
-        if self._coarse_last_quiet is None or now - self._coarse_last_quiet < cfg.COARSE_SETTLE_SEC:
+        if self._coarse_last_quiet is None or stamp - self._coarse_last_quiet < max(
+                cfg.COARSE_SETTLE_SEC, cfg.COARSE_IMU_POST_STOP_DELAY_SEC):
             return
         if self.state == "COARSE_ROTATE_SETTLE":
             settled_delta = self._coarse_yaw(sample) - self._coarse_ref

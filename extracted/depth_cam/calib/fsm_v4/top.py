@@ -14,6 +14,7 @@ from calib.config import (
 from calib.control import (
     configure_drive_deflection,
     configure_rotate_in_place,
+    arm_timed_rotation, timed_rotation_status,
 )
 from calib.fsm.commands import CommandExecutor
 from calib.fsm.status_helper import StatusHelper
@@ -265,6 +266,7 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
         ]
 
     def reset(self) -> None:
+        self._rotation_tx_token = None
         self._coarse_reset()
         self.state = "PRECHECK"
         self._pipeline_started_mono = time.monotonic()
@@ -333,6 +335,7 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
         self._insert_hold_sec = None
         self._insertion_alignment_attempts = 0
         self._insertion_alignment_entered = False
+        self._near_approach_active = False
         self._insertion_fine_started_mono = None
         self._insertion_started_mono: Optional[float] = None
         self._failure_reason: Optional[str] = None
@@ -662,7 +665,8 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
                 or abs(settled_error) > cfg.WAYPOINT_SETTLED_YAW_TOL_DEG):
             return False
         self._rotation.reset()
-        if 0.0 < pose.pallet_z_m <= cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M:
+        if (0.0 < pose.pallet_z_m <= cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M
+                and not self._near_approach_active):
             self._set_state("FINAL_POSE_LOCK")
             return True
         if staging_position_reached(pose):
@@ -722,7 +726,8 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
             return False
         if (pose.pallet_z_m < cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M
                 or getattr(self, "_insertion_alignment_entered", False)):
-            return self._near_insertion_step(pose, vision_meta, lines)
+            handled = self._near_insertion_step(pose, vision_meta, lines)
+            return handled or self.state == "STAGING_PLAN"
         if pose.pallet_z_m <= cfg.SAFETY_STANDOFF_Z_M + cfg.SAFETY_STANDOFF_BAND_M:
             self._set_state("STAGING_PLAN")
             if self._alignment_started_mono is None:
@@ -752,6 +757,22 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
                 return True
             lines.append((f"[INSERT CHECK] full nine-block sweep clear, yaw={pose.yaw_deg:+.2f}deg", COLOR_STATUS_OK))
         elif turn is None:
+            # Entry distance is permission to TRY insertion alignment, not a
+            # prohibition on using the remaining pre-insertion staging room.
+            _lateral, longitudinal = staging_position_errors(pose)
+            if (-longitudinal >= cfg.FWD_RELIABLE_MIN_DISTANCE_M
+                    and self._forward_used_m < cfg.FWD_MAX_TOTAL_CORRECTION_M
+                    and self._correction_cycles < cfg.MAX_CORRECTION_CYCLES):
+                self._insertion_alignment_entered = False
+                self._near_approach_active = True
+                self._insertion_fine_started_mono = None
+                self._insertion_alignment_attempts = 0
+                if self._alignment_started_mono is None:
+                    self._alignment_started_mono = time.monotonic()
+                self._set_state("STAGING_PLAN")
+                lines.append((f"[NEAR REPLAN] no insertion turn; "
+                              f"normal approach room={-longitudinal:.3f}m", COLOR_META))
+                return False
             self._fail(
                 f"no commandable visibility-safe insertion rotation "
                 f"(minimum {cfg.INSERT_FINE_MIN_TURN_DEG:.2f}deg): "
@@ -775,6 +796,10 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
                 lines.append((f"[INSERT ALIGN] turn={turn:+.2f}deg; settle then recheck", COLOR_META))
         return True
 
+    def _rotation_timer_status(self):
+        timer = timed_rotation_status()
+        return timer if timer.get('token') == getattr(self, '_rotation_tx_token', None) else {}
+
     def _capture_rotation_stop(
         self, error_deg: float, update, pose: VisualPose, reason: str,
     ) -> None:
@@ -782,6 +807,9 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
         self._rotation_stop_error_deg = wrap_180(error_deg)
         # Monotonic controller elapsed at STOP, not plan duration or settle wait.
         self._rotation_actual_hold_sec = float(update.elapsed_sec)
+        timer = self._rotation_timer_status()
+        if timer.get('started') is not None and timer.get('stopped') is not None:
+            self._rotation_actual_hold_sec = timer['stopped'] - timer['started']
         self._rotation_stop_mode = self._rotation_mode
         self._rotation_stop_command = self._rotation.command
         self._rotation_stop_reason = str(reason)
@@ -835,6 +863,10 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
     def _update_rotation_adaptation(self, settled_error_deg: float) -> None:
         """Learn the next active-time scale from this settled rotation."""
 
+        timer = self._rotation_timer_status()
+        if (self._rotation_actual_hold_sec is not None
+                and timer.get('started') is not None and timer.get('stopped') is not None):
+            self._rotation_actual_hold_sec = timer['stopped'] - timer['started']
         plan = self._rotation.plan
         if (cfg.ROT_ADAPTIVE_SLOPE_ENABLED
                 and getattr(self._rotation.response, 'endpoint_only', False)):
@@ -843,7 +875,7 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
             self._rotation_actual_hold_sec = None  # consume each action once
             if (plan is not None and self._rotation_mode in {"waypoint", "final", "insert_align"}
                     and actual_hold is not None
-                    and self._rotation_stop_reason in {"fitted_hold_elapsed", "target_crossed"}):
+                    and self._rotation_stop_reason in {"fitted_hold_elapsed", "tx_hold_elapsed", "target_crossed"}):
                 actual = (wrap_180(settled_error_deg - self._rotation.start_error_deg)
                           * self._rotation.expected_delta_sign)
                 self._rotation_adaptive_result = self._session_slope.observe(
@@ -976,6 +1008,9 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
             cfg.ROT_MAX_COMMAND_SEC, plan.hard_timeout_sec,
         )
         self._set_state(state, budget)
+        self._rotation_tx_token = None
+        if cfg.ROT_TX_TIMED_STOP_ENABLED and plan is not None and plan.hold_sec > 0:
+            self._rotation_tx_token = arm_timed_rotation(command, plan.hold_sec)
         self.execu.exec(command)
         return True
 
@@ -988,6 +1023,14 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
         age = measurement_age(vision_meta, now)
         update = self._rotation.update(error, now, pose.measurement_mono, age)
         command = self._rotation.command or "STOP"
+        timer = self._rotation_timer_status() if cfg.ROT_TX_TIMED_STOP_ENABLED else {}
+        if timer.get('expired'):
+            self._exec("STOP")
+            self._capture_rotation_stop(error, update, pose, "tx_hold_elapsed")
+            self._begin_settle(settle_state, now)
+            lines.append((f"[V4 ROT] TX-timed STOP; actual hold="
+                          f"{self._rotation_actual_hold_sec:.6f}s", COLOR_META))
+            return
         face_centered_now = (
             self._rotation_mode == "face"
             and abs(center) <= cfg.FACE_CENTER_IMMEDIATE_STOP_TOL_DEG
@@ -1020,7 +1063,10 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
             self._fail("rotation direction-change budget exceeded", lines)
             return
         crossed = self._rotation.start_error_deg * error <= 0.0
-        if update.should_stop or (update.ready and crossed):
+        stop_requested = update.should_stop
+        if timer.get('started') is not None and update.stop_reason == 'fitted_hold_elapsed':
+            stop_requested = False  # The TX clock, not the vision clock, owns this deadline.
+        if stop_requested or (update.ready and crossed):
             self._exec("STOP")
             reason = update.stop_reason or (
                 "predicted_margin" if update.should_stop else "target_crossed"
@@ -1868,7 +1914,8 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
                 ))
                 return lines
 
-            if fork_opening_alignment(pose)[0] or staging_position_reached(pose):
+            if ((not self._near_approach_active and fork_opening_alignment(pose)[0])
+                    or staging_position_reached(pose)):
                 self._set_state("FINAL_POSE_LOCK")
                 return lines
             if self._correction_cycles >= cfg.MAX_CORRECTION_CYCLES:
@@ -1932,7 +1979,8 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
             return lines
 
         if self.state == "WAYPOINT_DRIVE":
-            if 0.0 < pose.pallet_z_m <= cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M:
+            if (0.0 < pose.pallet_z_m <= cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M
+                    and not self._near_approach_active):
                 self._stop_translation(
                     "WAYPOINT_DRIVE_SETTLE", lines, insertion_range_entered=True,
                     travelled_m=self._translation_progress(pose),
@@ -1952,14 +2000,6 @@ class CalibrationFSMV4(CoarseAlignmentMixin):
             stable_pose, _stable_center, _stable_margin = stable
             travelled = self._translation_progress(stable_pose)
             self._forward_used_m += travelled
-            if 0.0 < stable_pose.pallet_z_m <= cfg.INSERT_ALIGNMENT_MAX_CAMERA_Z_M:
-                self._trace_end(**self._translation_stop_info, settled_travel_m=travelled,
-                                total_forward_used_m=self._forward_used_m)
-                if self._forward_used_m > cfg.FWD_MAX_TOTAL_CORRECTION_M:
-                    self._fail("forward correction hard limit exceeded", lines)
-                else:
-                    self._set_state("FINAL_POSE_LOCK")
-                return lines
             _gx, _gz, goal_distance = goal_vector_vehicle(stable_pose)
             lateral_error, longitudinal_error = staging_position_errors(stable_pose)
             if self._last_goal_distance_m is not None:

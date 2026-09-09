@@ -63,3 +63,6 @@ button:disabled { opacity:.45; cursor:default; }
 #diagramActivity,#diagramTarget { padding:6px 14px; font-size:12px; line-height:1.5; overflow-wrap:anywhere; }
 @media(max-width:1000px) { .topbar h1 {font-size:16px;} .mode-pill {font-size:10px;padding:5px;} }
  #cameraCanvas {display:block;width:100%;max-height:480px;object-fit:contain;background:#18202a;aspect-ratio:4/3;}
+
+.panel-section > details > summary { cursor:pointer; font-size:14px; font-weight:600; padding:4px 0; }
+.panel-section > details[open] > summary { margin-bottom:12px; }

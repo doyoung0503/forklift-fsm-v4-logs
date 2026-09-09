@@ -1,0 +1,11 @@
+{
+  "imu_error_model": "representative +5deg at 90deg true rotation; fixed gyro gain",
+  "expected_abs_error_at_90_deg": 5,
+  "normal_sigma_deg": 6.2665706865775,
+  "representative_error_at_90_deg": 5.0,
+  "imu_scale": 1.0555555555555556,
+  "drive_gain_sigma": 0.187997120597325,
+  "drive_expected_abs_relative_error": 0.15,
+  "rotation_gain_sigma": 0.05,
+  "seed": 20260908
+}

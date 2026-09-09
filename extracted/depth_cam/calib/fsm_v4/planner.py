@@ -337,6 +337,31 @@ def _maximum_staging_safe_forward_m(
     return low
 
 
+def adaptive_forward_limit_m(pose: VisualPose, turn_deg: float = 0.0) -> float:
+    """Extend small-lateral drives only while their straight path stays in band.
+
+    Pallet-frame lateral is affine along a straight drive, so the start and
+    endpoint bound the entire path. This guard only limits the extension;
+    existing visibility/staging checks still constrain the base-length drive.
+    """
+    base = cfg.FWD_MACRO_MAX_DISTANCE_M
+    lateral = float(pose.rot_x_pallet_m)
+    full = cfg.FWD_ALIGNED_LATERAL_FULL_M
+    band = cfg.FWD_ALIGNED_LATERAL_BASE_M
+    if not math.isfinite(lateral) or abs(lateral) >= band:
+        return base
+    weight = min(1.0, (band - abs(lateral)) / (band - full))
+    limit = base + weight * (cfg.FWD_ALIGNED_MAX_DISTANCE_M - base)
+    end = _pose_after_action(pose, turn_deg, limit).rot_x_pallet_m
+    if not math.isfinite(end):
+        return base
+    if abs(end) > band:
+        boundary = math.copysign(band, end)
+        crossing = limit * (boundary - lateral) / (end - lateral)
+        limit = max(base, min(limit, crossing))
+    return limit
+
+
 def safe_straight_continuation_m(
     pose: VisualPose, requested_m: float, remaining_m: float,
     vision_meta: Optional[Dict] = None,
@@ -347,7 +372,7 @@ def safe_straight_continuation_m(
     if longitudinal >= 0.0:
         return 0.0
     upper = max(0.0, min(requested_m, remaining_m,
-                         cfg.FWD_MACRO_MAX_DISTANCE_M, gz))
+                         adaptive_forward_limit_m(pose), gz))
     visible, _margin = _maximum_visible_forward_m(pose, 0.0, upper, vision_meta)
     distance = min(visible, _maximum_staging_safe_forward_m(pose, 0.0, upper))
     if distance < cfg.FWD_RELIABLE_MIN_DISTANCE_M:
@@ -459,10 +484,11 @@ def fork_opening_alignment(pose: VisualPose, *, enforce_entry_distance: bool = T
 
 def insertion_alignment_turn(pose: VisualPose, vision_meta: Optional[Dict] = None,
                              *, alignment_entered: bool = False):
-    """Smallest commandable in-place turn yielding valid fork rays and yaw.
+    """Commandable in-place turn yielding valid fork rays and yaw.
 
     Uses the measured rotation-centre offset, not a yaw-only rotation about
-    the camera. Return zero if already aligned; None if no safe candidate.
+    the camera. Try existing candidates first, then refine their gaps.
+    Return zero if already aligned; None if the bounded search finds none.
     """
     if (not math.isfinite(pose.pallet_z_m) or pose.pallet_z_m <= 0.0
             or (not alignment_entered
@@ -478,28 +504,54 @@ def insertion_alignment_turn(pose: VisualPose, vision_meta: Optional[Dict] = Non
     start_outside_safe_view = not action_keeps_front_visible(
         pose, 0.0, 0.0, vision_meta,
     )
-    candidates = []
     turns = set(_candidate_turns(pose.yaw_deg))
     step = cfg.INSERT_FINE_MIN_TURN_DEG
     for i in range(1, int(math.ceil(cfg.ROT_MIN_COMMANDABLE_ANGLE_DEG / step))):
         turns.update((i * step, -i * step))
-    for turn in turns:
-        if abs(turn) < cfg.INSERT_FINE_MIN_TURN_DEG:
-            continue
-        predicted = _pose_after_action(pose, turn, 0.0)
-        if abs(predicted.yaw_deg) > cfg.FINAL_YAW_TOL_DEG:
-            continue
-        # Entry distance is checked above; camera Z may grow during rotation.
-        fits, hits = fork_opening_alignment(predicted, enforce_entry_distance=False)
-        if not fits:
-            continue
-        if not start_outside_safe_view and not action_keeps_front_visible(
-            pose, turn, 0.0, vision_meta,
-        ):
-            continue
-        clearance = min(cfg.INSERT_OPENING_SPAN_M/2 - abs(x) for x in hits)
-        candidates.append((abs(turn), -clearance, turn))
-    return min(candidates)[2] if candidates else None
+    def evaluate(values):
+        candidates = []
+        for turn in values:
+            if abs(turn) < cfg.INSERT_FINE_MIN_TURN_DEG:
+                continue
+            predicted = _pose_after_action(pose, turn, 0.0)
+            if abs(predicted.yaw_deg) > cfg.FINAL_YAW_TOL_DEG:
+                continue
+            # Entry distance is checked above; camera Z may grow during rotation.
+            fits, hits = fork_opening_alignment(predicted, enforce_entry_distance=False)
+            if not fits:
+                continue
+            if not start_outside_safe_view and not action_keeps_front_visible(
+                pose, turn, 0.0, vision_meta,
+            ):
+                continue
+            clearance = min(cfg.INSERT_OPENING_SPAN_M/2 - abs(x) for x in hits)
+            candidates.append((abs(turn), -clearance, turn))
+        return min(candidates)[2] if candidates else None
+
+    selected = evaluate(turns)
+    if selected is not None:
+        return selected
+    # Both endpoints may fail while their interior is feasible. Subdivide
+    # every eligible interval, not just success/failure sign changes.
+    ordered = sorted(turns)
+    intervals = list(zip(ordered, ordered[1:]))
+    resolution = cfg.INSERT_TURN_REFINE_RESOLUTION_DEG
+    while intervals:
+        midpoints, children = [], []
+        for lo, hi in intervals:
+            if (hi-lo <= resolution or hi < pose.yaw_deg-cfg.FINAL_YAW_TOL_DEG
+                    or lo > pose.yaw_deg+cfg.FINAL_YAW_TOL_DEG
+                    or (lo >= -cfg.INSERT_FINE_MIN_TURN_DEG
+                        and hi <= cfg.INSERT_FINE_MIN_TURN_DEG)):
+                continue
+            mid = (lo+hi)/2
+            midpoints.append(mid)
+            children.extend(((lo, mid), (mid, hi)))
+        selected = evaluate(midpoints)
+        if selected is not None:
+            return selected
+        intervals = children
+    return None
 
 
 def visibility_turn_interval(
@@ -592,7 +644,7 @@ def plan_waypoint(
             goal_z_after_turn = gx * math.sin(heading) + gz * math.cos(heading)
             requested_forward = min(
                 goal_z_after_turn,
-                cfg.FWD_MACRO_MAX_DISTANCE_M,
+                adaptive_forward_limit_m(pose, turn),
                 remaining_forward_m,
             )
             if requested_forward < cfg.FWD_RELIABLE_MIN_DISTANCE_M:
@@ -667,7 +719,7 @@ def plan_waypoint(
 
     heading = math.radians(turn)
     projected = gx * math.sin(heading) + gz * math.cos(heading)
-    forward = min(projected, cfg.FWD_MACRO_MAX_DISTANCE_M, remaining_forward_m)
+    forward = min(projected, adaptive_forward_limit_m(pose, turn), remaining_forward_m)
     if forward < cfg.FWD_RELIABLE_MIN_DISTANCE_M:
         return PlanResult(
             None,

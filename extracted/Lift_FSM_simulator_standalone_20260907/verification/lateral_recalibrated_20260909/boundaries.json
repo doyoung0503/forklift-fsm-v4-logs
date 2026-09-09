@@ -1,0 +1,956 @@
+[
+  {
+    "distance_m": 3.0,
+    "side": 1,
+    "status": "nonmonotonic",
+    "success_m": 0.375,
+    "failure_m": 0.38125,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.276171875,
+    "conservative_failure_m": 0.28125,
+    "first_sampled_failure_m": 0.28125,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.069043,
+        true
+      ],
+      [
+        0.09375,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1380859,
+        true
+      ],
+      [
+        0.1875,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.2071289,
+        true
+      ],
+      [
+        0.240625,
+        true
+      ],
+      [
+        0.2485547,
+        true
+      ],
+      [
+        0.2609375,
+        true
+      ],
+      [
+        0.2710938,
+        true
+      ],
+      [
+        0.2761719,
+        true
+      ],
+      [
+        0.28125,
+        false
+      ],
+      [
+        0.3,
+        true
+      ],
+      [
+        0.3375,
+        true
+      ],
+      [
+        0.35,
+        true
+      ],
+      [
+        0.375,
+        true
+      ],
+      [
+        0.38125,
+        false
+      ],
+      [
+        0.3875,
+        false
+      ],
+      [
+        0.4,
+        false
+      ],
+      [
+        0.40125,
+        false
+      ],
+      [
+        0.5,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 3.0,
+    "side": -1,
+    "status": "nonmonotonic",
+    "success_m": 0.375,
+    "failure_m": 0.38125,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.276171875,
+    "conservative_failure_m": 0.28125,
+    "first_sampled_failure_m": 0.28125,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.069043,
+        true
+      ],
+      [
+        0.09375,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1380859,
+        true
+      ],
+      [
+        0.1875,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.2071289,
+        true
+      ],
+      [
+        0.240625,
+        true
+      ],
+      [
+        0.2485547,
+        true
+      ],
+      [
+        0.2609375,
+        true
+      ],
+      [
+        0.2710938,
+        true
+      ],
+      [
+        0.2761719,
+        true
+      ],
+      [
+        0.28125,
+        false
+      ],
+      [
+        0.3,
+        true
+      ],
+      [
+        0.3375,
+        true
+      ],
+      [
+        0.35,
+        true
+      ],
+      [
+        0.375,
+        true
+      ],
+      [
+        0.38125,
+        false
+      ],
+      [
+        0.3875,
+        false
+      ],
+      [
+        0.4,
+        false
+      ],
+      [
+        0.40125,
+        false
+      ],
+      [
+        0.5,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 3.5,
+    "side": 1,
+    "status": "sampled_monotonic",
+    "success_m": 0.41875000000000007,
+    "failure_m": 0.42500000000000004,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.41875000000000007,
+    "conservative_failure_m": 0.42500000000000004,
+    "first_sampled_failure_m": 0.425,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1046875,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.209375,
+        true
+      ],
+      [
+        0.3140625,
+        true
+      ],
+      [
+        0.376875,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4125,
+        true
+      ],
+      [
+        0.41875,
+        true
+      ],
+      [
+        0.425,
+        false
+      ],
+      [
+        0.445,
+        false
+      ],
+      [
+        0.45,
+        false
+      ],
+      [
+        0.5,
+        false
+      ],
+      [
+        0.6,
+        false
+      ],
+      [
+        0.8,
+        false
+      ],
+      [
+        1.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 3.5,
+    "side": -1,
+    "status": "sampled_monotonic",
+    "success_m": 0.41875000000000007,
+    "failure_m": 0.42500000000000004,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.41875000000000007,
+    "conservative_failure_m": 0.42500000000000004,
+    "first_sampled_failure_m": 0.425,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1046875,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.209375,
+        true
+      ],
+      [
+        0.3140625,
+        true
+      ],
+      [
+        0.376875,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4125,
+        true
+      ],
+      [
+        0.41875,
+        true
+      ],
+      [
+        0.425,
+        false
+      ],
+      [
+        0.445,
+        false
+      ],
+      [
+        0.45,
+        false
+      ],
+      [
+        0.5,
+        false
+      ],
+      [
+        0.6,
+        false
+      ],
+      [
+        0.8,
+        false
+      ],
+      [
+        1.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 4.0,
+    "side": 1,
+    "status": "sampled_monotonic",
+    "success_m": 0.6500000000000001,
+    "failure_m": 0.6562500000000001,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.6500000000000001,
+    "conservative_failure_m": 0.6562500000000001,
+    "first_sampled_failure_m": 0.65625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1625,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.325,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4875,
+        true
+      ],
+      [
+        0.585,
+        true
+      ],
+      [
+        0.6,
+        true
+      ],
+      [
+        0.65,
+        true
+      ],
+      [
+        0.65625,
+        false
+      ],
+      [
+        0.6625,
+        false
+      ],
+      [
+        0.675,
+        false
+      ],
+      [
+        0.67625,
+        false
+      ],
+      [
+        0.7,
+        false
+      ],
+      [
+        0.8,
+        false
+      ],
+      [
+        1.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 4.0,
+    "side": -1,
+    "status": "sampled_monotonic",
+    "success_m": 0.6500000000000001,
+    "failure_m": 0.6562500000000001,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.6500000000000001,
+    "conservative_failure_m": 0.6562500000000001,
+    "first_sampled_failure_m": 0.65625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.1625,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.325,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4875,
+        true
+      ],
+      [
+        0.585,
+        true
+      ],
+      [
+        0.6,
+        true
+      ],
+      [
+        0.65,
+        true
+      ],
+      [
+        0.65625,
+        false
+      ],
+      [
+        0.6625,
+        false
+      ],
+      [
+        0.675,
+        false
+      ],
+      [
+        0.67625,
+        false
+      ],
+      [
+        0.7,
+        false
+      ],
+      [
+        0.8,
+        false
+      ],
+      [
+        1.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 4.5,
+    "side": 1,
+    "status": "sampled_monotonic",
+    "success_m": 0.8562500000000001,
+    "failure_m": 0.8625,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.8562500000000001,
+    "conservative_failure_m": 0.8625,
+    "first_sampled_failure_m": 0.8625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.2140625,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.428125,
+        true
+      ],
+      [
+        0.6421875,
+        true
+      ],
+      [
+        0.770625,
+        true
+      ],
+      [
+        0.8,
+        true
+      ],
+      [
+        0.85,
+        true
+      ],
+      [
+        0.85625,
+        true
+      ],
+      [
+        0.8625,
+        false
+      ],
+      [
+        0.875,
+        false
+      ],
+      [
+        0.8825,
+        false
+      ],
+      [
+        0.9,
+        false
+      ],
+      [
+        1.0,
+        false
+      ],
+      [
+        1.2,
+        false
+      ],
+      [
+        1.6,
+        false
+      ],
+      [
+        2.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 4.5,
+    "side": -1,
+    "status": "sampled_monotonic",
+    "success_m": 0.8562500000000001,
+    "failure_m": 0.8625,
+    "resolution_m": 0.006249999999999978,
+    "conservative_success_m": 0.8562500000000001,
+    "conservative_failure_m": 0.8625,
+    "first_sampled_failure_m": 0.8625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.2140625,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.428125,
+        true
+      ],
+      [
+        0.6421875,
+        true
+      ],
+      [
+        0.770625,
+        true
+      ],
+      [
+        0.8,
+        true
+      ],
+      [
+        0.85,
+        true
+      ],
+      [
+        0.85625,
+        true
+      ],
+      [
+        0.8625,
+        false
+      ],
+      [
+        0.875,
+        false
+      ],
+      [
+        0.8825,
+        false
+      ],
+      [
+        0.9,
+        false
+      ],
+      [
+        1.0,
+        false
+      ],
+      [
+        1.2,
+        false
+      ],
+      [
+        1.6,
+        false
+      ],
+      [
+        2.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 5.0,
+    "side": 1,
+    "status": "nonmonotonic",
+    "success_m": 1.0125,
+    "failure_m": 1.0187499999999998,
+    "resolution_m": 0.006249999999999867,
+    "conservative_success_m": 0.8486718750000001,
+    "conservative_failure_m": 0.8556250000000001,
+    "first_sampled_failure_m": 0.855625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.212168,
+        true
+      ],
+      [
+        0.253125,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4243359,
+        true
+      ],
+      [
+        0.50625,
+        true
+      ],
+      [
+        0.6365039,
+        true
+      ],
+      [
+        0.759375,
+        true
+      ],
+      [
+        0.7638047,
+        true
+      ],
+      [
+        0.8,
+        true
+      ],
+      [
+        0.8278125,
+        true
+      ],
+      [
+        0.8417188,
+        true
+      ],
+      [
+        0.8486719,
+        true
+      ],
+      [
+        0.855625,
+        false
+      ],
+      [
+        0.91125,
+        false
+      ],
+      [
+        1.0,
+        true
+      ],
+      [
+        1.0125,
+        true
+      ],
+      [
+        1.01875,
+        false
+      ],
+      [
+        1.025,
+        false
+      ],
+      [
+        1.03875,
+        false
+      ],
+      [
+        1.05,
+        false
+      ],
+      [
+        1.1,
+        false
+      ],
+      [
+        1.2,
+        false
+      ],
+      [
+        1.6,
+        false
+      ],
+      [
+        2.0,
+        false
+      ]
+    ]
+  },
+  {
+    "distance_m": 5.0,
+    "side": -1,
+    "status": "nonmonotonic",
+    "success_m": 1.0125,
+    "failure_m": 1.0187499999999998,
+    "resolution_m": 0.006249999999999867,
+    "conservative_success_m": 0.8486718750000001,
+    "conservative_failure_m": 0.8556250000000001,
+    "first_sampled_failure_m": 0.855625,
+    "samples": [
+      [
+        0.0,
+        true
+      ],
+      [
+        0.1,
+        true
+      ],
+      [
+        0.2,
+        true
+      ],
+      [
+        0.212168,
+        true
+      ],
+      [
+        0.253125,
+        true
+      ],
+      [
+        0.4,
+        true
+      ],
+      [
+        0.4243359,
+        true
+      ],
+      [
+        0.50625,
+        true
+      ],
+      [
+        0.6365039,
+        true
+      ],
+      [
+        0.759375,
+        true
+      ],
+      [
+        0.7638047,
+        true
+      ],
+      [
+        0.8,
+        true
+      ],
+      [
+        0.8278125,
+        true
+      ],
+      [
+        0.8417188,
+        true
+      ],
+      [
+        0.8486719,
+        true
+      ],
+      [
+        0.855625,
+        false
+      ],
+      [
+        0.91125,
+        false
+      ],
+      [
+        1.0,
+        true
+      ],
+      [
+        1.0125,
+        true
+      ],
+      [
+        1.01875,
+        false
+      ],
+      [
+        1.025,
+        false
+      ],
+      [
+        1.03875,
+        false
+      ],
+      [
+        1.05,
+        false
+      ],
+      [
+        1.1,
+        false
+      ],
+      [
+        1.2,
+        false
+      ],
+      [
+        1.6,
+        false
+      ],
+      [
+        2.0,
+        false
+      ]
+    ]
+  }
+]

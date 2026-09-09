@@ -92,6 +92,22 @@ class SessionSlopeTests(unittest.TestCase):
                 fsm._update_rotation_adaptation(-2.)
             self.assertEqual(fsm._session_slope.multiplier('ROT_RIGHT'), 1.)
 
+    def test_tx_duration_replaces_late_vision_duration_and_is_consumed_once(self):
+        fsm = self.make_fsm()
+        fsm._rotation_tx_token = 17
+        fsm._rotation_stop_reason = 'tx_hold_elapsed'
+        fsm._rotation_actual_hold_sec = 2.4  # FSM observed STOP much later.
+        timer = dict(token=17, started=10., stopped=11.6)
+        with patch.object(cfg, 'ROT_ADAPTIVE_SLOPE_ENABLED', True), \
+             patch('calib.fsm_v4.top.timed_rotation_status', return_value=timer):
+            fsm._update_rotation_adaptation(-2.)
+            self.assertAlmostEqual(fsm._rotation_adaptive_result['slope_hold_overrun_sec'], 0.)
+            self.assertAlmostEqual(fsm._rotation_adaptive_result['slope_active_sec'],
+                                   1.6 - cfg.ROTATION_RESPONSE.startup_delay_sec)
+            previous = fsm._session_slope.multiplier('ROT_RIGHT')
+            fsm._update_rotation_adaptation(-2.)
+            self.assertEqual(fsm._session_slope.multiplier('ROT_RIGHT'), previous)
+
 
 if __name__ == '__main__':
     unittest.main()

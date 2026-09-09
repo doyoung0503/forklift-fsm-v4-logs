@@ -88,7 +88,8 @@ def main(argv=None,*,default_window=False,entrypoint='fsm_worker.py'):
                             telemetry={**driver.telemetry(),'command':'STOP'},
                             lifecycle=dict(finished=True,outcome='cancelled',reason='simulation window closed'),cancel_requested=True)
                     else:
-                        result=driver.tick(t,until,request.get('model'),bool(request.get('halt',False)))
+                        extra={'imu':request['imu']} if request.get('imu') is not None else {}
+                        result=driver.tick(t,until,request.get('model'),bool(request.get('halt',False)),**extra)
                     now=result['advance_until']
                     last_lifecycle=result['lifecycle']
                     if window is not None and not sync_display:

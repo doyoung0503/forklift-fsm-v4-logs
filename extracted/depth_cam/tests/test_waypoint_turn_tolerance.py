@@ -77,7 +77,8 @@ class StraightContinuationSafetyTests(unittest.TestCase):
              patch(PLAN+'staging_position_errors', return_value=(.2, longitudinal)), \
              patch(PLAN+'_maximum_visible_forward_m', side_effect=lambda p,t,d,m: (min(visible,d),1.)), \
              patch(PLAN+'_maximum_staging_safe_forward_m', side_effect=lambda p,t,d: min(staging,d)):
-            return planner.safe_straight_continuation_m(object(), .8, remaining, {})
+            return planner.safe_straight_continuation_m(
+                SimpleNamespace(rot_x_pallet_m=.3), .8, remaining, {})
 
     def test_rechecks_visibility_and_staging_and_remaining_budget(self):
         self.assertAlmostEqual(self.check(), .5)

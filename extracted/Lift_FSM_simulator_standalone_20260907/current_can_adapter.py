@@ -87,11 +87,19 @@ class CurrentCanTransport:
             self.last_sent=movement
         while True:
             queued=self.queue[0][0] if self.queue else float("inf")
-            at=min(queued,self.next_ctrl,self.next_mov,self.next_hb)
+            deadline=c.timed_rotation_deadline()
+            deadline=deadline-EPOCH if deadline is not None else float('inf')
+            at=min(queued,self.next_ctrl,self.next_mov,self.next_hb,deadline)
             if at>until+1e-9:
                 break
             self.time=at
-            if queued==at:
+            movement,mode=c._get_tx_state()
+            timer=c.timed_rotation_status()
+            timer_stop_due=timer.get('expired') and timer.get('stopped') is None
+            if deadline==at or timer_stop_due:
+                c._write_command_once(movement,mode,tx_source='timed_rotation_deadline')
+                self.last_sent=movement
+            elif queued==at:
                 _,_,_,(movement,mode,index,count)=heapq.heappop(self.queue)
                 c._write_command_once(movement,mode,tx_source="virtual_burst",burst_index=index,burst_count=count)
             else:

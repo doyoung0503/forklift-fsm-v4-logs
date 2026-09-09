@@ -1,0 +1,326 @@
+{
+  "distance_definition": "pallet-normal rotation-centre distance",
+  "domain_m": [
+    3.0,
+    5.0
+  ],
+  "lateral_tolerance_m": 0.1,
+  "staging_distance_m": 2.26,
+  "reserve_m": 0.0,
+  "least_squares_k": 0.29640424793060444,
+  "lower_envelope_k": 0.2380701013513513,
+  "engineering_retention": 0.8,
+  "proposed_k": 0.19,
+  "effective_angle_deg": 10.757967088390004,
+  "formula": "L_limit = lateral_tolerance_m + proposed_k * (D - staging_distance_m)",
+  "production_controller_changed": false,
+  "validation": [
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.24060000000000004,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": -0.24060000000000004,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.25,
+      "lateral_m": 0.2881,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.25,
+      "lateral_m": -0.2881,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": 0.3356,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": -0.3356,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.75,
+      "lateral_m": 0.3831,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.75,
+      "lateral_m": -0.3831,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.4306000000000001,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.4306000000000001,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.25,
+      "lateral_m": 0.4781000000000001,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.25,
+      "lateral_m": -0.4781000000000001,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": 0.5256000000000001,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": -0.5256000000000001,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.75,
+      "lateral_m": 0.5731,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.75,
+      "lateral_m": -0.5731,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 0.6206,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": -0.6206,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.12030000000000002,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": -0.12030000000000002,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": 0.1678,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": -0.1678,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.21530000000000005,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.21530000000000005,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": 0.26280000000000003,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": -0.26280000000000003,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 0.3103,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": -0.3103,
+      "facing": true,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.24060000000000004,
+      "facing": false,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": -0.24060000000000004,
+      "facing": false,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.4306000000000001,
+      "facing": false,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.4306000000000001,
+      "facing": false,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 0.6206,
+      "facing": false,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": -0.6206,
+      "facing": false,
+      "success": true,
+      "reasons": []
+    }
+  ],
+  "calibration_source_id": "c43bed3dd543fd920d0a88a1bb6ee88e31e57f703f2fa19484cd8d2687e09f03",
+  "search_trials": 201,
+  "validation_output": "verification\\lateral_recalibrated_20260909_candidate",
+  "policy_output": "verification\\lateral_recalibrated_policy_20260909",
+  "current_policy_validation": [
+    {
+      "distance_m": 3.0,
+      "lateral_m": 0.24060000000000004,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.0,
+      "lateral_m": -0.24060000000000004,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": 0.3356,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 3.5,
+      "lateral_m": -0.3356,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": 0.4306000000000001,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.0,
+      "lateral_m": -0.4306000000000001,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": 0.5256000000000001,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 4.5,
+      "lateral_m": -0.5256000000000001,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": 0.6206,
+      "success": true,
+      "reasons": []
+    },
+    {
+      "distance_m": 5.0,
+      "lateral_m": -0.6206,
+      "success": true,
+      "reasons": []
+    }
+  ],
+  "current_policy_validation_passed": true,
+  "facing_validation_passed": true,
+  "all_validation_passed": true
+}
